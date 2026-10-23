@@ -1546,7 +1546,12 @@
     "refs": []
    }
   ],
-  "refs": []
+  "refs": [
+   {
+    "text": "(2012) Ixobrychus eurhythmus: BirdLife International. IUCN Red List of Threatened Species",
+    "url": "https://doi.org/10.2305/iucn.uk.2012-1.rlts.t22697317a40256464.en"
+   }
+  ]
  },
  "붉은해오라기": {
   "summary": "어두운 숲 계곡에 사는 해오라기. 기록이 드물다.",
@@ -2939,7 +2944,12 @@
     "refs": []
    }
   ],
-  "refs": []
+  "refs": [
+   {
+    "text": "Seung-Gu Kang 외 (2018) First record of Siberian tundra Peregrine Falcon (Falco peregrinus calidus) in South Korea. The Korean Journal of Ornithology",
+    "url": "https://doi.org/10.30980/kjo.2018.06.25.1.48"
+   }
+  ]
  },
  "물수리": {
   "summary": "물고기만 잡는 맹금. 이동 시기 하천·호소를 지나며 일부는 겨울에도 남는다.",
@@ -3477,7 +3487,12 @@
     "refs": []
    }
   ],
-  "refs": []
+  "refs": [
+   {
+    "text": "(2021) Circus spilonotus: BirdLife International. IUCN Red List of Threatened Species",
+    "url": "https://doi.org/10.2305/iucn.uk.2021-3.rlts.t61709141a203625947.en"
+   }
+  ]
  },
  "알락개구리매": {
   "summary": "흑백 무늬의 개구리매. 이동 시기 습지·초지를 지나간다.",
@@ -3575,7 +3590,20 @@
     "refs": []
    }
   ],
-  "refs": []
+  "refs": [
+   {
+    "text": "Jung-Hun Yeum 외 (2024) Movement Characteristics during the Breeding Season of Common Kestrel (Falco tinnunculus) in Wonju City, South Korea. Journal of Environmental Science International",
+    "url": "https://doi.org/10.5322/jesi.2024.33.12.911"
+   },
+   {
+    "text": "Jong-Gil Park 외 (2022) Taxonomic study of Common Kestrel (Falco tinnunculus) in Korea. The Korean Journal of Ornithology",
+    "url": "https://doi.org/10.30980/kjo.2022.12.29.2.95"
+   },
+   {
+    "text": "(2013) Falco tinnunculus: BirdLife International. IUCN Red List of Threatened Species",
+    "url": "https://doi.org/10.2305/iucn.uk.2015-4.rlts.t22696362a80376244.en"
+   }
+  ]
  },
  "수리부엉이": {
   "summary": "국내에서 가장 큰 올빼미류. 하천·농경지 주변 바위 절벽에서 번식한다.",
@@ -3817,7 +3845,12 @@
     "refs": []
    }
   ],
-  "refs": []
+  "refs": [
+   {
+    "text": "(2016) Ninox japonica: BirdLife International. IUCN Red List of Threatened Species",
+    "url": "https://doi.org/10.2305/iucn.uk.2016-3.rlts.t22725653a94898452.en"
+   }
+  ]
  },
  "소쩍새": {
   "summary": "‘소쩍’ 우는 작은 올빼미류. 여름에 마을 주변 숲에서 번식한다.",
@@ -3869,7 +3902,16 @@
     "refs": []
    }
   ],
-  "refs": []
+  "refs": [
+   {
+    "text": "Sun-Ho No 외 (2015) A study on breeding ecology and nest characteristics of oriental scops owl (Otus sunia stictonotus) in South Korea. Journal of Ecology and Environment",
+    "url": "https://doi.org/10.5141/ecoenv.2015.044"
+   },
+   {
+    "text": "(2012) Otus sunia: BirdLife International. IUCN Red List of Threatened Species",
+    "url": "https://doi.org/10.2305/iucn.uk.2012-1.rlts.t22728969a40393047.en"
+   }
+  ]
  },
  "큰소쩍새": {
   "summary": "소쩍새보다 큰 텃새 올빼미류. 숲의 나무 구멍에서 번식한다.",
@@ -3921,7 +3963,12 @@
     "refs": []
    }
   ],
-  "refs": []
+  "refs": [
+   {
+    "text": "(2024) Otus semitorques: BirdLife International. IUCN Red List of Threatened Species",
+    "url": "https://doi.org/10.2305/iucn.uk.2024-2.rlts.t61859151a264101116.en"
+   }
+  ]
  },
  "쇠부엉이": {
   "summary": "귀깃이 짧은 올빼미류. 겨울에 넓은 초지·간척지에서 낮에도 사냥한다.",
@@ -3966,7 +4013,12 @@
     "refs": []
    }
   ],
-  "refs": []
+  "refs": [
+   {
+    "text": "(2020) Asio flammeus: BirdLife International. IUCN Red List of Threatened Species",
+    "url": "https://doi.org/10.2305/iucn.uk.2021-3.rlts.t22689531a166228510.en"
+   }
+  ]
  },
  "칡부엉이": {
   "summary": "귀깃이 긴 올빼미류. 겨울에 침엽수림에서 무리로 쉬고 농경지에서 사냥한다.",
@@ -4761,7 +4813,12 @@
     "refs": []
    }
   ],
-  "refs": []
+  "refs": [
+   {
+    "text": "(2012) Rostratula benghalensis: BirdLife International. IUCN Red List of Threatened Species",
+    "url": "https://doi.org/10.2305/iucn.uk.2012-1.rlts.t22735810a39139528.en"
+   }
+  ]
  },
  "원앙": {
   "summary": "나무 구멍에 둥지를 트는 오리. 숲속 하천·저수지에 산다.",
@@ -4840,7 +4897,16 @@
     "refs": []
    }
   ],
-  "refs": []
+  "refs": [
+   {
+    "text": "(1999) Wintering Flock of the Mandarin Duck (Aix galericulata) in Cheju Island, Republic of Korea. Japanese Journal of Ornithology",
+    "url": "https://doi.org/10.3838/jjo.48.161"
+   },
+   {
+    "text": "(2016) Aix galericulata: BirdLife International. IUCN Red List of Threatened Species",
+    "url": "https://doi.org/10.2305/iucn.uk.2016-3.rlts.t22680107a92843837.en"
+   }
+  ]
  },
  "두견": {
   "summary": "휘파람새 둥지에 알을 맡기는 뻐꾸기류.",
@@ -4883,7 +4949,12 @@
     "refs": []
    }
   ],
-  "refs": []
+  "refs": [
+   {
+    "text": "(2012) Cuculus poliocephalus: BirdLife International. IUCN Red List of Threatened Species",
+    "url": "https://doi.org/10.2305/iucn.uk.2012-1.rlts.t22683889a39083462.en"
+   }
+  ]
  },
  "양비둘기": {
   "summary": "바위·건물 틈에 둥지를 트는 토종 비둘기. 집비둘기와의 교잡과 서식지 감소로 야생 무리는 아주 적다.",

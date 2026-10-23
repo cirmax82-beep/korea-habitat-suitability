@@ -28,10 +28,18 @@
     "elev": [
      0,
      20
+    ],
+    "refs": [
+     1
     ]
    }
   ],
-  "refs": [],
+  "refs": [
+   {
+    "text": "Eun‐Ji Choi 외 (2007) Reproductive biology of the temperate soft coralDendronephthya suensoni(Alcyonacea: Nephtheidae). Integrative Biosciences",
+    "url": "https://doi.org/10.1080/17386357.2007.9647338"
+   }
+  ],
   "range": {
    "km": 10
   }
@@ -65,7 +73,8 @@
     "elev": [
      0,
      20
-    ]
+    ],
+    "refs": []
    }
   ],
   "refs": [],
@@ -102,7 +111,8 @@
     "elev": [
      0,
      20
-    ]
+    ],
+    "refs": []
    }
   ],
   "refs": [],
@@ -139,7 +149,8 @@
     "elev": [
      0,
      20
-    ]
+    ],
+    "refs": []
    }
   ],
   "refs": [],
@@ -176,7 +187,8 @@
     "elev": [
      0,
      20
-    ]
+    ],
+    "refs": []
    }
   ],
   "refs": [],
@@ -213,10 +225,23 @@
     "elev": [
      0,
      20
+    ],
+    "refs": [
+     1,
+     2
     ]
    }
   ],
-  "refs": [],
+  "refs": [
+   {
+    "text": "Sung-Jin Hwang 외 (2012) Sexual reproduction of the soft coralDendronephthya castanea(Alcyonacea: Nephtheidae). Animal Cells and Systems",
+    "url": "https://doi.org/10.1080/19768354.2011.622486"
+   },
+   {
+    "text": "Sung-Jin Hwang 외 (2013) Four New Records of Dendronephthya Species (Octocorallia: Alcyonacea: Nephtheidae) from Korea. Animal Systematics, Evolution and Diversity",
+    "url": "https://doi.org/10.5635/ased.2013.29.2.160"
+   }
+  ],
   "range": {
    "km": 10
   }
@@ -250,7 +275,8 @@
     "elev": [
      0,
      20
-    ]
+    ],
+    "refs": []
    }
   ],
   "refs": [],
@@ -287,7 +313,8 @@
     "elev": [
      0,
      20
-    ]
+    ],
+    "refs": []
    }
   ],
   "refs": [],
@@ -324,7 +351,8 @@
     "elev": [
      0,
      20
-    ]
+    ],
+    "refs": []
    }
   ],
   "refs": [],
@@ -361,7 +389,8 @@
     "elev": [
      0,
      20
-    ]
+    ],
+    "refs": []
    }
   ],
   "refs": [],
@@ -398,7 +427,8 @@
     "elev": [
      0,
      20
-    ]
+    ],
+    "refs": []
    }
   ],
   "refs": [],
@@ -435,7 +465,8 @@
     "elev": [
      0,
      20
-    ]
+    ],
+    "refs": []
    }
   ],
   "refs": [],
@@ -472,7 +503,8 @@
     "elev": [
      0,
      20
-    ]
+    ],
+    "refs": []
    }
   ],
   "refs": [],
@@ -509,7 +541,8 @@
     "elev": [
      0,
      20
-    ]
+    ],
+    "refs": []
    }
   ],
   "refs": [],
@@ -546,7 +579,8 @@
     "elev": [
      0,
      20
-    ]
+    ],
+    "refs": []
    }
   ],
   "refs": [],
@@ -583,7 +617,8 @@
     "elev": [
      0,
      20
-    ]
+    ],
+    "refs": []
    }
   ],
   "refs": [],
@@ -620,7 +655,8 @@
     "elev": [
      0,
      20
-    ]
+    ],
+    "refs": []
    }
   ],
   "refs": [],
@@ -657,7 +693,8 @@
     "elev": [
      0,
      20
-    ]
+    ],
+    "refs": []
    }
   ],
   "refs": [],
@@ -695,7 +732,8 @@
     "elev": [
      0,
      10
-    ]
+    ],
+    "refs": []
    }
   ],
   "refs": [],
@@ -746,10 +784,18 @@
       "km": 1,
       "min": 0.03
      }
+    ],
+    "refs": [
+     1
     ]
    }
   ],
-  "refs": []
+  "refs": [
+   {
+    "text": "Ji Min Kim 외 (2026) Embryonic development and reproduction of the endangered crab\n          Pseudohelice subquadrata\n          (Dana, 1851) (Crustacea: Decapoda: Varunidae) under laboratory conditions. Journal of Crustacean Biology",
+    "url": "https://doi.org/10.1093/jcbiol/ruag053"
+   }
+  ]
  },
  "갯게": {
   "summary": "하구 갈대밭과 자갈 해안에 사는 게.",
@@ -794,10 +840,28 @@
       "km": 1,
       "min": 0.03
      }
+    ],
+    "refs": [
+     1,
+     2,
+     3
     ]
    }
   ],
-  "refs": []
+  "refs": [
+   {
+    "text": "Hoi-Jeong Yang 외 (2007) First Zoea of Chasmagnathus convexus (Decapoda: Brachyura: Varunidae) Hatched in the Laboratory. Korean Journal of Systematic Zoology",
+    "url": "https://doi.org/10.5635/kjsz.2007.23.1.069"
+   },
+   {
+    "text": "Jiro Nagao 외 (2013) Reproductive characteristics of two estuarine crabs Chasmagnathus convexus and Helice tridens (Brachyura: Varunidae) in the Shigenobu River Estuary, Japan. Plankton and Benthos Research",
+    "url": "https://doi.org/10.3800/pbr.8.150"
+   },
+   {
+    "text": "Yukiko GODA 외 (2006) Seasonal and Diel Activity Patterns of Two Burrowing Mud Crabs, Helice tridens and Chasmagnathus convexus (Crustacea: Decapoda: Varunidae). Japanese journal of benthology",
+    "url": "https://doi.org/10.5179/benthos.61.26"
+   }
+  ]
  },
  "붉은발말똥게": {
   "summary": "다리가 붉은 말똥게. 하구 갈대밭 위쪽에 산다.",
@@ -842,7 +906,8 @@
       "km": 1,
       "min": 0.03
      }
-    ]
+    ],
+    "refs": []
    }
   ],
   "refs": []
@@ -890,10 +955,28 @@
       "km": 1,
       "min": 0.03
      }
+    ],
+    "refs": [
+     1,
+     2,
+     3
     ]
    }
   ],
-  "refs": []
+  "refs": [
+   {
+    "text": "외 (2015) The Conservation Value of Endangered Marine Species: The Case of the Ellobium Chinense. Journal of the Korean Society of Marine Environment and Safety",
+    "url": "https://doi.org/10.7837/kosomes.2015.21.6.645"
+   },
+   {
+    "text": "(2011) Ellobium chinense: Köhler, F. &amp; Rintelen, T.. IUCN Red List of Threatened Species",
+    "url": "https://doi.org/10.2305/iucn.uk.2011-2.rlts.t189403a8726910.en"
+   },
+   {
+    "text": "TAEKO KIMURA (2011) Why an endangered snail Ellobium chinense aggregates on the uppermost tidalflat?. NIPPON SUISAN GAKKAISHI",
+    "url": "https://doi.org/10.2331/suisan.77.119"
+   }
+  ]
  },
  "흰발농게": {
   "summary": "집게발이 흰 농게. 서·남해의 모래 섞인 갯벌에 산다.",
@@ -927,10 +1010,18 @@
     "elev": [
      0,
      10
+    ],
+    "refs": [
+     1
     ]
    }
   ],
-  "refs": []
+  "refs": [
+   {
+    "text": "Atsushi MINO 외 (2026) Environmental factors associated with the habitat of &lt;i&gt;Austruca lactea&lt;/i&gt; in Urado Estuary, Kochi City, Japan.. Ecology and Civil Engineering",
+    "url": "https://doi.org/10.3825/ece.25-00028"
+   }
+  ]
  },
  "기수갈고둥": {
   "summary": "바닷물과 민물이 섞이는 하구의 자갈 바닥에 사는 고둥.",
@@ -964,10 +1055,28 @@
     "elev": [
      0,
      20
+    ],
+    "refs": [
+     1,
+     2,
+     3
     ]
    }
   ],
-  "refs": []
+  "refs": [
+   {
+    "text": "외 (2022) Population Recruitment and Habitat Environmental of the Endangered Mollusk Clithon retropictum in Sanyang River, Tongyeong, Korea. Korea National Park Research Institute",
+    "url": "https://doi.org/10.54406/jnpr.2022.13.1.061"
+   },
+   {
+    "text": "SoonWon Hwang 외 (2024) Diet analysis of Clithon retropictum in south coast of Korea using metabarcoding. Journal of Ecology and Environment",
+    "url": "https://doi.org/10.5141/jee.23.084"
+   },
+   {
+    "text": "Ronald G. Noseworthy 외 (2012) The Occurrence of Clithon retropictus (von Martens in Kobelt, 1879, Gastropoda: Neritidae) in Jeju Island, Republic of Korea. The Korean Journal of Malacology",
+    "url": "https://doi.org/10.9710/kjm.2012.28.2.081"
+   }
+  ]
  },
  "두드럭조개": {
   "summary": "큰 강의 모래·자갈 바닥에 사는 민물조개.",
@@ -1000,7 +1109,8 @@
      0,
      200
     ],
-    "cell_min": 0.03
+    "cell_min": 0.03,
+    "refs": []
    }
   ],
   "refs": []
@@ -1036,10 +1146,18 @@
      0,
      300
     ],
-    "cell_min": 0.005
+    "cell_min": 0.005,
+    "refs": [
+     1
+    ]
    }
   ],
-  "refs": []
+  "refs": [
+   {
+    "text": "Jin-Young Kim 외 (2022) Physical Habitat Characteristics of the Endangered Macroinvertebrate &lt;i&gt;Koreoleptoxis nodifila&lt;/i&gt; (Martens, 1886) (Mollusca, Gastropoda) in South Korea. Korean Journal of Ecology and Environment",
+    "url": "https://doi.org/10.11614/ksl.2022.55.2.145"
+   }
+  ]
  },
  "물거미": {
   "summary": "물속에 공기집을 짓고 사는 거미.",
@@ -1072,10 +1190,36 @@
     "elev": [
      0,
      200
+    ],
+    "refs": [
+     1,
+     2,
+     3
     ]
    }
   ],
-  "refs": [],
+  "refs": [
+   {
+    "text": "Juwan Kang 외 (2017) Survey and Analysis of Insect Species in the South Korea Habitat (Yeoncheon) of the Water Spider, Argyroneta aquatica. Environmental Biology Research",
+    "url": "https://doi.org/10.11626/kjeb.2017.35.4.476"
+   },
+   {
+    "text": "Jinah Moon 외 (2022) Hydroecology of Argyroneta aquatica’s Habitat in Hantangang River Geopark, South Korea. Sustainability",
+    "url": "https://doi.org/10.3390/su14094988"
+   },
+   {
+    "text": "Min-Boo Lee 외 (2016) A Study on the Ecological and Geomorphological Environment of the Water Spider(Argyroneta aquatica) Habitat on the Jeongok Lava Plateau in Yeoncheon, Central Korea. JOURNAL OF THE GEOMORPHOLOGICAL ASSOCIATION OF KOREA",
+    "url": "https://doi.org/10.16968/jkga.23.4.85"
+   },
+   {
+    "text": "Min Boo Lee 외 (2017) Distribution of Vegetation and Geomorphology Characteristics of the Water Spider(Argyroneta aquatica) Habitat in the Jeongok Lava Plateau, Central Korea. JOURNAL OF THE GEOMORPHOLOGICAL ASSOCIATION OF KOREA",
+    "url": "https://doi.org/10.16968/jkga.24.4.57"
+   },
+   {
+    "text": "(2023) Argyroneta aquatica: Milano, F., Cardoso, P., Mammola, S., Smith, H. &amp; Isaia, M.. IUCN Red List of Threatened Species",
+    "url": "https://doi.org/10.2305/iucn.uk.2026-1.rlts.t85737177a213955433.en"
+   }
+  ],
   "range": {
    "km": 10
   }
@@ -1111,12 +1255,17 @@
     "elev": [
      0,
      600
-    ]
+    ],
+    "refs": []
    }
   ],
   "refs": [],
   "range": {
-   "km": 5
+   "km": 5,
+   "areas": [
+    "거제시"
+   ],
+   "only": true
   }
  },
  "울릉도달팽이": {
@@ -1150,12 +1299,24 @@
     "elev": [
      0,
      600
+    ],
+    "refs": [
+     1
     ]
    }
   ],
-  "refs": [],
+  "refs": [
+   {
+    "text": "(2022) Karaftohelix adamsi: Chung, H.-Y. &amp; Chulmin, Y.. IUCN Red List of Threatened Species",
+    "url": "https://doi.org/10.2305/iucn.uk.2023-1.rlts.t197373965a197528978.en"
+   }
+  ],
   "range": {
-   "km": 5
+   "km": 5,
+   "areas": [
+    "울릉군"
+   ],
+   "only": true
   }
  },
  "참달팽이": {
@@ -1190,7 +1351,8 @@
      0,
      600
     ],
-    "coast_km": 3
+    "coast_km": 3,
+    "refs": []
    }
   ],
   "refs": [],
@@ -1235,9 +1397,17 @@
     "slope": [
      10,
      90
+    ],
+    "refs": [
+     1
     ]
    }
   ],
-  "refs": []
+  "refs": [
+   {
+    "text": "(2023) Gammarus zeongogensis: Chung, H.-Y.. IUCN Red List of Threatened Species",
+    "url": "https://doi.org/10.2305/iucn.uk.2023-1.rlts.t199350626a200406532.en"
+   }
+  ]
  }
 }

@@ -467,7 +467,12 @@
     "refs": []
    }
   ],
-  "refs": [],
+  "refs": [
+   {
+    "text": "Jong‐Young Park 외 (2008) Morphology and distribution of the minute tubercles on the skin surface of larvae in the Korean endemic bitterling, Acheilognathus somjinensis (pisces, cyprinidae), with its larval growth. Animal Cells and Systems",
+    "url": "https://doi.org/10.1080/19768354.2008.9647185"
+   }
+  ],
   "range": {
    "km": 15,
    "note": "섬진강 상류(임실·순창) 기록 시군구 주변"
@@ -1284,9 +1289,9 @@
     "groups": [
      "river"
     ],
-    "desc": "숲으로 둘러싸인 해발 300 m 이상의 찬 계곡",
+    "desc": "숲으로 둘러싸인 해발 100 m 이상의 찬 계곡",
     "elev": [
-     300,
+     100,
      1500
     ],
     "cell_min": 0.003,
@@ -1348,9 +1353,9 @@
     "groups": [
      "river"
     ],
-    "desc": "숲으로 둘러싸인 해발 300 m 이상의 찬 계곡",
+    "desc": "숲으로 둘러싸인 해발 200 m 이상의 찬 계곡",
     "elev": [
-     300,
+     200,
      1500
     ],
     "cell_min": 0.003,
@@ -1660,6 +1665,15 @@
     "refs": []
    }
   ],
-  "refs": []
+  "refs": [
+   {
+    "text": "Ari Shin 외 (2018) Maturity and Spawning of Korean Mandarin Fish, Siniperca scherzeri in Soyangho Lake. Korean Journal of Ichthyology",
+    "url": "https://doi.org/10.35399/isk.30.2.3"
+   },
+   {
+    "text": "(2010) Siniperca scherzeri: Huckstorf, V.. IUCN Red List of Threatened Species",
+    "url": "https://doi.org/10.2305/iucn.uk.2012-1.rlts.t166159a1116001.en"
+   }
+  ]
  }
 }

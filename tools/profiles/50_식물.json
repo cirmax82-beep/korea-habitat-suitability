@@ -1,0 +1,4668 @@
+{
+ "광릉요강꽃": {
+  "summary": "주머니 모양 꽃과 부채 같은 잎 두 장이 특징인 난초.",
+  "distribution": "경기 광릉, 강원 화천·춘천, 전북 무주 등 일부 산지에 국지적.",
+  "habitat": "낙엽활엽수림 아래의 약간 그늘지고 부엽토가 두꺼운 비탈.",
+  "life": "4~5월 꽃. 땅속줄기로 퍼지고 결실률이 낮다.",
+  "diet": "",
+  "threats": "관상용 불법 채취, 숲 하층 훼손, 자생지 개발.",
+  "conservation": "멸종위기 야생생물 Ⅰ급. 자생지 비공개·감시, 증식·복원.",
+  "vars": [
+   "elev",
+   "slope",
+   "tree",
+   "broad",
+   "conifer",
+   "bio1",
+   "bio4",
+   "bio12",
+   "bio15"
+  ],
+  "layers": [
+   {
+    "key": "main",
+    "name": "서식지",
+    "season": "연중(개화 4~5월)",
+    "main": true,
+    "groups": [
+     "broad",
+     "mixed"
+    ],
+    "desc": "칸의 절반 이상이 숲인 산지(해발 200~1,000 m)",
+    "elev": [
+     200,
+     1000
+    ],
+    "cell_min": 0.5,
+    "refs": [
+     1,
+     2,
+     3
+    ]
+   }
+  ],
+  "refs": [
+   {
+    "text": "Yong‐Chan Cho 외 (2018) Dynamics and viability analysis of transplanted and natural lady's slipper (Cypripedium japonicum) populations under habitat management in South Korea. Restoration Ecology",
+    "url": "https://doi.org/10.1111/rec.12835"
+   },
+   {
+    "text": "Jung-Hun Pi 외 (2015) Habitats Environmental and Population Characteristics of Cypripedium japonicum Thunb., a Rare Species in Korea. Korean Journal of Ecology and Environment",
+    "url": "https://doi.org/10.11614/ksl.2015.48.4.253"
+   },
+   {
+    "text": "(2013) Cypripedium japonicum: Rankou, H.. IUCN Red List of Threatened Species",
+    "url": "https://doi.org/10.2305/iucn.uk.2014-1.rlts.t13188414a16672875.en"
+   }
+  ]
+ },
+ "금자란": {
+  "summary": "작은 노란 꽃이 피는 착생란.",
+  "distribution": "제주와 남해안 일부 섬.",
+  "habitat": "상록활엽수림 나무줄기(주로 이끼 낀 곳). 나무줄기나 바위에 붙어 사는 착생란이라 숲·바위 칸으로 대신 나타낸다.",
+  "life": "3~4월 꽃.",
+  "diet": "",
+  "threats": "관상용 불법 채취, 숙주 나무 벌채.",
+  "conservation": "멸종위기 야생생물 Ⅰ급. 숙주 나무 보호, 채취 단속.",
+  "vars": [
+   "elev",
+   "tree",
+   "broad",
+   "dist_coast",
+   "bio1",
+   "bio4",
+   "bio12"
+  ],
+  "layers": [
+   {
+    "key": "main",
+    "name": "서식지",
+    "season": "연중",
+    "main": true,
+    "groups": [
+     "broad",
+     "mixed"
+    ],
+    "desc": "남해 섬·제주의 상록활엽수림(해발 600 m 이하)",
+    "elev": [
+     0,
+     600
+    ],
+    "refs": []
+   }
+  ],
+  "refs": [],
+  "range": {
+   "areas": [
+    "제주",
+    "신안군",
+    "진도군",
+    "완도군",
+    "여수시",
+    "고흥군",
+    "해남군",
+    "거제시",
+    "통영시",
+    "남해군"
+   ]
+  }
+ },
+ "나도풍란": {
+  "summary": "넓은 잎과 향기로운 꽃이 피는 착생란.",
+  "distribution": "남해안 섬과 제주(야생 개체는 매우 드묾).",
+  "habitat": "습기가 많은 해안 가까운 상록수림의 나무줄기·바위. 나무줄기나 바위에 붙어 사는 착생란이라 숲·바위 칸으로 대신 나타낸다.",
+  "life": "6~7월 꽃.",
+  "diet": "",
+  "threats": "관상용 불법 채취로 야생 개체가 거의 사라졌다.",
+  "conservation": "멸종위기 야생생물 Ⅰ급. 증식 개체 복원, 채취 단속.",
+  "vars": [
+   "elev",
+   "tree",
+   "broad",
+   "dist_coast",
+   "bio1",
+   "bio4",
+   "bio12"
+  ],
+  "layers": [
+   {
+    "key": "main",
+    "name": "서식지",
+    "season": "연중",
+    "main": true,
+    "groups": [
+     "broad",
+     "mixed",
+     "rock"
+    ],
+    "desc": "해안 5 km 안 남해 섬·제주의 숲·바위(해발 400 m 이하)",
+    "elev": [
+     0,
+     400
+    ],
+    "coast_km": 5,
+    "refs": [
+     1,
+     2
+    ]
+   }
+  ],
+  "refs": [
+   {
+    "text": "Yeong Geun Song 외 (2022) The Growth and Physiological Characteristics of the Endangered CAM Plant, Nadopungnan (Sedirea japonica), under Drought and Climate Change Scenarios. Forests",
+    "url": "https://doi.org/10.3390/f13111823"
+   },
+   {
+    "text": "Yun-Jin Shim 외 (2020) The Development of Habitat Suitability Index Model of Class I Endangered Wildlife, Sedirea japonica - A Case Study of Korea National Park of Dadohaehaesang -. The Journal of Korean Island",
+    "url": "https://doi.org/10.26840/jki.32.1.153"
+   }
+  ],
+  "range": {
+   "areas": [
+    "제주",
+    "신안군",
+    "진도군",
+    "완도군",
+    "여수시",
+    "고흥군",
+    "해남군",
+    "거제시",
+    "통영시",
+    "남해군"
+   ]
+  }
+ },
+ "만년콩": {
+  "summary": "늘 푸른 작은 떨기나무(콩과).",
+  "distribution": "제주 서귀포 일대 상록수림.",
+  "habitat": "상록활엽수림 아래 그늘진 곳.",
+  "life": "6~7월 꽃, 검은 열매.",
+  "diet": "",
+  "threats": "숲 개발, 채취.",
+  "conservation": "멸종위기 야생생물 Ⅰ급. 자생지 보전, 증식.",
+  "vars": [
+   "elev",
+   "tree",
+   "broad",
+   "dist_coast",
+   "bio1",
+   "bio4",
+   "bio12"
+  ],
+  "layers": [
+   {
+    "key": "main",
+    "name": "서식지",
+    "season": "연중",
+    "main": true,
+    "groups": [
+     "broad",
+     "mixed"
+    ],
+    "desc": "제주 상록활엽수림(해발 500 m 이하)",
+    "elev": [
+     0,
+     500
+    ],
+    "refs": [
+     1,
+     2
+    ]
+   }
+  ],
+  "refs": [
+   {
+    "text": "Hyeok-Jae Choi 외 (2013) Population and genetic status of a critically endangered species in Korea, Euchresta japonica (Leguminosae), and their implications for conservation. Journal of Plant Biology",
+    "url": "https://doi.org/10.1007/s12374-013-0106-6"
+   },
+   {
+    "text": "Gwan-Pil Song 외 (2012) Conservation and Vegetation Structure of Euchresta japonica (Leguminosae) in Jeju Island. Korean Journal of Plant Resources",
+    "url": "https://doi.org/10.7732/kjpr.2012.25.1.089"
+   }
+  ],
+  "range": {
+   "areas": [
+    "제주"
+   ],
+   "only": true
+  }
+ },
+ "비자란": {
+  "summary": "흰 꽃이 피는 작은 착생란.",
+  "distribution": "제주(주로 남부 계곡 숲).",
+  "habitat": "습한 계곡 숲의 나뭇가지. 나무줄기나 바위에 붙어 사는 착생란이라 숲·바위 칸으로 대신 나타낸다.",
+  "life": "4~5월 꽃.",
+  "diet": "",
+  "threats": "관상용 불법 채취, 숙주 나무 훼손.",
+  "conservation": "멸종위기 야생생물 Ⅰ급. 계곡 숲 보전.",
+  "vars": [
+   "elev",
+   "tree",
+   "broad",
+   "dist_coast",
+   "bio1",
+   "bio4",
+   "bio12"
+  ],
+  "layers": [
+   {
+    "key": "main",
+    "name": "서식지",
+    "season": "연중",
+    "main": true,
+    "groups": [
+     "broad",
+     "mixed"
+    ],
+    "desc": "제주 상록활엽수림(해발 600 m 이하)",
+    "elev": [
+     0,
+     600
+    ],
+    "refs": []
+   }
+  ],
+  "refs": [],
+  "range": {
+   "areas": [
+    "제주"
+   ],
+   "only": true
+  }
+ },
+ "암매": {
+  "summary": "바위에 방석처럼 붙어 자라는 늘푸른 작은 떨기나무.",
+  "distribution": "한라산 정상부.",
+  "habitat": "정상부 암벽의 바위틈.",
+  "life": "6~7월 흰 꽃.",
+  "diet": "",
+  "threats": "기후 변화, 탐방객 훼손.",
+  "conservation": "멸종위기 야생생물 Ⅰ급. 탐방로 밖 출입 통제.",
+  "vars": [
+   "elev",
+   "slope",
+   "grass",
+   "rock",
+   "conifer",
+   "bio1",
+   "bio12"
+  ],
+  "layers": [
+   {
+    "key": "main",
+    "name": "서식지",
+    "season": "연중",
+    "main": true,
+    "groups": [
+     "rock",
+     "grass"
+    ],
+    "desc": "한라산 해발 1,700 m 이상의 바위·초지",
+    "elev": [
+     1700,
+     1950
+    ],
+    "refs": [
+     1,
+     2,
+     3
+    ]
+   }
+  ],
+  "refs": [
+   {
+    "text": "Taeho Kim 외 (2018) Rock-Surface Temperatures of the Summit Area of Mt. Halla as a Habitat for an Arctic-alpine Plant Diapensia lapponica var. obovata. JOURNAL OF THE GEOMORPHOLOGICAL ASSOCIATION OF KOREA",
+    "url": "https://doi.org/10.16968/jkga.25.4.89"
+   },
+   {
+    "text": "외 (2025) Assessment of the Conservation Status of Narrowly Distributed Alpine Plants, &lt;i&gt;Diapensia lapponica&lt;/i&gt; var. &lt;i&gt;obovata&lt;/i&gt; and &lt;i&gt;Leontopodium coreanum&lt;/i&gt; var. &lt;i&gt;hallaisanense&lt;/i&gt;&lt;sup&gt;1a&lt;/sup&gt;. Korean Journal of Environment and Ecology",
+    "url": "https://doi.org/10.13047/kjee.2025.39.6.611"
+   },
+   {
+    "text": "Ulf Molau (1997) Age‐related growth and reproduction in Diapensia lapponica, an arctic‐alpine cushion plant. Nordic Journal of Botany",
+    "url": "https://doi.org/10.1111/j.1756-1051.1997.tb00314.x"
+   }
+  ],
+  "range": {
+   "areas": [
+    "제주"
+   ],
+   "only": true
+  }
+ },
+ "제주고사리삼": {
+  "summary": "세계에서 제주에만 사는 고사리(1속 1종).",
+  "distribution": "제주 동·서부 곶자왈 일부.",
+  "habitat": "곶자왈 숲속의 습한 웅덩이 가장자리.",
+  "life": "여름 포자.",
+  "diet": "",
+  "threats": "곶자왈 개발(골프장·도로·택지).",
+  "conservation": "멸종위기 야생생물 Ⅰ급. 곶자왈 보전, 개발 시 자생지 회피.",
+  "vars": [
+   "elev",
+   "tree",
+   "broad",
+   "dist_coast",
+   "bio1",
+   "bio4",
+   "bio12"
+  ],
+  "layers": [
+   {
+    "key": "main",
+    "name": "서식지",
+    "season": "연중",
+    "main": true,
+    "groups": [
+     "broad",
+     "mixed"
+    ],
+    "desc": "제주 곶자왈 숲(해발 400 m 이하)",
+    "elev": [
+     0,
+     400
+    ],
+    "refs": [
+     1,
+     2,
+     3
+    ]
+   }
+  ],
+  "refs": [
+   {
+    "text": "Hwa-Ja Hyeon 외 (2011) Vegetation Characteristics of Mankyua chejuense Habitats. Korean Journal of Plant Resources",
+    "url": "https://doi.org/10.7732/kjpr.2011.24.4.395"
+   },
+   {
+    "text": "Chul Hwan Kim (2004) Conservation status of the endemic fern Mankyua chejuense (Ophioglossaceae) on Cheju Island, Republic of Korea. Oryx",
+    "url": "https://doi.org/10.1017/s0030605304000377"
+   },
+   {
+    "text": "Hwa-Ja Hyun 외 (2014) Growth Pattern and Phenology of Mankyua chejuense B.Y. Sun, M.H. Kim &amp; C.H. Kim. Korean Journal of Plant Resources",
+    "url": "https://doi.org/10.7732/kjpr.2014.27.1.095"
+   },
+   {
+    "text": "(2015) Mankyua chejuense: Son, S.-W., Kim, Y.-S. &amp; Kim, H.. IUCN Red List of Threatened Species",
+    "url": "https://doi.org/10.2305/iucn.uk.2016-1.rlts.t72136436a72136464.en"
+   }
+  ],
+  "range": {
+   "areas": [
+    "제주"
+   ],
+   "only": true
+  }
+ },
+ "죽백란": {
+  "summary": "잎이 넓은 보춘화속 난초.",
+  "distribution": "제주 상록수림(매우 드묾).",
+  "habitat": "상록활엽수림 아래 그늘진 곳.",
+  "life": "5~6월 꽃.",
+  "diet": "",
+  "threats": "관상용 불법 채취.",
+  "conservation": "멸종위기 야생생물 Ⅰ급. 자생지 감시.",
+  "vars": [
+   "elev",
+   "tree",
+   "broad",
+   "dist_coast",
+   "bio1",
+   "bio4",
+   "bio12"
+  ],
+  "layers": [
+   {
+    "key": "main",
+    "name": "서식지",
+    "season": "연중",
+    "main": true,
+    "groups": [
+     "broad",
+     "mixed"
+    ],
+    "desc": "제주 상록활엽수림(해발 600 m 이하)",
+    "elev": [
+     0,
+     600
+    ],
+    "refs": []
+   }
+  ],
+  "refs": [],
+  "range": {
+   "areas": [
+    "제주"
+   ],
+   "only": true
+  }
+ },
+ "탐라란": {
+  "summary": "제주에서 처음 알려진 작은 착생란.",
+  "distribution": "제주.",
+  "habitat": "숲속 나뭇가지. 나무줄기나 바위에 붙어 사는 착생란이라 숲·바위 칸으로 대신 나타낸다.",
+  "life": "3~4월 꽃.",
+  "diet": "",
+  "threats": "관상용 불법 채취, 숙주 나무 훼손.",
+  "conservation": "멸종위기 야생생물 Ⅰ급. 숲 보전.",
+  "vars": [
+   "elev",
+   "tree",
+   "broad",
+   "dist_coast",
+   "bio1",
+   "bio4",
+   "bio12"
+  ],
+  "layers": [
+   {
+    "key": "main",
+    "name": "서식지",
+    "season": "연중",
+    "main": true,
+    "groups": [
+     "broad",
+     "mixed"
+    ],
+    "desc": "제주 숲(해발 700 m 이하)",
+    "elev": [
+     0,
+     700
+    ],
+    "refs": []
+   }
+  ],
+  "refs": [],
+  "range": {
+   "areas": [
+    "제주"
+   ],
+   "only": true
+  }
+ },
+ "털복주머니란": {
+  "summary": "흰 바탕에 자줏빛 무늬의 주머니 꽃이 피는 난초.",
+  "distribution": "강원 고산(국내 자생지 극소수).",
+  "habitat": "고산 초지와 숲 가장자리.",
+  "life": "5~6월 꽃.",
+  "diet": "",
+  "threats": "관상용 불법 채취, 기후 변화.",
+  "conservation": "멸종위기 야생생물 Ⅰ급. 자생지 비공개·감시.",
+  "vars": [
+   "elev",
+   "slope",
+   "grass",
+   "rock",
+   "conifer",
+   "bio1",
+   "bio12"
+  ],
+  "layers": [
+   {
+    "key": "main",
+    "name": "서식지",
+    "season": "연중",
+    "main": true,
+    "groups": [
+     "grass",
+     "broad",
+     "mixed"
+    ],
+    "desc": "해발 1,000 m 이상의 산지 초지·숲 가장자리",
+    "elev": [
+     1000,
+     1700
+    ],
+    "refs": [
+     1,
+     2
+    ]
+   }
+  ],
+  "refs": [
+   {
+    "text": "Hakbong Lee 외 (2022) Brief Pollination Assessment of a Critically Endangered Food-Deceptive Orchid (Cypripedium guttatum) Using a Network Approach. Plants",
+    "url": "https://doi.org/10.3390/plants11060798"
+   },
+   {
+    "text": "(2023) Cypripedium guttatum: Rankou, H. &amp; Meredith, C.R.. IUCN Red List of Threatened Species",
+    "url": "https://doi.org/10.2305/iucn.uk.2026-1.rlts.t203370a209208829.en"
+   }
+  ]
+ },
+ "풍란": {
+  "summary": "바닷가 바위·나무에 붙어 사는 작은 착생란.",
+  "distribution": "남해안·제주 섬(야생 개체는 매우 드묾).",
+  "habitat": "바닷바람이 드는 해안 바위 절벽·나무. 나무줄기나 바위에 붙어 사는 착생란이라 숲·바위 칸으로 대신 나타낸다.",
+  "life": "6~7월 흰 꽃.",
+  "diet": "",
+  "threats": "관상용 불법 채취로 야생 개체가 거의 사라졌다.",
+  "conservation": "멸종위기 야생생물 Ⅰ급. 증식 개체 복원.",
+  "vars": [
+   "elev",
+   "tree",
+   "broad",
+   "dist_coast",
+   "bio1",
+   "bio4",
+   "bio12"
+  ],
+  "layers": [
+   {
+    "key": "main",
+    "name": "서식지",
+    "season": "연중",
+    "main": true,
+    "groups": [
+     "rock",
+     "broad",
+     "mixed"
+    ],
+    "desc": "해안 2 km 안 남해 섬·제주의 바위·숲",
+    "coast_km": 2,
+    "elev": [
+     0,
+     300
+    ],
+    "refs": []
+   }
+  ],
+  "refs": [],
+  "range": {
+   "areas": [
+    "제주",
+    "신안군",
+    "진도군",
+    "완도군",
+    "여수시",
+    "고흥군",
+    "해남군",
+    "거제시",
+    "통영시",
+    "남해군"
+   ]
+  }
+ },
+ "한라솜다리": {
+  "summary": "한라산 고지대에만 자라는 솜다리.",
+  "distribution": "한라산 정상부.",
+  "habitat": "고지대 바위틈.",
+  "life": "7~8월 꽃.",
+  "diet": "",
+  "threats": "기후 변화, 탐방객 훼손.",
+  "conservation": "멸종위기 야생생물 Ⅰ급. 출입 통제·증식.",
+  "vars": [
+   "elev",
+   "slope",
+   "grass",
+   "rock",
+   "conifer",
+   "bio1",
+   "bio12"
+  ],
+  "layers": [
+   {
+    "key": "main",
+    "name": "서식지",
+    "season": "연중",
+    "main": true,
+    "groups": [
+     "rock",
+     "grass"
+    ],
+    "desc": "한라산 해발 1,500 m 이상의 바위·초지",
+    "elev": [
+     1500,
+     1950
+    ],
+    "refs": [
+     1,
+     2
+    ]
+   }
+  ],
+  "refs": [
+   {
+    "text": "외 (2025) Assessment of the Conservation Status of Narrowly Distributed Alpine Plants, &lt;i&gt;Diapensia lapponica&lt;/i&gt; var. &lt;i&gt;obovata&lt;/i&gt; and &lt;i&gt;Leontopodium coreanum&lt;/i&gt; var. &lt;i&gt;hallaisanense&lt;/i&gt;&lt;sup&gt;1a&lt;/sup&gt;. Korean Journal of Environment and Ecology",
+    "url": "https://doi.org/10.13047/kjee.2025.39.6.611"
+   },
+   {
+    "text": "(2015) Leontopodium coreanum: Kim, Y.-S., Kim, H. &amp; Son, S.-W.. IUCN Red List of Threatened Species",
+    "url": "https://doi.org/10.2305/iucn.uk.2016-1.rlts.t13188500a13189504.en"
+   }
+  ],
+  "range": {
+   "areas": [
+    "제주"
+   ],
+   "only": true
+  }
+ },
+ "한란": {
+  "summary": "겨울에 꽃이 피는 보춘화속 난초.",
+  "distribution": "제주 한라산 남쪽 비탈(서귀포 일대).",
+  "habitat": "상록활엽수림 아래 햇빛이 조금 드는 곳.",
+  "life": "11~1월 꽃.",
+  "diet": "",
+  "threats": "관상용 불법 채취.",
+  "conservation": "멸종위기 야생생물 Ⅰ급, 천연기념물(제주의 한란). 자생지 보호구역 관리.",
+  "vars": [
+   "elev",
+   "tree",
+   "broad",
+   "dist_coast",
+   "bio1",
+   "bio4",
+   "bio12"
+  ],
+  "layers": [
+   {
+    "key": "main",
+    "name": "서식지",
+    "season": "연중",
+    "main": true,
+    "groups": [
+     "broad",
+     "mixed"
+    ],
+    "desc": "제주 한라산 남사면 상록수림(해발 100~800 m)",
+    "elev": [
+     100,
+     800
+    ],
+    "refs": [
+     1
+    ]
+   }
+  ],
+  "refs": [
+   {
+    "text": "외 (2014) Population Structure and Fine-scale Habitat Affinity of Cymbidium kanran Protected Area as a Natural Monument.. Korean Journal of Ecology and Environment",
+    "url": "https://doi.org/10.11614/ksl.2014.47.3.176"
+   }
+  ],
+  "range": {
+   "areas": [
+    "제주"
+   ],
+   "only": true
+  }
+ },
+ "가는동자꽃": {
+  "summary": "가는 잎에 붉은 꽃이 피는 동자꽃.",
+  "distribution": "강원·경기 일부.",
+  "habitat": "산지 습한 초지·물가.",
+  "life": "7~8월 꽃.",
+  "diet": "",
+  "threats": "습지 감소, 채취.",
+  "conservation": "멸종위기 야생생물 Ⅱ급. 습한 초지 보전.",
+  "vars": [
+   "elev",
+   "slope",
+   "grass",
+   "field",
+   "tree",
+   "wetland",
+   "bio1",
+   "bio4",
+   "bio12"
+  ],
+  "layers": [
+   {
+    "key": "main",
+    "name": "서식지",
+    "season": "연중",
+    "main": true,
+    "groups": [
+     "grass",
+     "wetland"
+    ],
+    "desc": "하천·습지 500 m 안의 습한 초지(해발 100~1,000 m)",
+    "elev": [
+     100,
+     1000
+    ],
+    "near": [
+     {
+      "groups": [
+       "river",
+       "wetland",
+       "lake"
+      ],
+      "km": 0.5,
+      "min": 0.01
+     }
+    ],
+    "refs": []
+   }
+  ],
+  "refs": []
+ },
+ "가시오갈피나무": {
+  "summary": "가지에 가는 가시가 빽빽한 떨기나무.",
+  "distribution": "강원 고산 지대.",
+  "habitat": "고산 숲 아래 습한 곳.",
+  "life": "7월 꽃.",
+  "diet": "",
+  "threats": "약용 채취, 기후 변화.",
+  "conservation": "멸종위기 야생생물 Ⅱ급. 채취 단속, 증식.",
+  "vars": [
+   "elev",
+   "slope",
+   "tree",
+   "broad",
+   "conifer",
+   "bio1",
+   "bio4",
+   "bio12",
+   "bio15"
+  ],
+  "layers": [
+   {
+    "key": "main",
+    "name": "서식지",
+    "season": "연중",
+    "main": true,
+    "groups": [
+     "broad",
+     "mixed",
+     "conifer"
+    ],
+    "desc": "칸의 절반 이상이 숲인 해발 600 m 이상 산지",
+    "elev": [
+     600,
+     1500
+    ],
+    "cell_min": 0.5,
+    "refs": [
+     1,
+     2
+    ]
+   }
+  ],
+  "refs": [
+   {
+    "text": "Jiyoung Jung 외 (2013) Vegetation Structure and Ecological Properties of Eleutherococcus senticosus Population. Journal of the Korea Society of Environmental Restoration Technology",
+    "url": "https://doi.org/10.13087/kosert.2013.16.5.027"
+   },
+   {
+    "text": "외 (2025) Report on Eleutherococcus senticosus (Rupr. &amp; Maxim.) Maxim. population distribution in the Sobaeksan National Park. Korea National Park Research Institute",
+    "url": "https://doi.org/10.54406/jnpr.2025.16.2.207"
+   }
+  ]
+ },
+ "각시수련": {
+  "summary": "아주 작은 수련.",
+  "distribution": "강원 일부 연못·늪.",
+  "habitat": "물이 맑은 오래된 연못·늪.",
+  "life": "6~8월 꽃.",
+  "diet": "",
+  "threats": "연못 매립·수질 악화.",
+  "conservation": "멸종위기 야생생물 Ⅱ급. 자생지 연못 보전.",
+  "vars": [
+   "elev",
+   "slope",
+   "wetland",
+   "lake",
+   "paddy",
+   "river",
+   "dist_lake",
+   "dist_river",
+   "bio1",
+   "bio12"
+  ],
+  "layers": [
+   {
+    "key": "main",
+    "name": "서식지",
+    "season": "연중",
+    "main": true,
+    "groups": [
+     "lake",
+     "wetland"
+    ],
+    "desc": "해발 800 m 이하의 연못·습지",
+    "elev": [
+     0,
+     800
+    ],
+    "refs": [
+     1
+    ]
+   }
+  ],
+  "refs": [
+   {
+    "text": "(2010) Nymphaea tetragona: Nguyen, T.H.T.. IUCN Red List of Threatened Species",
+    "url": "https://doi.org/10.2305/iucn.uk.2011-1.rlts.t167890a6407237.en"
+   }
+  ],
+  "range": {
+   "areas": [
+    "강원"
+   ]
+  }
+ },
+ "개가시나무": {
+  "summary": "늘푸른 참나무류 큰키나무.",
+  "distribution": "제주 곶자왈과 남해안 일부.",
+  "habitat": "상록활엽수림.",
+  "life": "5월 꽃, 이듬해 가을 도토리.",
+  "diet": "",
+  "threats": "곶자왈 개발, 벌채.",
+  "conservation": "멸종위기 야생생물 Ⅱ급. 곶자왈·상록수림 보전.",
+  "vars": [
+   "elev",
+   "tree",
+   "broad",
+   "dist_coast",
+   "bio1",
+   "bio4",
+   "bio12"
+  ],
+  "layers": [
+   {
+    "key": "main",
+    "name": "서식지",
+    "season": "연중",
+    "main": true,
+    "groups": [
+     "broad",
+     "mixed"
+    ],
+    "desc": "남해 섬·제주의 상록활엽수림(해발 500 m 이하)",
+    "elev": [
+     0,
+     500
+    ],
+    "refs": [
+     1,
+     2
+    ]
+   }
+  ],
+  "refs": [
+   {
+    "text": "외 (2014) Dynamics and Distribution of Quercus gilva Blume Population in Korea. Korean Journal of Environment and Ecology",
+    "url": "https://doi.org/10.13047/kjee.2014.28.4.385"
+   },
+   {
+    "text": "(2018) Quercus gilva: Botanic Gardens Conservation International (BGCI) &amp; IUCN SSC Global Tree Specialist Group. IUCN Red List of Threatened Species",
+    "url": "https://doi.org/10.2305/iucn.uk.2019-1.rlts.t18749666a136775665.en"
+   }
+  ],
+  "range": {
+   "areas": [
+    "제주",
+    "신안군",
+    "진도군",
+    "완도군",
+    "여수시",
+    "고흥군",
+    "해남군",
+    "거제시",
+    "통영시",
+    "남해군"
+   ]
+  }
+ },
+ "갯봄맞이꽃": {
+  "summary": "바닷가 습지에 사는 작은 앵초과 풀.",
+  "distribution": "강원·충남 등 해안 일부.",
+  "habitat": "바닷물이 드나드는 염습지 가장자리.",
+  "life": "5~6월 꽃.",
+  "diet": "",
+  "threats": "해안 매립·개발.",
+  "conservation": "멸종위기 야생생물 Ⅱ급. 염습지 보전.",
+  "vars": [
+   "elev",
+   "grass",
+   "rock",
+   "bare",
+   "tidal",
+   "dist_coast",
+   "bio1",
+   "bio12"
+  ],
+  "layers": [
+   {
+    "key": "main",
+    "name": "서식지",
+    "season": "연중",
+    "main": true,
+    "groups": [
+     "wetland",
+     "tidal",
+     "grass"
+    ],
+    "desc": "해안 500 m 안의 염습지·풀밭",
+    "coast_km": 0.5,
+    "elev": [
+     0,
+     20
+    ],
+    "refs": [
+     1,
+     2,
+     3
+    ]
+   }
+  ],
+  "refs": [
+   {
+    "text": "외 (2016) Distributional Characteristics and Factors Related to the Population Persistence, an Endangered Plant Glaux maritima var. obtusifolia Fernald. Korean Journal of Environment and Ecology",
+    "url": "https://doi.org/10.13047/kjee.2016.30.6.939"
+   },
+   {
+    "text": "Jelte Rozema 외 (1977) Physiology and ecologic relevance of salt secretion by the salt gland of Glaux maritima L.. Oecologia",
+    "url": "https://doi.org/10.1007/bf00345808"
+   },
+   {
+    "text": "J. Rozema 외 (1978) Population Dynamics of Glaux maritima and Ecophysiological Adaptations to Salinity and Inundation. Oikos",
+    "url": "https://doi.org/10.2307/3543349"
+   }
+  ]
+ },
+ "검은별고사리": {
+  "summary": "습지에 사는 고사리.",
+  "distribution": "제주 해안 가까운 습지.",
+  "habitat": "물이 솟는 습지와 계곡 물가.",
+  "life": "여름~가을 포자.",
+  "diet": "",
+  "threats": "습지 매립·개발.",
+  "conservation": "멸종위기 야생생물 Ⅱ급. 습지 보전.",
+  "vars": [
+   "elev",
+   "tree",
+   "broad",
+   "dist_coast",
+   "bio1",
+   "bio4",
+   "bio12"
+  ],
+  "layers": [
+   {
+    "key": "main",
+    "name": "서식지",
+    "season": "연중",
+    "main": true,
+    "groups": [
+     "wetland",
+     "grass",
+     "broad"
+    ],
+    "desc": "해안 3 km 안 제주의 습지·물가",
+    "coast_km": 3,
+    "elev": [
+     0,
+     100
+    ],
+    "refs": [
+     1
+    ]
+   }
+  ],
+  "refs": [
+   {
+    "text": "(2011) Cyclosorus interruptus: Irudayaraj, V.. IUCN Red List of Threatened Species",
+    "url": "https://doi.org/10.2305/iucn.uk.2011-1.rlts.t164350a5836724.en"
+   }
+  ],
+  "range": {
+   "areas": [
+    "제주"
+   ],
+   "only": true
+  }
+ },
+ "구름병아리난초": {
+  "summary": "작은 분홍 꽃이 피는 난초.",
+  "distribution": "한라산·설악산 등 고산.",
+  "habitat": "고산 바위틈의 이끼 낀 곳.",
+  "life": "7~8월 꽃.",
+  "diet": "",
+  "threats": "관상용 불법 채취, 기후 변화.",
+  "conservation": "멸종위기 야생생물 Ⅱ급. 자생지 보전.",
+  "vars": [
+   "elev",
+   "slope",
+   "grass",
+   "rock",
+   "conifer",
+   "bio1",
+   "bio12"
+  ],
+  "layers": [
+   {
+    "key": "main",
+    "name": "서식지",
+    "season": "연중",
+    "main": true,
+    "groups": [
+     "rock",
+     "grass"
+    ],
+    "desc": "해발 1,000 m 이상의 바위·초지",
+    "elev": [
+     1000,
+     1950
+    ],
+    "refs": []
+   }
+  ],
+  "refs": []
+ },
+ "기생꽃": {
+  "summary": "흰 꽃 한 송이가 피는 작은 앵초과 풀.",
+  "distribution": "설악산·오대산·태백산 등 고산.",
+  "habitat": "고산 침엽수림 아래 이끼 낀 곳.",
+  "life": "6~7월 꽃.",
+  "diet": "",
+  "threats": "기후 변화.",
+  "conservation": "멸종위기 야생생물 Ⅱ급. 고산 숲 보전.",
+  "vars": [
+   "elev",
+   "slope",
+   "grass",
+   "rock",
+   "conifer",
+   "bio1",
+   "bio12"
+  ],
+  "layers": [
+   {
+    "key": "main",
+    "name": "서식지",
+    "season": "연중",
+    "main": true,
+    "groups": [
+     "conifer",
+     "mixed"
+    ],
+    "desc": "해발 1,100 m 이상의 침엽수림·혼효림",
+    "elev": [
+     1100,
+     1950
+    ],
+    "refs": [
+     1,
+     2
+    ]
+   }
+  ],
+  "refs": [
+   {
+    "text": "외 (2025) Distributional traits and population sustainability in a marginal Trientalis europaea L. population in Korea. Korea National Park Research Institute",
+    "url": "https://doi.org/10.54406/jnpr.2025.16.2.304"
+   },
+   {
+    "text": "Jesus Piqueras (1999) Herbivory and ramet performance in the clonal herb Trientalis europaea L.. Journal of Ecology",
+    "url": "https://doi.org/10.1046/j.1365-2745.1999.00372.x"
+   }
+  ]
+ },
+ "끈끈이귀개": {
+  "summary": "잎의 끈끈한 털로 벌레를 잡는 식물.",
+  "distribution": "남부 해안 가까운 산지.",
+  "habitat": "햇빛이 잘 드는 습한 풀밭.",
+  "life": "5~6월 꽃.",
+  "diet": "",
+  "threats": "초지 천이·개발.",
+  "conservation": "멸종위기 야생생물 Ⅱ급. 습한 초지 보전.",
+  "vars": [
+   "elev",
+   "slope",
+   "grass",
+   "field",
+   "tree",
+   "wetland",
+   "bio1",
+   "bio4",
+   "bio12"
+  ],
+  "layers": [
+   {
+    "key": "main",
+    "name": "서식지",
+    "season": "연중",
+    "main": true,
+    "groups": [
+     "grass",
+     "wetland"
+    ],
+    "desc": "해발 300 m 이하의 습한 초지",
+    "elev": [
+     0,
+     300
+    ],
+    "refs": [
+     1
+    ]
+   }
+  ],
+  "refs": [
+   {
+    "text": "(2010) Drosera peltata: Zhuang, X.. IUCN Red List of Threatened Species",
+    "url": "https://doi.org/10.2305/iucn.uk.2011-1.rlts.t168809a6539809.en"
+   }
+  ]
+ },
+ "나도범의귀": {
+  "summary": "작은 꽃이 피는 범의귀과 풀.",
+  "distribution": "강원 고산.",
+  "habitat": "고산 숲 아래 습한 곳.",
+  "life": "6월 꽃.",
+  "diet": "",
+  "threats": "기후 변화.",
+  "conservation": "멸종위기 야생생물 Ⅱ급. 고산 숲 보전.",
+  "vars": [
+   "elev",
+   "slope",
+   "grass",
+   "rock",
+   "conifer",
+   "bio1",
+   "bio12"
+  ],
+  "layers": [
+   {
+    "key": "main",
+    "name": "서식지",
+    "season": "연중",
+    "main": true,
+    "groups": [
+     "conifer",
+     "mixed",
+     "broad"
+    ],
+    "desc": "해발 700 m 이상 산지의 숲",
+    "elev": [
+     700,
+     1700
+    ],
+    "refs": []
+   }
+  ],
+  "refs": []
+ },
+ "나도승마": {
+  "summary": "한국 특산 노란 꽃 풀(1속 1종).",
+  "distribution": "지리산·백운산 등 남부 산지.",
+  "habitat": "산지 계곡 숲 아래 습한 곳.",
+  "life": "8~9월 꽃.",
+  "diet": "",
+  "threats": "산림 훼손, 채취.",
+  "conservation": "멸종위기 야생생물 Ⅱ급. 계곡 숲 보전.",
+  "vars": [
+   "elev",
+   "slope",
+   "tree",
+   "broad",
+   "conifer",
+   "bio1",
+   "bio4",
+   "bio12",
+   "bio15"
+  ],
+  "layers": [
+   {
+    "key": "main",
+    "name": "서식지",
+    "season": "연중",
+    "main": true,
+    "groups": [
+     "broad",
+     "mixed"
+    ],
+    "desc": "칸의 절반 이상이 숲인 해발 500 m 이상 산지",
+    "elev": [
+     500,
+     1500
+    ],
+    "cell_min": 0.5,
+    "refs": [
+     1,
+     2
+    ]
+   }
+  ],
+  "refs": [
+   {
+    "text": "Hee Han 외 (2013) Assessing the potential suitability of forest stands as Kirengeshoma koreana habitat using MaxEnt. Landscape and Ecological Engineering",
+    "url": "https://doi.org/10.1007/s11355-013-0246-3"
+   },
+   {
+    "text": "외 (2023) Study of the Derive of Core Habitats for &lt;i&gt;Kirengeshoma koreana&lt;/i&gt; Nakai Using HSI and MaxEnt&lt;sup&gt;1a&lt;/sup&gt;. Korean Journal of Environment and Ecology",
+    "url": "https://doi.org/10.13047/kjee.2023.37.6.450"
+   }
+  ]
+ },
+ "나도여로": {
+  "summary": "흰 꽃이 피는 백합과 풀.",
+  "distribution": "강원 일부.",
+  "habitat": "산지 초지와 바위 비탈.",
+  "life": "7~8월 꽃.",
+  "diet": "",
+  "threats": "초지 천이·채취.",
+  "conservation": "멸종위기 야생생물 Ⅱ급. 초지 보전.",
+  "vars": [
+   "elev",
+   "slope",
+   "grass",
+   "field",
+   "tree",
+   "wetland",
+   "bio1",
+   "bio4",
+   "bio12"
+  ],
+  "layers": [
+   {
+    "key": "main",
+    "name": "서식지",
+    "season": "연중",
+    "main": true,
+    "groups": [
+     "grass",
+     "rock"
+    ],
+    "desc": "해발 200~1,200 m의 산지 초지·바위",
+    "elev": [
+     200,
+     1200
+    ],
+    "refs": []
+   }
+  ],
+  "refs": []
+ },
+ "날개하늘나리": {
+  "summary": "주홍 꽃이 하늘을 향해 피는 나리.",
+  "distribution": "강원 산지.",
+  "habitat": "햇빛이 드는 산지 초지·습한 풀밭.",
+  "life": "6~7월 꽃.",
+  "diet": "",
+  "threats": "관상용 불법 채취, 초지 천이.",
+  "conservation": "멸종위기 야생생물 Ⅱ급. 초지 보전.",
+  "vars": [
+   "elev",
+   "slope",
+   "grass",
+   "field",
+   "tree",
+   "wetland",
+   "bio1",
+   "bio4",
+   "bio12"
+  ],
+  "layers": [
+   {
+    "key": "main",
+    "name": "서식지",
+    "season": "연중",
+    "main": true,
+    "groups": [
+     "grass",
+     "wetland"
+    ],
+    "desc": "해발 300~1,300 m의 산지 초지",
+    "elev": [
+     300,
+     1300
+    ],
+    "refs": []
+   }
+  ],
+  "refs": []
+ },
+ "넓은잎제비꽃": {
+  "summary": "잎이 넓은 제비꽃.",
+  "distribution": "강원 석회암 지대 일부.",
+  "habitat": "숲 아래 습한 곳.",
+  "life": "4~5월 꽃.",
+  "diet": "",
+  "threats": "산림 훼손.",
+  "conservation": "멸종위기 야생생물 Ⅱ급. 숲 보전.",
+  "vars": [
+   "elev",
+   "slope",
+   "tree",
+   "broad",
+   "conifer",
+   "bio1",
+   "bio4",
+   "bio12",
+   "bio15"
+  ],
+  "layers": [
+   {
+    "key": "main",
+    "name": "서식지",
+    "season": "연중",
+    "main": true,
+    "groups": [
+     "broad",
+     "mixed"
+    ],
+    "desc": "석회암 지대 시군의 숲(해발 200~1,000 m)",
+    "elev": [
+     200,
+     1000
+    ],
+    "refs": [
+     1,
+     2,
+     3
+    ]
+   }
+  ],
+  "refs": [
+   {
+    "text": "외 (2019) Distributional Characteristics and Population Substantiality of &lt;i&gt;Viola mirabilis&lt;/i&gt; L.; Rear edge Population in Korea. Korean Journal of Environment and Ecology",
+    "url": "https://doi.org/10.13047/kjee.2019.33.4.422"
+   },
+   {
+    "text": "Tanja Mattila 외 (1995) Reproduction of Viola mirabilis in relation to light and nutrient availability. Canadian Journal of Botany",
+    "url": "https://doi.org/10.1139/b95-204"
+   },
+   {
+    "text": "Mari Moora 외 (2003) Responses of a rare (Viola elatior) and a common (Viola mirabilis) congeneric species to different management conditions in grassland — is different light competition ability responsible for different abundances?. Acta Oecologica",
+    "url": "https://doi.org/10.1016/s1146-609x(03)00082-1"
+   }
+  ],
+  "range": {
+   "areas": [
+    "영월군",
+    "정선군",
+    "단양군",
+    "삼척시",
+    "동해시",
+    "평창군",
+    "제천시",
+    "태백시"
+   ]
+  }
+ },
+ "노랑만병초": {
+  "summary": "노란 꽃이 피는 늘푸른 떨기나무.",
+  "distribution": "설악산·오대산 등 아고산.",
+  "habitat": "아고산 능선의 바위·관목지.",
+  "life": "5~6월 꽃.",
+  "diet": "",
+  "threats": "기후 변화, 채취.",
+  "conservation": "멸종위기 야생생물 Ⅱ급. 고산 보전.",
+  "vars": [
+   "elev",
+   "slope",
+   "grass",
+   "rock",
+   "conifer",
+   "bio1",
+   "bio12"
+  ],
+  "layers": [
+   {
+    "key": "main",
+    "name": "서식지",
+    "season": "연중",
+    "main": true,
+    "groups": [
+     "grass",
+     "rock",
+     "conifer"
+    ],
+    "desc": "해발 1,300 m 이상의 바위·초지·침엽수림",
+    "elev": [
+     1300,
+     1800
+    ],
+    "refs": [
+     1
+    ]
+   }
+  ],
+  "refs": [
+   {
+    "text": "A. S. HIRAO 외 (2006) Seasonal changes in pollinator activity influence pollen dispersal and seed production of the alpine shrub Rhododendron aureum (Ericaceae). Molecular Ecology",
+    "url": "https://doi.org/10.1111/j.1365-294x.2006.02853.x"
+   }
+  ]
+ },
+ "노랑붓꽃": {
+  "summary": "한국 특산 노란 붓꽃.",
+  "distribution": "전북 등 남부 산지.",
+  "habitat": "숲 가장자리와 숲속 밝은 곳.",
+  "life": "4~5월 꽃.",
+  "diet": "",
+  "threats": "관상용 불법 채취, 산림 개발.",
+  "conservation": "멸종위기 야생생물 Ⅱ급. 자생지 보전.",
+  "vars": [
+   "elev",
+   "slope",
+   "tree",
+   "broad",
+   "conifer",
+   "bio1",
+   "bio4",
+   "bio12",
+   "bio15"
+  ],
+  "layers": [
+   {
+    "key": "main",
+    "name": "서식지",
+    "season": "연중",
+    "main": true,
+    "groups": [
+     "broad",
+     "mixed",
+     "grass"
+    ],
+    "desc": "해발 100~800 m의 숲·숲 가장자리",
+    "elev": [
+     100,
+     800
+    ],
+    "refs": [
+     1,
+     2,
+     3
+    ]
+   }
+  ],
+  "refs": [
+   {
+    "text": "외 (2016) Habitats Environmental and Population Characteristics of Iris koreana Nakai, a Rare and Endemic Species in Korea. Korean Journal of Ecology and Environment",
+    "url": "https://doi.org/10.11614/ksl.2016.49.2.102"
+   },
+   {
+    "text": "Jung-Hun Pi 외 (2016) Vegetation Structure and Flora of Iris koreana Nakai, Endemic Species in Korea. Journal of Agriculture &amp; Life Science",
+    "url": "https://doi.org/10.14397/jals.2016.50.6.55"
+   },
+   {
+    "text": "(2015) Iris koreana: Kim, Y.-S., Kim, H. &amp; Son, S.-W.. IUCN Red List of Threatened Species",
+    "url": "https://doi.org/10.2305/iucn.uk.2016-1.rlts.t13188476a13189484.en"
+   }
+  ]
+ },
+ "눈썹고사리": {
+  "summary": "잎이 길쭉한 꼬리고사리류.",
+  "distribution": "제주 일부 계곡.",
+  "habitat": "습한 계곡 숲의 바위.",
+  "life": "여름 포자.",
+  "diet": "",
+  "threats": "계곡 정비·채취.",
+  "conservation": "멸종위기 야생생물 Ⅱ급. 계곡 보전.",
+  "vars": [
+   "elev",
+   "tree",
+   "broad",
+   "dist_coast",
+   "bio1",
+   "bio4",
+   "bio12"
+  ],
+  "layers": [
+   {
+    "key": "main",
+    "name": "서식지",
+    "season": "연중",
+    "main": true,
+    "groups": [
+     "rock",
+     "broad"
+    ],
+    "desc": "제주 숲·바위(해발 600 m 이하)",
+    "elev": [
+     0,
+     600
+    ],
+    "refs": []
+   }
+  ],
+  "refs": [],
+  "range": {
+   "areas": [
+    "제주"
+   ],
+   "only": true
+  }
+ },
+ "단양쑥부쟁이": {
+  "summary": "남한강 모래·자갈밭에만 자라는 두해살이 국화과 풀.",
+  "distribution": "남한강 여주·충주·단양 일대.",
+  "habitat": "강가의 자갈·모래가 쌓인 둔치(홍수 교란이 있는 곳).",
+  "life": "8~10월 꽃, 두해살이.",
+  "diet": "",
+  "threats": "댐·보 건설, 둔치 정비로 자갈밭 감소.",
+  "conservation": "멸종위기 야생생물 Ⅱ급. 자갈 둔치 보전, 대체 서식지 조성.",
+  "vars": [
+   "elev",
+   "slope",
+   "grass",
+   "field",
+   "tree",
+   "wetland",
+   "bio1",
+   "bio4",
+   "bio12"
+  ],
+  "layers": [
+   {
+    "key": "main",
+    "name": "서식지",
+    "season": "연중",
+    "main": true,
+    "groups": [
+     "bare",
+     "grass"
+    ],
+    "desc": "남한강 시군의 하천 200 m 안 모래·자갈밭·초지(해발 250 m 이하)",
+    "elev": [
+     0,
+     250
+    ],
+    "near": [
+     {
+      "groups": [
+       "river"
+      ],
+      "km": 0.2,
+      "min": 0.03
+     }
+    ],
+    "refs": [
+     1
+    ]
+   }
+  ],
+  "refs": [
+   {
+    "text": "Jae Young KIM 외 (2022) Aster danyangensis, a replacement name for Aster altaicus var. uchiyamae (Asteraceae). Korean Journal of Plant Taxonomy",
+    "url": "https://doi.org/10.11110/kjpt.2022.52.1.77"
+   }
+  ],
+  "range": {
+   "areas": [
+    "여주시",
+    "충주시",
+    "단양군",
+    "제천시"
+   ],
+   "only": true
+  }
+ },
+ "대성쓴풀": {
+  "summary": "흰 꽃이 피는 용담과 풀.",
+  "distribution": "강원 석회암 지대.",
+  "habitat": "석회암 산지 풀밭.",
+  "life": "5월 꽃.",
+  "diet": "",
+  "threats": "석회석 채굴, 초지 천이.",
+  "conservation": "멸종위기 야생생물 Ⅱ급. 석회암 초지 보전.",
+  "vars": [
+   "elev",
+   "slope",
+   "rock",
+   "grass",
+   "tree",
+   "bio1",
+   "bio12"
+  ],
+  "layers": [
+   {
+    "key": "main",
+    "name": "서식지",
+    "season": "연중",
+    "main": true,
+    "groups": [
+     "grass",
+     "rock"
+    ],
+    "desc": "석회암 지대 시군의 경사진 초지·바위(해발 200~900 m)",
+    "elev": [
+     200,
+     900
+    ],
+    "slope": [
+     10,
+     90
+    ],
+    "refs": []
+   }
+  ],
+  "refs": [],
+  "range": {
+   "areas": [
+    "영월군",
+    "정선군",
+    "단양군",
+    "삼척시",
+    "동해시",
+    "평창군",
+    "제천시",
+    "태백시"
+   ]
+  }
+ },
+ "대청부채": {
+  "summary": "오후에 꽃이 피는 붓꽃.",
+  "distribution": "인천 옹진 대청도·백령도 등 서해 섬(태안해안국립공원에 보전 이식). 내륙 기록은 수목원 식재로 보고 뺐다.",
+  "habitat": "해안 바위 비탈의 풀밭.",
+  "life": "8~9월 꽃.",
+  "diet": "",
+  "threats": "채취, 개발.",
+  "conservation": "멸종위기 야생생물 Ⅱ급. 자생지 보전, 보전 이식.",
+  "vars": [
+   "elev",
+   "grass",
+   "rock",
+   "bare",
+   "tidal",
+   "dist_coast",
+   "bio1",
+   "bio12"
+  ],
+  "layers": [
+   {
+    "key": "main",
+    "name": "서식지",
+    "season": "연중",
+    "main": true,
+    "groups": [
+     "grass",
+     "rock"
+    ],
+    "desc": "옹진·태안 해안 2 km 안의 바위·초지",
+    "coast_km": 2,
+    "refs": [
+     1,
+     2
+    ]
+   }
+  ],
+  "refs": [
+   {
+    "text": "Su Gwang Lee (2015) Effects of Seed Storage Methods and Shading on Seed Germination and Seedling Growth of Endangered Species, Iris dichotoma and Iris setosa. Journal of Korean Forest Society",
+    "url": "https://doi.org/10.14578/jkfs.2015.104.1.60"
+   },
+   {
+    "text": "Dakyum ROH 외 (2023) Changes of an endangered population of Iris dichotoma after conservation translocation in Taeanhaean National Park, Korea. Korean Journal of Plant Taxonomy",
+    "url": "https://doi.org/10.11110/kjpt.2023.53.1.1"
+   }
+  ],
+  "range": {
+   "areas": [
+    "옹진군",
+    "태안군"
+   ],
+   "only": true
+  }
+ },
+ "대흥란": {
+  "summary": "잎이 없는 부생란.",
+  "distribution": "전남 해남 대흥사 일대 등 남부.",
+  "habitat": "숲 바닥의 낙엽이 쌓인 곳.",
+  "life": "7~8월 꽃.",
+  "diet": "",
+  "threats": "숲 훼손.",
+  "conservation": "멸종위기 야생생물 Ⅱ급. 숲 바닥 보전.",
+  "vars": [
+   "elev",
+   "slope",
+   "tree",
+   "broad",
+   "conifer",
+   "bio1",
+   "bio4",
+   "bio12",
+   "bio15"
+  ],
+  "layers": [
+   {
+    "key": "main",
+    "name": "서식지",
+    "season": "연중",
+    "main": true,
+    "groups": [
+     "broad",
+     "mixed",
+     "conifer"
+    ],
+    "desc": "해발 600 m 이하의 숲",
+    "elev": [
+     0,
+     600
+    ],
+    "refs": [
+     1
+    ]
+   }
+  ],
+  "refs": [
+   {
+    "text": "Kenji Suetsugu 외 (2018) Partial mycoheterotrophy in the leafless orchid Cymbidium macrorhizon. American Journal of Botany",
+    "url": "https://doi.org/10.1002/ajb2.1142"
+   }
+  ]
+ },
+ "독미나리": {
+  "summary": "독이 있는 미나리과 풀.",
+  "distribution": "강원·경기 북부 습지.",
+  "habitat": "습지·연못 물가.",
+  "life": "6~8월 꽃.",
+  "diet": "",
+  "threats": "습지 매립.",
+  "conservation": "멸종위기 야생생물 Ⅱ급. 습지 보전.",
+  "vars": [
+   "elev",
+   "slope",
+   "wetland",
+   "lake",
+   "paddy",
+   "river",
+   "dist_lake",
+   "dist_river",
+   "bio1",
+   "bio12"
+  ],
+  "layers": [
+   {
+    "key": "main",
+    "name": "서식지",
+    "season": "연중",
+    "main": true,
+    "groups": [
+     "wetland",
+     "lake",
+     "river"
+    ],
+    "desc": "해발 800 m 이하의 습지·물가",
+    "elev": [
+     0,
+     800
+    ],
+    "refs": [
+     1,
+     2,
+     3
+    ]
+   }
+  ],
+  "refs": [
+   {
+    "text": "Cha Jeong Shin 외 (2013) Comparison of environmental characteristics at Cicuta virosa habitats, an endangered species in South Korea. Journal of Ecology and Environment",
+    "url": "https://doi.org/10.5141/ecoenv.2013.003"
+   },
+   {
+    "text": "JUNG SUNG KIM 외 (2024) Optimum Water Level for the Ex Situ and in Situ Conservation of Endangered Korean Aquatic Plant Cicuta Virosa L.",
+    "url": "https://doi.org/10.2139/ssrn.5044775"
+   },
+   {
+    "text": "(2023) Cicuta virosa: Meredith, C.R. &amp; Lansdown, R.V.. IUCN Red List of Threatened Species",
+    "url": "https://doi.org/10.2305/iucn.uk.2026-1.rlts.t167932a209144384.en"
+   }
+  ]
+ },
+ "두잎약난초": {
+  "summary": "잎이 두 장인 난초.",
+  "distribution": "남부·제주 일부.",
+  "habitat": "숲 아래 습한 곳.",
+  "life": "5~6월 꽃.",
+  "diet": "",
+  "threats": "관상용 불법 채취.",
+  "conservation": "멸종위기 야생생물 Ⅱ급. 자생지 보전.",
+  "vars": [
+   "elev",
+   "slope",
+   "tree",
+   "broad",
+   "conifer",
+   "bio1",
+   "bio4",
+   "bio12",
+   "bio15"
+  ],
+  "layers": [
+   {
+    "key": "main",
+    "name": "서식지",
+    "season": "연중",
+    "main": true,
+    "groups": [
+     "broad",
+     "mixed"
+    ],
+    "desc": "해발 100~1,000 m의 숲",
+    "elev": [
+     100,
+     1000
+    ],
+    "refs": []
+   }
+  ],
+  "refs": []
+ },
+ "매화마름": {
+  "summary": "논에 사는 미나리아재비과 물풀.",
+  "distribution": "인천 강화, 경기 김포 등 서해안 논.",
+  "habitat": "물을 일찍 대는 논과 도랑.",
+  "life": "4~5월 흰 꽃(모내기 전).",
+  "diet": "",
+  "threats": "논 매립, 농법 변화(제초제·건답).",
+  "conservation": "멸종위기 야생생물 Ⅱ급. 친환경 경작 논 유지(강화 매화마름 군락지).",
+  "vars": [
+   "elev",
+   "slope",
+   "wetland",
+   "lake",
+   "paddy",
+   "river",
+   "dist_lake",
+   "dist_river",
+   "bio1",
+   "bio12"
+  ],
+  "layers": [
+   {
+    "key": "main",
+    "name": "서식지",
+    "season": "연중",
+    "main": true,
+    "groups": [
+     "paddy",
+     "wetland"
+    ],
+    "desc": "해발 50 m 이하의 논·도랑",
+    "elev": [
+     0,
+     50
+    ],
+    "refs": [
+     1
+    ]
+   }
+  ],
+  "refs": [
+   {
+    "text": "(2012) Ranunculus trichophyllus: Lansdown, R.V.. IUCN Red List of Threatened Species",
+    "url": "https://doi.org/10.2305/iucn.uk.2013-1.rlts.t164138a13572532.en"
+   }
+  ],
+  "range": {
+   "areas": [
+    "강화군",
+    "김포시"
+   ]
+  }
+ },
+ "무주나무": {
+  "summary": "늘푸른 작은 떨기나무(꼭두서니과).",
+  "distribution": "제주 일부.",
+  "habitat": "상록활엽수림 아래 그늘.",
+  "life": "5~6월 꽃.",
+  "diet": "",
+  "threats": "숲 개발.",
+  "conservation": "멸종위기 야생생물 Ⅱ급. 숲 보전.",
+  "vars": [
+   "elev",
+   "tree",
+   "broad",
+   "dist_coast",
+   "bio1",
+   "bio4",
+   "bio12"
+  ],
+  "layers": [
+   {
+    "key": "main",
+    "name": "서식지",
+    "season": "연중",
+    "main": true,
+    "groups": [
+     "broad",
+     "mixed"
+    ],
+    "desc": "제주 상록활엽수림(해발 500 m 이하)",
+    "elev": [
+     0,
+     500
+    ],
+    "refs": []
+   }
+  ],
+  "refs": [],
+  "range": {
+   "areas": [
+    "제주"
+   ],
+   "only": true
+  }
+ },
+ "물고사리": {
+  "summary": "논에 사는 한해살이 고사리.",
+  "distribution": "남부 논·습지.",
+  "habitat": "물이 얕게 고인 논·습지.",
+  "life": "여름~가을.",
+  "diet": "",
+  "threats": "농약, 논 감소.",
+  "conservation": "멸종위기 야생생물 Ⅱ급. 습지·논 보전.",
+  "vars": [
+   "elev",
+   "slope",
+   "wetland",
+   "lake",
+   "paddy",
+   "river",
+   "dist_lake",
+   "dist_river",
+   "bio1",
+   "bio12"
+  ],
+  "layers": [
+   {
+    "key": "main",
+    "name": "서식지",
+    "season": "연중",
+    "main": true,
+    "groups": [
+     "paddy",
+     "wetland"
+    ],
+    "desc": "해발 100 m 이하의 논·습지",
+    "elev": [
+     0,
+     100
+    ],
+    "refs": [
+     1
+    ]
+   }
+  ],
+  "refs": [
+   {
+    "text": "(2018) Ceratopteris thalictroides: Irudayaraj, V. &amp; Lansdown, R.V.. IUCN Red List of Threatened Species",
+    "url": "https://doi.org/10.2305/iucn.uk.2019-2.rlts.t168862a84005839.en"
+   }
+  ]
+ },
+ "물석송": {
+  "summary": "곧게 서는 석송류.",
+  "distribution": "제주 일부.",
+  "habitat": "햇빛이 드는 습한 땅.",
+  "life": "연중.",
+  "diet": "",
+  "threats": "개발.",
+  "conservation": "멸종위기 야생생물 Ⅱ급. 자생지 보전.",
+  "vars": [
+   "elev",
+   "tree",
+   "broad",
+   "dist_coast",
+   "bio1",
+   "bio4",
+   "bio12"
+  ],
+  "layers": [
+   {
+    "key": "main",
+    "name": "서식지",
+    "season": "연중",
+    "main": true,
+    "groups": [
+     "wetland",
+     "grass"
+    ],
+    "desc": "제주 습지·습한 초지(해발 400 m 이하)",
+    "elev": [
+     0,
+     400
+    ],
+    "refs": []
+   }
+  ],
+  "refs": [],
+  "range": {
+   "areas": [
+    "제주"
+   ]
+  }
+ },
+ "방울난초": {
+  "summary": "작은 난초.",
+  "distribution": "제주 등 남부.",
+  "habitat": "습한 풀밭.",
+  "life": "7~8월 꽃.",
+  "diet": "",
+  "threats": "초지 개발.",
+  "conservation": "멸종위기 야생생물 Ⅱ급. 습한 초지 보전.",
+  "vars": [
+   "elev",
+   "tree",
+   "broad",
+   "dist_coast",
+   "bio1",
+   "bio4",
+   "bio12"
+  ],
+  "layers": [
+   {
+    "key": "main",
+    "name": "서식지",
+    "season": "연중",
+    "main": true,
+    "groups": [
+     "grass",
+     "wetland"
+    ],
+    "desc": "제주 습한 초지(해발 600 m 이하)",
+    "elev": [
+     0,
+     600
+    ],
+    "refs": []
+   }
+  ],
+  "refs": [],
+  "range": {
+   "areas": [
+    "제주"
+   ]
+  }
+ },
+ "백부자": {
+  "summary": "노란 꽃이 피는 투구꽃류.",
+  "distribution": "강원·경기 산지.",
+  "habitat": "숲 가장자리와 산지 풀밭.",
+  "life": "8~9월 꽃.",
+  "diet": "",
+  "threats": "약용 채취, 초지 천이.",
+  "conservation": "멸종위기 야생생물 Ⅱ급. 채취 단속.",
+  "vars": [
+   "elev",
+   "slope",
+   "grass",
+   "field",
+   "tree",
+   "wetland",
+   "bio1",
+   "bio4",
+   "bio12"
+  ],
+  "layers": [
+   {
+    "key": "main",
+    "name": "서식지",
+    "season": "연중",
+    "main": true,
+    "groups": [
+     "grass",
+     "broad",
+     "mixed"
+    ],
+    "desc": "해발 200~1,200 m의 산지 초지·숲 가장자리",
+    "elev": [
+     200,
+     1200
+    ],
+    "near": [
+     {
+      "groups": [
+       "grass"
+      ],
+      "km": 0.3,
+      "min": 0.02
+     }
+    ],
+    "refs": [
+     1
+    ]
+   }
+  ],
+  "refs": [
+   {
+    "text": "(2015) Aconitum coreanum: Kim, Y.-S., Kim, H. &amp; Son, S.-W.. IUCN Red List of Threatened Species",
+    "url": "https://doi.org/10.2305/iucn.uk.2016-1.rlts.t13188365a13189409.en"
+   }
+  ]
+ },
+ "백양더부살이": {
+  "summary": "고사리류 뿌리에 기생하는 풀.",
+  "distribution": "전남 장성 백양사 일대 등.",
+  "habitat": "숲 아래 고사리가 많은 곳.",
+  "life": "5~6월 꽃.",
+  "diet": "",
+  "threats": "숲 훼손.",
+  "conservation": "멸종위기 야생생물 Ⅱ급. 자생지 보전.",
+  "vars": [
+   "elev",
+   "slope",
+   "tree",
+   "broad",
+   "conifer",
+   "bio1",
+   "bio4",
+   "bio12",
+   "bio15"
+  ],
+  "layers": [
+   {
+    "key": "main",
+    "name": "서식지",
+    "season": "연중",
+    "main": true,
+    "groups": [
+     "broad",
+     "mixed"
+    ],
+    "desc": "해발 700 m 이하의 숲",
+    "elev": [
+     0,
+     700
+    ],
+    "refs": [
+     1,
+     2
+    ]
+   }
+  ],
+  "refs": [
+   {
+    "text": "외 (2024) Population Status of the Endangered Plant &lt;i&gt;Orobanche filicicola&lt;/i&gt; and Optimal Sampling Design for Growth Monitoring&lt;sup&gt;1a&lt;/sup&gt;. Korean Journal of Environment and Ecology",
+    "url": "https://doi.org/10.13047/kjee.2024.38.6.601"
+   },
+   {
+    "text": "Jin-O Hyun 외 (2003) Validation of Orobanche filicicola (Orobanchaceae) from Korea. Novon",
+    "url": "https://doi.org/10.2307/3393566"
+   }
+  ]
+ },
+ "백운란": {
+  "summary": "아주 작은 난초.",
+  "distribution": "백운산·지리산 등 남부 산지.",
+  "habitat": "습한 숲 바닥 이끼 사이.",
+  "life": "8월 꽃.",
+  "diet": "",
+  "threats": "숲 훼손.",
+  "conservation": "멸종위기 야생생물 Ⅱ급. 숲 보전.",
+  "vars": [
+   "elev",
+   "slope",
+   "tree",
+   "broad",
+   "conifer",
+   "bio1",
+   "bio4",
+   "bio12",
+   "bio15"
+  ],
+  "layers": [
+   {
+    "key": "main",
+    "name": "서식지",
+    "season": "연중",
+    "main": true,
+    "groups": [
+     "broad",
+     "mixed",
+     "conifer"
+    ],
+    "desc": "해발 300~1,500 m의 숲",
+    "elev": [
+     300,
+     1500
+    ],
+    "refs": []
+   }
+  ],
+  "refs": []
+ },
+ "복주머니란": {
+  "summary": "큰 주머니 꽃이 피는 난초.",
+  "distribution": "강원 등 산지.",
+  "habitat": "숲 가장자리 풀밭.",
+  "life": "5~6월 꽃.",
+  "diet": "",
+  "threats": "관상용 불법 채취.",
+  "conservation": "멸종위기 야생생물 Ⅱ급. 자생지 비공개·감시.",
+  "vars": [
+   "elev",
+   "slope",
+   "grass",
+   "field",
+   "tree",
+   "wetland",
+   "bio1",
+   "bio4",
+   "bio12"
+  ],
+  "layers": [
+   {
+    "key": "main",
+    "name": "서식지",
+    "season": "연중",
+    "main": true,
+    "groups": [
+     "grass",
+     "broad",
+     "mixed"
+    ],
+    "desc": "해발 300~1,400 m의 산지 초지·숲 가장자리",
+    "elev": [
+     300,
+     1400
+    ],
+    "refs": [
+     1
+    ]
+   }
+  ],
+  "refs": [
+   {
+    "text": "(2013) Cypripedium macranthos: Rankou, H.. IUCN Red List of Threatened Species",
+    "url": "https://doi.org/10.2305/iucn.uk.2014-1.rlts.t43316741a43327679.en"
+   }
+  ]
+ },
+ "분홍장구채": {
+  "summary": "분홍 꽃이 피는 장구채.",
+  "distribution": "강원·충북 석회암 지대.",
+  "habitat": "석회암 바위 비탈.",
+  "life": "7~8월 꽃.",
+  "diet": "",
+  "threats": "석회석 채굴.",
+  "conservation": "멸종위기 야생생물 Ⅱ급. 석회암 지대 보전.",
+  "vars": [
+   "elev",
+   "slope",
+   "rock",
+   "grass",
+   "tree",
+   "bio1",
+   "bio12"
+  ],
+  "layers": [
+   {
+    "key": "main",
+    "name": "서식지",
+    "season": "연중",
+    "main": true,
+    "groups": [
+     "rock",
+     "grass"
+    ],
+    "desc": "석회암 지대 시군의 바위·초지(해발 100~900 m)",
+    "elev": [
+     100,
+     900
+    ],
+    "refs": [
+     1
+    ]
+   }
+  ],
+  "refs": [
+   {
+    "text": "Jae-Hoon Park 외 (2019) Studies on the changes in phenological, growth and physiological responses of Silene capitata Kom., an endangered plant in Korea, under climate change treatment. Journal of Ecology and Environment",
+    "url": "https://doi.org/10.1186/s41610-019-0128-1"
+   }
+  ],
+  "range": {
+   "areas": [
+    "영월군",
+    "정선군",
+    "단양군",
+    "삼척시",
+    "동해시",
+    "평창군",
+    "제천시",
+    "태백시"
+   ]
+  }
+ },
+ "산분꽃나무": {
+  "summary": "떨기나무(인동과).",
+  "distribution": "강원 석회암 지대.",
+  "habitat": "석회암 바위 비탈.",
+  "life": "5월 꽃.",
+  "diet": "",
+  "threats": "석회석 채굴.",
+  "conservation": "멸종위기 야생생물 Ⅱ급. 석회암 지대 보전.",
+  "vars": [
+   "elev",
+   "slope",
+   "rock",
+   "grass",
+   "tree",
+   "bio1",
+   "bio12"
+  ],
+  "layers": [
+   {
+    "key": "main",
+    "name": "서식지",
+    "season": "연중",
+    "main": true,
+    "groups": [
+     "rock",
+     "broad",
+     "mixed"
+    ],
+    "desc": "석회암 지대 시군의 바위·숲(해발 200~1,000 m)",
+    "elev": [
+     200,
+     1000
+    ],
+    "refs": []
+   }
+  ],
+  "refs": [],
+  "range": {
+   "areas": [
+    "영월군",
+    "정선군",
+    "단양군",
+    "삼척시",
+    "동해시",
+    "평창군",
+    "제천시",
+    "태백시"
+   ]
+  }
+ },
+ "산작약": {
+  "summary": "큰 꽃이 피는 작약.",
+  "distribution": "전국 깊은 산지.",
+  "habitat": "숲 아래 부엽토가 많은 곳.",
+  "life": "5~6월 꽃.",
+  "diet": "",
+  "threats": "약용 채취.",
+  "conservation": "멸종위기 야생생물 Ⅱ급. 채취 단속.",
+  "vars": [
+   "elev",
+   "slope",
+   "tree",
+   "broad",
+   "conifer",
+   "bio1",
+   "bio4",
+   "bio12",
+   "bio15"
+  ],
+  "layers": [
+   {
+    "key": "main",
+    "name": "서식지",
+    "season": "연중",
+    "main": true,
+    "groups": [
+     "broad",
+     "mixed"
+    ],
+    "desc": "칸의 절반 이상이 숲인 해발 300 m 이상 산지",
+    "elev": [
+     300,
+     1500
+    ],
+    "cell_min": 0.5,
+    "refs": [
+     1
+    ]
+   }
+  ],
+  "refs": [
+   {
+    "text": "외 (2016) Distributional Characteristics and Population Dynamics of Endangered Plant, Paeonia obovata Maxim. Korean Journal of Environment and Ecology",
+    "url": "https://doi.org/10.13047/kjee.2016.30.4.658"
+   }
+  ]
+ },
+ "삼백초": {
+  "summary": "꽃필 때 잎이 하얘지는 풀.",
+  "distribution": "제주 일부.",
+  "habitat": "물가 습지.",
+  "life": "6~8월 꽃.",
+  "diet": "",
+  "threats": "습지 매립, 약용 채취.",
+  "conservation": "멸종위기 야생생물 Ⅱ급. 습지 보전.",
+  "vars": [
+   "elev",
+   "tree",
+   "broad",
+   "dist_coast",
+   "bio1",
+   "bio4",
+   "bio12"
+  ],
+  "layers": [
+   {
+    "key": "main",
+    "name": "서식지",
+    "season": "연중",
+    "main": true,
+    "groups": [
+     "wetland",
+     "grass",
+     "lake"
+    ],
+    "desc": "제주 습지·물가(해발 200 m 이하)",
+    "elev": [
+     0,
+     200
+    ],
+    "refs": []
+   }
+  ],
+  "refs": [],
+  "range": {
+   "areas": [
+    "제주"
+   ]
+  }
+ },
+ "새깃아재비": {
+  "summary": "큰 고사리.",
+  "distribution": "제주 일부.",
+  "habitat": "습한 계곡 숲.",
+  "life": "여름 포자.",
+  "diet": "",
+  "threats": "개발.",
+  "conservation": "멸종위기 야생생물 Ⅱ급. 자생지 보전.",
+  "vars": [
+   "elev",
+   "tree",
+   "broad",
+   "dist_coast",
+   "bio1",
+   "bio4",
+   "bio12"
+  ],
+  "layers": [
+   {
+    "key": "main",
+    "name": "서식지",
+    "season": "연중",
+    "main": true,
+    "groups": [
+     "broad",
+     "wetland"
+    ],
+    "desc": "제주 숲·습지(해발 600 m 이하)",
+    "elev": [
+     0,
+     600
+    ],
+    "refs": []
+   }
+  ],
+  "refs": [],
+  "range": {
+   "areas": [
+    "제주"
+   ]
+  }
+ },
+ "서울개발나물": {
+  "summary": "미나리과 풀.",
+  "distribution": "경기 등 일부 하천변.",
+  "habitat": "하천변 습한 풀밭.",
+  "life": "8~9월 꽃.",
+  "diet": "",
+  "threats": "하천 정비.",
+  "conservation": "멸종위기 야생생물 Ⅱ급. 하천변 습지 보전.",
+  "vars": [
+   "elev",
+   "slope",
+   "wetland",
+   "lake",
+   "paddy",
+   "river",
+   "dist_lake",
+   "dist_river",
+   "bio1",
+   "bio12"
+  ],
+  "layers": [
+   {
+    "key": "main",
+    "name": "서식지",
+    "season": "연중",
+    "main": true,
+    "groups": [
+     "wetland",
+     "grass"
+    ],
+    "desc": "하천 500 m 안의 습지·초지(해발 200 m 이하)",
+    "elev": [
+     0,
+     200
+    ],
+    "near": [
+     {
+      "groups": [
+       "river"
+      ],
+      "km": 0.5,
+      "min": 0.02
+     }
+    ],
+    "refs": [
+     1,
+     2
+    ]
+   }
+  ],
+  "refs": [
+   {
+    "text": "Seongjun Kim 외 (2022) Endangered plant species under differing anthropogenic interventions: how to preserve Pterygopleurum neurophyllum in Wondong wetland?. PeerJ",
+    "url": "https://doi.org/10.7717/peerj.14050"
+   },
+   {
+    "text": "Hwan Joon Park 외 (2021) Flora and Vegetation Characteristics of the Natural Habitat of the Endangered Plant Pterygopleurum neurophyllum. Diversity",
+    "url": "https://doi.org/10.3390/d13090401"
+   }
+  ]
+ },
+ "석곡": {
+  "summary": "바위·고목에 붙어 사는 착생란.",
+  "distribution": "남해안·제주 섬.",
+  "habitat": "해안 가까운 바위 절벽과 고목. 나무줄기나 바위에 붙어 사는 착생란이라 숲·바위 칸으로 대신 나타낸다.",
+  "life": "5~6월 꽃.",
+  "diet": "",
+  "threats": "관상용 불법 채취.",
+  "conservation": "멸종위기 야생생물 Ⅱ급. 채취 단속.",
+  "vars": [
+   "elev",
+   "tree",
+   "broad",
+   "dist_coast",
+   "bio1",
+   "bio4",
+   "bio12"
+  ],
+  "layers": [
+   {
+    "key": "main",
+    "name": "서식지",
+    "season": "연중",
+    "main": true,
+    "groups": [
+     "rock",
+     "broad",
+     "mixed"
+    ],
+    "desc": "해안 5 km 안 남해 섬·제주의 바위·숲",
+    "coast_km": 5,
+    "elev": [
+     0,
+     500
+    ],
+    "refs": [
+     1
+    ]
+   }
+  ],
+  "refs": [
+   {
+    "text": "Young-kee Kim 외 (2016) Restoration of endangered orchid species, &lt;i&gt;Dendrobium moniliforme&lt;/i&gt; (L.) Sw. (Orchidaceae) in Korea. Korean Journal of Plant Taxonomy",
+    "url": "https://doi.org/10.11110/kjpt.2016.46.2.256"
+   }
+  ],
+  "range": {
+   "areas": [
+    "제주",
+    "신안군",
+    "진도군",
+    "완도군",
+    "여수시",
+    "고흥군",
+    "해남군",
+    "거제시",
+    "통영시",
+    "남해군"
+   ]
+  }
+ },
+ "선모시대": {
+  "summary": "꽃이 곧추서는 울릉도 특산 모시대(초롱꽃과).",
+  "distribution": "울릉도. 내륙 기록은 비슷한 모시대류와 혼동된 것으로 보고 뺐다.",
+  "habitat": "숲 가장자리와 길가 풀밭.",
+  "life": "8~9월 꽃.",
+  "diet": "",
+  "threats": "도로·개발로 자생지 훼손.",
+  "conservation": "멸종위기 야생생물 Ⅱ급. 자생지 보전, 증식·복원.",
+  "vars": [
+   "elev",
+   "slope",
+   "tree",
+   "broad",
+   "conifer",
+   "bio1",
+   "bio4",
+   "bio12",
+   "bio15"
+  ],
+  "layers": [
+   {
+    "key": "main",
+    "name": "서식지",
+    "season": "연중",
+    "main": true,
+    "groups": [
+     "broad",
+     "mixed",
+     "grass"
+    ],
+    "desc": "울릉도의 숲·숲 가장자리",
+    "refs": [
+     1
+    ]
+   }
+  ],
+  "refs": [
+   {
+    "text": "외 (2017) Propagation and restoration of destroyed original habitat of Adenophora erecta S. Lee, Joongku Lee et S. Kim, an endemic species of Ulleung island in Korea. Korean Journal of Nature Conservation",
+    "url": "https://doi.org/10.11624/kjnc.2017.11.1.082"
+   }
+  ],
+  "range": {
+   "areas": [
+    "울릉군"
+   ],
+   "only": true
+  }
+ },
+ "선제비꽃": {
+  "summary": "줄기가 곧게 서는 제비꽃.",
+  "distribution": "일부 하천변 습지.",
+  "habitat": "하천변 습한 풀밭.",
+  "life": "5월 꽃.",
+  "diet": "",
+  "threats": "하천 정비.",
+  "conservation": "멸종위기 야생생물 Ⅱ급. 습지 보전.",
+  "vars": [
+   "elev",
+   "slope",
+   "wetland",
+   "lake",
+   "paddy",
+   "river",
+   "dist_lake",
+   "dist_river",
+   "bio1",
+   "bio12"
+  ],
+  "layers": [
+   {
+    "key": "main",
+    "name": "서식지",
+    "season": "연중",
+    "main": true,
+    "groups": [
+     "wetland",
+     "grass"
+    ],
+    "desc": "하천·습지 500 m 안의 습한 초지",
+    "elev": [
+     0,
+     400
+    ],
+    "near": [
+     {
+      "groups": [
+       "river",
+       "wetland",
+       "lake"
+      ],
+      "km": 0.5,
+      "min": 0.01
+     }
+    ],
+    "refs": []
+   }
+  ],
+  "refs": []
+ },
+ "섬개야광나무": {
+  "summary": "울릉도 바위에 사는 떨기나무.",
+  "distribution": "울릉도.",
+  "habitat": "해안 바위 절벽.",
+  "life": "5~6월 꽃.",
+  "diet": "",
+  "threats": "개발.",
+  "conservation": "멸종위기 야생생물 Ⅱ급. 자생지 보전.",
+  "vars": [
+   "elev",
+   "slope",
+   "rock",
+   "grass",
+   "tree",
+   "bio1",
+   "bio12"
+  ],
+  "layers": [
+   {
+    "key": "main",
+    "name": "서식지",
+    "season": "연중",
+    "main": true,
+    "groups": [
+     "rock",
+     "grass",
+     "broad"
+    ],
+    "desc": "울릉도 해안 2 km 안 바위·풀밭",
+    "coast_km": 2,
+    "refs": [
+     1,
+     2
+    ]
+   }
+  ],
+  "refs": [
+   {
+    "text": "Yong Shik Kim 외 (2002) Conservational status of Cotoneaster wilsonii on Island Ulleung - do. Korean Journal of Plant Taxonomy",
+    "url": "https://doi.org/10.11110/kjpt.2002.32.2.159"
+   },
+   {
+    "text": "Ji Won Park 외 (2009) Genetic Variation and Conservation of the Endangered Species Cotoneaster wilsonii (Rosaceae) from Ulleung Island. Korean Journal of Plant Taxonomy",
+    "url": "https://doi.org/10.11110/kjpt.2009.39.3.125"
+   }
+  ],
+  "range": {
+   "areas": [
+    "울릉군"
+   ],
+   "only": true
+  }
+ },
+ "섬시호": {
+  "summary": "울릉도 특산 미나리과 풀.",
+  "distribution": "울릉도.",
+  "habitat": "숲 가장자리.",
+  "life": "7~8월 꽃.",
+  "diet": "",
+  "threats": "개발.",
+  "conservation": "멸종위기 야생생물 Ⅱ급. 자생지 보전.",
+  "vars": [
+   "elev",
+   "slope",
+   "tree",
+   "broad",
+   "conifer",
+   "bio1",
+   "bio4",
+   "bio12",
+   "bio15"
+  ],
+  "layers": [
+   {
+    "key": "main",
+    "name": "서식지",
+    "season": "연중",
+    "main": true,
+    "groups": [
+     "broad",
+     "mixed",
+     "grass"
+    ],
+    "desc": "울릉도 숲·숲 가장자리",
+    "refs": [
+     1,
+     2,
+     3
+    ]
+   }
+  ],
+  "refs": [
+   {
+    "text": "(2007) Ecological Characteristics and Distribution of Bupleurum latissimum in Ulleung Island. Journal of the Environmental Sciences",
+    "url": "https://doi.org/10.5322/jes.2007.16.6.751"
+   },
+   {
+    "text": "외 (2016) Growth response to Light, Moisture and Nutrients for the Conservation Measures of Bupleurum latissimum(Apiaceae, endangered species) under Future Climate Environment(Elevated CO2 Concentration and Temperature). Korean Journal of Environment and Ecology",
+    "url": "https://doi.org/10.13047/kjee.2016.30.5.803"
+   },
+   {
+    "text": "외 (2013) Effect of Elevated CO2 Concentration and Temperature on the Phenology and Reproductive Ecological Characteristics of Bupleurum latissimum (Endangered plant). Korean Journal of Lomnology",
+    "url": "https://doi.org/10.11614/ksl.2013.46.3.380"
+   },
+   {
+    "text": "(2015) Bupleurum latissimum: Kim, Y.-S., Kim, H. &amp; Son, S.-W.. IUCN Red List of Threatened Species",
+    "url": "https://doi.org/10.2305/iucn.uk.2016-1.rlts.t13188385a13189429.en"
+   }
+  ],
+  "range": {
+   "areas": [
+    "울릉군"
+   ],
+   "only": true
+  }
+ },
+ "섬현삼": {
+  "summary": "울릉도 해안의 현삼.",
+  "distribution": "울릉도.",
+  "habitat": "해안 바위·자갈밭.",
+  "life": "6~8월 꽃.",
+  "diet": "",
+  "threats": "해안 개발·도로.",
+  "conservation": "멸종위기 야생생물 Ⅱ급. 해안 보전.",
+  "vars": [
+   "elev",
+   "grass",
+   "rock",
+   "bare",
+   "tidal",
+   "dist_coast",
+   "bio1",
+   "bio12"
+  ],
+  "layers": [
+   {
+    "key": "main",
+    "name": "서식지",
+    "season": "연중",
+    "main": true,
+    "groups": [
+     "rock",
+     "grass",
+     "bare"
+    ],
+    "desc": "울릉도 해안 500 m 안 바위·풀밭",
+    "coast_km": 0.5,
+    "refs": [
+     1,
+     2
+    ]
+   }
+  ],
+  "refs": [
+   {
+    "text": "Hyeok Jae Choi 외 (2012) Distribution and conservation status of the Critically EndangeredScrophularia takesimensis, a plant endemic to Ulleung Island, Republic of Korea. Oryx",
+    "url": "https://doi.org/10.1017/s0030605312000117"
+   },
+   {
+    "text": "Young-Hee Ahn (2005) Ecological Characteristics and Distribution of Native Scrophularia takesimensis in Ulleung-do Island. Journal of Environmental Science International",
+    "url": "https://doi.org/10.5322/jes.2005.14.12.1087"
+   }
+  ],
+  "range": {
+   "areas": [
+    "울릉군"
+   ],
+   "only": true
+  }
+ },
+ "세뿔투구꽃": {
+  "summary": "한국 특산 투구꽃.",
+  "distribution": "경남·전남 산지.",
+  "habitat": "계곡 숲 아래.",
+  "life": "9~10월 꽃.",
+  "diet": "",
+  "threats": "산림 훼손.",
+  "conservation": "멸종위기 야생생물 Ⅱ급. 계곡 숲 보전.",
+  "vars": [
+   "elev",
+   "slope",
+   "tree",
+   "broad",
+   "conifer",
+   "bio1",
+   "bio4",
+   "bio12",
+   "bio15"
+  ],
+  "layers": [
+   {
+    "key": "main",
+    "name": "서식지",
+    "season": "연중",
+    "main": true,
+    "groups": [
+     "broad",
+     "mixed"
+    ],
+    "desc": "해발 100~1,000 m의 숲",
+    "elev": [
+     100,
+     1000
+    ],
+    "refs": [
+     1,
+     2
+    ]
+   }
+  ],
+  "refs": [
+   {
+    "text": "외 (2016) Environment and Vegetation Characteristics of Aconitum austrokoreense Koidz. habitats. Korean Journal of Environment and Ecology",
+    "url": "https://doi.org/10.13047/kjee.2016.30.5.896"
+   },
+   {
+    "text": "(2015) Aconitum austrokoreense: Kim, Y.-S., Kim, H. &amp; Son, S.-W.. IUCN Red List of Threatened Species",
+    "url": "https://doi.org/10.2305/iucn.uk.2016-1.rlts.t13188360a13189404.en"
+   }
+  ]
+ },
+ "손바닥난초": {
+  "summary": "분홍 꽃이 피는 난초.",
+  "distribution": "고산.",
+  "habitat": "고산 습한 풀밭.",
+  "life": "7~8월 꽃.",
+  "diet": "",
+  "threats": "관상용 불법 채취, 기후 변화.",
+  "conservation": "멸종위기 야생생물 Ⅱ급. 자생지 보전.",
+  "vars": [
+   "elev",
+   "slope",
+   "grass",
+   "rock",
+   "conifer",
+   "bio1",
+   "bio12"
+  ],
+  "layers": [
+   {
+    "key": "main",
+    "name": "서식지",
+    "season": "연중",
+    "main": true,
+    "groups": [
+     "grass",
+     "wetland"
+    ],
+    "desc": "해발 900 m 이상의 습한 초지",
+    "elev": [
+     900,
+     1900
+    ],
+    "refs": [
+     1,
+     2
+    ]
+   }
+  ],
+  "refs": [
+   {
+    "text": "S Gustafsson 외 (2003) Genetic differentiation and habitat preference of flowering-time variants within Gymnadenia conopsea. Heredity",
+    "url": "https://doi.org/10.1038/sj.hdy.6800334"
+   },
+   {
+    "text": "(2024) Gymnadenia conopsea: Rankou, H. &amp; Meredith, C.R.. IUCN Red List of Threatened Species",
+    "url": "https://doi.org/10.2305/iucn.uk.2026-1.rlts.t175969a209154994.en"
+   }
+  ]
+ },
+ "솔잎난": {
+  "summary": "잎이 없는 원시 양치식물.",
+  "distribution": "남해안·제주 섬.",
+  "habitat": "바위틈과 고목.",
+  "life": "연중.",
+  "diet": "",
+  "threats": "채취.",
+  "conservation": "멸종위기 야생생물 Ⅱ급. 채취 단속.",
+  "vars": [
+   "elev",
+   "tree",
+   "broad",
+   "dist_coast",
+   "bio1",
+   "bio4",
+   "bio12"
+  ],
+  "layers": [
+   {
+    "key": "main",
+    "name": "서식지",
+    "season": "연중",
+    "main": true,
+    "groups": [
+     "rock",
+     "broad"
+    ],
+    "desc": "해안 3 km 안 남해 섬·제주의 바위·숲",
+    "coast_km": 3,
+    "refs": [
+     1,
+     2
+    ]
+   }
+  ],
+  "refs": [
+   {
+    "text": "Young-Eun Choi 외 (2013) A Study on Characteristics of the Endangered Species Psilotum nudum Habitat in Jeju Island. Journal of the Korea Society of Environmental Restoration Technology",
+    "url": "https://doi.org/10.13087/kosert.2013.16.3.001"
+   },
+   {
+    "text": "(2020) Psilotum nudum: Bárrios, S. &amp; Copeland, A.. IUCN Red List of Threatened Species",
+    "url": "https://doi.org/10.2305/iucn.uk.2021-3.rlts.t18821051a192161425.en"
+   }
+  ],
+  "range": {
+   "areas": [
+    "제주",
+    "신안군",
+    "진도군",
+    "완도군",
+    "여수시",
+    "고흥군",
+    "해남군",
+    "거제시",
+    "통영시",
+    "남해군"
+   ]
+  }
+ },
+ "순채": {
+  "summary": "잎이 물에 뜨는 수련류 물풀.",
+  "distribution": "경북·전남·제주 등 오래된 못.",
+  "habitat": "물이 맑은 오래된 연못.",
+  "life": "6~8월 꽃.",
+  "diet": "",
+  "threats": "연못 매립·준설·수질 악화.",
+  "conservation": "멸종위기 야생생물 Ⅱ급. 자생지 못 보전.",
+  "vars": [
+   "elev",
+   "slope",
+   "wetland",
+   "lake",
+   "paddy",
+   "river",
+   "dist_lake",
+   "dist_river",
+   "bio1",
+   "bio12"
+  ],
+  "layers": [
+   {
+    "key": "main",
+    "name": "서식지",
+    "season": "연중",
+    "main": true,
+    "groups": [
+     "lake",
+     "wetland"
+    ],
+    "desc": "해발 500 m 이하의 연못·저수지",
+    "elev": [
+     0,
+     500
+    ],
+    "refs": [
+     1
+    ]
+   }
+  ],
+  "refs": [
+   {
+    "text": "(2015) Brasenia schreberi: Maiz-Tome, L.. IUCN Red List of Threatened Species",
+    "url": "https://doi.org/10.2305/iucn.uk.2016-1.rlts.t185681a78457027.en"
+   }
+  ]
+ },
+ "신안새우난초": {
+  "summary": "신안 섬에서 알려진 새우난초.",
+  "distribution": "전남 신안 섬.",
+  "habitat": "섬 숲 아래.",
+  "life": "4~5월 꽃.",
+  "diet": "",
+  "threats": "관상용 불법 채취.",
+  "conservation": "멸종위기 야생생물 Ⅱ급. 자생지 보전.",
+  "vars": [
+   "elev",
+   "tree",
+   "broad",
+   "dist_coast",
+   "bio1",
+   "bio4",
+   "bio12"
+  ],
+  "layers": [
+   {
+    "key": "main",
+    "name": "서식지",
+    "season": "연중",
+    "main": true,
+    "groups": [
+     "broad",
+     "mixed"
+    ],
+    "desc": "신안 섬의 숲(해발 400 m 이하)",
+    "elev": [
+     0,
+     400
+    ],
+    "refs": [
+     1,
+     2,
+     3
+    ]
+   }
+  ],
+  "refs": [
+   {
+    "text": "Sang-Hun Oh 외 (2015) Two new species of Calanthe (Orchidaceae: Epidendroideae) from Korea. Phytotaxa",
+    "url": "https://doi.org/10.11646/phytotaxa.218.1.5"
+   },
+   {
+    "text": "Seongjun Kim 외 (2026) Extreme Reproductive Constraints Under Pollinator Scarcity in the Endangered Orchid Calanthe aristulifera: Five-Year Preliminary Monitoring in South Korea. Diversity",
+    "url": "https://doi.org/10.3390/d18020090"
+   },
+   {
+    "text": "Hang Hwa Hong 외 (2009) First record of Calanthe aristulifera (Orchidaceae) in Korea. Korean Journal of Plant Taxonomy",
+    "url": "https://doi.org/10.11110/kjpt.2009.39.4.292"
+   }
+  ],
+  "range": {
+   "areas": [
+    "신안군"
+   ],
+   "only": true
+  }
+ },
+ "애기송이풀": {
+  "summary": "한국 특산 송이풀.",
+  "distribution": "강원·경기 산지.",
+  "habitat": "계곡 숲 아래.",
+  "life": "4~5월 꽃.",
+  "diet": "",
+  "threats": "산림 훼손.",
+  "conservation": "멸종위기 야생생물 Ⅱ급. 계곡 숲 보전.",
+  "vars": [
+   "elev",
+   "slope",
+   "tree",
+   "broad",
+   "conifer",
+   "bio1",
+   "bio4",
+   "bio12",
+   "bio15"
+  ],
+  "layers": [
+   {
+    "key": "main",
+    "name": "서식지",
+    "season": "연중",
+    "main": true,
+    "groups": [
+     "broad",
+     "mixed"
+    ],
+    "desc": "해발 300~1,200 m의 숲",
+    "elev": [
+     300,
+     1200
+    ],
+    "refs": [
+     1
+    ]
+   }
+  ],
+  "refs": [
+   {
+    "text": "Jun Gi Byun 외 (2013) Vegetation Structure of Pedicularis ishidoyana Koidz. &amp; Ohwi in South Korea Natural Habitats. Korean Journal of Plant Resources",
+    "url": "https://doi.org/10.7732/kjpr.2013.26.2.214"
+   }
+  ]
+ },
+ "연잎꿩의다리": {
+  "summary": "잎이 연잎 같은 꿩의다리.",
+  "distribution": "강원·충북 석회암 지대.",
+  "habitat": "석회암 바위 비탈과 숲 가장자리.",
+  "life": "6~7월 꽃.",
+  "diet": "",
+  "threats": "석회석 채굴.",
+  "conservation": "멸종위기 야생생물 Ⅱ급. 석회암 지대 보전.",
+  "vars": [
+   "elev",
+   "slope",
+   "rock",
+   "grass",
+   "tree",
+   "bio1",
+   "bio12"
+  ],
+  "layers": [
+   {
+    "key": "main",
+    "name": "서식지",
+    "season": "연중",
+    "main": true,
+    "groups": [
+     "rock",
+     "broad",
+     "mixed"
+    ],
+    "desc": "석회암 지대 시군의 바위·숲(해발 100~900 m)",
+    "elev": [
+     100,
+     900
+    ],
+    "refs": []
+   }
+  ],
+  "refs": [],
+  "range": {
+   "areas": [
+    "영월군",
+    "정선군",
+    "단양군",
+    "삼척시",
+    "동해시",
+    "평창군",
+    "제천시",
+    "태백시"
+   ]
+  }
+ },
+ "왕제비꽃": {
+  "summary": "큰 제비꽃.",
+  "distribution": "경기·강원 일부.",
+  "habitat": "하천변 숲과 습지.",
+  "life": "4~5월 꽃.",
+  "diet": "",
+  "threats": "하천 정비.",
+  "conservation": "멸종위기 야생생물 Ⅱ급. 하천변 보전.",
+  "vars": [
+   "elev",
+   "slope",
+   "wetland",
+   "lake",
+   "paddy",
+   "river",
+   "dist_lake",
+   "dist_river",
+   "bio1",
+   "bio12"
+  ],
+  "layers": [
+   {
+    "key": "main",
+    "name": "서식지",
+    "season": "연중",
+    "main": true,
+    "groups": [
+     "wetland",
+     "broad",
+     "grass"
+    ],
+    "desc": "하천 500 m 안의 습지·숲(해발 400 m 이하)",
+    "elev": [
+     0,
+     400
+    ],
+    "near": [
+     {
+      "groups": [
+       "river"
+      ],
+      "km": 0.5,
+      "min": 0.02
+     }
+    ],
+    "refs": [
+     1
+    ]
+   }
+  ],
+  "refs": [
+   {
+    "text": "외 (2021) Distribution Characteristics, Population Structure and Dynamics of the Endangered Plant, &lt;i&gt;Viola websteri&lt;/i&gt; Hemsl.. Korean Journal of Environment and Ecology",
+    "url": "https://doi.org/10.13047/kjee.2021.35.1.48"
+   }
+  ]
+ },
+ "으름난초": {
+  "summary": "잎이 없는 부생란. 붉은 열매가 달린다.",
+  "distribution": "남부 숲.",
+  "habitat": "숲 바닥의 썩은 나무 주변.",
+  "life": "6~7월 꽃.",
+  "diet": "",
+  "threats": "숲 훼손.",
+  "conservation": "멸종위기 야생생물 Ⅱ급. 숲 보전.",
+  "vars": [
+   "elev",
+   "slope",
+   "tree",
+   "broad",
+   "conifer",
+   "bio1",
+   "bio4",
+   "bio12",
+   "bio15"
+  ],
+  "layers": [
+   {
+    "key": "main",
+    "name": "서식지",
+    "season": "연중",
+    "main": true,
+    "groups": [
+     "broad",
+     "mixed",
+     "conifer"
+    ],
+    "desc": "해발 800 m 이하의 숲",
+    "elev": [
+     0,
+     800
+    ],
+    "refs": []
+   }
+  ],
+  "refs": []
+ },
+ "자주땅귀개": {
+  "summary": "벌레잡이 땅귀개.",
+  "distribution": "남부 습지.",
+  "habitat": "산지 습지.",
+  "life": "8~9월 꽃.",
+  "diet": "",
+  "threats": "습지 감소.",
+  "conservation": "멸종위기 야생생물 Ⅱ급. 습지 보전.",
+  "vars": [
+   "elev",
+   "slope",
+   "wetland",
+   "lake",
+   "paddy",
+   "river",
+   "dist_lake",
+   "dist_river",
+   "bio1",
+   "bio12"
+  ],
+  "layers": [
+   {
+    "key": "main",
+    "name": "서식지",
+    "season": "연중",
+    "main": true,
+    "groups": [
+     "wetland",
+     "grass"
+    ],
+    "desc": "해발 400 m 이하의 습지",
+    "elev": [
+     0,
+     400
+    ],
+    "refs": []
+   }
+  ],
+  "refs": []
+ },
+ "장백제비꽃": {
+  "summary": "노란 꽃이 피는 고산 제비꽃.",
+  "distribution": "백두대간 고산.",
+  "habitat": "고산 바위틈 습한 곳.",
+  "life": "5~6월 꽃.",
+  "diet": "",
+  "threats": "기후 변화.",
+  "conservation": "멸종위기 야생생물 Ⅱ급. 고산 보전.",
+  "vars": [
+   "elev",
+   "slope",
+   "grass",
+   "rock",
+   "conifer",
+   "bio1",
+   "bio12"
+  ],
+  "layers": [
+   {
+    "key": "main",
+    "name": "서식지",
+    "season": "연중",
+    "main": true,
+    "groups": [
+     "rock",
+     "grass"
+    ],
+    "desc": "해발 800 m 이상의 바위·초지",
+    "elev": [
+     800,
+     1950
+    ],
+    "refs": []
+   }
+  ],
+  "refs": []
+ },
+ "전주물꼬리풀": {
+  "summary": "꿀풀과 물풀.",
+  "distribution": "전북·제주 습지.",
+  "habitat": "얕은 습지·묵논.",
+  "life": "8~9월 꽃.",
+  "diet": "",
+  "threats": "습지 매립.",
+  "conservation": "멸종위기 야생생물 Ⅱ급. 습지 보전.",
+  "vars": [
+   "elev",
+   "slope",
+   "wetland",
+   "lake",
+   "paddy",
+   "river",
+   "dist_lake",
+   "dist_river",
+   "bio1",
+   "bio12"
+  ],
+  "layers": [
+   {
+    "key": "main",
+    "name": "서식지",
+    "season": "연중",
+    "main": true,
+    "groups": [
+     "wetland",
+     "paddy"
+    ],
+    "desc": "해발 200 m 이하의 습지·묵논",
+    "elev": [
+     0,
+     200
+    ],
+    "refs": [
+     1
+    ]
+   }
+  ],
+  "refs": [
+   {
+    "text": "Hyuk Joon Kwon 외 (2018) Improvement of seed germination in Dysophylla yatabeana, a critically endangered plant species in Korea. Seed Science and Technology",
+    "url": "https://doi.org/10.15258/sst.2018.46.2.20"
+   }
+  ]
+ },
+ "정향풀": {
+  "summary": "하늘색 꽃이 피는 협죽도과 풀.",
+  "distribution": "남해안 일부.",
+  "habitat": "해안 풀밭.",
+  "life": "5~6월 꽃.",
+  "diet": "",
+  "threats": "해안 개발.",
+  "conservation": "멸종위기 야생생물 Ⅱ급. 해안 초지 보전.",
+  "vars": [
+   "elev",
+   "grass",
+   "rock",
+   "bare",
+   "tidal",
+   "dist_coast",
+   "bio1",
+   "bio12"
+  ],
+  "layers": [
+   {
+    "key": "main",
+    "name": "서식지",
+    "season": "연중",
+    "main": true,
+    "groups": [
+     "grass",
+     "rock"
+    ],
+    "desc": "해안 2 km 안의 풀밭·바위(해발 200 m 이하)",
+    "coast_km": 2,
+    "elev": [
+     0,
+     200
+    ],
+    "refs": [
+     1
+    ]
+   }
+  ],
+  "refs": [
+   {
+    "text": "Hakbong Lee 외 (2023) Population Status and Other Basic Information on an Endangered Plant, Amsonia elliptica (Thunb.) Roem. &amp; Schult. for Conservation Planning: Based on Yellow Sea Islands (Baengnyeongdo, Daecheongdo, and Yeonpyeongdo) and Gangwon-do (Sokcho). The Journal of Korean Island",
+    "url": "https://doi.org/10.26840/jki.35.4.261"
+   }
+  ]
+ },
+ "제비동자꽃": {
+  "summary": "꽃잎이 깊게 갈라진 동자꽃.",
+  "distribution": "강원 산지.",
+  "habitat": "산지 습한 풀밭.",
+  "life": "7~8월 꽃.",
+  "diet": "",
+  "threats": "습지 감소.",
+  "conservation": "멸종위기 야생생물 Ⅱ급. 습한 초지 보전.",
+  "vars": [
+   "elev",
+   "slope",
+   "grass",
+   "field",
+   "tree",
+   "wetland",
+   "bio1",
+   "bio4",
+   "bio12"
+  ],
+  "layers": [
+   {
+    "key": "main",
+    "name": "서식지",
+    "season": "연중",
+    "main": true,
+    "groups": [
+     "grass",
+     "wetland"
+    ],
+    "desc": "해발 300~1,300 m의 습한 초지",
+    "elev": [
+     300,
+     1300
+    ],
+    "refs": [
+     1,
+     2
+    ]
+   }
+  ],
+  "refs": [
+   {
+    "text": "외 (2021) Internal Dynamics of Wetland Specialist, Population of &lt;i&gt;Lychnis wilfordii&lt;/i&gt; (Regel) Maxim.. Korean Journal of Environment and Ecology",
+    "url": "https://doi.org/10.13047/kjee.2021.35.3.237"
+   },
+   {
+    "text": "Saya Tamura 외 (2019) Two-way migration of\n         Lychnis wilfordii\n         caused by the circular landform of Japan-Korea-northeast China-Russian Far East region and its suggestion for conservation in northeast Asia.",
+    "url": "https://doi.org/10.1101/857227"
+   }
+  ]
+ },
+ "제비붓꽃": {
+  "summary": "보랏빛 붓꽃.",
+  "distribution": "강원 북부 습지.",
+  "habitat": "얕은 습지.",
+  "life": "5~6월 꽃.",
+  "diet": "",
+  "threats": "습지 매립.",
+  "conservation": "멸종위기 야생생물 Ⅱ급. 습지 보전.",
+  "vars": [
+   "elev",
+   "slope",
+   "wetland",
+   "lake",
+   "paddy",
+   "river",
+   "dist_lake",
+   "dist_river",
+   "bio1",
+   "bio12"
+  ],
+  "layers": [
+   {
+    "key": "main",
+    "name": "서식지",
+    "season": "연중",
+    "main": true,
+    "groups": [
+     "wetland",
+     "lake"
+    ],
+    "desc": "해발 1,000 m 이하의 습지·연못",
+    "elev": [
+     0,
+     1000
+    ],
+    "refs": [
+     1
+    ]
+   }
+  ],
+  "refs": [
+   {
+    "text": "외 (2022) Seed Dormancy and Germination in &lt;i&gt;Iris laevigata&lt;/i&gt; (Iridaceae), A Rare Species in Korea. Flower Research Journal",
+    "url": "https://doi.org/10.11623/frj.2022.30.2.05"
+   }
+  ]
+ },
+ "조름나물": {
+  "summary": "세 잎이 나는 습지 풀.",
+  "distribution": "강원 고산 습지(대암산 용늪 등).",
+  "habitat": "산지 습지.",
+  "life": "5~6월 꽃.",
+  "diet": "",
+  "threats": "습지 건조화.",
+  "conservation": "멸종위기 야생생물 Ⅱ급. 고산 습지 보전.",
+  "vars": [
+   "elev",
+   "slope",
+   "wetland",
+   "lake",
+   "paddy",
+   "river",
+   "dist_lake",
+   "dist_river",
+   "bio1",
+   "bio12"
+  ],
+  "layers": [
+   {
+    "key": "main",
+    "name": "서식지",
+    "season": "연중",
+    "main": true,
+    "groups": [
+     "wetland",
+     "lake"
+    ],
+    "desc": "해발 1,500 m 이하의 습지·연못",
+    "elev": [
+     0,
+     1500
+    ],
+    "refs": [
+     1
+    ]
+   }
+  ],
+  "refs": [
+   {
+    "text": "(2013) Menyanthes trifoliata: Akhani, H.. IUCN Red List of Threatened Species",
+    "url": "https://doi.org/10.2305/iucn.uk.2014-1.rlts.t163993a42397943.en"
+   }
+  ]
+ },
+ "죽절초": {
+  "summary": "붉은 열매의 늘푸른 떨기나무.",
+  "distribution": "제주 남부.",
+  "habitat": "상록수림 아래.",
+  "life": "6~7월 꽃, 겨울 열매.",
+  "diet": "",
+  "threats": "채취.",
+  "conservation": "멸종위기 야생생물 Ⅱ급. 채취 단속.",
+  "vars": [
+   "elev",
+   "tree",
+   "broad",
+   "dist_coast",
+   "bio1",
+   "bio4",
+   "bio12"
+  ],
+  "layers": [
+   {
+    "key": "main",
+    "name": "서식지",
+    "season": "연중",
+    "main": true,
+    "groups": [
+     "broad",
+     "mixed"
+    ],
+    "desc": "제주 상록활엽수림(해발 400 m 이하)",
+    "elev": [
+     0,
+     400
+    ],
+    "refs": []
+   }
+  ],
+  "refs": [],
+  "range": {
+   "areas": [
+    "제주"
+   ],
+   "only": true
+  }
+ },
+ "지네발란": {
+  "summary": "지네 모양 착생란.",
+  "distribution": "남부 해안 바위.",
+  "habitat": "바위·나무. 나무줄기나 바위에 붙어 사는 착생란이라 숲·바위 칸으로 대신 나타낸다.",
+  "life": "7~8월 꽃.",
+  "diet": "",
+  "threats": "관상용 불법 채취.",
+  "conservation": "멸종위기 야생생물 Ⅱ급. 채취 단속.",
+  "vars": [
+   "elev",
+   "tree",
+   "broad",
+   "dist_coast",
+   "bio1",
+   "bio4",
+   "bio12"
+  ],
+  "layers": [
+   {
+    "key": "main",
+    "name": "서식지",
+    "season": "연중",
+    "main": true,
+    "groups": [
+     "rock",
+     "broad"
+    ],
+    "desc": "해안 5 km 안 남해 섬·제주의 바위·숲",
+    "coast_km": 5,
+    "refs": [
+     1
+    ]
+   }
+  ],
+  "refs": [
+   {
+    "text": "Hyun-Deok Son 외 (2019) Pollination of Cleisostoma scolopendrifolium (Orchidaceae) by megachilid bees and determinants of fruit set in southern South Korea. Journal of Ecology and Environment",
+    "url": "https://doi.org/10.1186/s41610-018-0102-3"
+   }
+  ],
+  "range": {
+   "areas": [
+    "제주",
+    "신안군",
+    "진도군",
+    "완도군",
+    "여수시",
+    "고흥군",
+    "해남군",
+    "거제시",
+    "통영시",
+    "남해군"
+   ]
+  }
+ },
+ "진노랑상사화": {
+  "summary": "노란 꽃이 피는 상사화.",
+  "distribution": "전남·전북 일부.",
+  "habitat": "숲 가장자리.",
+  "life": "8월 꽃.",
+  "diet": "",
+  "threats": "채취.",
+  "conservation": "멸종위기 야생생물 Ⅱ급. 자생지 보전.",
+  "vars": [
+   "elev",
+   "slope",
+   "tree",
+   "broad",
+   "conifer",
+   "bio1",
+   "bio4",
+   "bio12",
+   "bio15"
+  ],
+  "layers": [
+   {
+    "key": "main",
+    "name": "서식지",
+    "season": "연중",
+    "main": true,
+    "groups": [
+     "broad",
+     "mixed"
+    ],
+    "desc": "해발 500 m 이하의 숲",
+    "elev": [
+     0,
+     500
+    ],
+    "refs": [
+     1
+    ]
+   }
+  ],
+  "refs": [
+   {
+    "text": "Kyoung-Hwan Tae 외 (2003) Description of Lycoris chinensis Traub var. sinuolata K. Tae et S. Ko ex K. Tae et S. Ko (Amaryllidaceae). Korean Journal of Plant Taxonomy",
+    "url": "https://doi.org/10.11110/kjpt.2003.33.4.387"
+   }
+  ]
+ },
+ "차걸이란": {
+  "summary": "작은 착생란.",
+  "distribution": "제주.",
+  "habitat": "나뭇가지. 나무줄기나 바위에 붙어 사는 착생란이라 숲·바위 칸으로 대신 나타낸다.",
+  "life": "6~7월 꽃.",
+  "diet": "",
+  "threats": "관상용 불법 채취.",
+  "conservation": "멸종위기 야생생물 Ⅱ급. 숲 보전.",
+  "vars": [
+   "elev",
+   "tree",
+   "broad",
+   "dist_coast",
+   "bio1",
+   "bio4",
+   "bio12"
+  ],
+  "layers": [
+   {
+    "key": "main",
+    "name": "서식지",
+    "season": "연중",
+    "main": true,
+    "groups": [
+     "broad",
+     "mixed"
+    ],
+    "desc": "제주 상록활엽수림(해발 600 m 이하)",
+    "elev": [
+     0,
+     600
+    ],
+    "refs": []
+   }
+  ],
+  "refs": [],
+  "range": {
+   "areas": [
+    "제주"
+   ],
+   "only": true
+  }
+ },
+ "참닻꽃": {
+  "summary": "닻 모양 꽃이 피는 용담과 풀.",
+  "distribution": "강원 고산.",
+  "habitat": "고산 풀밭.",
+  "life": "7~8월 꽃.",
+  "diet": "",
+  "threats": "기후 변화.",
+  "conservation": "멸종위기 야생생물 Ⅱ급. 고산 초지 보전.",
+  "vars": [
+   "elev",
+   "slope",
+   "grass",
+   "rock",
+   "conifer",
+   "bio1",
+   "bio12"
+  ],
+  "layers": [
+   {
+    "key": "main",
+    "name": "서식지",
+    "season": "연중",
+    "main": true,
+    "groups": [
+     "grass",
+     "rock"
+    ],
+    "desc": "해발 900 m 이상의 초지",
+    "elev": [
+     900,
+     1800
+    ],
+    "refs": [
+     1
+    ]
+   }
+  ],
+  "refs": [
+   {
+    "text": "SU-MIN HAN 외 (2019) Halenia coreana (Gentianaceae), a new species from Korea: Evidence from morphological and molecular data. Phytotaxa",
+    "url": "https://doi.org/10.11646/phytotaxa.403.2.2"
+   }
+  ]
+ },
+ "참물부추": {
+  "summary": "물속에 사는 물부추류.",
+  "distribution": "일부 습지.",
+  "habitat": "얕은 연못·습지.",
+  "life": "연중.",
+  "diet": "",
+  "threats": "습지 매립.",
+  "conservation": "멸종위기 야생생물 Ⅱ급. 습지 보전.",
+  "vars": [
+   "elev",
+   "slope",
+   "wetland",
+   "lake",
+   "paddy",
+   "river",
+   "dist_lake",
+   "dist_river",
+   "bio1",
+   "bio12"
+  ],
+  "layers": [
+   {
+    "key": "main",
+    "name": "서식지",
+    "season": "연중",
+    "main": true,
+    "groups": [
+     "lake",
+     "wetland"
+    ],
+    "desc": "해발 800 m 이하의 연못·습지",
+    "elev": [
+     0,
+     800
+    ],
+    "refs": [
+     1
+    ]
+   }
+  ],
+  "refs": [
+   {
+    "text": "Yung Ho Chung 외 (1986) Isoetes coreana , a new species from Korea. Korean Journal of Plant Taxonomy",
+    "url": "https://doi.org/10.11110/kjpt.1986.16.1.001"
+   }
+  ]
+ },
+ "초령목": {
+  "summary": "늘푸른 목련과 큰키나무.",
+  "distribution": "제주·남해 섬.",
+  "habitat": "상록활엽수림.",
+  "life": "2~3월 꽃.",
+  "diet": "",
+  "threats": "벌채.",
+  "conservation": "멸종위기 야생생물 Ⅱ급. 자생 나무 보호.",
+  "vars": [
+   "elev",
+   "tree",
+   "broad",
+   "dist_coast",
+   "bio1",
+   "bio4",
+   "bio12"
+  ],
+  "layers": [
+   {
+    "key": "main",
+    "name": "서식지",
+    "season": "연중",
+    "main": true,
+    "groups": [
+     "broad",
+     "mixed"
+    ],
+    "desc": "남해 섬·제주의 상록활엽수림(해발 500 m 이하)",
+    "elev": [
+     0,
+     500
+    ],
+    "refs": []
+   }
+  ],
+  "refs": [],
+  "range": {
+   "areas": [
+    "제주",
+    "신안군",
+    "진도군",
+    "완도군",
+    "여수시",
+    "고흥군",
+    "해남군",
+    "거제시",
+    "통영시",
+    "남해군"
+   ]
+  }
+ },
+ "칠보치마": {
+  "summary": "작은 노란 꽃이 피는 풀.",
+  "distribution": "남부 산지.",
+  "habitat": "산지 습한 풀밭.",
+  "life": "6~7월 꽃.",
+  "diet": "",
+  "threats": "습지 감소.",
+  "conservation": "멸종위기 야생생물 Ⅱ급. 습지 보전.",
+  "vars": [
+   "elev",
+   "slope",
+   "grass",
+   "field",
+   "tree",
+   "wetland",
+   "bio1",
+   "bio4",
+   "bio12"
+  ],
+  "layers": [
+   {
+    "key": "main",
+    "name": "서식지",
+    "season": "연중",
+    "main": true,
+    "groups": [
+     "grass",
+     "wetland"
+    ],
+    "desc": "해발 1,000 m 이하의 습한 초지",
+    "elev": [
+     0,
+     1000
+    ],
+    "refs": []
+   }
+  ],
+  "refs": []
+ },
+ "콩짜개란": {
+  "summary": "콩짜개 모양 잎의 착생란.",
+  "distribution": "남해안·제주 섬.",
+  "habitat": "바위·나무. 나무줄기나 바위에 붙어 사는 착생란이라 숲·바위 칸으로 대신 나타낸다.",
+  "life": "5~6월 꽃.",
+  "diet": "",
+  "threats": "관상용 불법 채취.",
+  "conservation": "멸종위기 야생생물 Ⅱ급. 채취 단속.",
+  "vars": [
+   "elev",
+   "tree",
+   "broad",
+   "dist_coast",
+   "bio1",
+   "bio4",
+   "bio12"
+  ],
+  "layers": [
+   {
+    "key": "main",
+    "name": "서식지",
+    "season": "연중",
+    "main": true,
+    "groups": [
+     "rock",
+     "broad"
+    ],
+    "desc": "해안 5 km 안 남해 섬·제주의 바위·숲",
+    "coast_km": 5,
+    "refs": []
+   }
+  ],
+  "refs": [],
+  "range": {
+   "areas": [
+    "제주",
+    "신안군",
+    "진도군",
+    "완도군",
+    "여수시",
+    "고흥군",
+    "해남군",
+    "거제시",
+    "통영시",
+    "남해군"
+   ]
+  }
+ },
+ "큰바늘꽃": {
+  "summary": "큰 분홍 꽃이 피는 바늘꽃.",
+  "distribution": "강원 북부 습지.",
+  "habitat": "하천변 습지.",
+  "life": "7~8월 꽃.",
+  "diet": "",
+  "threats": "하천 정비.",
+  "conservation": "멸종위기 야생생물 Ⅱ급. 습지 보전.",
+  "vars": [
+   "elev",
+   "slope",
+   "wetland",
+   "lake",
+   "paddy",
+   "river",
+   "dist_lake",
+   "dist_river",
+   "bio1",
+   "bio12"
+  ],
+  "layers": [
+   {
+    "key": "main",
+    "name": "서식지",
+    "season": "연중",
+    "main": true,
+    "groups": [
+     "wetland",
+     "river"
+    ],
+    "desc": "해발 800 m 이하의 습지·하천",
+    "elev": [
+     0,
+     800
+    ],
+    "refs": [
+     1,
+     2
+    ]
+   }
+  ],
+  "refs": [
+   {
+    "text": "Rae-Ha Jang 외 (2024) Identification of Environmental Factors Influencing the Population of Endangered Epilobium hirsutum L. in Korea. Biology",
+    "url": "https://doi.org/10.3390/biology13121061"
+   },
+   {
+    "text": "(2012) Epilobium hirsutum: Lansdown, R.V.. IUCN Red List of Threatened Species",
+    "url": "https://doi.org/10.2305/iucn.uk.2013-1.rlts.t164347a1044291.en"
+   }
+  ]
+ },
+ "파초일엽": {
+  "summary": "잎이 통째인 큰 고사리.",
+  "distribution": "제주 서귀포 섶섬.",
+  "habitat": "해안 섬 바위.",
+  "life": "연중.",
+  "diet": "",
+  "threats": "채취.",
+  "conservation": "멸종위기 야생생물 Ⅱ급. 섶섬 자생지 보호.",
+  "vars": [
+   "elev",
+   "tree",
+   "broad",
+   "dist_coast",
+   "bio1",
+   "bio4",
+   "bio12"
+  ],
+  "layers": [
+   {
+    "key": "main",
+    "name": "서식지",
+    "season": "연중",
+    "main": true,
+    "groups": [
+     "rock",
+     "broad"
+    ],
+    "desc": "서귀포 해안 1 km 안 바위·숲",
+    "coast_km": 1,
+    "refs": [
+     1
+    ]
+   }
+  ],
+  "refs": [
+   {
+    "text": "외 (2019) The Study on Conservation and Management of Natural Habitat of Spleenworts on Samdo Island (&lt;i&gt;Asplenium antiquum&lt;/i&gt; Makino), Jeju (Natural Monument No. 18). Korean Journal of Environment and Ecology",
+    "url": "https://doi.org/10.13047/kjee.2019.33.3.280"
+   }
+  ],
+  "range": {
+   "areas": [
+    "서귀포시"
+   ],
+   "only": true
+  }
+ },
+ "피뿌리풀": {
+  "summary": "붉은 뿌리의 팥꽃나무과 풀.",
+  "distribution": "제주 동부 오름.",
+  "habitat": "오름 풀밭.",
+  "life": "5~6월 꽃.",
+  "diet": "",
+  "threats": "초지 개발·채취.",
+  "conservation": "멸종위기 야생생물 Ⅱ급. 오름 초지 보전.",
+  "vars": [
+   "elev",
+   "slope",
+   "grass",
+   "field",
+   "tree",
+   "wetland",
+   "bio1",
+   "bio4",
+   "bio12"
+  ],
+  "layers": [
+   {
+    "key": "main",
+    "name": "서식지",
+    "season": "연중",
+    "main": true,
+    "groups": [
+     "grass"
+    ],
+    "desc": "제주 초지(해발 800 m 이하)",
+    "elev": [
+     0,
+     800
+    ],
+    "refs": [
+     1
+    ]
+   }
+  ],
+  "refs": [
+   {
+    "text": "Kim Min-Han 외 (2023) The Consideration on Plants Facing the Threat of Extinction : Stellera chamaejasme L. - Focusing on Jeju Island -. The Journal of Korean Island",
+    "url": "https://doi.org/10.26840/jki.35.3.119"
+   }
+  ],
+  "range": {
+   "areas": [
+    "제주"
+   ],
+   "only": true
+  }
+ },
+ "한라송이풀": {
+  "summary": "한라산 고지대 송이풀.",
+  "distribution": "한라산.",
+  "habitat": "고지대 풀밭.",
+  "life": "8월 꽃.",
+  "diet": "",
+  "threats": "기후 변화.",
+  "conservation": "멸종위기 야생생물 Ⅱ급. 고산 보전.",
+  "vars": [
+   "elev",
+   "slope",
+   "grass",
+   "rock",
+   "conifer",
+   "bio1",
+   "bio12"
+  ],
+  "layers": [
+   {
+    "key": "main",
+    "name": "서식지",
+    "season": "연중",
+    "main": true,
+    "groups": [
+     "grass",
+     "rock"
+    ],
+    "desc": "한라산 해발 1,400 m 이상 초지·바위",
+    "elev": [
+     1400,
+     1950
+    ],
+    "refs": [
+     1,
+     2,
+     3
+    ]
+   }
+  ],
+  "refs": [
+   {
+    "text": "Hyeong-Bin Park 외 (2024) Classification of Seed Dormancy in Pedicularis hallaisanensis Hurusawa: An Endemic and Endangered Species Native to Korea. Horticulturae",
+    "url": "https://doi.org/10.3390/horticulturae10111188"
+   },
+   {
+    "text": "Seongjun Kim 외 (2024) Strict biennial lifecycle and anthropogenic interventions affect temporal genetic differentiation in the endangered endemic plant, Pedicularis hallaisanensis. Frontiers in Plant Science",
+    "url": "https://doi.org/10.3389/fpls.2024.1468395"
+   },
+   {
+    "text": "Chang Woo Lee 외 (2025) Population Size and Microhabitat Characteristics of the Endangered Endemic Plant Pedicularis hallaisanensis. Diversity",
+    "url": "https://doi.org/10.3390/d17060377"
+   },
+   {
+    "text": "Won Bum Cho 외 (2011) Taxonomic position of Pedicularis hallaisanensis Hurusawa, an endemic plant of Mt. Halla. Korean Journal of Plant Taxonomy",
+    "url": "https://doi.org/10.11110/kjpt.2011.41.2.130"
+   }
+  ],
+  "range": {
+   "areas": [
+    "제주"
+   ],
+   "only": true
+  }
+ },
+ "한라옥잠난초": {
+  "summary": "잎이 넓은 옥잠난초.",
+  "distribution": "제주.",
+  "habitat": "숲 아래.",
+  "life": "6~7월 꽃.",
+  "diet": "",
+  "threats": "관상용 불법 채취.",
+  "conservation": "멸종위기 야생생물 Ⅱ급. 숲 보전.",
+  "vars": [
+   "elev",
+   "tree",
+   "broad",
+   "dist_coast",
+   "bio1",
+   "bio4",
+   "bio12"
+  ],
+  "layers": [
+   {
+    "key": "main",
+    "name": "서식지",
+    "season": "연중",
+    "main": true,
+    "groups": [
+     "broad",
+     "mixed"
+    ],
+    "desc": "제주 숲(해발 1,200 m 이하)",
+    "elev": [
+     0,
+     1200
+    ],
+    "refs": []
+   }
+  ],
+  "refs": [],
+  "range": {
+   "areas": [
+    "제주"
+   ],
+   "only": true
+  }
+ },
+ "한라장구채": {
+  "summary": "한라산 고지대 장구채.",
+  "distribution": "한라산.",
+  "habitat": "고지대 바위.",
+  "life": "7~8월 꽃.",
+  "diet": "",
+  "threats": "기후 변화.",
+  "conservation": "멸종위기 야생생물 Ⅱ급. 고산 보전.",
+  "vars": [
+   "elev",
+   "slope",
+   "grass",
+   "rock",
+   "conifer",
+   "bio1",
+   "bio12"
+  ],
+  "layers": [
+   {
+    "key": "main",
+    "name": "서식지",
+    "season": "연중",
+    "main": true,
+    "groups": [
+     "rock",
+     "grass"
+    ],
+    "desc": "한라산 해발 1,300 m 이상 바위·초지",
+    "elev": [
+     1300,
+     1950
+    ],
+    "refs": []
+   }
+  ],
+  "refs": [],
+  "range": {
+   "areas": [
+    "제주"
+   ],
+   "only": true
+  }
+ },
+ "해오라비난초": {
+  "summary": "꽃이 해오라기를 닮은 난초.",
+  "distribution": "중남부 일부 습지.",
+  "habitat": "햇빛이 드는 습지.",
+  "life": "7~8월 꽃.",
+  "diet": "",
+  "threats": "관상용 불법 채취, 습지 감소.",
+  "conservation": "멸종위기 야생생물 Ⅱ급. 습지 보전.",
+  "vars": [
+   "elev",
+   "slope",
+   "wetland",
+   "lake",
+   "paddy",
+   "river",
+   "dist_lake",
+   "dist_river",
+   "bio1",
+   "bio12"
+  ],
+  "layers": [
+   {
+    "key": "main",
+    "name": "서식지",
+    "season": "연중",
+    "main": true,
+    "groups": [
+     "wetland",
+     "grass"
+    ],
+    "desc": "해발 500 m 이하의 습지·습한 초지",
+    "elev": [
+     0,
+     500
+    ],
+    "refs": [
+     1,
+     2
+    ]
+   }
+  ],
+  "refs": [
+   {
+    "text": "Tsutomu Tachibana 외 (2020) Morphological and Genetic Diversities of Habenaria radiata (Orchidaceae) in the Kinki Area, Japan. International Journal of Molecular Sciences",
+    "url": "https://doi.org/10.3390/ijms22010311"
+   },
+   {
+    "text": "외 (2024) In vitro Asymbiotic Germination of Immature Seed and Seedling Development of Wild White-egret Flower (&lt;i&gt;Habenaria radiata&lt;/i&gt; (Thunb.) Spreng) in Korea. Flower Research Journal",
+    "url": "https://doi.org/10.11623/frj.2024.32.4.14"
+   }
+  ]
+ },
+ "혹난초": {
+  "summary": "작은 착생란.",
+  "distribution": "남해안·제주 섬.",
+  "habitat": "바위·나무. 나무줄기나 바위에 붙어 사는 착생란이라 숲·바위 칸으로 대신 나타낸다.",
+  "life": "5~6월 꽃.",
+  "diet": "",
+  "threats": "관상용 불법 채취.",
+  "conservation": "멸종위기 야생생물 Ⅱ급. 채취 단속.",
+  "vars": [
+   "elev",
+   "tree",
+   "broad",
+   "dist_coast",
+   "bio1",
+   "bio4",
+   "bio12"
+  ],
+  "layers": [
+   {
+    "key": "main",
+    "name": "서식지",
+    "season": "연중",
+    "main": true,
+    "groups": [
+     "rock",
+     "broad"
+    ],
+    "desc": "해안 5 km 안 남해 섬·제주의 바위·숲",
+    "coast_km": 5,
+    "refs": [
+     1
+    ]
+   }
+  ],
+  "refs": [
+   {
+    "text": "Young-Jun Yoon 외 (2021) A Short Record for the Distribution of Bulbophyllum inconspicuum Maxim. on Yeongsando. The Journal of Korean Island",
+    "url": "https://doi.org/10.26840/jki.33.3.239"
+   }
+  ],
+  "range": {
+   "areas": [
+    "제주",
+    "신안군",
+    "진도군",
+    "완도군",
+    "여수시",
+    "고흥군",
+    "해남군",
+    "거제시",
+    "통영시",
+    "남해군"
+   ]
+  }
+ },
+ "홍월귤": {
+  "summary": "고산 떨기나무.",
+  "distribution": "설악산 정상부.",
+  "habitat": "고산 바위.",
+  "life": "6월 꽃.",
+  "diet": "",
+  "threats": "기후 변화.",
+  "conservation": "멸종위기 야생생물 Ⅱ급. 고산 보전.",
+  "vars": [
+   "elev",
+   "slope",
+   "grass",
+   "rock",
+   "conifer",
+   "bio1",
+   "bio12"
+  ],
+  "layers": [
+   {
+    "key": "main",
+    "name": "서식지",
+    "season": "연중",
+    "main": true,
+    "groups": [
+     "rock",
+     "grass"
+    ],
+    "desc": "해발 1,400 m 이상 바위·초지",
+    "elev": [
+     1400,
+     1750
+    ],
+    "refs": []
+   }
+  ],
+  "refs": []
+ },
+ "그물공말": {
+  "summary": "그물 모양 녹조류.",
+  "distribution": "제주 연안.",
+  "habitat": "조간대 아래 암반.",
+  "life": "연중.",
+  "diet": "",
+  "threats": "연안 개발·수온 변화.",
+  "conservation": "멸종위기 야생생물 Ⅱ급. 연안 암반 보전.",
+  "vars": [
+   "dist_coast",
+   "rock",
+   "bio1"
+  ],
+  "layers": [
+   {
+    "key": "main",
+    "name": "서식 해역(해안선 칸)",
+    "season": "연중",
+    "main": true,
+    "groups": [
+     "sea",
+     "rock"
+    ],
+    "desc": "제주 해안 300 m 안의 바다·바위(해안선 칸으로 표시)",
+    "coast_km": 0.3,
+    "refs": [
+     1,
+     2,
+     3
+    ]
+   }
+  ],
+  "refs": [
+   {
+    "text": "J. Stimson 외 (2001) Effects of herbivory, nutrient levels, and introduced algae on the distribution and abundance of the invasive macroalga Dictyosphaeria cavernosa in Kaneohe Bay, Hawaii. Coral Reefs",
+    "url": "https://doi.org/10.1007/s003380000123"
+   },
+   {
+    "text": "ST Larned 외 (1997) Effects of water velocity on NH4 and PO4 uptake and nutrient-limited growth in the macroalga Dictyosphaeria cavernosa. Marine Ecology Progress Series",
+    "url": "https://doi.org/10.3354/meps157295"
+   },
+   {
+    "text": "John Stimson 외 (1996) Seasonal growth of the coral reef macroalga Dictyosphaeria cavernosa (Forskål) Børgesen and the effects of nutrient availability, temperature and herbivory on growth rate. Journal of Experimental Marine Biology and Ecology",
+    "url": "https://doi.org/10.1016/0022-0981(95)00123-9"
+   },
+   {
+    "text": "ST Larned 외 (1996) Nitrogen-limited growth in the coral reef chlorophyte Dictyosphaeria cavernosa, and the effect of exposure to sediment-derived nitrogen on growth. Marine Ecology Progress Series",
+    "url": "https://doi.org/10.3354/meps145095"
+   }
+  ],
+  "range": {
+   "areas": [
+    "제주"
+   ],
+   "only": true
+  }
+ },
+ "삼나무말": {
+  "summary": "갈조류.",
+  "distribution": "동해·울릉도·독도 연안.",
+  "habitat": "조하대 암반.",
+  "life": "연중.",
+  "diet": "",
+  "threats": "연안 개발·수온 상승.",
+  "conservation": "멸종위기 야생생물 Ⅱ급. 연안 암반 보전.",
+  "vars": [
+   "dist_coast",
+   "rock",
+   "bio1"
+  ],
+  "layers": [
+   {
+    "key": "main",
+    "name": "서식 해역(해안선 칸)",
+    "season": "연중",
+    "main": true,
+    "groups": [
+     "sea",
+     "rock"
+    ],
+    "desc": "동해 해안 300 m 안의 바다·바위(해안선 칸으로 표시)",
+    "coast_km": 0.3,
+    "refs": []
+   }
+  ],
+  "refs": [],
+  "range": {
+   "areas": [
+    "강원",
+    "울릉군",
+    "울진군",
+    "영덕군",
+    "포항시"
+   ]
+  }
+ },
+ "화경솔밭버섯": {
+  "summary": "밤에 빛을 내는 독버섯.",
+  "distribution": "경기 포천(광릉숲) 등 기록이 매우 드물다.",
+  "habitat": "숲속 죽은 나무.",
+  "life": "여름~가을 발생.",
+  "diet": "",
+  "threats": "숲 훼손, 고사목 제거.",
+  "conservation": "멸종위기 야생생물 Ⅱ급. 고사목 보존.",
+  "vars": [
+   "elev",
+   "slope",
+   "tree",
+   "broad",
+   "conifer",
+   "bio1",
+   "bio4",
+   "bio12",
+   "bio15"
+  ],
+  "layers": [
+   {
+    "key": "main",
+    "name": "서식지",
+    "season": "연중",
+    "main": true,
+    "groups": [
+     "broad",
+     "mixed",
+     "conifer"
+    ],
+    "desc": "칸의 절반 이상이 숲인 산지(해발 1,000 m 이하)",
+    "elev": [
+     0,
+     1000
+    ],
+    "cell_min": 0.5,
+    "refs": []
+   }
+  ],
+  "refs": []
+ }
+}

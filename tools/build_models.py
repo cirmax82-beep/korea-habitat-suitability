@@ -55,7 +55,8 @@ ENV = ROOT / "work" / "env"
 OCC = ROOT / "work" / "occ"
 SUIT = ROOT / "data" / "suit"
 MIN_CELLS = 15
-RANGE_KM = {"bird": 25, "mammal": 15}   # 알려진 분포(출현 칸·기록 시군구)에서 이 거리 안은 그대로, 그만큼 더 가면서 0으로. 그 밖의 분류군 5 km
+RANGE_KM = {"bird": 25, "mammal": 15, "fish": 10}   # 알려진 분포(출현 칸·기록 시군구)에서 이 거리 안은 그대로, 그만큼 더 가면서 0으로. 그 밖의 분류군 5 km
+MOBILE = ("bird", "mammal")   # 그 밖의 분류군은 출현 칸이 없으면(시군구 기록만 있으면) ‘가능’까지만, 칸이 있으면 시군구로 넓히지 않음
 RULE_T = (0.5, 0.7, 0.85)                 # 서식 조건 지수의 가능·적합·매우 적합 기준
 OCC_SGG = ROOT / "work" / "occ_sgg"
 N_BG = 10000
@@ -209,27 +210,35 @@ def main():
     sgg_r = rasterize(((geom, i + 1) for i, geom in enumerate(sg.geometry)), out_shape=land.shape,
                       transform=from_origin(grid["x0"], grid["y1"], grid["res"], grid["res"]), fill=0, dtype="int16")
 
+    def area_rows(areas):
+        areas = set(areas)
+        return [i + 1 for i, r in enumerate(sg.itertuples()) if areas & {r.name, r.short, r.sidoName}]
+
     def range_weight(group, pres, gids, rng=None):
-        """알려진 분포 범위 가중치(0–1): 출현 칸에서 R km 안과 기록 시군구(+2 km)는 1, 그 밖은 R km에 걸쳐 0으로. 기록이 없으면 None
-        rng: 문헌 프로필의 범위 조정 {"km": R, "sgg": 시군구 기록을 쓸지, "areas": 문헌상 분포 시도·시군구 이름}"""
+        """알려진 분포 범위 가중치(0–1) 두 가지: (기록 범위, 문헌 지역). 해당 없으면 None
+        기록 범위: 출현 칸에서 R km 안과 기록 시군구(+2 km)는 1, 그 밖은 R km에 걸쳐 0으로
+        문헌 지역: 프로필 range.areas(문헌상 분포 시도·시군구, +2 km). 기록과 멀어도 이 안은 ‘가능’까지
+        rng: {"km": R, "sgg": 시군구 기록을 쓸지, "areas": [...], "only": 지역 밖 기록을 뺄지}"""
         rng = rng or {}
-        if rng.get("sgg") is False:
-            gids = []
-        areas = set(rng.get("areas") or [])
-        if not pres.size and not gids and not areas:
-            return None
+        if rng.get("sgg") is False or (pres.size and group not in MOBILE and not rng.get("sgg")):
+            gids = []   # 덜 움직이는 분류군은 출현 칸이 있으면 시군구 기록으로 범위를 넓히지 않음(넓은 시군 전체가 잡히므로)
         R = rng.get("km", RANGE_KM.get(group, 5))
+
+        def weight(known):
+            d = ndimage.distance_transform_edt(~known) * grid["res"] / 1000
+            return np.clip(1 - d / R, 0, 1).ravel()[idx]
+
         known = np.zeros(land.shape, dtype=bool)
         if pres.size:
             seen = np.zeros(land.size, dtype=bool)
             seen[idx[pres]] = True
             known = ndimage.distance_transform_edt(~seen.reshape(land.shape)) * grid["res"] / 1000 <= R
-        rows = [gid_idx[g] for g in gids if g in gid_idx] + [i + 1 for i, r in enumerate(sg.itertuples())
-                                                             if areas & {r.name, r.short, r.sidoName}]
+        rows = [gid_idx[g] for g in gids if g in gid_idx]
         if rows:
             known |= ndimage.distance_transform_edt(~np.isin(sgg_r, rows)) * grid["res"] / 1000 <= 2
-        d = ndimage.distance_transform_edt(~known) * grid["res"] / 1000
-        return np.clip(1 - d / R, 0, 1).ravel()[idx]
+        rows = area_rows(rng.get("areas") or [])
+        in_area = ndimage.distance_transform_edt(~np.isin(sgg_r, rows)) * grid["res"] / 1000 <= 2 if rows else None
+        return (weight(known) if known.any() else None), (weight(in_area) if rows else None)
 
     to5179 = Transformer.from_crs(4326, grid["crs"], always_xy=True)
 
@@ -299,6 +308,13 @@ def main():
             gids = {g: n for g, n in gids.items() if n >= 2}
         else:
             info_out = 0
+        rng = (PROFILES.get(s["ko"]) or {}).get("range") or {}
+        if rng.get("only") and rng.get("areas"):   # 문헌상 그 지역에만 사는 종(섬 특산 등): 지역 밖 기록(식재·오동정)은 뺌
+            rows = area_rows(rng["areas"])
+            in_area = (ndimage.distance_transform_edt(~np.isin(sgg_r, rows)) * grid["res"] / 1000 <= 2).ravel()[idx]
+            info_out += int((~in_area[pres]).sum())
+            pres = pres[in_area[pres]]
+            gids = {g: n for g, n in gids.items() if gid_idx.get(g) in rows}
         kept = np.zeros(idx.size, dtype=bool)
         kept[pres] = True
         filter_geo(s["id"], kept, "해양" in tr["habitat"])   # 사이트에 보여 줄 기록도 학습에 쓴 칸만
@@ -338,12 +354,16 @@ def main():
             info.update({"method": "rule" if tr["habitat"] else "none", "tLo": RULE_T[0], "threshold": RULE_T[1], "tHi": RULE_T[2],
                          "reason": "해양 종" if marine else f"출현 칸 {pres.size}개(모형에는 {MIN_CELLS}개 이상 필요)"})
         # 알려진 분포 범위 밖은 환경이 비슷해도 낮춤(바다 종은 바다 기록이 시군구로 잡힘). 칸·시군구 기록이 모두 없으면 ‘가능’까지만
-        wgt = range_weight(s["group"], pres, list(gids), (PROFILES.get(s["ko"]) or {}).get("range"))
-        if wgt is None or not (pres.size or gids):   # 기록이 없으면 문헌상 분포 지역 안에서도 ‘가능’까지만
-            pred = np.minimum(pred, info["threshold"] - 0.05)
+        w_rec, w_area = range_weight(s["group"], pres, list(gids), (PROFILES.get(s["ko"]) or {}).get("range"))
+        cap = np.minimum(pred, info["threshold"] - 0.05)   # ‘가능’까지
+        if w_rec is None or not (pres.size or (gids and s["group"] in MOBILE)):   # 칸 기록이 없으면 기록 시군구·문헌 지역 안에서도 ‘가능’까지만
             info["noRecord"] = True
-        if wgt is not None:
-            pred = pred * wgt
+            ws = [w for w in (w_rec, w_area) if w is not None]
+            pred = cap * np.maximum.reduce(ws) if ws else cap
+        else:
+            pred = pred * w_rec
+            if w_area is not None:   # 문헌상 분포 지역은 기록과 멀어도 ‘가능’까지
+                pred = np.maximum(pred, cap * w_area)
         info["sgg"] = len(gids)
         area = np.ones(idx.size, dtype="float32")
         if aq:   # 물에 사는 종: 그 물이 없는 칸은 0, 면적은 칸 안의 물 면적만
