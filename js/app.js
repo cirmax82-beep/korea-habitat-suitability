@@ -10,7 +10,7 @@
 
   const GROUPS = { mammal: "포유류", bird: "조류", herp: "양서·파충류", fish: "어류", insect: "곤충", invert: "무척추동물", plant: "육상식물", algae: "해조류", fungi: "고등균류" };
   const GRADE = { en1: "멸종위기 Ⅰ급", en2: "멸종위기 Ⅱ급" };
-  const VARS = { elev: "고도", slope: "경사", tree: "산림", conifer: "침엽수림", grass: "초지", paddy: "논", field: "밭·과수", built: "시가지", bare: "나지",
+  const VARS = { elev: "고도", slope: "경사", tree: "산림", conifer: "침엽수림", grass: "초지", paddy: "논", field: "밭·과수", built: "시가지", artbare: "나대지", bare: "자연 나지",
     rock: "암벽", wetland: "내륙습지", tidal: "갯벌", river: "하천", lake: "호소", dist_river: "하천까지 거리", dist_lake: "호소·습지까지 거리",
     dist_coast: "해안까지 거리", bio1: "연평균기온", bio4: "기온 계절성", bio12: "연강수량", bio15: "강수 계절성" };
   const AQUA = { river: "하천", lake: "호소", wetland: "습지", paddy: "논", tidal: "갯벌", sea: "바다" };
@@ -236,11 +236,19 @@
         maxZoom: 19, attribution: "Tiles &copy; Esri &mdash; Source: Esri, Maxar, Earthstar Geographics" }),
     };
   };
+  // 환경부 세분류 토지피복지도(환경공간정보서비스 지도 캐시). 적합도 층(zIndex 10) 아래, 바탕지도 위
+  const LC_WMS = "https://api.mcee.go.kr/geoserver/gwc/service/wms";
+  const LC_LEGEND = "https://api.mcee.go.kr/geoserver/wms?SERVICE=WMS&VERSION=1.1.1&REQUEST=GetLegendGraphic&FORMAT=image/png&LAYER=EGIS:lv3_2025y";
+  const landcoverLayer = () => L.tileLayer.wms(LC_WMS, {
+    layers: "EGIS:lv3_2025y", format: "image/png", transparent: true, version: "1.1.1", tiled: true, opacity: 0.6, zIndex: 5, maxZoom: 19,
+    attribution: '토지피복: <a href="https://aid.mcee.go.kr" target="_blank" rel="noopener">기후에너지환경부 환경공간정보서비스</a>',
+  });
   const makeMap = (el, opts = {}) => {
     const map = L.map(el, { zoomSnap: 0.5, minZoom: 6, maxZoom: 18, maxBounds: [[30.5, 121], [40.5, 134.5]], ...opts }).setView([36.1, 127.8], 7);
     const base = baseLayers();
     base["밝은 지도"].addTo(map);
-    L.control.layers(base, null, { position: "topright" }).addTo(map);
+    const overlays = { [`토지피복(환경부 세분류 2025) <a href="${LC_LEGEND}" target="_blank" rel="noopener">범례</a>`]: landcoverLayer() };
+    L.control.layers(base, overlays, { position: "topright", autoZIndex: false }).addTo(map);
     L.control.scale({ imperial: false, position: "bottomright" }).addTo(map);
     return map;
   };
@@ -380,6 +388,7 @@
         <li><b>MaxEnt 종분포모형</b>(${fmt(mx)}종): 출현 기록이 15칸 이상인 종. 모든 대상 종의 출현 칸에서 배경을 뽑아(target-group background) 조사가 많이 된 곳에 치우치는 편향을 줄였습니다. 예측력은 3겹 교차검증 AUC, ‘적합’ 기준은 출현 칸의 90%가 들어가는 값입니다(놓치는 종이 적도록 넉넉하게 잡음).</li>
         <li><b>서식 조건 지수</b>(${fmt(n - mx)}종): 기록이 적거나 바다에 사는 종. 서식지 유형별 토지피복·지형·물과의 거리로 계산하고, 기록이 있으면 기록에서 멀수록 낮췄습니다. 통계 모형이 아닌 참고값입니다.</li>
         <li>환경 변수: 토지피복 비율 12종과 하천·호소까지 거리(환경부 세분류 토지피복지도 2025년, 1 m급 41개 분류를 묶음), 고도·경사(Copernicus DEM GLO-90), 해안까지 거리, 기후 4종(CHELSA V2.1 1981–2010).</li>
+        <li><b>시가지·나대지 제외</b>: 시가지(주거·상업·공업·도로·철도 등)와 나대지(채광지·운동장·기타나지)는 서식지로 보지 않아, 칸의 적합도와 면적에서 그 비율만큼 뺍니다(‘도시’에도 사는 양비둘기·황조롱이는 빼지 않음).</li>
         <li><b>물에 사는 종</b>(서식 유형이 하천·계곡·호소·습지·논습지·하구·갯벌·바다뿐인 어류·저서성 무척추동물·수서곤충·습지식물 등): 그 물이 있는 칸에서만 서식 가능으로 보고, 면적은 칸 안의 물 면적만 셉니다.</li>
         <li>출현 자료: GBIF 공개 기록과 iNaturalist 관찰(멸종위기종 종합관리 사이트와 같은 자료). 위치 오차가 1 km를 넘거나 위치를 흐린 기록은 빼고, 기록마다의 좌표 대신 약 250 m 칸으로만 보여 줍니다.</li>
       </ul>

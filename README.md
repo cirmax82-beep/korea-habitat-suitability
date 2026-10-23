@@ -23,6 +23,7 @@ bash tools/publish_data.sh        # data/suit·data/blocks를 릴리스(data-lat
 ```
 
 - 환경 변수: 환경부 세분류 토지피복지도 2025년(환경공간정보서비스 WMS, `tools/fetch_landcover.py` — 칸별 토지피복 비율 12종, 하천·호소까지 거리), Copernicus DEM GLO-90(고도·경사), 해안까지 거리, CHELSA V2.1 1981–2010(bio1·bio4·bio12·bio15)
+- 시가지·나대지(채광지·운동장·기타나지)는 서식지가 아님: 적합도·면적에서 칸 안 그 비율만큼 뺌(‘도시’ 서식 종 제외)
 - 물에 사는 종(서식 태그가 모두 물 유형): 그 물이 있는 칸에서만 서식 가능, 면적은 칸 안의 물 면적
 - 적합성: 출현 칸 15개 이상은 MaxEnt(elapid, target-group background, 3겹 교차검증 AUC, 출현 칸의 90%가 들어가는 임계값(P10)), 나머지는 `tools/traits.tsv`의 서식 태그로 만든 서식 조건 지수
 - 생태적 특징: `tools/traits.tsv`(공개 자료 요약). 저감방안 규칙은 `js/measures.js`

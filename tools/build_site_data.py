@@ -34,7 +34,7 @@ GROUP_STRESS = {   # 분류군 기본 위협 요인(traits.tsv의 ‘민감’�
 }
 ABSENT = {"호랑이", "표범", "늑대", "스라소니", "대륙사슴", "크낙새", "큰바다사자"}   # 남한에서 최근 야생 확인 기록이 없는 종
 # 묶음 파일에 넣을 환경 값(값 × 배율을 0–254 정수로). 토지피복 비율은 × 250(0.4% 단위 — 좁은 하천도 남게)
-ENV_ROWS = [("elev", 0.1), ("slope", 1)] + [(k, 250) for k in ("tree", "grass", "paddy", "field", "built", "bare", "rock", "wetland", "tidal", "river", "lake", "sea")]
+ENV_ROWS = [("elev", 0.1), ("slope", 1)] + [(k, 250) for k in ("tree", "grass", "paddy", "field", "built", "artbare", "bare", "rock", "wetland", "tidal", "river", "lake", "sea")]
 
 
 def load_traits():
@@ -66,7 +66,7 @@ def main():
             "photo": s["photo"], "photoBy": s["photoBy"], "inat": s["inat"], "gbif": s["gbif"],
             "habitat": tr["habitat"], "season": tr["season"], "stress": stress, "note": tr["note"], "remark": s["note"],
             "absent": s["ko"] in ABSENT or None,
-            "aqua": m.get("aqua"),
+            "aqua": m.get("aqua"), "urban": m.get("urban"),
             "model": {k: m.get(k) for k in ("method", "auc", "threshold", "importance", "suitableKm2", "cells", "reason") if m.get(k) is not None},
         }.items() if v not in (None, "", [])})
     (DATA / "catalog.json").write_text(json.dumps({"generatedAt": time.strftime("%Y-%m-%d"), "species": cat}, ensure_ascii=False, separators=(",", ":")), encoding="utf-8")

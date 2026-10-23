@@ -12,7 +12,7 @@
   const GRADE_RANK = { high: 0, mid: 1, low: 2 };
   // 토지피복(환경부 세분류 2025년 묶음)
   const COVER = [["tree", "산림", "#2f9e44"], ["grass", "초지", "#94d82d"], ["paddy", "논", "#fff3a0"], ["field", "밭·과수", "#fcc419"],
-    ["built", "시가지", "#868e96"], ["bare", "나지", "#d8c39a"], ["rock", "암벽", "#a1887f"], ["river", "하천", "#1c7ed6"],
+    ["built", "시가지", "#868e96"], ["artbare", "나대지", "#ced4da"], ["bare", "자연 나지", "#d8c39a"], ["rock", "암벽", "#a1887f"], ["river", "하천", "#1c7ed6"],
     ["lake", "호소", "#4dabf7"], ["wetland", "습지", "#22b8cf"], ["tidal", "갯벌", "#b197fc"], ["sea", "바다", "#1864ab"]];
   const ALT_COLOR = "#7048e8";
   const I = { inited: false, map: null, res: null, sel: null, running: false, km: 1, showLow: false };
@@ -37,11 +37,13 @@
   const envK = (name) => (S.grid.env.find((e) => e[0] === name) || [0, 1])[1];
   // 칸의 토지피복 비율(0–1)을 읽는 함수
   const fracOf = (get, name) => { const row = envRow(name), k = envK(name); return (r, c) => get(row, r, c) / k; };
-  // 물에 사는 종: 칸 안 그 물(하천·호소 등)의 비율 — 면적을 셀 때 곱함. 아니면 null
-  const aquaOf = (get, sp) => {
-    if (!sp.aqua) return null;
-    const fs = sp.aqua.map((n) => fracOf(get, n));
-    return (r, c) => Math.min(1, fs.reduce((a, f) => a + f(r, c), 0));
+  // 칸 안 서식지가 될 수 있는 부분의 비율 — 면적을 셀 때 곱함
+  // 물에 사는 종은 그 물(하천·호소 등), 그 밖의 종은 시가지·나대지를 뺀 부분(‘도시’ 서식 종은 칸 전체)
+  const habOf = (get, sp) => {
+    if (sp.urban) return () => 1;
+    const fs = sp.aqua ? sp.aqua.map((n) => fracOf(get, n)) : [fracOf(get, "built"), fracOf(get, "artbare")];
+    return sp.aqua ? (r, c) => Math.min(1, fs.reduce((a, f) => a + f(r, c), 0))
+      : (r, c) => Math.max(0, 1 - fs[0](r, c) - fs[1](r, c));
   };
 
   // ---------- 사업지 도형(UTM-K) ----------
@@ -283,12 +285,12 @@
       for (let k = 0; k < n; k++) if (dist[k] <= R) near.push(k);
       const rows = [];
       targets.forEach((sp) => {
-        const t = H.thrOf(sp), row = sp.row, aq = aquaOf(get, sp);
+        const t = H.thrOf(sp), row = sp.row, hab = habOf(get, sp);
         let suitIn = 0, sumV = 0, sumW = 0, ringSuit = 0, atPt = -1;
         near.forEach((k) => {
           const r = r0 + Math.floor(k / win.w), c = c0 + (k % win.w), v = get(row, r, c);
           if (v > 100) return;
-          const cw = cov[k], a = cellHa * (aq ? aq(r, c) : 1);   // 물에 사는 종은 칸 안 물 면적만
+          const cw = cov[k], a = cellHa * hab(r, c);   // 칸 안 서식지가 될 수 있는 부분만
           if (cw > 0) { if (v >= t) suitIn += cw * a; sumV += v * cw; sumW += cw; }
           if (cw < 1 && v >= t) ringSuit += (1 - cw) * a;
         });
@@ -371,7 +373,7 @@
   // 사업지 밖, 정한 거리 안, ‘적합’ 이상이고 시가지 20% 미만인 칸을 상하좌우로 이어 묶고 적합도·면적·거리로 순위
   const altPatches = (row) => {
     const res = I.res, { win, get, cov, dist } = res, { h, w, r0, c0 } = win, n = h * w;
-    const maxD = res.alt * 1000, built = fracOf(get, "built"), aq = aquaOf(get, row.sp), cellHa = (S.grid.res ** 2) / 1e4;
+    const maxD = res.alt * 1000, built = fracOf(get, "built"), hab = habOf(get, row.sp), cellHa = (S.grid.res ** 2) / 1e4;
     const cand = new Uint8Array(n);
     for (let k = 0; k < n; k++) {
       if (cov[k] > 0 || dist[k] > maxD) continue;
@@ -400,7 +402,7 @@
         const r = r0 + Math.floor(q / w), c = c0 + (q % w);
         sumV += get(row.sp.row, r, c);
         minD = Math.min(minD, dist[q]);
-        ha += cellHa * (aq ? aq(r, c) : 1);
+        ha += cellHa * hab(r, c);
         COVER.forEach(([key], j) => { cv[key] = (cv[key] || 0) + envF[j](r, c) * 100; });
         const s = get(lo, r, c) + 256 * get(hi, r, c);
         sgg.set(s, (sgg.get(s) || 0) + 1);

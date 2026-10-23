@@ -10,6 +10,8 @@
     변수 기여는 순열 중요도(AUC 감소)
   · 서식지 유형으로 모형값을 깎는 보정(AOH)은 수역 자료에 작은 하천이 안 잡혀 실제 출현지까지 지워져 쓰지 않음
 - 출현 칸이 적은 종·해양 종: traits.tsv의 서식 태그로 만든 서식 규칙 지수(통계 모형이 아님 — 사이트에 따로 표시)
+- 시가지(주거·상업·공업·도로·철도 등)와 나대지(채광지·운동장·기타나지)는 서식지가 아님: 적합도와 적합 면적을 칸 안 그 비율만큼 뺌
+  (서식 태그에 ‘도시’가 있는 종은 빼지 않음)
 - 물에 사는 종(서식 태그가 모두 하천·계곡·호소·습지·논습지·하구·갯벌·해양): 그 물이 있는 칸에서만 서식 가능,
   적합 면적은 칸 안의 물 면적(환경부 세분류 토지피복 비율)으로 셈
   기록이 조금이라도 있으면 기록에서 RANGE_KM 밖은 점수를 낮춰 알려진 분포 범위를 반영
@@ -94,9 +96,7 @@ def rule_score(tags, E):
     for t in tags:
         if t in score:
             s = np.maximum(s, score[t])
-    if "도시" not in tags:
-        s = s * (1 - 0.8 * E["built"])
-    return np.clip(s, 0, 1)
+    return np.clip(s, 0, 1)   # 시가지·나대지는 main()에서 칸 비율만큼 깎음
 
 
 def to_img(path, vals, land):
@@ -181,6 +181,11 @@ def main():
             area = np.clip(sum(E[k] for k in aq), 0, 1)
             pred = np.where(area > 0.001, pred, 0)
             info["aqua"] = aq
+        elif "도시" not in tr["habitat"]:   # 시가지(마을·도로 등)·나대지는 서식지가 아님: 적합도와 면적을 그 비율만큼 뺌
+            area = np.clip(1 - E["built"] - E["artbare"], 0, 1)
+            pred = pred * area
+        else:
+            info["urban"] = True
         vals = np.zeros(land.shape, dtype="float32")
         vals.ravel()[idx] = pred
         to_img(SUIT / f"{s['id']}.webp", vals[land], land)
