@@ -58,9 +58,9 @@
  },
  "금자란": {
   "summary": "작은 노란 꽃이 피는 착생란.",
-  "distribution": "제주와 남해안 일부 섬.",
-  "habitat": "상록활엽수림 나무줄기(주로 이끼 낀 곳). 나무줄기나 바위에 붙어 사는 착생란이라 숲·바위 칸으로 대신 나타낸다.",
-  "life": "3~4월 꽃.",
+  "distribution": "경남 남해도와 제주도.",
+  "habitat": "소나무·비자나무 껍질에 붙어 사는 착생란. 숲·바위 칸으로 대신 나타낸다.",
+  "life": "5~6월 꽃.",
   "diet": "",
   "threats": "관상용 불법 채취, 숙주 나무 벌채.",
   "conservation": "멸종위기 야생생물 Ⅰ급. 숙주 나무 보호, 채취 단속.",
@@ -88,10 +88,17 @@
      0,
      600
     ],
-    "refs": []
+    "refs": [
+     1
+    ]
    }
   ],
-  "refs": [],
+  "refs": [
+   {
+    "text": "국립생물자원관 (2018) 금자란(Gastrochilus fuscopunctatus) 종 설명. 한반도의 생물다양성 — 한반도의 생물다양성 시스템 고도화",
+    "url": "https://species.nibr.go.kr/species-detail/120000065544"
+   }
+  ],
   "range": {
    "areas": [
     "제주",
@@ -229,8 +236,8 @@
  },
  "비자란": {
   "summary": "흰 꽃이 피는 작은 착생란.",
-  "distribution": "제주(주로 남부 계곡 숲).",
-  "habitat": "습한 계곡 숲의 나뭇가지. 나무줄기나 바위에 붙어 사는 착생란이라 숲·바위 칸으로 대신 나타낸다.",
+  "distribution": "제주도(세계 분포의 북방한계).",
+  "habitat": "해발 250~350 m 남사면 계곡부의 습도가 높은 곳, 비자나무 등 상록수에 착생.",
   "life": "4~5월 꽃.",
   "diet": "",
   "threats": "관상용 불법 채취, 숙주 나무 훼손.",
@@ -259,10 +266,17 @@
      0,
      600
     ],
-    "refs": []
+    "refs": [
+     1
+    ]
    }
   ],
-  "refs": [],
+  "refs": [
+   {
+    "text": "국립생물자원관 (2018) 비자란(Thrixspermum japonicum) 종 설명. 한반도의 생물다양성 — 한눈에 보는 멸종위기 야생생물",
+    "url": "https://species.nibr.go.kr/species-detail/120000065628"
+   }
+  ],
   "range": {
    "areas": [
     "제주"
@@ -397,8 +411,8 @@
  "죽백란": {
   "summary": "잎이 넓은 보춘화속 난초.",
   "distribution": "제주 상록수림(매우 드묾).",
-  "habitat": "상록활엽수림 아래 그늘진 곳.",
-  "life": "5~6월 꽃.",
+  "habitat": "해발 600 m 이하의 상록수 숲.",
+  "life": "7~8월 꽃.",
   "diet": "",
   "threats": "관상용 불법 채취.",
   "conservation": "멸종위기 야생생물 Ⅰ급. 자생지 감시.",
@@ -426,10 +440,17 @@
      0,
      600
     ],
-    "refs": []
+    "refs": [
+     1
+    ]
    }
   ],
-  "refs": [],
+  "refs": [
+   {
+    "text": "국립생물자원관 (2018) 죽백란(Cymbidium lancifolium) 종 설명. 한반도의 생물다양성 — 한눈에 보는 멸종위기 야생생물",
+    "url": "https://species.nibr.go.kr/species-detail/120000065518"
+   }
+  ],
   "range": {
    "areas": [
     "제주"
@@ -439,9 +460,9 @@
  },
  "탐라란": {
   "summary": "제주에서 처음 알려진 작은 착생란.",
-  "distribution": "제주.",
-  "habitat": "숲속 나뭇가지. 나무줄기나 바위에 붙어 사는 착생란이라 숲·바위 칸으로 대신 나타낸다.",
-  "life": "3~4월 꽃.",
+  "distribution": "제주도(세계 분포의 북방한계).",
+  "habitat": "숲속 바위나 상록활엽수에 착생.",
+  "life": "7~8월 꽃.",
   "diet": "",
   "threats": "관상용 불법 채취, 숙주 나무 훼손.",
   "conservation": "멸종위기 야생생물 Ⅰ급. 숲 보전.",
@@ -469,10 +490,17 @@
      0,
      700
     ],
-    "refs": []
+    "refs": [
+     1
+    ]
    }
   ],
-  "refs": [],
+  "refs": [
+   {
+    "text": "국립생물자원관 (2018) 탐라란(Gastrochilus japonicus) 종 설명. 한반도의 생물다양성 — 한눈에 보는 멸종위기 야생생물",
+    "url": "https://species.nibr.go.kr/species-detail/120000065545"
+   }
+  ],
   "range": {
    "areas": [
     "제주"
@@ -532,9 +560,9 @@
  },
  "풍란": {
   "summary": "바닷가 바위·나무에 붙어 사는 작은 착생란.",
-  "distribution": "남해안·제주 섬(야생 개체는 매우 드묾).",
-  "habitat": "바닷바람이 드는 해안 바위 절벽·나무. 나무줄기나 바위에 붙어 사는 착생란이라 숲·바위 칸으로 대신 나타낸다.",
-  "life": "6~7월 흰 꽃.",
+  "distribution": "경남·전남·제주(야생 개체는 매우 드묾).",
+  "habitat": "바람이 잘 통하는 상록수림의 나무·바위에 착생.",
+  "life": "5~6월 꽃, 9~10월 열매.",
   "diet": "",
   "threats": "관상용 불법 채취로 야생 개체가 거의 사라졌다.",
   "conservation": "멸종위기 야생생물 Ⅰ급. 증식 개체 복원.",
@@ -564,10 +592,27 @@
      0,
      300
     ],
-    "refs": []
+    "refs": [
+     1,
+     2,
+     3
+    ]
    }
   ],
-  "refs": [],
+  "refs": [
+   {
+    "text": "국립생물자원관 (2018) 풍란(Neofinetia falcata) 종 설명. 한반도의 생물다양성 — 한반도의 생물다양성 시스템 고도화",
+    "url": "https://species.nibr.go.kr/species-detail/120000065590"
+   },
+   {
+    "text": "남엽 외 (2016) 멸종위기 야생생물Ⅰ급 풍란의 효율적인 복원방법 구명. 농업생명과학연구 50(5):39–49",
+    "url": "https://www.kci.go.kr/kciportal/ci/sereArticleSearch/ciSereArtiView.kci?sereArticleSearchBean.artiId=ART002158533"
+   },
+   {
+    "text": "한정은 외 (2018) Genetic diversity and population structure of endangered Neofinetia falcata (Orchidaceae) in South Korea based on microsatellite analysis. Journal of Species Research 7(4):354–362",
+    "url": "https://www.kci.go.kr/kciportal/ci/sereArticleSearch/ciSereArtiView.kci?sereArticleSearchBean.artiId=ART002407206"
+   }
+  ],
   "range": {
    "areas": [
     "제주",
@@ -690,11 +735,11 @@
  },
  "가는동자꽃": {
   "summary": "가는 잎에 붉은 꽃이 피는 동자꽃.",
-  "distribution": "강원·경기 일부.",
-  "habitat": "산지 습한 초지·물가.",
+  "distribution": "강원·경남 등(경남 산청 개체군은 소멸 추정).",
+  "habitat": "산지 습지.",
   "life": "7~8월 꽃.",
   "diet": "",
-  "threats": "습지 감소, 채취.",
+  "threats": "습지 훼손·파괴.",
   "conservation": "멸종위기 야생생물 Ⅱ급. 습한 초지 보전.",
   "vars": [
    "elev",
@@ -733,10 +778,17 @@
       "min": 0.01
      }
     ],
-    "refs": []
+    "refs": [
+     1
+    ]
    }
   ],
-  "refs": []
+  "refs": [
+   {
+    "text": "국립생물자원관 (2018) 가는동자꽃(Lychnis kiusiana) 종 설명. 한반도의 생물다양성 — 한눈에 보는 멸종위기 야생생물",
+    "url": "https://species.nibr.go.kr/species-detail/120000060761"
+   }
+  ]
  },
  "가시오갈피나무": {
   "summary": "가지에 가는 가시가 빽빽한 떨기나무.",
@@ -1149,9 +1201,9 @@
  },
  "나도범의귀": {
   "summary": "작은 꽃이 피는 범의귀과 풀.",
-  "distribution": "강원 고산.",
-  "habitat": "고산 숲 아래 습한 곳.",
-  "life": "6월 꽃.",
+  "distribution": "강원도(북부는 함경북도).",
+  "habitat": "산지 숲.",
+  "life": "5~6월 꽃.",
   "diet": "",
   "threats": "기후 변화.",
   "conservation": "멸종위기 야생생물 Ⅱ급. 고산 숲 보전.",
@@ -1180,10 +1232,17 @@
      700,
      1700
     ],
-    "refs": []
+    "refs": [
+     1
+    ]
    }
   ],
-  "refs": []
+  "refs": [
+   {
+    "text": "국립생물자원관 (2017) 나도범의귀(Mitella nuda) 종 설명. 한반도의 생물다양성 — 국가생물종정보관리체계 구축",
+    "url": "https://species.nibr.go.kr/species-detail/120000061661"
+   }
+  ]
  },
  "나도승마": {
   "summary": "한국 특산 노란 꽃 풀(1속 1종).",
@@ -1239,8 +1298,8 @@
  },
  "나도여로": {
   "summary": "흰 꽃이 피는 백합과 풀.",
-  "distribution": "강원 일부.",
-  "habitat": "산지 초지와 바위 비탈.",
+  "distribution": "한반도 중부 이북.",
+  "habitat": "높은 산의 풀밭.",
   "life": "7~8월 꽃.",
   "diet": "",
   "threats": "초지 천이·채취.",
@@ -1271,16 +1330,23 @@
      200,
      1200
     ],
-    "refs": []
+    "refs": [
+     1
+    ]
    }
   ],
-  "refs": []
+  "refs": [
+   {
+    "text": "국립생물자원관 (2017) 나도여로(Zigadenus sibiricus) 종 설명. 한반도의 생물다양성 — 국가생물종정보관리체계 구축",
+    "url": "https://species.nibr.go.kr/species-detail/120000065386"
+   }
+  ]
  },
  "날개하늘나리": {
   "summary": "주홍 꽃이 하늘을 향해 피는 나리.",
-  "distribution": "강원 산지.",
-  "habitat": "햇빛이 드는 산지 초지·습한 풀밭.",
-  "life": "6~7월 꽃.",
+  "distribution": "강원도 일대.",
+  "habitat": "해발 1,400 m 안팎 높은 산 능선부.",
+  "life": "7~8월 꽃.",
   "diet": "",
   "threats": "관상용 불법 채취, 초지 천이.",
   "conservation": "멸종위기 야생생물 Ⅱ급. 초지 보전.",
@@ -1303,17 +1369,26 @@
     "main": true,
     "groups": [
      "grass",
-     "wetland"
+     "rock",
+     "broad",
+     "mixed"
     ],
-    "desc": "해발 300~1,300 m의 산지 초지",
+    "desc": "해발 700 m 이상 산지의 풀밭·바위·숲 가장자리(칸 평균 고도라 실제 능선보다 낮게 잡음)",
     "elev": [
-     300,
-     1300
+     700,
+     1700
     ],
-    "refs": []
+    "refs": [
+     1
+    ]
    }
   ],
-  "refs": []
+  "refs": [
+   {
+    "text": "국립생물자원관 (2018) 날개하늘나리(Lilium dauricum) 종 설명. 한반도의 생물다양성 — 한눈에 보는 멸종위기 야생생물",
+    "url": "https://species.nibr.go.kr/species-detail/120000065299"
+   }
+  ]
  },
  "넓은잎제비꽃": {
   "summary": "잎이 넓은 제비꽃.",
@@ -1487,8 +1562,8 @@
  },
  "눈썹고사리": {
   "summary": "잎이 길쭉한 꼬리고사리류.",
-  "distribution": "제주 일부 계곡.",
-  "habitat": "습한 계곡 숲의 바위.",
+  "distribution": "제주도(국내에서 수 개체만 확인된 남방계 식물).",
+  "habitat": "계곡 숲의 바위.",
   "life": "여름 포자.",
   "diet": "",
   "threats": "계곡 정비·채취.",
@@ -1517,10 +1592,17 @@
      0,
      600
     ],
-    "refs": []
+    "refs": [
+     1
+    ]
    }
   ],
-  "refs": [],
+  "refs": [
+   {
+    "text": "국립생물자원관 (2017) 눈썹고사리(Asplenium wrightii) 종 설명. 한반도의 생물다양성 — 국가생물종정보관리체계 구축",
+    "url": "https://species.nibr.go.kr/species-detail/120000059710"
+   }
+  ],
   "range": {
    "areas": [
     "제주"
@@ -1593,12 +1675,12 @@
   }
  },
  "대성쓴풀": {
-  "summary": "흰 꽃이 피는 용담과 풀.",
-  "distribution": "강원 석회암 지대.",
-  "habitat": "석회암 산지 풀밭.",
-  "life": "5월 꽃.",
+  "summary": "용담과 한해살이풀.",
+  "distribution": "강원 태백산과 정선군 일대.",
+  "habitat": "산골짜기 숲속(등산로 주변 자생지는 답압 위협).",
+  "life": "한해살이.",
   "diet": "",
-  "threats": "석회석 채굴, 초지 천이.",
+  "threats": "등산로 답압·훼손.",
   "conservation": "멸종위기 야생생물 Ⅱ급. 석회암 초지 보전.",
   "vars": [
    "elev",
@@ -1616,32 +1698,30 @@
     "season": "연중",
     "main": true,
     "groups": [
-     "grass",
-     "rock"
+     "broad",
+     "mixed",
+     "conifer"
     ],
-    "desc": "석회암 지대 시군의 경사진 초지·바위(해발 200~900 m)",
+    "desc": "태백·정선 일대 산지의 숲(해발 300~1,500 m)",
     "elev": [
-     200,
-     900
+     300,
+     1500
     ],
-    "slope": [
-     10,
-     90
-    ],
-    "refs": []
+    "refs": [
+     1
+    ]
    }
   ],
-  "refs": [],
+  "refs": [
+   {
+    "text": "국립생물자원관 (2018) 대성쓴풀(Anagallidium dichotomum) 종 설명. 한반도의 생물다양성 — 한눈에 보는 멸종위기 야생생물",
+    "url": "https://species.nibr.go.kr/species-detail/120000062800"
+   }
+  ],
   "range": {
    "areas": [
-    "영월군",
-    "정선군",
-    "단양군",
-    "삼척시",
-    "동해시",
-    "평창군",
-    "제천시",
-    "태백시"
+    "태백시",
+    "정선군"
    ]
   }
  },
@@ -1807,10 +1887,10 @@
  "두잎약난초": {
   "summary": "잎이 두 장인 난초.",
   "distribution": "남부·제주 일부.",
-  "habitat": "숲 아래 습한 곳.",
+  "habitat": "낙엽이 두껍게 쌓인 숲속.",
   "life": "5~6월 꽃.",
   "diet": "",
-  "threats": "관상용 불법 채취.",
+  "threats": "약용 채취.",
   "conservation": "멸종위기 야생생물 Ⅱ급. 자생지 보전.",
   "vars": [
    "elev",
@@ -1838,10 +1918,17 @@
      100,
      1000
     ],
-    "refs": []
+    "refs": [
+     1
+    ]
    }
   ],
-  "refs": []
+  "refs": [
+   {
+    "text": "국립생물자원관 (2018) 두잎약난초(Cremastra unguiculata) 종 설명. 한반도의 생물다양성 — 한눈에 보는 멸종위기 야생생물",
+    "url": "https://species.nibr.go.kr/species-detail/120000065513"
+   }
+  ]
  },
  "매화마름": {
   "summary": "논에 사는 미나리아재비과 물풀.",
@@ -1898,8 +1985,8 @@
  },
  "무주나무": {
   "summary": "늘푸른 작은 떨기나무(꼭두서니과).",
-  "distribution": "제주 일부.",
-  "habitat": "상록활엽수림 아래 그늘.",
+  "distribution": "한라산 남쪽 상록수 숲(매우 드묾).",
+  "habitat": "습도가 높고 부식질이 풍부한 상록수 숲 아래.",
   "life": "5~6월 꽃.",
   "diet": "",
   "threats": "숲 개발.",
@@ -1928,10 +2015,17 @@
      0,
      500
     ],
-    "refs": []
+    "refs": [
+     1
+    ]
    }
   ],
-  "refs": [],
+  "refs": [
+   {
+    "text": "국립생물자원관 (2018) 무주나무(Lasianthus japonicus) 종 설명. 한반도의 생물다양성 — 한눈에 보는 멸종위기 야생생물",
+    "url": "https://species.nibr.go.kr/species-detail/120000063534"
+   }
+  ],
   "range": {
    "areas": [
     "제주"
@@ -1988,8 +2082,8 @@
  },
  "물석송": {
   "summary": "곧게 서는 석송류.",
-  "distribution": "제주 일부.",
-  "habitat": "햇빛이 드는 습한 땅.",
+  "distribution": "제주도에 자란다고 알려졌으나 자생지가 확인되지 않는다.",
+  "habitat": "볕이 잘 들고 습한 곳·습지 주변.",
   "life": "연중.",
   "diet": "",
   "threats": "개발.",
@@ -2018,10 +2112,17 @@
      0,
      400
     ],
-    "refs": []
+    "refs": [
+     1
+    ]
    }
   ],
-  "refs": [],
+  "refs": [
+   {
+    "text": "국립생물자원관 (2017) 물석송(Lycopodiella cernua) 종 설명. 한반도의 생물다양성 — 국가생물종정보관리체계 구축",
+    "url": "https://species.nibr.go.kr/species-detail/120000059524"
+   }
+  ],
   "range": {
    "areas": [
     "제주"
@@ -2030,8 +2131,8 @@
  },
  "방울난초": {
   "summary": "작은 난초.",
-  "distribution": "제주 등 남부.",
-  "habitat": "습한 풀밭.",
+  "distribution": "제주도(과거 한라산 정상부, 현재 오름에서만 소수 확인).",
+  "habitat": "오름의 풀밭.",
   "life": "7~8월 꽃.",
   "diet": "",
   "threats": "초지 개발.",
@@ -2060,10 +2161,17 @@
      0,
      600
     ],
-    "refs": []
+    "refs": [
+     1
+    ]
    }
   ],
-  "refs": [],
+  "refs": [
+   {
+    "text": "국립생물자원관 (2018) 방울난초(Habenaria flagellifera) 종 설명. 한반도의 생물다양성 — 한눈에 보는 멸종위기 야생생물",
+    "url": "https://species.nibr.go.kr/species-detail/120000065562"
+   }
+  ],
   "range": {
    "areas": [
     "제주"
@@ -2212,10 +2320,17 @@
      300,
      1500
     ],
-    "refs": []
+    "refs": [
+     1
+    ]
    }
   ],
-  "refs": []
+  "refs": [
+   {
+    "text": "이희천 외 (2011) 내장산국립공원 일대의 특정식물과 귀화식물. 한국환경생태학회지 25(3):267–283",
+    "url": "https://www.kci.go.kr/kciportal/ci/sereArticleSearch/ciSereArtiView.kci?sereArticleSearchBean.artiId=ART001568203"
+   }
+  ]
  },
  "복주머니란": {
   "summary": "큰 주머니 꽃이 피는 난초.",
@@ -2323,10 +2438,10 @@
  "산분꽃나무": {
   "summary": "떨기나무(인동과).",
   "distribution": "강원 석회암 지대.",
-  "habitat": "석회암 바위 비탈.",
-  "life": "5월 꽃.",
+  "habitat": "석회암 지대.",
+  "life": "5~6월 흰 꽃, 9~10월 열매.",
   "diet": "",
-  "threats": "석회석 채굴.",
+  "threats": "원예용 채취.",
   "conservation": "멸종위기 야생생물 Ⅱ급. 석회암 지대 보전.",
   "vars": [
    "elev",
@@ -2353,10 +2468,17 @@
      200,
      1000
     ],
-    "refs": []
+    "refs": [
+     1
+    ]
    }
   ],
-  "refs": [],
+  "refs": [
+   {
+    "text": "국립생물자원관 (2018) 산분꽃나무(Viburnum burejaeticum) 종 설명. 한반도의 생물다양성 — 한눈에 보는 멸종위기 야생생물",
+    "url": "https://species.nibr.go.kr/species-detail/120000063605"
+   }
+  ],
   "range": {
    "areas": [
     "영월군",
@@ -2418,7 +2540,7 @@
   ]
  },
  "삼백초": {
-  "summary": "꽃필 때 잎이 하얘지는 풀.",
+  "summary": "물가에 사는 여러해살이풀. 꽃필 때 윗잎이 하얘진다.",
   "distribution": "제주 일부.",
   "habitat": "물가 습지.",
   "life": "6~8월 꽃.",
@@ -2450,10 +2572,17 @@
      0,
      200
     ],
-    "refs": []
+    "refs": [
+     1
+    ]
    }
   ],
-  "refs": [],
+  "refs": [
+   {
+    "text": "국립생물자원관 (2018) 삼백초(Saururus chinensis) 종 설명. 한반도의 생물다양성 — 한눈에 보는 멸종위기 야생생물",
+    "url": "https://species.nibr.go.kr/species-detail/120000060083"
+   }
+  ],
   "range": {
    "areas": [
     "제주"
@@ -2462,11 +2591,11 @@
  },
  "새깃아재비": {
   "summary": "큰 고사리.",
-  "distribution": "제주 일부.",
+  "distribution": "제주도와 전라남도에서 소수 확인.",
   "habitat": "습한 계곡 숲.",
   "life": "여름 포자.",
   "diet": "",
-  "threats": "개발.",
+  "threats": "원예용 채취.",
   "conservation": "멸종위기 야생생물 Ⅱ급. 자생지 보전.",
   "vars": [
    "elev",
@@ -2492,10 +2621,17 @@
      0,
      600
     ],
-    "refs": []
+    "refs": [
+     1
+    ]
    }
   ],
-  "refs": [],
+  "refs": [
+   {
+    "text": "국립생물자원관 (2018) 새깃아재비(Woodwardia japonica) 종 설명. 한반도의 생물다양성 — 한눈에 보는 멸종위기 야생생물",
+    "url": "https://species.nibr.go.kr/species-detail/120000059802"
+   }
+  ],
   "range": {
    "areas": [
     "제주"
@@ -2673,9 +2809,9 @@
   }
  },
  "선제비꽃": {
-  "summary": "줄기가 곧게 서는 제비꽃.",
-  "distribution": "일부 하천변 습지.",
-  "habitat": "하천변 습한 풀밭.",
+  "summary": "높이 70 cm까지 자라는 대형 제비꽃.",
+  "distribution": "경기 이북과 경남 일대.",
+  "habitat": "하천이 범람하기 쉬운 축축한 풀밭.",
   "life": "5월 꽃.",
   "diet": "",
   "threats": "하천 정비.",
@@ -2718,10 +2854,22 @@
       "min": 0.01
      }
     ],
-    "refs": []
+    "refs": [
+     1,
+     2
+    ]
    }
   ],
-  "refs": []
+  "refs": [
+   {
+    "text": "국립생물자원관 (2018) 선제비꽃(Viola raddeana) 종 설명. 한반도의 생물다양성 — 한눈에 보는 멸종위기 야생생물",
+    "url": "https://species.nibr.go.kr/species-detail/120000061090"
+   },
+   {
+    "text": "장래하 외 (2013) CO2농도와 온도증가에 따른 멸종위기수생식물 선제비꽃의 생태학적 반응. 한국습지학회지 15(3):381–386",
+    "url": "https://www.kci.go.kr/kciportal/ci/sereArticleSearch/ciSereArtiView.kci?sereArticleSearchBean.artiId=ART001799203"
+   }
+  ]
  },
  "섬개야광나무": {
   "summary": "울릉도 바위에 사는 떨기나무.",
@@ -3208,11 +3356,11 @@
  },
  "연잎꿩의다리": {
   "summary": "잎이 연잎 같은 꿩의다리.",
-  "distribution": "강원·충북 석회암 지대.",
-  "habitat": "석회암 바위 비탈과 숲 가장자리.",
-  "life": "6~7월 꽃.",
+  "distribution": "강원 설악산 이북.",
+  "habitat": "높은 산 능선의 바위 지대나 풀밭.",
+  "life": "5~8월 꽃.",
   "diet": "",
-  "threats": "석회석 채굴.",
+  "threats": "산지 개발·채취.",
   "conservation": "멸종위기 야생생물 Ⅱ급. 석회암 지대 보전.",
   "vars": [
    "elev",
@@ -3231,30 +3379,24 @@
     "main": true,
     "groups": [
      "rock",
-     "broad",
-     "mixed"
+     "grass"
     ],
-    "desc": "석회암 지대 시군의 바위·숲(해발 100~900 m)",
+    "desc": "해발 700 m 이상 산지의 바위·풀밭(칸 평균 고도라 실제 능선보다 낮게 잡음)",
     "elev": [
-     100,
-     900
+     700,
+     1700
     ],
-    "refs": []
+    "refs": [
+     1
+    ]
    }
   ],
-  "refs": [],
-  "range": {
-   "areas": [
-    "영월군",
-    "정선군",
-    "단양군",
-    "삼척시",
-    "동해시",
-    "평창군",
-    "제천시",
-    "태백시"
-   ]
-  }
+  "refs": [
+   {
+    "text": "국립생물자원관 (2018) 연잎꿩의다리(Thalictrum coreanum) 종 설명. 한반도의 생물다양성 — 한반도의 생물다양성 시스템 고도화",
+    "url": "https://species.nibr.go.kr/species-detail/120000060287"
+   }
+  ]
  },
  "왕제비꽃": {
   "summary": "큰 제비꽃.",
@@ -3314,12 +3456,12 @@
   ]
  },
  "으름난초": {
-  "summary": "잎이 없는 부생란. 붉은 열매가 달린다.",
-  "distribution": "남부 숲.",
-  "habitat": "숲 바닥의 썩은 나무 주변.",
+  "summary": "녹색 부분이 없어 광합성을 하지 않는 균종속영양 난초.",
+  "distribution": "남부(내륙으로 덕유산 부근까지).",
+  "habitat": "숲 바닥의 썩은 균사에 기대어 산다.",
   "life": "6~7월 꽃.",
   "diet": "",
-  "threats": "숲 훼손.",
+  "threats": "열매 모양 때문에 관상용 채취.",
   "conservation": "멸종위기 야생생물 Ⅱ급. 숲 보전.",
   "vars": [
    "elev",
@@ -3348,18 +3490,25 @@
      0,
      800
     ],
-    "refs": []
+    "refs": [
+     1
+    ]
    }
   ],
-  "refs": []
+  "refs": [
+   {
+    "text": "국립생물자원관 (2018) 으름난초(Cyrtosia septentrionalis) 종 설명. 한반도의 생물다양성 — 한눈에 보는 멸종위기 야생생물",
+    "url": "https://species.nibr.go.kr/species-detail/120000065531"
+   }
+  ]
  },
  "자주땅귀개": {
   "summary": "벌레잡이 땅귀개.",
-  "distribution": "남부 습지.",
+  "distribution": "주로 남부 지방.",
   "habitat": "산지 습지.",
   "life": "8~9월 꽃.",
   "diet": "",
-  "threats": "습지 감소.",
+  "threats": "습지 개발.",
   "conservation": "멸종위기 야생생물 Ⅱ급. 습지 보전.",
   "vars": [
    "elev",
@@ -3388,16 +3537,23 @@
      0,
      400
     ],
-    "refs": []
+    "refs": [
+     1
+    ]
    }
   ],
-  "refs": []
+  "refs": [
+   {
+    "text": "국립생물자원관 (2018) 자주땅귀개(Utricularia yakusimensis) 종 설명. 한반도의 생물다양성 — 한눈에 보는 멸종위기 야생생물",
+    "url": "https://species.nibr.go.kr/species-detail/120000214290"
+   }
+  ]
  },
  "장백제비꽃": {
   "summary": "노란 꽃이 피는 고산 제비꽃.",
-  "distribution": "백두대간 고산.",
-  "habitat": "고산 바위틈 습한 곳.",
-  "life": "5~6월 꽃.",
+  "distribution": "북부 지역과 강원 설악산.",
+  "habitat": "고산의 다소 습한 풀밭.",
+  "life": "6~7월 꽃.",
   "diet": "",
   "threats": "기후 변화.",
   "conservation": "멸종위기 야생생물 Ⅱ급. 고산 보전.",
@@ -3425,10 +3581,17 @@
      800,
      1950
     ],
-    "refs": []
+    "refs": [
+     1
+    ]
    }
   ],
-  "refs": []
+  "refs": [
+   {
+    "text": "국립생물자원관 (2017) 장백제비꽃(Viola biflora) 종 설명. 한반도의 생물다양성 — 국가생물종정보관리체계 구축",
+    "url": "https://species.nibr.go.kr/species-detail/120000061061"
+   }
+  ]
  },
  "전주물꼬리풀": {
   "summary": "꿀풀과 물풀.",
@@ -3672,7 +3835,7 @@
   "summary": "붉은 열매의 늘푸른 떨기나무.",
   "distribution": "제주 남부.",
   "habitat": "상록수림 아래.",
-  "life": "6~7월 꽃, 겨울 열매.",
+  "life": "6~7월 꽃, 10월~이듬해 4월 붉은 열매.",
   "diet": "",
   "threats": "채취.",
   "conservation": "멸종위기 야생생물 Ⅱ급. 채취 단속.",
@@ -3700,10 +3863,27 @@
      0,
      400
     ],
-    "refs": []
+    "refs": [
+     1,
+     2,
+     3
+    ]
    }
   ],
-  "refs": [],
+  "refs": [
+   {
+    "text": "국립생물자원관 (2018) 죽절초(Sarcandra glabra) 종 설명. 한반도의 생물다양성 — 한눈에 보는 멸종위기 야생생물",
+    "url": "https://species.nibr.go.kr/species-detail/120000060078"
+   },
+   {
+    "text": "구다은 외 (2023) 현지외 보존을 위한 죽절초 종자의 건조 내성과 저장성 평가. 한국산림과학회지 112(4):442–450",
+    "url": "https://www.kci.go.kr/kciportal/ci/sereArticleSearch/ciSereArtiView.kci?sereArticleSearchBean.artiId=ART003028611"
+   },
+   {
+    "text": "배은지 (2016) 광도에 따른 죽절초와 백량금의 생장 및 생리 특성. 인간식물환경학회지 19(2):85–93",
+    "url": "https://www.kci.go.kr/kciportal/ci/sereArticleSearch/ciSereArtiView.kci?sereArticleSearchBean.artiId=ART002103516"
+   }
+  ],
   "range": {
    "areas": [
     "제주"
@@ -3815,7 +3995,7 @@
  "차걸이란": {
   "summary": "작은 착생란.",
   "distribution": "제주.",
-  "habitat": "나뭇가지. 나무줄기나 바위에 붙어 사는 착생란이라 숲·바위 칸으로 대신 나타낸다.",
+  "habitat": "해발 150~180 m 숲속의 습기가 유지되는 나무에 아래로 매달려 착생.",
   "life": "6~7월 꽃.",
   "diet": "",
   "threats": "관상용 불법 채취.",
@@ -3844,10 +4024,17 @@
      0,
      600
     ],
-    "refs": []
+    "refs": [
+     1
+    ]
    }
   ],
-  "refs": [],
+  "refs": [
+   {
+    "text": "국립생물자원관 (2018) 차걸이란(Oberonia japonica) 종 설명. 한반도의 생물다양성 — 한눈에 보는 멸종위기 야생생물",
+    "url": "https://species.nibr.go.kr/species-detail/120000065599"
+   }
+  ],
   "range": {
    "areas": [
     "제주"
@@ -3948,7 +4135,7 @@
  },
  "초령목": {
   "summary": "늘푸른 목련과 큰키나무.",
-  "distribution": "제주·남해 섬.",
+  "distribution": "제주도와 전남 섬(흑산도 자생지는 과거 천연기념물로 지정).",
   "habitat": "상록활엽수림.",
   "life": "2~3월 꽃.",
   "diet": "",
@@ -3978,10 +4165,22 @@
      0,
      500
     ],
-    "refs": []
+    "refs": [
+     1,
+     2
+    ]
    }
   ],
-  "refs": [],
+  "refs": [
+   {
+    "text": "국립생물자원관 (2018) 초령목(Michelia compressa) 종 설명. 한반도의 생물다양성 — 한눈에 보는 멸종위기 야생생물",
+    "url": "https://species.nibr.go.kr/species-detail/120000060042"
+   },
+   {
+    "text": "김종갑 외 (2023) 국내 초령목 개체군의 분포특성과 보전지위평가. 한국환경생태학회지 37(3):182–191",
+    "url": "https://www.kci.go.kr/kciportal/ci/sereArticleSearch/ciSereArtiView.kci?sereArticleSearchBean.artiId=ART002978559"
+   }
+  ],
   "range": {
    "areas": [
     "제주",
@@ -3999,8 +4198,8 @@
  },
  "칠보치마": {
   "summary": "작은 노란 꽃이 피는 풀.",
-  "distribution": "남부 산지.",
-  "habitat": "산지 습한 풀밭.",
+  "distribution": "경기도와 경상남도(경기 칠보산 개체군은 사라진 것으로 봄).",
+  "habitat": "숲속 양지바른 풀밭.",
   "life": "6~7월 꽃.",
   "diet": "",
   "threats": "습지 감소.",
@@ -4031,15 +4230,27 @@
      0,
      1000
     ],
-    "refs": []
+    "refs": [
+     1,
+     2
+    ]
    }
   ],
-  "refs": []
+  "refs": [
+   {
+    "text": "국립생물자원관 (2018) 칠보치마(Metanarthecium luteo-viride) 종 설명. 한반도의 생물다양성 — 한눈에 보는 멸종위기 야생생물",
+    "url": "https://species.nibr.go.kr/species-detail/120000065320"
+   },
+   {
+    "text": "이상철 외 (2024) 멸종위기야생생물 Ⅱ급 칠보치마 자생지의 식물상 및 환경특성. 한국환경생태학회지 38(5):437–450",
+    "url": "https://www.kci.go.kr/kciportal/ci/sereArticleSearch/ciSereArtiView.kci?sereArticleSearchBean.artiId=ART003134322"
+   }
+  ]
  },
  "콩짜개란": {
   "summary": "콩짜개 모양 잎의 착생란.",
-  "distribution": "남해안·제주 섬.",
-  "habitat": "바위·나무. 나무줄기나 바위에 붙어 사는 착생란이라 숲·바위 칸으로 대신 나타낸다.",
+  "distribution": "제주도와 남해안 일대(일부 개체군은 소멸).",
+  "habitat": "오래된 나무나 바위에 착생.",
   "life": "5~6월 꽃.",
   "diet": "",
   "threats": "관상용 불법 채취.",
@@ -4065,10 +4276,22 @@
     ],
     "desc": "해안 5 km 안 남해 섬·제주의 바위·숲",
     "coast_km": 5,
-    "refs": []
+    "refs": [
+     1,
+     2
+    ]
    }
   ],
-  "refs": [],
+  "refs": [
+   {
+    "text": "국립생물자원관 (2018) 콩짜개란(Bulbophyllum drymoglossum) 종 설명. 한반도의 생물다양성 — 한눈에 보는 멸종위기 야생생물",
+    "url": "https://species.nibr.go.kr/species-detail/120000065483"
+   },
+   {
+    "text": "Chung Mi Yoon 외 (2006) Extremely low levels of allozyme variation in southern Korean populations of the two rare and endangered lithophytic or epiphytic Bulbophyllum drymoglossum and Sarcanthus scolopendrifolius (Orchidaceae): implications for conservation. Biodiversity and Conservation 16(3):775–786",
+    "url": "https://doi.org/10.1007/s10531-005-6200-4"
+   }
+  ],
   "range": {
    "areas": [
     "제주",
@@ -4302,7 +4525,7 @@
   "summary": "잎이 넓은 옥잠난초.",
   "distribution": "제주.",
   "habitat": "숲 아래.",
-  "life": "6~7월 꽃.",
+  "life": "7~8월 꽃, 8~10월 열매.",
   "diet": "",
   "threats": "관상용 불법 채취.",
   "conservation": "멸종위기 야생생물 Ⅱ급. 숲 보전.",
@@ -4330,10 +4553,17 @@
      0,
      1200
     ],
-    "refs": []
+    "refs": [
+     1
+    ]
    }
   ],
-  "refs": [],
+  "refs": [
+   {
+    "text": "국립생물자원관 (2018) 한라옥잠난초(Liparis auriculata) 종 설명. 한반도의 생물다양성 — 한눈에 보는 멸종위기 야생생물",
+    "url": "https://species.nibr.go.kr/species-detail/120000065574"
+   }
+  ],
   "range": {
    "areas": [
     "제주"
@@ -4342,10 +4572,10 @@
   }
  },
  "한라장구채": {
-  "summary": "한라산 고지대 장구채.",
+  "summary": "한라산 정상 부근에만 드물게 자라는 한국 고유종.",
   "distribution": "한라산.",
-  "habitat": "고지대 바위.",
-  "life": "7~8월 꽃.",
+  "habitat": "높은 산 능선부 햇빛에 드러난 바위틈.",
+  "life": "6~8월 꽃.",
   "diet": "",
   "threats": "기후 변화.",
   "conservation": "멸종위기 야생생물 Ⅱ급. 고산 보전.",
@@ -4373,10 +4603,17 @@
      1300,
      1950
     ],
-    "refs": []
+    "refs": [
+     1
+    ]
    }
   ],
-  "refs": [],
+  "refs": [
+   {
+    "text": "국립생물자원관 (2017) 한라장구채(Silene fasciculata) 종 설명. 한반도의 생물다양성 — 국가생물종정보관리체계 구축",
+    "url": "https://species.nibr.go.kr/species-detail/120000060797"
+   }
+  ],
   "range": {
    "areas": [
     "제주"
@@ -4493,9 +4730,9 @@
  },
  "홍월귤": {
   "summary": "고산 떨기나무.",
-  "distribution": "설악산 정상부.",
-  "habitat": "고산 바위.",
-  "life": "6월 꽃.",
+  "distribution": "설악산 이북에 제한적.",
+  "habitat": "높은 산지의 바위 지대나 관목림.",
+  "life": "5~6월 꽃, 9~10월 열매.",
   "diet": "",
   "threats": "기후 변화.",
   "conservation": "멸종위기 야생생물 Ⅱ급. 고산 보전.",
@@ -4523,10 +4760,17 @@
      1400,
      1750
     ],
-    "refs": []
+    "refs": [
+     1
+    ]
    }
   ],
-  "refs": []
+  "refs": [
+   {
+    "text": "국립생물자원관 (2018) 홍월귤(Arctous rubra) 종 설명. 한반도의 생물다양성 — 한눈에 보는 멸종위기 야생생물",
+    "url": "https://species.nibr.go.kr/species-detail/120000235421"
+   }
+  ]
  },
  "그물공말": {
   "summary": "그물 모양 녹조류.",
@@ -4587,8 +4831,8 @@
  },
  "삼나무말": {
   "summary": "갈조류.",
-  "distribution": "동해·울릉도·독도 연안.",
-  "habitat": "조하대 암반.",
+  "distribution": "동해안.",
+  "habitat": "조하대 바위.",
   "life": "연중.",
   "diet": "",
   "threats": "연안 개발·수온 상승.",
@@ -4610,10 +4854,17 @@
     ],
     "desc": "동해 해안 300 m 안의 바다·바위(해안선 칸으로 표시)",
     "coast_km": 0.3,
-    "refs": []
+    "refs": [
+     1
+    ]
    }
   ],
-  "refs": [],
+  "refs": [
+   {
+    "text": "국립생물자원관 (2018) 삼나무말(Coccophora langsdorfii) 종 설명. 한반도의 생물다양성 — 한눈에 보는 멸종위기 야생생물",
+    "url": "https://species.nibr.go.kr/species-detail/120000000375"
+   }
+  ],
   "range": {
    "areas": [
     "강원",
@@ -4625,12 +4876,12 @@
   }
  },
  "화경솔밭버섯": {
-  "summary": "밤에 빛을 내는 독버섯.",
-  "distribution": "경기 포천(광릉숲) 등 기록이 매우 드물다.",
-  "habitat": "숲속 죽은 나무.",
+  "summary": "밤에 빛을 내는 독버섯(백색부후균).",
+  "distribution": "장성, 지리산, 계룡산, 포천 광릉숲, 설악산, 오대산, 점봉산 등에서 발견.",
+  "habitat": "서어나무 고목.",
   "life": "여름~가을 발생.",
   "diet": "",
-  "threats": "숲 훼손, 고사목 제거.",
+  "threats": "고목 제거, 숲 훼손.",
   "conservation": "멸종위기 야생생물 Ⅱ급. 고사목 보존.",
   "vars": [
    "elev",
@@ -4651,18 +4902,24 @@
     "main": true,
     "groups": [
      "broad",
-     "mixed",
-     "conifer"
+     "mixed"
     ],
-    "desc": "칸의 절반 이상이 숲인 산지(해발 1,000 m 이하)",
+    "desc": "칸의 절반 이상이 활엽수·혼효림인 산지(해발 1,500 m 이하)",
     "elev": [
      0,
-     1000
+     1500
     ],
     "cell_min": 0.5,
-    "refs": []
+    "refs": [
+     1
+    ]
    }
   ],
-  "refs": []
+  "refs": [
+   {
+    "text": "국립생물자원관 (2018) 화경솔밭버섯(Omphalotus guepiniiformis) 종 설명. 한반도의 생물다양성 — 한눈에 보는 멸종위기 야생생물",
+    "url": "https://species.nibr.go.kr/species-detail/120000516139"
+   }
+  ]
  }
 }

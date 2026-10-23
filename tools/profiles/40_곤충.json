@@ -361,12 +361,12 @@
   ]
  },
  "큰홍띠점박이푸른부전나비": {
-  "summary": "강원 석회암 지대에만 사는 부전나비. 애벌레가 기린초를 먹는다.",
-  "distribution": "강원 영월·정선, 충북 단양 등 석회암 지대.",
-  "habitat": "석회암 바위 비탈의 초지(기린초 자생지).",
+  "summary": "뒷날개 아외연에 붉은 띠가 있는 부전나비. 강원 일대 낮은 산지의 건조한 풀밭에 산다.",
+  "distribution": "강원도 일대.",
+  "habitat": "낮은 산지의 건조한 풀밭.",
   "life": "5~6월 성충.",
-  "diet": "애벌레: 기린초.",
-  "threats": "석회석 채굴, 숲 천이.",
+  "diet": "성충은 고삼·엉겅퀴 등의 꽃꿀을 빤다.",
+  "threats": "불법 채집, 초지 축소.",
   "conservation": "멸종위기 야생생물 Ⅰ급. 석회암 초지 보전.",
   "vars": [
    "elev",
@@ -386,38 +386,42 @@
     "season": "5~6월",
     "main": true,
     "groups": [
-     "grass",
-     "rock"
+     "grass"
     ],
-    "desc": "바위가 드러난 경사 15° 이상 초지(해발 200~900 m)",
+    "desc": "숲 500 m 안의 산지 풀밭(해발 100~900 m)",
     "elev": [
-     200,
+     100,
      900
-    ],
-    "slope": [
-     15,
-     90
     ],
     "near": [
      {
       "groups": [
-       "rock"
+       "broad",
+       "mixed",
+       "conifer"
       ],
       "km": 0.5,
-      "min": 0.003
+      "min": 0.2
      }
     ],
-    "refs": []
+    "refs": [
+     1
+    ]
    }
   ],
-  "refs": []
+  "refs": [
+   {
+    "text": "국립생물자원관 (2018) 큰홍띠점박이푸른부전나비(Sinia divina) 종 설명. 한반도의 생물다양성 — 한눈에 보는 멸종위기 야생생물",
+    "url": "https://species.nibr.go.kr/species-detail/120000034474"
+   }
+  ]
  },
  "깊은산부전나비": {
   "summary": "산지 활엽수림에 사는 부전나비.",
-  "distribution": "강원·경기 북부 등 중부 산지.",
-  "habitat": "물푸레나무 등이 있는 산지 활엽수림.",
-  "life": "6~7월 성충.",
-  "diet": "애벌레: 물푸레나무류.",
+  "distribution": "강원 이북과 충남·경북 일부에 국지적으로 산다.",
+  "habitat": "산지 활엽수림.",
+  "life": "연 1회, 6~8월 성충, 알로 월동.",
+  "diet": "",
   "threats": "산림 훼손.",
   "conservation": "멸종위기 야생생물 Ⅱ급. 산지 활엽수림 보전.",
   "vars": [
@@ -435,7 +439,7 @@
    {
     "key": "main",
     "name": "서식지",
-    "season": "6~7월",
+    "season": "6~8월",
     "main": true,
     "groups": [
      "broad",
@@ -447,10 +451,17 @@
      1200
     ],
     "cell_min": 0.5,
-    "refs": []
+    "refs": [
+     1
+    ]
    }
   ],
-  "refs": []
+  "refs": [
+   {
+    "text": "국립생물자원관 (2018) 깊은산부전나비(Protantigius superans) 종 설명. 한반도의 생물다양성 — 한반도의 생물다양성 시스템 고도화",
+    "url": "https://species.nibr.go.kr/species-detail/120000034456"
+   }
+  ]
  },
  "노란잔산잠자리": {
   "summary": "맑은 하천에 사는 잔산잠자리.",
@@ -560,10 +571,10 @@
  },
  "두점박이사슴벌레": {
   "summary": "제주에만 사는 사슴벌레.",
-  "distribution": "제주 저지대~중산간 숲.",
-  "habitat": "활엽수림의 썩은 나무(애벌레)와 수액.",
-  "life": "6~8월 성충.",
-  "diet": "수액(애벌레는 썩은 나무).",
+  "distribution": "주로 제주도(내장산 관찰 보고도 있다).",
+  "habitat": "상록활엽수림대. 썩은 나무에 알을 낳고 애벌레는 기주목 뿌리 근처에서 월동한다.",
+  "life": "6~9월 성충(야행성), 6~8월 산란.",
+  "diet": "활엽수 수액(애벌레는 썩은 나무).",
   "threats": "숲 개발, 채집.",
   "conservation": "멸종위기 야생생물 Ⅱ급. 숲·고목 보전, 채집 금지.",
   "vars": [
@@ -592,10 +603,17 @@
      0,
      800
     ],
-    "refs": []
+    "refs": [
+     1
+    ]
    }
   ],
-  "refs": [],
+  "refs": [
+   {
+    "text": "국립생물자원관 (2018) 두점박이사슴벌레(Prosopocoilus astacoides blanchardi) 종 설명. 한반도의 생물다양성 — 한반도의 생물다양성 시스템 고도화",
+    "url": "https://species.nibr.go.kr/species-detail/120000017745"
+   }
+  ],
   "range": {
    "km": 15,
    "areas": [
@@ -702,9 +720,9 @@
  },
  "물방개": {
   "summary": "대형 물방개. 수초가 많은 연못·논에 산다.",
-  "distribution": "전국 저지대 연못·논(크게 줄었다).",
+  "distribution": "전국에 살지만 개체 수가 줄어 보기 어렵다.",
   "habitat": "수초가 많고 물이 고인 연못·둠벙·논.",
-  "life": "5~8월 번식.",
+  "life": "야간 불빛에 날아온다.",
   "diet": "작은 물고기·올챙이.",
   "threats": "농약, 둠벙·연못 매립.",
   "conservation": "멸종위기 야생생물 Ⅱ급. 둠벙·연못 보전.",
@@ -734,10 +752,22 @@
      0,
      200
     ],
-    "refs": []
+    "refs": [
+     1,
+     2
+    ]
    }
   ],
-  "refs": []
+  "refs": [
+   {
+    "text": "국립생물자원관 (2018) 물방개(Cybister chinensis) 종 설명. 한반도의 생물다양성 — 한반도의 생물다양성 시스템 고도화",
+    "url": "https://species.nibr.go.kr/species-detail/120000017015"
+   },
+   {
+    "text": "한민수 외 (2011) 우리나라 논 서식 물방개과의 지리적 분포. 한국환경농학회지 30(2):199–205",
+    "url": "https://www.kci.go.kr/kciportal/ci/sereArticleSearch/ciSereArtiView.kci?sereArticleSearchBean.artiId=ART001568690"
+   }
+  ]
  },
  "물장군": {
   "summary": "대형 수서 노린재. 연못·논 등 고인 물에 산다.",
@@ -895,10 +925,10 @@
  },
  "쌍꼬리부전나비": {
   "summary": "애벌레가 개미집에서 자라는 부전나비. 소나무 숲 주변에 산다.",
-  "distribution": "중부 이남 소나무 숲 주변.",
+  "distribution": "한반도 내륙에 국지적.",
   "habitat": "소나무 숲 가장자리(마쓰무라밑드리개미와 공생).",
-  "life": "6~7월 성충.",
-  "diet": "애벌레: 개미가 주는 먹이.",
+  "life": "연 1회, 6월 중순~8월 상순 성충. 개미와 공생한다.",
+  "diet": "성충은 개망초·큰까치수염·밤나무 꽃꿀.",
   "threats": "소나무 숲 훼손.",
   "conservation": "멸종위기 야생생물 Ⅱ급. 소나무 숲 보전.",
   "vars": [
@@ -937,10 +967,17 @@
       "min": 0.05
      }
     ],
-    "refs": []
+    "refs": [
+     1
+    ]
    }
   ],
-  "refs": []
+  "refs": [
+   {
+    "text": "국립생물자원관 (2021) 쌍꼬리부전나비(Cigaritis takanonis) 종 설명. 한반도의 생물다양성 — 생물다양성 디지털 정보 구축 및 관리",
+    "url": "https://species.nibr.go.kr/species-detail/120000034404"
+   }
+  ]
  },
  "애기뿔소똥구리": {
   "summary": "뿔이 있는 소똥구리. 방목지 소똥에 산다.",
@@ -990,12 +1027,12 @@
   ]
  },
  "여름어리표범나비": {
-  "summary": "산지 습한 초지에 사는 어리표범나비.",
-  "distribution": "강원 산지.",
-  "habitat": "습한 산지 초지.",
+  "summary": "적갈색의 어리표범나비. 1990년대까지 내륙에 흔했으나 최근 크게 줄었다.",
+  "distribution": "한반도 내륙(최근 급감).",
+  "habitat": "나무가 별로 없는 풀밭.",
   "life": "6~7월 성충.",
   "diet": "애벌레: 질경이 등.",
-  "threats": "초지 천이·개발.",
+  "threats": "초지 축소와 질 저하, 기후 변화(한랭성 종).",
   "conservation": "멸종위기 야생생물 Ⅱ급. 습한 초지 보전.",
   "vars": [
    "elev",
@@ -1015,18 +1052,24 @@
     "season": "6~7월",
     "main": true,
     "groups": [
-     "grass",
-     "wetland"
+     "grass"
     ],
-    "desc": "해발 400 m 이상의 습한 초지",
+    "desc": "해발 100 m 이상의 풀밭",
     "elev": [
-     400,
+     100,
      1500
     ],
-    "refs": []
+    "refs": [
+     1
+    ]
    }
   ],
-  "refs": []
+  "refs": [
+   {
+    "text": "국립생물자원관 (2018) 여름어리표범나비(Mellicta ambigua) 종 설명. 한반도의 생물다양성 — 한눈에 보는 멸종위기 야생생물",
+    "url": "https://species.nibr.go.kr/species-detail/120000035809"
+   }
+  ]
  },
  "왕은점표범나비": {
   "summary": "제비꽃을 먹는 대형 표범나비.",
@@ -1108,10 +1151,17 @@
      1500
     ],
     "cell_min": 0.5,
-    "refs": []
+    "refs": [
+     1
+    ]
    }
   ],
-  "refs": [],
+  "refs": [
+   {
+    "text": "권태영 외 (2023) Complete mitochondrial genome sequences and the phylogenetic relationship of the endangered species Acoptolabrus leechi yooni (Deuve, 1990) (Coleoptera: Carabidae), Korea. Journal of Asia-Pacific Biodiversity 16(4):687–692",
+    "url": "https://www.kci.go.kr/kciportal/ci/sereArticleSearch/ciSereArtiView.kci?sereArticleSearchBean.artiId=ART003020948"
+   }
+  ],
   "range": {
    "km": 5
   }
@@ -1227,11 +1277,11 @@
   ]
  },
  "참호박뒤영벌": {
-  "summary": "한국 고유 뒤영벌.",
-  "distribution": "강원 등 중부 산지.",
+  "summary": "국내 뒤영벌 가운데 가장 큰 벌.",
+  "distribution": "과거 전국에 널리 분포했으나 최근 급감.",
   "habitat": "꽃이 많은 산지 숲 가장자리와 초지.",
-  "life": "5~9월 활동.",
-  "diet": "꽃꿀·꽃가루.",
+  "life": "어른벌레는 4~6월에 나타난다.",
+  "diet": "무궁화·진달래·산괴불주머니·철쭉·물봉선·싸리류·황기 등의 꽃.",
   "threats": "서식지 감소, 농약.",
   "conservation": "멸종위기 야생생물 Ⅱ급. 산지 초지·숲 가장자리 보전.",
   "vars": [
@@ -1270,18 +1320,25 @@
       "min": 0.03
      }
     ],
-    "refs": []
+    "refs": [
+     1
+    ]
    }
   ],
-  "refs": []
+  "refs": [
+   {
+    "text": "국립생물자원관 (2021) 참호박뒤영벌(Bombus koreanus) 종 설명. 한반도의 생물다양성 — 생물다양성 디지털 정보 구축 및 관리",
+    "url": "https://species.nibr.go.kr/species-detail/120000027403"
+   }
+  ]
  },
  "큰자색호랑꽃무지": {
   "summary": "고목 구멍에서 애벌레가 자라는 꽃무지.",
-  "distribution": "강원 등 산지(기록 드묾).",
-  "habitat": "큰 고목이 있는 성숙한 활엽수림.",
+  "distribution": "강원도 일부(매우 희귀).",
+  "habitat": "단풍나무류 등 고목의 구멍.",
   "life": "7~8월 성충.",
   "diet": "애벌레: 고목 속 썩은 목질.",
-  "threats": "고목 벌채.",
+  "threats": "적은 개체 수, 불법 채집, 고목 벌채.",
   "conservation": "멸종위기 야생생물 Ⅱ급. 고목 보존.",
   "vars": [
    "elev",
@@ -1310,10 +1367,22 @@
      1200
     ],
     "cell_min": 0.6,
-    "refs": []
+    "refs": [
+     1,
+     2
+    ]
    }
   ],
-  "refs": []
+  "refs": [
+   {
+    "text": "국립생물자원관 (2018) 큰자색호랑꽃무지(Osmoderma caeleste) 종 설명. 한반도의 생물다양성 — 한눈에 보는 멸종위기 야생생물",
+    "url": "https://species.nibr.go.kr/species-detail/120000213112"
+   },
+   {
+    "text": "한태만 외 (2017) 남한산 큰자색호랑꽃무지의 종 동정(딱정벌레목, 풍뎅이과, 꽃무지아과). 한국응용곤충학회지 56(3):229–239",
+    "url": "https://www.kci.go.kr/kciportal/ci/sereArticleSearch/ciSereArtiView.kci?sereArticleSearchBean.artiId=ART002257493"
+   }
+  ]
  },
  "한국꼬마잠자리": {
   "summary": "아주 작은 잠자리. 얕은 묵논·습지에 산다.",
@@ -1383,9 +1452,9 @@
  },
  "홍줄나비": {
   "summary": "산지 숲에 사는 줄나비.",
-  "distribution": "강원 등 중부 이북 산지.",
+  "distribution": "남한에서는 설악산·오대산 등 태백산맥에서만 드물게 채집된다.",
   "habitat": "산지 혼효림·침엽수림.",
-  "life": "6~7월 성충.",
+  "life": "연 1회, 7~8월 성충.",
   "diet": "애벌레: 잎갈나무 등.",
   "threats": "산림 훼손.",
   "conservation": "멸종위기 야생생물 Ⅱ급. 산지 숲 보전.",
@@ -1404,7 +1473,7 @@
    {
     "key": "main",
     "name": "서식지",
-    "season": "6~7월",
+    "season": "7~8월",
     "main": true,
     "groups": [
      "mixed",
@@ -1417,9 +1486,16 @@
      1600
     ],
     "cell_min": 0.5,
-    "refs": []
+    "refs": [
+     1
+    ]
    }
   ],
-  "refs": []
+  "refs": [
+   {
+    "text": "국립생물자원관 (2016) 홍줄나비(Chalinga pratti) 종 설명. 한반도의 생물다양성 — 종 설명",
+    "url": "https://species.nibr.go.kr/species-detail/120000212310"
+   }
+  ]
  }
 }

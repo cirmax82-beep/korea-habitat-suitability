@@ -46,8 +46,8 @@
  },
  "금빛나팔돌산호": {
   "summary": "제주·남해 연안 암반의 주황빛 돌산호.",
-  "distribution": "제주 서귀포 문섬·범섬·섶섬 일대 등 제주 연안과 남해 일부.",
-  "habitat": "수심 수~수십 m의 조류가 빠른 암반. 바닷속 암반에 붙어 사는 종이라 육상 격자로는 직접 나타낼 수 없어, 기록이 있는 해안선 칸으로 표시한다.",
+  "distribution": "제주도 해역.",
+  "habitat": "물이 맑고 따뜻한 암초의 절벽면. 바닷속 암반에 붙어 사는 종이라 기록이 있는 해안선 칸으로 표시한다.",
   "life": "연중 고착 생활.",
   "diet": "물속 플랑크톤.",
   "threats": "연안 개발·수온 상승, 다이빙·낚시 훼손, 해양 쓰레기.",
@@ -74,18 +74,25 @@
      0,
      20
     ],
-    "refs": []
+    "refs": [
+     1
+    ]
    }
   ],
-  "refs": [],
+  "refs": [
+   {
+    "text": "국립생물자원관 (2018) 금빛나팔돌산호(Tubastraea coccinea) 종 설명. 한반도의 생물다양성 — 한눈에 보는 멸종위기 야생생물",
+    "url": "https://species.nibr.go.kr/species-detail/120000039877"
+   }
+  ],
   "range": {
    "km": 10
   }
  },
  "깃산호": {
   "summary": "제주 연안의 깃 모양 산호.",
-  "distribution": "제주 서귀포 문섬·범섬·섶섬 일대 등 제주 연안과 남해 일부.",
-  "habitat": "수심 수~수십 m의 조류가 빠른 암반. 바닷속 암반에 붙어 사는 종이라 육상 격자로는 직접 나타낼 수 없어, 기록이 있는 해안선 칸으로 표시한다.",
+  "distribution": "남해안과 제주도.",
+  "habitat": "수심 50~100 m 암반에 붙어 산다(해안선 칸은 위치를 대신 나타낸 것).",
   "life": "연중 고착 생활.",
   "diet": "물속 플랑크톤.",
   "threats": "연안 개발·수온 상승, 다이빙·낚시 훼손, 해양 쓰레기.",
@@ -112,18 +119,25 @@
      0,
      20
     ],
-    "refs": []
+    "refs": [
+     1
+    ]
    }
   ],
-  "refs": [],
+  "refs": [
+   {
+    "text": "국립생물자원관 (2018) 깃산호(Plumarella spinosa) 종 설명. 한반도의 생물다양성 — 한눈에 보는 멸종위기 야생생물",
+    "url": "https://species.nibr.go.kr/species-detail/120000039770"
+   }
+  ],
   "range": {
    "km": 10
   }
  },
  "둔한진총산호": {
   "summary": "제주 연안의 산호.",
-  "distribution": "제주 서귀포 문섬·범섬·섶섬 일대 등 제주 연안과 남해 일부.",
-  "habitat": "수심 수~수십 m의 조류가 빠른 암반. 바닷속 암반에 붙어 사는 종이라 육상 격자로는 직접 나타낼 수 없어, 기록이 있는 해안선 칸으로 표시한다.",
+  "distribution": "남해안과 제주도 해역.",
+  "habitat": "해류가 빠른 곳의 암반에 붙어 부채 모양으로 자란다.",
   "life": "연중 고착 생활.",
   "diet": "물속 플랑크톤.",
   "threats": "연안 개발·수온 상승, 다이빙·낚시 훼손, 해양 쓰레기.",
@@ -150,18 +164,25 @@
      0,
      20
     ],
-    "refs": []
+    "refs": [
+     1
+    ]
    }
   ],
-  "refs": [],
+  "refs": [
+   {
+    "text": "국립생물자원관 (2018) 둔한진총산호(Euplexaura crassa) 종 설명. 한반도의 생물다양성 — 한눈에 보는 멸종위기 야생생물",
+    "url": "https://species.nibr.go.kr/species-detail/120000039736"
+   }
+  ],
   "range": {
    "km": 10
   }
  },
  "망상맵시산호": {
   "summary": "그물 모양의 맵시산호.",
-  "distribution": "제주 서귀포 문섬·범섬·섶섬 일대 등 제주 연안과 남해 일부.",
-  "habitat": "수심 수~수십 m의 조류가 빠른 암반. 바닷속 암반에 붙어 사는 종이라 육상 격자로는 직접 나타낼 수 없어, 기록이 있는 해안선 칸으로 표시한다.",
+  "distribution": "제주도.",
+  "habitat": "해류가 빠른 수심 15~40 m 해역의 암반.",
   "life": "연중 고착 생활.",
   "diet": "물속 플랑크톤.",
   "threats": "연안 개발·수온 상승, 다이빙·낚시 훼손, 해양 쓰레기.",
@@ -188,10 +209,17 @@
      0,
      20
     ],
-    "refs": []
+    "refs": [
+     1
+    ]
    }
   ],
-  "refs": [],
+  "refs": [
+   {
+    "text": "국립생물자원관 (2018) 망상맵시산호(Echinogorgia reticulata) 종 설명. 한반도의 생물다양성 — 한반도의 생물다양성 시스템 고도화",
+    "url": "https://species.nibr.go.kr/species-detail/120000212203"
+   }
+  ],
   "range": {
    "km": 10
   }
@@ -248,8 +276,8 @@
  },
  "별혹산호": {
   "summary": "제주 연안의 산호.",
-  "distribution": "제주 서귀포 문섬·범섬·섶섬 일대 등 제주 연안과 남해 일부.",
-  "habitat": "수심 수~수십 m의 조류가 빠른 암반. 바닷속 암반에 붙어 사는 종이라 육상 격자로는 직접 나타낼 수 없어, 기록이 있는 해안선 칸으로 표시한다.",
+  "distribution": "제주도 해역.",
+  "habitat": "해류가 빠른 청정 해역 수심 20~40 m의 암벽. 성장이 매우 느리다.",
   "life": "연중 고착 생활.",
   "diet": "물속 플랑크톤.",
   "threats": "연안 개발·수온 상승, 다이빙·낚시 훼손, 해양 쓰레기.",
@@ -276,18 +304,25 @@
      0,
      20
     ],
-    "refs": []
+    "refs": [
+     1
+    ]
    }
   ],
-  "refs": [],
+  "refs": [
+   {
+    "text": "국립생물자원관 (2018) 별혹산호(Ellisella ceratophyta) 종 설명. 한반도의 생물다양성 — 한반도의 생물다양성 시스템 고도화",
+    "url": "https://species.nibr.go.kr/species-detail/120000213874"
+   }
+  ],
   "range": {
    "km": 10
   }
  },
  "연수지맨드라미": {
   "summary": "제주 연안 연산호.",
-  "distribution": "제주 서귀포 문섬·범섬·섶섬 일대 등 제주 연안과 남해 일부.",
-  "habitat": "수심 수~수십 m의 조류가 빠른 암반. 바닷속 암반에 붙어 사는 종이라 육상 격자로는 직접 나타낼 수 없어, 기록이 있는 해안선 칸으로 표시한다.",
+  "distribution": "제주도(개체 수 감소 중).",
+  "habitat": "수심 20~30 m의 바위에 붙어 산다.",
   "life": "연중 고착 생활.",
   "diet": "물속 플랑크톤.",
   "threats": "연안 개발·수온 상승, 다이빙·낚시 훼손, 해양 쓰레기.",
@@ -314,18 +349,30 @@
      0,
      20
     ],
-    "refs": []
+    "refs": [
+     1,
+     2
+    ]
    }
   ],
-  "refs": [],
+  "refs": [
+   {
+    "text": "국립생물자원관 (2018) 연수지맨드라미(Dendronephthya mollis) 종 설명. 한반도의 생물다양성 — 한눈에 보는 멸종위기 야생생물",
+    "url": "https://species.nibr.go.kr/species-detail/120000039713"
+   },
+   {
+    "text": "강도형 외 (2005) 제주도 문섬 조하대에 서식하는 연산호군락의 태풍에 의한 영향 분석. Ocean and Polar Research 27(1):25–34",
+    "url": "https://www.kci.go.kr/kciportal/ci/sereArticleSearch/ciSereArtiView.kci?sereArticleSearchBean.artiId=ART001118940"
+   }
+  ],
   "range": {
    "km": 10
   }
  },
  "유착나무돌산호": {
   "summary": "제주 연안의 나무 모양 돌산호.",
-  "distribution": "제주 서귀포 문섬·범섬·섶섬 일대 등 제주 연안과 남해 일부.",
-  "habitat": "수심 수~수십 m의 조류가 빠른 암반. 바닷속 암반에 붙어 사는 종이라 육상 격자로는 직접 나타낼 수 없어, 기록이 있는 해안선 칸으로 표시한다.",
+  "distribution": "동해안·남해안의 깊은 바다.",
+  "habitat": "수심 약 100 m의 깊은 암반(해안선 칸은 위치를 대신 나타낸 것).",
   "life": "연중 고착 생활.",
   "diet": "물속 플랑크톤.",
   "threats": "연안 개발·수온 상승, 다이빙·낚시 훼손, 해양 쓰레기.",
@@ -352,18 +399,25 @@
      0,
      20
     ],
-    "refs": []
+    "refs": [
+     1
+    ]
    }
   ],
-  "refs": [],
+  "refs": [
+   {
+    "text": "국립생물자원관 (2020) 유착나무돌산호(Dendrophyllia cribrosa) 종 설명. 한반도의 생물다양성 — 독도의 생물다양성",
+    "url": "https://species.nibr.go.kr/species-detail/120000039874"
+   }
+  ],
   "range": {
    "km": 10
   }
  },
  "자색수지맨드라미": {
   "summary": "제주 연안 연산호.",
-  "distribution": "제주 서귀포 문섬·범섬·섶섬 일대 등 제주 연안과 남해 일부.",
-  "habitat": "수심 수~수십 m의 조류가 빠른 암반. 바닷속 암반에 붙어 사는 종이라 육상 격자로는 직접 나타낼 수 없어, 기록이 있는 해안선 칸으로 표시한다.",
+  "distribution": "제주도 해역.",
+  "habitat": "큰수지맨드라미·검붉은수지맨드라미와 함께 암반 상부에 군집을 이룬다.",
   "life": "연중 고착 생활.",
   "diet": "물속 플랑크톤.",
   "threats": "연안 개발·수온 상승, 다이빙·낚시 훼손, 해양 쓰레기.",
@@ -390,17 +444,29 @@
      0,
      20
     ],
-    "refs": []
+    "refs": [
+     1,
+     2
+    ]
    }
   ],
-  "refs": [],
+  "refs": [
+   {
+    "text": "국립생물자원관 (2018) 자색수지맨드라미(Dendronephthya putteri) 종 설명. 한반도의 생물다양성 — 한눈에 보는 멸종위기 야생생물",
+    "url": "https://species.nibr.go.kr/species-detail/120000039714"
+   },
+   {
+    "text": "강도형 외 (2005) 제주도 문섬 조하대에 서식하는 연산호군락의 태풍에 의한 영향 분석. Ocean and Polar Research 27(1):25–34",
+    "url": "https://www.kci.go.kr/kciportal/ci/sereArticleSearch/ciSereArtiView.kci?sereArticleSearchBean.artiId=ART001118940"
+   }
+  ],
   "range": {
    "km": 10
   }
  },
  "잔가지나무돌산호": {
   "summary": "제주 연안 돌산호.",
-  "distribution": "제주 서귀포 문섬·범섬·섶섬 일대 등 제주 연안과 남해 일부.",
+  "distribution": "제주도 해역.",
   "habitat": "수심 수~수십 m의 조류가 빠른 암반. 바닷속 암반에 붙어 사는 종이라 육상 격자로는 직접 나타낼 수 없어, 기록이 있는 해안선 칸으로 표시한다.",
   "life": "연중 고착 생활.",
   "diet": "물속 플랑크톤.",
@@ -428,18 +494,25 @@
      0,
      20
     ],
-    "refs": []
+    "refs": [
+     1
+    ]
    }
   ],
-  "refs": [],
+  "refs": [
+   {
+    "text": "국립생물자원관 (2018) 잔가지나무돌산호(Dendrophyllia ijimai) 종 설명. 한반도의 생물다양성 — 한눈에 보는 멸종위기 야생생물",
+    "url": "https://species.nibr.go.kr/species-detail/120000039875"
+   }
+  ],
   "range": {
    "km": 10
   }
  },
  "착생깃산호": {
   "summary": "제주 연안 깃산호.",
-  "distribution": "제주 서귀포 문섬·범섬·섶섬 일대 등 제주 연안과 남해 일부.",
-  "habitat": "수심 수~수십 m의 조류가 빠른 암반. 바닷속 암반에 붙어 사는 종이라 육상 격자로는 직접 나타낼 수 없어, 기록이 있는 해안선 칸으로 표시한다.",
+  "distribution": "남해안과 제주도 해역.",
+  "habitat": "수심 50~100 m 암반에 붙어 산다(해안선 칸은 위치를 대신 나타낸 것).",
   "life": "연중 고착 생활.",
   "diet": "물속 플랑크톤.",
   "threats": "연안 개발·수온 상승, 다이빙·낚시 훼손, 해양 쓰레기.",
@@ -466,18 +539,25 @@
      0,
      20
     ],
-    "refs": []
+    "refs": [
+     1
+    ]
    }
   ],
-  "refs": [],
+  "refs": [
+   {
+    "text": "국립생물자원관 (2018) 착생깃산호(Plumarella adhaerens) 종 설명. 한반도의 생물다양성 — 한눈에 보는 멸종위기 야생생물",
+    "url": "https://species.nibr.go.kr/species-detail/120000039772"
+   }
+  ],
   "range": {
    "km": 10
   }
  },
  "측맵시산호": {
   "summary": "제주 연안 맵시산호.",
-  "distribution": "제주 서귀포 문섬·범섬·섶섬 일대 등 제주 연안과 남해 일부.",
-  "habitat": "수심 수~수십 m의 조류가 빠른 암반. 바닷속 암반에 붙어 사는 종이라 육상 격자로는 직접 나타낼 수 없어, 기록이 있는 해안선 칸으로 표시한다.",
+  "distribution": "제주도 해역.",
+  "habitat": "수심 10~40 m의 암반.",
   "life": "연중 고착 생활.",
   "diet": "물속 플랑크톤.",
   "threats": "연안 개발·수온 상승, 다이빙·낚시 훼손, 해양 쓰레기.",
@@ -504,18 +584,25 @@
      0,
      20
     ],
-    "refs": []
+    "refs": [
+     1
+    ]
    }
   ],
-  "refs": [],
+  "refs": [
+   {
+    "text": "국립생물자원관 (2018) 측맵시산호(Echinogorgia complexa) 종 설명. 한반도의 생물다양성 — 한반도의 생물다양성 시스템 고도화",
+    "url": "https://species.nibr.go.kr/species-detail/120000163261"
+   }
+  ],
   "range": {
    "km": 10
   }
  },
  "흰수지맨드라미": {
   "summary": "제주 연안 연산호.",
-  "distribution": "제주 서귀포 문섬·범섬·섶섬 일대 등 제주 연안과 남해 일부.",
-  "habitat": "수심 수~수십 m의 조류가 빠른 암반. 바닷속 암반에 붙어 사는 종이라 육상 격자로는 직접 나타낼 수 없어, 기록이 있는 해안선 칸으로 표시한다.",
+  "distribution": "제주도 해역.",
+  "habitat": "해류가 빠른 수심 15~30 m 해역의 암반.",
   "life": "연중 고착 생활.",
   "diet": "물속 플랑크톤.",
   "threats": "연안 개발·수온 상승, 다이빙·낚시 훼손, 해양 쓰레기.",
@@ -542,18 +629,30 @@
      0,
      20
     ],
-    "refs": []
+    "refs": [
+     1,
+     2
+    ]
    }
   ],
-  "refs": [],
+  "refs": [
+   {
+    "text": "국립생물자원관 (2018) 흰수지맨드라미(Dendronephthya alba) 종 설명. 한반도의 생물다양성 — 한눈에 보는 멸종위기 야생생물",
+    "url": "https://species.nibr.go.kr/species-detail/120000039715"
+   },
+   {
+    "text": "강도형 외 (2005) 제주도 문섬 조하대에 서식하는 연산호군락의 태풍에 의한 영향 분석. Ocean and Polar Research 27(1):25–34",
+    "url": "https://www.kci.go.kr/kciportal/ci/sereArticleSearch/ciSereArtiView.kci?sereArticleSearchBean.artiId=ART001118940"
+   }
+  ],
   "range": {
    "km": 10
   }
  },
  "해송": {
   "summary": "깊은 암반에 사는 검은 산호(각산호).",
-  "distribution": "제주 서귀포 문섬·범섬·섶섬 일대 등 제주 연안과 남해 일부.",
-  "habitat": "수심 수~수십 m의 조류가 빠른 암반. 바닷속 암반에 붙어 사는 종이라 육상 격자로는 직접 나타낼 수 없어, 기록이 있는 해안선 칸으로 표시한다.",
+  "distribution": "제주도와 거문도 인근.",
+  "habitat": "수심 15 m 안팎 청정 해역의 조하대 바위.",
   "life": "연중 고착 생활.",
   "diet": "물속 플랑크톤.",
   "threats": "연안 개발·수온 상승, 다이빙·낚시 훼손, 해양 쓰레기.",
@@ -580,18 +679,30 @@
      0,
      20
     ],
-    "refs": []
+    "refs": [
+     1,
+     2
+    ]
    }
   ],
-  "refs": [],
+  "refs": [
+   {
+    "text": "국립생물자원관 (2018) 해송(Myriopathes japonica) 종 설명. 한반도의 생물다양성 — 한눈에 보는 멸종위기 야생생물",
+    "url": "https://species.nibr.go.kr/species-detail/120000212210"
+   },
+   {
+    "text": "Moon Hye-Won, Song Jun-Im (2008) Taxonomy of Black Coral Family Myriopathidae (Anthozoa: Antipatharia) from Korea. Animal Systematics, Evolution and Diversity 24(3):251–263",
+    "url": "https://doi.org/10.5635/kjsz.2008.24.3.251"
+   }
+  ],
   "range": {
    "km": 10
   }
  },
  "긴가지해송": {
   "summary": "가지가 긴 검은 산호(각산호).",
-  "distribution": "제주 서귀포 문섬·범섬·섶섬 일대 등 제주 연안과 남해 일부.",
-  "habitat": "수심 수~수십 m의 조류가 빠른 암반. 바닷속 암반에 붙어 사는 종이라 육상 격자로는 직접 나타낼 수 없어, 기록이 있는 해안선 칸으로 표시한다.",
+  "distribution": "제주도와 남해 외해 도서(동북아시아 고유종).",
+  "habitat": "수심 20 m 안팎의 암반.",
   "life": "연중 고착 생활.",
   "diet": "물속 플랑크톤.",
   "threats": "연안 개발·수온 상승, 다이빙·낚시 훼손, 해양 쓰레기.",
@@ -618,18 +729,30 @@
      0,
      20
     ],
-    "refs": []
+    "refs": [
+     1,
+     2
+    ]
    }
   ],
-  "refs": [],
+  "refs": [
+   {
+    "text": "국립생물자원관 (2016) 긴가지해송(Myriopathes lata) 종 설명. 한반도의 생물다양성 — 국가생물종정보관리체계 구축",
+    "url": "https://species.nibr.go.kr/species-detail/120000212212"
+   },
+   {
+    "text": "Moon Hye-Won, Song Jun-Im (2008) Taxonomy of Black Coral Family Myriopathidae (Anthozoa: Antipatharia) from Korea. Animal Systematics, Evolution and Diversity 24(3):251–263",
+    "url": "https://doi.org/10.5635/kjsz.2008.24.3.251"
+   }
+  ],
   "range": {
    "km": 10
   }
  },
  "선침거미불가사리": {
-  "summary": "제주 연안 암반의 거미불가사리.",
-  "distribution": "제주 서귀포 문섬·범섬·섶섬 일대 등 제주 연안과 남해 일부.",
-  "habitat": "수심 수~수십 m의 조류가 빠른 암반. 바닷속 암반에 붙어 사는 종이라 육상 격자로는 직접 나타낼 수 없어, 기록이 있는 해안선 칸으로 표시한다.",
+  "summary": "한반도 고유종 거미불가사리.",
+  "distribution": "제주 서귀포 해역.",
+  "habitat": "수심 50~100 m(해안선 칸은 위치를 대신 나타낸 것).",
   "life": "연중 고착 생활.",
   "diet": "물속 플랑크톤.",
   "threats": "연안 개발·수온 상승, 다이빙·낚시 훼손, 해양 쓰레기.",
@@ -656,17 +779,24 @@
      0,
      20
     ],
-    "refs": []
+    "refs": [
+     1
+    ]
    }
   ],
-  "refs": [],
+  "refs": [
+   {
+    "text": "국립생물자원관 (2018) 선침거미불가사리(Ophiacantha linea) 종 설명. 한반도의 생물다양성 — 한눈에 보는 멸종위기 야생생물",
+    "url": "https://species.nibr.go.kr/species-detail/120000050651"
+   }
+  ],
   "range": {
    "km": 10
   }
  },
  "나팔고둥": {
   "summary": "국내에서 가장 큰 고둥으로 불가사리를 잡아먹는다.",
-  "distribution": "제주와 남해 연안·섬.",
+  "distribution": "제주도(수심 10~20 m)와 남해 외해 도서(수심 50 m 이상), 드물게 태안·포항.",
   "habitat": "조간대 아래 암반.",
   "life": "봄~여름 산란.",
   "diet": "불가사리.",
@@ -694,18 +824,30 @@
      0,
      20
     ],
-    "refs": []
+    "refs": [
+     1,
+     2
+    ]
    }
   ],
-  "refs": [],
+  "refs": [
+   {
+    "text": "국립생물자원관 (2018) 나팔고둥(Charonia lampas) 종 설명. 한반도의 생물다양성 — 한반도의 생물다양성 시스템 고도화",
+    "url": "https://species.nibr.go.kr/species-detail/120000042136"
+   },
+   {
+    "text": "강경호 외 (2009) Gonadal development and reproduction in the trumpet snail, Charonia sauliae. The Korean Journal of Malacology 25(1):29–34",
+    "url": "https://www.kci.go.kr/kciportal/ci/sereArticleSearch/ciSereArtiView.kci?sereArticleSearchBean.artiId=ART001344476"
+   }
+  ],
   "range": {
    "km": 10
   }
  },
  "의염통성게": {
   "summary": "모래 해저에 묻혀 사는 성게.",
-  "distribution": "남해·제주 연안.",
-  "habitat": "얕은 바다의 모래 바닥.",
+  "distribution": "제주도.",
+  "habitat": "조하대에서 수심 200 m까지의 해저.",
   "life": "연중.",
   "diet": "모래 속 유기물.",
   "threats": "연안 준설·매립.",
@@ -733,10 +875,17 @@
      0,
      10
     ],
-    "refs": []
+    "refs": [
+     1
+    ]
    }
   ],
-  "refs": [],
+  "refs": [
+   {
+    "text": "국립생물자원관 (2018) 의염통성게(Nacospatangus alta) 종 설명. 한반도의 생물다양성 — 한눈에 보는 멸종위기 야생생물",
+    "url": "https://species.nibr.go.kr/species-detail/120000050803"
+   }
+  ],
   "range": {
    "km": 10
   }
@@ -865,8 +1014,8 @@
  },
  "붉은발말똥게": {
   "summary": "다리가 붉은 말똥게. 하구 갈대밭 위쪽에 산다.",
-  "distribution": "서·남해 하구.",
-  "habitat": "하구 염습지의 갈대밭과 그 위쪽 땅(굴을 파고 산다).",
+  "distribution": "경기(장항습지), 전남, 경남, 제주 해안에 드물게 산다.",
+  "habitat": "바다로 흘러드는 작은 하천 가의 돌담·언덕·풀밭.",
   "life": "여름 번식.",
   "diet": "식물 조각·유기물.",
   "threats": "하구 매립·제방, 갈대밭 감소.",
@@ -907,10 +1056,22 @@
       "min": 0.03
      }
     ],
-    "refs": []
+    "refs": [
+     1,
+     2
+    ]
    }
   ],
-  "refs": []
+  "refs": [
+   {
+    "text": "국립생물자원관 (2021) 붉은발말똥게(Sesarmops intermedius) 종 설명. 한반도의 생물다양성 — 생물다양성 디지털 정보 구축 및 관리",
+    "url": "https://species.nibr.go.kr/species-detail/120000048922"
+   },
+   {
+    "text": "이화자 (2015) First Zoea of Sesarmops intermedius (De Haan, 1835) (Crustacea: Decapoda: Brachyura: Sesarmidae). Fisheries and Aquatic Sciences 18(3):321–324",
+    "url": "https://www.kci.go.kr/kciportal/ci/sereArticleSearch/ciSereArtiView.kci?sereArticleSearchBean.artiId=ART002030437"
+   }
+  ]
  },
  "대추귀고둥": {
   "summary": "하구 갈대밭에 사는 고둥.",
@@ -1079,7 +1240,7 @@
   ]
  },
  "두드럭조개": {
-  "summary": "큰 강의 모래·자갈 바닥에 사는 민물조개.",
+  "summary": "국내 민물조개 가운데 껍데기가 가장 두껍고 단단한 한국 고유종.",
   "distribution": "금강·낙동강 등 큰 강.",
   "habitat": "물이 흐르는 큰 강의 모래·자갈 바닥.",
   "life": "봄~여름 번식(유생이 물고기에 기생).",
@@ -1110,10 +1271,31 @@
      200
     ],
     "cell_min": 0.03,
-    "refs": []
+    "refs": [
+     1,
+     2,
+     3
+    ]
    }
   ],
-  "refs": []
+  "refs": [
+   {
+    "text": "국립생물자원관 (2018) 두드럭조개(Aculamprotula coreana) 종 설명. 한반도의 생물다양성 — 한반도의 생물다양성 시스템 고도화",
+    "url": "https://species.nibr.go.kr/species-detail/120000471810"
+   },
+   {
+    "text": "권순직 외 (2025) Habitat Characteristics and Prediction of Potential Distribution according to Aculamprotula coreana (Martens, 1886) in the Republic of Korea. 국립생태원회보 6(3):109–118",
+    "url": "https://www.kci.go.kr/kciportal/ci/sereArticleSearch/ciSereArtiView.kci?sereArticleSearchBean.artiId=ART003229995"
+   },
+   {
+    "text": "김대희 외 (2015) Physical habitat simulation system (PHABSIM)을 이용한 금강의 두드럭조개(Lamprotula coreana) 서식지 평가. The Korean Journal of Malacology 31(4):307–314",
+    "url": "https://www.kci.go.kr/kciportal/ci/sereArticleSearch/ciSereArtiView.kci?sereArticleSearchBean.artiId=ART002063932"
+   },
+   {
+    "text": "김찬우 외 (2019) 실내 및 실외 사육에 따른 두드럭조개(Lamprotula coreana)의 성장특성. The Korean Journal of Malacology 35(1):1–8",
+    "url": "https://www.kci.go.kr/kciportal/ci/sereArticleSearch/ciSereArtiView.kci?sereArticleSearchBean.artiId=ART002455189"
+   }
+  ]
  },
  "염주알다슬기": {
   "summary": "남부 하천에 사는 다슬기.",
@@ -1226,8 +1408,8 @@
  },
  "거제외줄달팽이": {
   "summary": "거제도 숲에 사는 달팽이.",
-  "distribution": "경남 거제도.",
-  "habitat": "습한 활엽수림 바닥의 낙엽층·돌 밑.",
+  "distribution": "경남 해안 도서(동북아시아 고유종).",
+  "habitat": "해안가 도서 지역의 보존된 숲.",
   "life": "여름 산란.",
   "diet": "낙엽·버섯.",
   "threats": "숲 개발.",
@@ -1256,10 +1438,17 @@
      0,
      600
     ],
-    "refs": []
+    "refs": [
+     1
+    ]
    }
   ],
-  "refs": [],
+  "refs": [
+   {
+    "text": "국립생물자원관 (2018) 거제외줄달팽이(Satsuma myomphala) 종 설명. 한반도의 생물다양성 — 한눈에 보는 멸종위기 야생생물",
+    "url": "https://species.nibr.go.kr/species-detail/120000043356"
+   }
+  ],
   "range": {
    "km": 5,
    "areas": [
@@ -1320,12 +1509,12 @@
   }
  },
  "참달팽이": {
-  "summary": "남해 섬 숲에 사는 대형 달팽이.",
-  "distribution": "남해 섬.",
-  "habitat": "습한 활엽수림 바닥의 낙엽층·돌 밑.",
+  "summary": "전남 홍도가 모식산지인 한국 고유 대형 달팽이.",
+  "distribution": "지금까지 전남 신안 홍도에서만 발견된다(국립생물자원관). 인천 옹진 일대의 공개 기록은 확인이 필요해 분석에서 뺐다.",
+  "habitat": "습기가 많은 관목림, 나무 위, 돌담.",
   "life": "여름 산란.",
   "diet": "낙엽·버섯.",
-  "threats": "숲 개발.",
+  "threats": "개간, 농약 살포, 우기의 압사.",
   "conservation": "멸종위기 야생생물 Ⅱ급. 섬 숲 보전.",
   "vars": [
    "elev",
@@ -1346,18 +1535,39 @@
      "broad",
      "mixed"
     ],
-    "desc": "섬의 활엽수림(해발 600 m 이하)",
+    "desc": "신안 홍도의 숲(해발 400 m 이하)",
     "elev": [
      0,
-     600
+     400
     ],
     "coast_km": 3,
-    "refs": []
+    "refs": [
+     1,
+     2,
+     3
+    ]
    }
   ],
-  "refs": [],
+  "refs": [
+   {
+    "text": "국립생물자원관 (2018) 참달팽이(Koreanohadra koreana) 종 설명. 한반도의 생물다양성 — 한눈에 보는 멸종위기 야생생물",
+    "url": "https://species.nibr.go.kr/species-detail/120000042585"
+   },
+   {
+    "text": "김진영, 장금희 (2024) Study on the Movement Characteristics of the Endangered Terrestrial Snail Koreanohadra koreana (Mollusca: Gastropoda). 한국환경복원기술학회지 27(6):79–90",
+    "url": "https://www.kci.go.kr/kciportal/ci/sereArticleSearch/ciSereArtiView.kci?sereArticleSearchBean.artiId=ART003153141"
+   },
+   {
+    "text": "김진영 외 (2024) Improving Captive Propagation Techniques for the Conservation of the Endangered Terrestrial Snail Koreanohadra koreana (Mollusca: Gastropoda). 한국환경복원기술학회지 27(6):63–77",
+    "url": "https://www.kci.go.kr/kciportal/ci/sereArticleSearch/ciSereArtiView.kci?sereArticleSearchBean.artiId=ART003153129"
+   }
+  ],
   "range": {
-   "km": 5
+   "areas": [
+    "신안군"
+   ],
+   "only": true,
+   "km": 3
   }
  },
  "칼세오리옆새우": {
