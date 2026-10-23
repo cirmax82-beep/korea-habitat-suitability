@@ -398,7 +398,8 @@ def main():
         kept[pres] = True
         filter_geo(s["id"], kept, "해양" in tr["habitat"], man["geo"] if man else ())   # 사이트에 보여 줄 기록도 학습에 쓴 칸만
         marine = bool(tr["habitat"]) and set(tr["habitat"]) <= MARINE | {"섬", "해안"} and "해양" in tr["habitat"]
-        info = {"cells": int(pres.size), "habitat": tr["habitat"], "dropped": max(0, int(pres_all.size - pres.size)), "outliers": info_out}
+        pub_all, pub_kept = np.setdiff1d(pres_all, mrows), np.setdiff1d(pres, mrows)   # 공개 기록만(직접 확인 칸 빼고)
+        info = {"cells": int(pres.size), "habitat": tr["habitat"], "dropped": int(pub_all.size - pub_kept.size), "outliers": info_out}
         if man:
             info["manual"] = man["n"]
         resp = {}
@@ -491,7 +492,7 @@ def main():
         write(s["id"], pred)
         p_hi = pred >= info["threshold"]
         info["suitableKm2"] = round(float(area[p_hi].sum()) * km2, 1)
-        info["raw"] = int(pres_all.size)
+        info["raw"] = int(pub_all.size)
         report_stats(s, info, pred, area, pres, resp)
         models[s["id"]] = info
         log(f"{s['ko']}: {info['method']} 칸 {pres.size} AUC {info.get('auc', '-')} 적합 {info['suitableKm2']:,}㎢ · {time.time() - t0:.0f}s")
