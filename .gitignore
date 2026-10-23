@@ -1,0 +1,7 @@
+work/
+__pycache__/
+*.pyc
+.claude/
+js/config.js
+data/suit/
+data/blocks/

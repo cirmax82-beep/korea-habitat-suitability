@@ -1,0 +1,186 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>멸종위기종 서식지 분석</title>
+  <meta name="description" content="멸종위기 야생생물과 천연기념물(생물)의 생태적 특징, 종분포모형으로 계산한 서식지 적합성 지도, 사업지 영향 예측, 저감방안, 대체서식지 후보지를 한곳에서 보는 사이트입니다." />
+  <meta property="og:title" content="멸종위기종 서식지 분석" />
+  <meta property="og:description" content="멸종위기 야생생물·천연기념물 서식지 적합성 지도와 사업지 영향 예측·저감방안·대체서식지 후보" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='15' fill='%230b7285'/%3E%3Cpath d='M9 22c0-7 5-12 14-13-1 9-6 14-13 14' fill='%23fff'/%3E%3Cpath d='M9 23l7-7' stroke='%230b7285' stroke-width='1.6'/%3E%3C/svg%3E" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&display=swap" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <div class="inapp-bar" id="inapp-bar" hidden>
+    <span>앱 안의 브라우저에서는 공간자료 파일을 받을 수 없습니다.</span>
+    <button class="btn btn-sm btn-primary" id="inapp-open" type="button">크롬·사파리로 열기</button>
+    <button class="icon-btn" id="inapp-close" type="button" aria-label="닫기">✕</button>
+  </div>
+  <header class="topbar">
+    <a class="brand" href="#species">
+      <svg viewBox="0 0 32 32" aria-hidden="true"><circle cx="16" cy="16" r="15" fill="currentColor"/><path d="M9 22c0-7 5-12 14-13-1 9-6 14-13 14" fill="#fff"/><path d="M9 23l7-7" stroke="currentColor" stroke-width="1.6"/></svg>
+      <span><strong>멸종위기종 서식지 분석</strong><small>서식지 적합성 · 영향 예측 · 저감방안 · 대체서식지</small></span>
+    </a>
+    <nav class="tabs">
+      <a class="tab" href="#species" data-view="species">종 정보</a>
+      <a class="tab" href="#impact" data-view="impact">영향 예측</a>
+      <a class="tab" href="#about" data-view="about">자료·방법</a>
+    </nav>
+  </header>
+
+  <main>
+    <!-- 종 정보 -->
+    <section class="view" id="view-species">
+      <aside class="sp-side">
+        <div class="sp-filter">
+          <input id="sp-q" class="input" type="search" placeholder="국명·학명으로 찾기" autocomplete="off" />
+          <div class="row">
+            <select id="sp-group" class="input" aria-label="분류군"></select>
+            <select id="sp-kind" class="input" aria-label="구분">
+              <option value="">모든 구분</option><option value="en1">멸종위기 Ⅰ급</option><option value="en2">멸종위기 Ⅱ급</option><option value="nm">천연기념물</option>
+            </select>
+          </div>
+        </div>
+        <div class="sp-count" id="sp-count"></div>
+        <div class="sp-list" id="sp-list"></div>
+      </aside>
+      <div class="sp-main" id="sp-main">
+        <div class="sp-empty muted" id="sp-empty">
+          <p>왼쪽 목록에서 종을 고르면 생태적 특징, 서식지 적합성 지도, 주요 위협 요인과 저감방안을 볼 수 있습니다.</p>
+          <p>사업지가 있다면 <a href="#impact">영향 예측</a>에서 사업지 주변에 서식할 가능성이 있는 종과 대체서식지 후보를 한 번에 확인하세요.</p>
+        </div>
+        <div class="sp-detail" id="sp-detail" hidden></div>
+      </div>
+    </section>
+
+    <!-- 영향 예측 -->
+    <section class="view" id="view-impact">
+      <aside class="an-side">
+        <div class="an-step">
+          <h3><span class="num">1</span>사업지</h3>
+          <input id="an-name" class="input wide" placeholder="사업지 이름 (파일 이름에 씁니다)" maxlength="40" />
+          <div class="seg" id="an-src" role="tablist">
+            <button data-src="addr" class="on">주소·장소</button><button data-src="coord">좌표</button><button data-src="draw">지도에 그리기</button><button data-src="file">파일</button>
+          </div>
+          <div class="an-pane" data-pane="addr">
+            <form id="an-addr-form" class="row">
+              <input id="an-addr" class="input grow" type="search" placeholder="도로명·지번 주소나 장소 이름" autocomplete="off" />
+              <button class="btn btn-primary">찾기</button>
+            </form>
+            <div id="an-addr-res" class="search-results" hidden></div>
+            <p class="muted small" id="an-addr-note">주소는 사업지 위치(점)로 씁니다. 사업 구역이 있으면 ‘파일’이나 ‘지도에 그리기’로 구역계를 넣어 주세요.</p>
+          </div>
+          <div class="an-pane" data-pane="coord" hidden>
+            <textarea id="an-coord" class="input wide" rows="5" spellcheck="false" placeholder="한 줄에 한 점씩&#10;35.2386, 128.9654&#10;(TM 좌표는 X, Y — 앞에 점 번호가 있어도 됩니다)"></textarea>
+            <div class="row">
+              <select id="an-crs" class="input grow" aria-label="좌표계"></select>
+              <select id="an-shape" class="input" aria-label="모양">
+                <option value="auto">모양 자동</option><option value="point">점</option><option value="line">선</option><option value="polygon">면(구역계)</option>
+              </select>
+            </div>
+            <div class="row" id="an-order-row" hidden>
+              <select id="an-order" class="input grow" aria-label="좌표 순서">
+                <option value="auto">순서 자동</option><option value="en">X=동쪽, Y=북쪽 (GIS·CAD)</option><option value="ne">X=북쪽, Y=동쪽 (측량 성과표)</option>
+              </select>
+            </div>
+            <button class="btn btn-primary" id="an-coord-go">사업지로 정하기</button>
+            <p class="muted small">점이 1개면 점, 2개면 선, 3개 이상이면 구역계(면)로 잇습니다.</p>
+          </div>
+          <div class="an-pane" data-pane="draw" hidden>
+            <div class="row">
+              <button class="btn btn-light" data-draw="point">점 찍기</button>
+              <button class="btn btn-light" data-draw="line">선 그리기</button>
+              <button class="btn btn-light" data-draw="polygon">구역 그리기</button>
+            </div>
+            <div class="row draw-bar" id="an-draw-bar" hidden>
+              <span id="an-draw-msg" class="grow small"></span>
+              <button class="btn btn-primary btn-sm" id="an-draw-done">완료</button>
+              <button class="btn btn-light btn-sm" id="an-draw-undo">한 점 지우기</button>
+              <button class="btn btn-light btn-sm" id="an-draw-cancel">취소</button>
+            </div>
+            <p class="muted small">지도를 눌러 꼭짓점을 찍고 ‘완료’를 누르세요. 마지막 점을 두 번 눌러도 끝납니다.</p>
+          </div>
+          <div class="an-pane" data-pane="file" hidden>
+            <label class="drop" id="an-drop">
+              <input type="file" id="an-file" multiple accept=".zip,.shp,.shx,.dbf,.prj,.cpg,.geojson,.json,.kml,.dxf" />
+              <b>파일을 끌어다 놓거나 눌러서 고르기</b>
+              <span class="muted small">SHP(zip, 또는 .shp·.prj 함께) · GeoJSON · KML · DXF</span>
+            </label>
+            <div class="row">
+              <span class="small nowrap">좌표계 정보가 없으면</span>
+              <select id="an-file-crs" class="input grow" aria-label="파일 좌표계"></select>
+            </div>
+            <p class="muted small">파일은 이 컴퓨터 안에서만 읽고 어디에도 보내지 않습니다.</p>
+          </div>
+          <div id="an-site" class="an-site" hidden></div>
+          <div class="row" id="an-width-row">
+            <span class="small">선형 사업 폭</span>
+            <input type="number" id="an-width" class="input" min="2" max="200" step="1" value="20" aria-label="선형 사업 폭(m)" style="width:80px" />
+            <span class="small">m</span>
+          </div>
+        </div>
+        <div class="an-step">
+          <h3><span class="num">2</span>주변 영향 범위</h3>
+          <div class="chips" id="an-chips"></div>
+          <div class="row">
+            <span class="small">대체서식지 찾을 거리</span>
+            <select id="an-alt" class="input" aria-label="대체서식지 찾을 거리">
+              <option value="2">2 km 이내</option><option value="5" selected>5 km 이내</option><option value="10">10 km 이내</option>
+            </select>
+          </div>
+        </div>
+        <div class="an-step">
+          <h3><span class="num">3</span>대상 종</h3>
+          <label class="check"><input type="checkbox" id="an-en1" checked>멸종위기 Ⅰ급</label>
+          <label class="check"><input type="checkbox" id="an-en2" checked>멸종위기 Ⅱ급</label>
+          <label class="check"><input type="checkbox" id="an-nm" checked>천연기념물(멸종위기종이 아닌 종)</label>
+          <label class="check"><input type="checkbox" id="an-absent">남한에서 최근 기록이 없는 종도 포함</label>
+        </div>
+        <div class="an-step an-go">
+          <button class="btn btn-primary wide" id="an-run">영향 예측하기</button>
+          <div class="progress" id="an-progress" hidden><div class="bar"><i></i></div><span class="small muted"></span></div>
+        </div>
+      </aside>
+      <div class="an-main" id="an-main">
+        <div class="an-map-wrap"><div id="an-map"></div><div class="legend" id="an-legend" hidden></div></div>
+        <div id="an-result" class="an-result">
+          <div class="an-empty muted">
+            <p><b>사업지</b>를 정하고 <b>영향 예측하기</b>를 누르면, 사업지와 주변에 서식할 가능성이 있는 멸종위기 야생생물·천연기념물을 영향 정도 순으로 보여 줍니다.</p>
+            <p>종을 누르면 그 종의 서식지 적합성 지도, 맞춤 저감방안, 대체서식지 후보지를 볼 수 있습니다.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 자료·방법 -->
+    <section class="view" id="view-about">
+      <div class="page narrow about" id="about"></div>
+    </section>
+  </main>
+
+  <div class="toast" id="toast" hidden></div>
+  <div class="dl-sheet" id="dl-sheet" role="dialog" aria-label="파일 받기" hidden>
+    <div class="dl-sheet-body">
+      <div><b>파일이 준비됐습니다</b><div class="small muted" id="dl-sheet-name"></div></div>
+      <p class="small dl-sheet-note" id="dl-sheet-note" hidden>카카오톡 같은 앱 안의 브라우저에서는 파일이 깨진 채 저장됩니다. 크롬·사파리로 열어서 받아 주세요.</p>
+      <div class="row">
+        <button class="btn btn-primary" id="dl-sheet-out" type="button" hidden>크롬·사파리로 열어 받기</button>
+        <a class="btn btn-primary" id="dl-sheet-save" href="#" download>받기</a>
+        <button class="btn btn-light" id="dl-sheet-share" type="button" hidden>공유·저장</button>
+        <button class="btn btn-light" id="dl-sheet-close" type="button">닫기</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/proj4js/2.9.0/proj4.js"></script>
+  <script src="js/config.js"></script>
+  <script src="js/shpwrite.js"></script>
+  <script src="js/app.js"></script>
+  <script src="js/measures.js"></script>
+  <script src="js/site.js"></script>
+  <script src="js/impact.js"></script>
+</body>
+</html>

@@ -1,0 +1,421 @@
+// 멸종위기종 서식지 분석 — 공용 도구, 자료 불러오기, 적합성 지도 그리기, 종 정보 화면, 화면 전환
+(() => {
+  const $ = (s, r = document) => r.querySelector(s);
+  const $$ = (s, r = document) => Array.from(r.querySelectorAll(s));
+  const esc = (v) => String(v ?? "").replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+  const fmt = (n, d = 0) => Number(n || 0).toLocaleString("ko-KR", { maximumFractionDigits: d });
+  const debounce = (fn, ms) => { let t; return (...a) => { clearTimeout(t); t = setTimeout(() => fn(...a), ms); }; };
+  const JSZIP_URL = "https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js";
+  const ENDANGERED_SITE = "https://endangered.biogrideia.com/";
+
+  const GROUPS = { mammal: "포유류", bird: "조류", herp: "양서·파충류", fish: "어류", insect: "곤충", invert: "무척추동물", plant: "육상식물", algae: "해조류", fungi: "고등균류" };
+  const GRADE = { en1: "멸종위기 Ⅰ급", en2: "멸종위기 Ⅱ급" };
+  const VARS = { elev: "고도", slope: "경사", tree: "산림", grass: "초지·관목", crop: "농경지", built: "시가지", bare: "나지", water: "수역", wetland: "습지",
+    dist_water: "물까지 거리", dist_coast: "해안까지 거리", bio1: "연평균기온", bio4: "기온 계절성", bio12: "연강수량", bio15: "강수 계절성" };
+  const STRESS = { 훼손: "서식지 훼손", 소음: "소음·진동", 수질: "탁수·수질 오염", 조명: "야간 조명", 로드킬: "로드킬", 단절: "서식지 단절",
+    채집: "불법 채집·포획", 교란: "사람 출입·교란", 수위: "수위 변화", 벌채: "벌채" };
+  // 적합성 등급 — 모형 임계값(t, 0–100) 기준. 임계값 이상이 ‘적합’, 그 위 절반이 ‘매우 적합’, 임계값 절반까지 ‘가능’
+  const CLASSES = [
+    { k: 3, name: "매우 적합", color: [0, 104, 55] },
+    { k: 2, name: "적합", color: [49, 163, 84] },
+    { k: 1, name: "가능", color: [173, 221, 142] },
+  ];
+  const classOf = (v, t) => (v > 100 ? 0 : v >= t + (100 - t) / 2 ? 3 : v >= t ? 2 : v >= t / 2 ? 1 : 0);
+  const thrOf = (sp) => Math.round(((sp.model && sp.model.threshold) || 0.5) * 100);
+
+  const S = { cat: [], byId: new Map(), grid: null, occ: null, ready: null };
+
+  const toast = (msg, ms = 2600) => {
+    const el = $("#toast");
+    el.textContent = msg;
+    el.hidden = false;
+    clearTimeout(toast.t);
+    toast.t = setTimeout(() => { el.hidden = true; }, ms);
+  };
+
+  // ---------- 파일 내려받기(보호구역 종합포털과 같은 방식) ----------
+  // 컴퓨터는 바로 받고, 휴대폰은 화면 아래 ‘받기’ 버튼으로, 카카오톡 등 앱 안 브라우저는 크롬·사파리로 열게 함
+  const IN_APP = /\bwv\b|KAKAOTALK|NAVER\(inapp|Instagram|FBAN|FBAV|Line\/|DaumApps|everytimeApp/i.test(navigator.userAgent);
+  const KAKAO = /KAKAOTALK/i.test(navigator.userAgent);
+  const MOBILE = IN_APP || /Android|iPhone|iPad|iPod/i.test(navigator.userAgent) || (navigator.maxTouchPoints > 1 && /Macintosh/.test(navigator.userAgent));
+  const openOutside = (hash) => {
+    const url = location.href.split("#")[0] + (hash || location.hash);
+    if (KAKAO) location.href = `kakaotalk://web/openExternal?url=${encodeURIComponent(url)}`;
+    else toast("오른쪽 위 메뉴에서 ‘다른 브라우저로 열기’를 눌러 크롬·사파리에서 열어 주세요.", 7000);
+  };
+  let sheetUrl = null;
+  const closeSheet = () => {
+    $("#dl-sheet").hidden = true;
+    if (sheetUrl) { const u = sheetUrl; sheetUrl = null; setTimeout(() => URL.revokeObjectURL(u), 60000); }
+  };
+  const saveBlob = (blob, name, reopen) => {
+    if (IN_APP) {
+      closeSheet();
+      $("#dl-sheet-name").textContent = name;
+      $("#dl-sheet-save").hidden = true;
+      $("#dl-sheet-share").hidden = true;
+      $("#dl-sheet-note").hidden = false;
+      const out = $("#dl-sheet-out");
+      out.hidden = false;
+      out.onclick = () => openOutside(reopen);
+      $("#dl-sheet").hidden = false;
+      return;
+    }
+    if (!MOBILE) {
+      const a = document.createElement("a");
+      a.href = URL.createObjectURL(blob);
+      a.download = name;
+      document.body.appendChild(a);
+      a.click();
+      setTimeout(() => { URL.revokeObjectURL(a.href); a.remove(); }, 60000);
+      return;
+    }
+    closeSheet();
+    sheetUrl = URL.createObjectURL(blob);
+    const file = new File([blob], name, { type: blob.type || "application/octet-stream" });
+    const canShare = !!(navigator.canShare && navigator.canShare({ files: [file] }));
+    const kb = blob.size / 1024;
+    $("#dl-sheet-name").textContent = `${name} (${kb >= 1024 ? `${fmt(kb / 1024, 1)} MB` : `${fmt(kb)} KB`})`;
+    const link = $("#dl-sheet-save");
+    link.href = sheetUrl;
+    link.download = name;
+    link.hidden = false;
+    const share = $("#dl-sheet-share");
+    share.hidden = !canShare;
+    share.onclick = async () => {
+      try { await navigator.share({ files: [file], title: name }); closeSheet(); } catch (err) { if (err.name !== "AbortError") toast("공유하지 못했습니다. ‘받기’를 눌러 보세요.", 4000); }
+    };
+    $("#dl-sheet-note").hidden = true;
+    $("#dl-sheet-out").hidden = true;
+    $("#dl-sheet").hidden = false;
+  };
+
+  const scripts = new Map();
+  const loadScript = (url, global) => {
+    if (global && window[global]) return Promise.resolve();
+    if (!scripts.has(url)) scripts.set(url, new Promise((resolve, reject) => {
+      const s = document.createElement("script");
+      s.src = url;
+      s.onload = resolve;
+      s.onerror = () => { scripts.delete(url); s.remove(); reject(new Error("도구를 불러오지 못했습니다. 인터넷 연결을 확인하세요.")); };
+      document.head.appendChild(s);
+    }));
+    return scripts.get(url);
+  };
+  const loadJSZip = () => loadScript(JSZIP_URL, "JSZip");
+
+  // ---------- 자료 ----------
+  const load = () => S.ready || (S.ready = (async () => {
+    const [cat, grid] = await Promise.all(["data/catalog.json", "data/grid.json"].map((u) => fetch(u, { cache: "no-cache" }).then((r) => {
+      if (!r.ok) throw new Error(`${u} ${r.status}`);
+      return r.json();
+    })));
+    S.at = cat.generatedAt;
+    S.cat = cat.species;
+    S.cat.forEach((s, i) => { s.row = grid.rows.indexOf(s.id); s.i = i; S.byId.set(s.id, s); });
+    S.grid = grid;
+    S.blockSet = new Set(grid.blocks);
+    S.utmk = proj4("WGS84", grid.proj);
+  })());
+  const loadOcc = () => S.occ || (S.occ = fetch("data/occ.json").then((r) => r.json()));
+
+  // 회색조 webp·png → 값 배열(빨강 채널). 색 관리·알파 곱하기를 끄고 읽어 값이 그대로 나오게 함
+  const decodeGray = async (url) => {
+    const res = await fetch(url);
+    if (!res.ok) throw new Error(`${url} ${res.status}`);
+    const blob = await res.blob();
+    let src;
+    try {
+      src = await createImageBitmap(blob, { colorSpaceConversion: "none", premultiplyAlpha: "none" });
+    } catch (_) {
+      src = await new Promise((resolve, reject) => {
+        const img = new Image();
+        img.onload = () => resolve(img);
+        img.onerror = () => reject(new Error("그림 자료를 읽지 못했습니다."));
+        img.src = URL.createObjectURL(blob);
+      });
+    }
+    const w = src.width, h = src.height;
+    const cv = document.createElement("canvas");
+    cv.width = w; cv.height = h;
+    const ctx = cv.getContext("2d", { willReadFrequently: true });
+    ctx.drawImage(src, 0, 0);
+    if (src.close) src.close();
+    const d = ctx.getImageData(0, 0, w, h).data;
+    const out = new Uint8Array(w * h);
+    for (let i = 0, j = 0; i < out.length; i++, j += 4) out[i] = d[j];
+    return { w, h, data: out };
+  };
+  // 종 전체 적합성 격자(최근 4종만 기억)
+  const suitCache = new Map();
+  const suitOf = (id) => {
+    if (!suitCache.has(id)) {
+      suitCache.set(id, decodeGray(`data/suit/${id}.webp`).catch((err) => { suitCache.delete(id); throw err; }));
+      while (suitCache.size > 4) suitCache.delete(suitCache.keys().next().value);
+    }
+    return suitCache.get(id);
+  };
+
+  // ---------- 적합성 지도 층 ----------
+  // 분석 격자(UTM-K 250 m) 값을 지도 타일마다 다시 투영해 그림. 타일을 8×8로 나눠 꼭짓점만 정확히 바꾸고 안은 보간
+  const SuitLayer = L.GridLayer.extend({
+    options: { tileSize: 256, opacity: 0.8, updateWhenZooming: false, maxNativeZoom: 19 },
+    initialize(get, t, opts) {
+      this.get = get;   // (행, 열) → 0–100, 범위 밖 255
+      this.lut = new Uint8ClampedArray(256 * 4);
+      for (let v = 0; v <= 100; v++) {
+        const c = CLASSES.find((x) => x.k === classOf(v, t));
+        if (c) this.lut.set([...c.color, c.k === 1 ? 150 : 215], v * 4);
+      }
+      L.setOptions(this, opts);
+    },
+    createTile(coords) {
+      const size = this.getTileSize();
+      const tile = L.DomUtil.create("canvas", "leaflet-tile");
+      tile.width = size.x; tile.height = size.y;
+      const G = S.grid, N = 8, step = size.x / N, M = N + 1;
+      const nw = coords.scaleBy(size);
+      const cx = new Float64Array(M * M), cy = new Float64Array(M * M);
+      for (let j = 0; j < M; j++) {
+        for (let i = 0; i < M; i++) {
+          const ll = this._map.unproject([nw.x + i * step, nw.y + j * step], coords.z);
+          const p = S.utmk.forward([ll.lng, ll.lat]);
+          cx[j * M + i] = (p[0] - G.x0) / G.res;
+          cy[j * M + i] = (G.y1 - p[1]) / G.res;
+        }
+      }
+      const ctx = tile.getContext("2d");
+      const img = ctx.createImageData(size.x, size.y);
+      const px = img.data, lut = this.lut, get = this.get;
+      let any = false;
+      for (let y = 0; y < size.y; y++) {
+        const fy = (y + 0.5) / step, j = Math.min(N - 1, fy | 0), v = fy - j;
+        for (let x = 0; x < size.x; x++) {
+          const fx = (x + 0.5) / step, i = Math.min(N - 1, fx | 0), u = fx - i;
+          const k = j * M + i;
+          const c = (1 - v) * ((1 - u) * cx[k] + u * cx[k + 1]) + v * ((1 - u) * cx[k + M] + u * cx[k + M + 1]);
+          const r = (1 - v) * ((1 - u) * cy[k] + u * cy[k + 1]) + v * ((1 - u) * cy[k + M] + u * cy[k + M + 1]);
+          const o = get(Math.floor(r), Math.floor(c)) * 4;
+          if (lut[o + 3]) {
+            const q = (y * size.x + x) * 4;
+            px[q] = lut[o]; px[q + 1] = lut[o + 1]; px[q + 2] = lut[o + 2]; px[q + 3] = lut[o + 3];
+            any = true;
+          }
+        }
+      }
+      if (any) ctx.putImageData(img, 0, 0);
+      return tile;
+    },
+  });
+  const rasterGet = (R) => (r, c) => (r >= 0 && r < R.h && c >= 0 && c < R.w ? R.data[r * R.w + c] : 255);
+  const legendHtml = (sp, extra = "") => `<b>${esc(sp.ko)} 서식 가능성</b>${CLASSES.map((c) => `<div><i style="background:rgb(${c.color})"></i>${c.name}</div>`).join("")}${extra}`;
+
+  // 출현 기록 1 km 칸 → 경위도 사각형
+  const occCellLatLngs = (cell) => {
+    const G = S.grid, size = G.res * G.occRes;
+    const r = Math.floor(cell / G.occW), c = cell % G.occW;
+    const x = G.x0 + c * size, y = G.y1 - r * size;
+    return [[x, y], [x + size, y], [x + size, y - size], [x, y - size]].map((p) => { const q = S.utmk.inverse(p); return [q[1], q[0]]; });
+  };
+  const REC_STYLE = { color: "#d6336c", weight: 1.5, fill: false, interactive: false };
+
+  const baseLayers = () => {
+    const osmAttr = '&copy; <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">OpenStreetMap</a> contributors';
+    return {
+      "밝은 지도": L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", { maxZoom: 19, attribution: osmAttr, className: "tiles-muted" }),
+      "일반 지도": L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", { maxZoom: 19, attribution: osmAttr }),
+      "위성 영상": L.tileLayer("https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}", {
+        maxZoom: 19, attribution: "Tiles &copy; Esri &mdash; Source: Esri, Maxar, Earthstar Geographics" }),
+    };
+  };
+  const makeMap = (el, opts = {}) => {
+    const map = L.map(el, { zoomSnap: 0.5, minZoom: 6, maxZoom: 18, maxBounds: [[30.5, 121], [40.5, 134.5]], ...opts }).setView([36.1, 127.8], 7);
+    const base = baseLayers();
+    base["밝은 지도"].addTo(map);
+    L.control.layers(base, null, { position: "topright" }).addTo(map);
+    L.control.scale({ imperial: false, position: "bottomright" }).addTo(map);
+    return map;
+  };
+
+  // ---------- 종 표시 도구 ----------
+  const photoUrl = (code, size = "small") => {
+    const m = /^([os])(\d+)\.(\w+)$/.exec(code || "");
+    if (!m) return "";
+    return `${m[1] === "o" ? "https://inaturalist-open-data.s3.amazonaws.com" : "https://static.inaturalist.org"}/photos/${m[2]}/${size}.${m[3]}`;
+  };
+  const badges = (sp) => [
+    sp.grade ? `<span class="badge ${sp.grade}">${GRADE[sp.grade]}</span>` : "",
+    sp.nm ? `<span class="badge nm">천연기념물 ${esc(sp.nm)}</span>` : "",
+    `<span class="badge">${esc(GROUPS[sp.group] || sp.group)}</span>`,
+    sp.absent ? `<span class="badge absent">남한 최근 기록 없음</span>` : "",
+  ].join("");
+  const shortBadge = (sp) => [sp.grade ? `<span class="badge ${sp.grade}">${sp.grade === "en1" ? "Ⅰ급" : "Ⅱ급"}</span>` : "", sp.nm ? `<span class="badge nm">천</span>` : ""].join(" ");
+  const methodName = (m) => (m && m.method === "maxent" ? "MaxEnt 종분포모형" : m && m.method === "rule" ? "서식 조건 지수" : "자료 부족");
+  const tagList = (list, cls = "") => `<span class="tags">${(list || []).map((t) => `<span class="tag ${cls}">${esc(t)}</span>`).join("")}</span>`;
+
+  // ---------- 종 정보 화면 ----------
+  const L1 = { q: "", group: "", kind: "", cur: null, map: null };
+  const filtered = () => {
+    const q = L1.q.toLowerCase();
+    return S.cat.filter((s) => (!L1.group || s.group === L1.group)
+      && (!L1.kind || (L1.kind === "nm" ? s.nm : s.grade === L1.kind))
+      && (!q || s.ko.includes(L1.q) || s.sci.toLowerCase().includes(q)));
+  };
+  const renderList = () => {
+    const list = filtered();
+    $("#sp-count").textContent = `${fmt(list.length)}종`;
+    $("#sp-list").innerHTML = list.map((s) => `<a class="sp-item ${L1.cur === s.id ? "on" : ""}" href="#species/${s.id}" data-id="${s.id}">
+      ${s.photo ? `<img src="${photoUrl(s.photo, "square")}" alt="" loading="lazy">` : `<span class="noimg"></span>`}
+      <span><b>${esc(s.ko)}</b> ${shortBadge(s)}<small>${esc(s.sci)}</small></span></a>`).join("");
+  };
+  const renderSpecies = async (id) => {
+    const sp = S.byId.get(id);
+    L1.cur = sp ? id : null;
+    $$("#sp-list .sp-item").forEach((a) => a.classList.toggle("on", a.dataset.id === L1.cur));
+    $("#view-species").classList.toggle("detail", !!sp);
+    $("#sp-empty").hidden = !!sp;
+    const box = $("#sp-detail");
+    box.hidden = !sp;
+    if (L1.map) { L1.map.remove(); L1.map = null; }
+    if (!sp) return;
+    const m = sp.model || {};
+    const imp = Object.entries(m.importance || {}).slice(0, 6);
+    const se = Measures.season(sp.season);
+    box.innerHTML = `
+      <button class="btn btn-light btn-sm sp-back" type="button" id="sp-back">← 종 목록</button>
+      <div class="sp-head">
+        <div>${sp.photo ? `<img class="sp-photo" src="${photoUrl(sp.photo, "medium")}" alt="${esc(sp.ko)} 사진"><div class="sp-photo-cap">${esc((sp.photoBy || "").trim())} · iNaturalist</div>` : `<div class="sp-photo"></div>`}</div>
+        <div>
+          <h1>${esc(sp.ko)}</h1>
+          <div class="sp-sci">${esc(sp.sci)}${sp.family ? ` · ${esc(sp.family)}` : ""}</div>
+          <div class="badges">${badges(sp)}</div>
+          ${sp.remark ? `<p class="small">${esc(sp.remark)}</p>` : ""}
+          <div class="sp-links">
+            ${sp.grade ? `<a href="${ENDANGERED_SITE}" target="_blank" rel="noopener">멸종위기종 종합관리</a>` : ""}
+            ${sp.gbif ? `<a href="https://www.gbif.org/species/${sp.gbif}" target="_blank" rel="noopener">GBIF</a>` : ""}
+            ${sp.inat ? `<a href="https://www.inaturalist.org/taxa/${sp.inat}" target="_blank" rel="noopener">iNaturalist</a>` : ""}
+          </div>
+        </div>
+      </div>
+      <div class="sp-grid">
+        <div>
+          <div class="sp-map-wrap"><div class="sp-map" id="sp-map"></div>
+            <div class="legend" id="sp-legend">${legendHtml(sp, `<div><i class="rec"></i>출현 기록(1 km 칸)</div>`)}</div>
+            <label class="map-toggles"><span><input type="checkbox" id="sp-rec" checked> 출현 기록</span></label>
+          </div>
+          <p class="small muted">${m.method === "rule" ? "출현 기록이 적어 서식 환경 조건(서식지 유형·토지피복·지형)으로 계산한 참고 지수입니다." : m.method === "maxent" ? "출현 기록과 환경 변수로 계산한 서식 가능성입니다(250 m 격자)." : ""} 서식 가능성은 잠재적인 값이며 실제 서식 여부는 현지조사로 확인해야 합니다.</p>
+        </div>
+        <div>
+          <div class="panel" style="margin-top:0">
+            <h3>생태적 특징</h3>
+            <dl class="facts">
+              <dt>서식 환경</dt><dd>${tagList(sp.habitat) || "-"}</dd>
+              ${se ? `<dt>민감 시기</dt><dd>${esc(se.text)}</dd>` : ""}
+              ${sp.note ? `<dt>특징</dt><dd>${esc(sp.note)}</dd>` : ""}
+              <dt>주요 위협</dt><dd>${tagList((sp.stress || []).map((k) => STRESS[k] || k), "warn")}</dd>
+            </dl>
+          </div>
+          <div class="panel">
+            <h3>서식지 적합성</h3>
+            <dl class="facts">
+              <dt>방식</dt><dd>${methodName(m)}</dd>
+              <dt>출현 자료</dt><dd>${fmt(m.cells || 0)}칸(250 m)</dd>
+              ${m.auc ? `<dt>예측력(AUC)</dt><dd>${m.auc.toFixed(2)} <span class="muted small">3겹 교차검증</span></dd>` : ""}
+              ${m.suitableKm2 !== undefined ? `<dt>적합 면적</dt><dd>${fmt(m.suitableKm2)} ㎢ <span class="muted small">‘적합’ 이상</span></dd>` : ""}
+            </dl>
+            ${imp.length ? `<h3 style="margin-top:14px">영향이 큰 환경 요인</h3><div class="bars">${imp.map(([k, v]) => `<div class="bar-row"><span>${esc(VARS[k] || k)}</span><span class="track"><i style="width:${Math.min(100, v)}%"></i></span><span class="v">${fmt(v)}%</span></div>`).join("")}</div>` : ""}
+          </div>
+        </div>
+      </div>
+      <div class="panel">
+        <h3>저감방안</h3>
+        ${Measures.html(Measures.list(sp), esc)}
+        <p class="small muted" style="margin:10px 0 0">사업지에 맞춘 방안과 대체서식지 후보는 <a href="#impact">영향 예측</a>에서 볼 수 있습니다.</p>
+      </div>`;
+    $("#sp-back").onclick = () => { location.hash = "#species"; };
+    $("#sp-main").scrollTop = 0;
+
+    const map = L1.map = makeMap($("#sp-map"));
+    const recLayer = L.featureGroup().addTo(map);
+    $("#sp-rec").onchange = (e) => { if (e.target.checked) recLayer.addTo(map); else recLayer.remove(); };
+    try {
+      const [R, occ] = await Promise.all([suitOf(sp.id), loadOcc()]);
+      if (L1.map !== map) return;
+      new SuitLayer(rasterGet(R), thrOf(sp)).addTo(map);
+      const canvas = L.canvas({ padding: 0.3 });
+      (occ[sp.id] || []).forEach((cell) => L.polygon(occCellLatLngs(cell), { ...REC_STYLE, renderer: canvas }).addTo(recLayer));
+    } catch (err) {
+      console.warn(err);
+      toast("서식지 적합성 자료를 불러오지 못했습니다.", 4000);
+    }
+  };
+
+  const bindSpecies = () => {
+    $("#sp-group").innerHTML = `<option value="">모든 분류군</option>` + Object.entries(GROUPS)
+      .filter(([k]) => S.cat.some((s) => s.group === k)).map(([k, v]) => `<option value="${k}">${v}</option>`).join("");
+    $("#sp-q").addEventListener("input", debounce((e) => { L1.q = e.target.value.trim(); renderList(); }, 120));
+    $("#sp-group").onchange = (e) => { L1.group = e.target.value; renderList(); };
+    $("#sp-kind").onchange = (e) => { L1.kind = e.target.value; renderList(); };
+    renderList();
+  };
+
+  // ---------- 자료·방법 ----------
+  const renderAbout = () => {
+    const n = S.cat.length, en = S.cat.filter((s) => s.grade).length, nm = S.cat.filter((s) => s.nm).length;
+    const mx = S.cat.filter((s) => s.model && s.model.method === "maxent").length;
+    $("#about").innerHTML = `
+      <h1>자료·방법</h1>
+      <p>멸종위기 야생생물 ${fmt(en)}종과 천연기념물(종 단위 지정) ${fmt(nm)}종, 모두 ${fmt(n)}종의 서식지 적합성을 남한 전역 250 m 격자로 계산했습니다. 자료 기준일 ${esc(S.at || "")}.</p>
+      <h2>서식지 적합성</h2>
+      <ul class="plain">
+        <li><b>MaxEnt 종분포모형</b>(${fmt(mx)}종): 출현 기록이 15칸 이상인 종. 모든 대상 종의 출현 칸에서 배경을 뽑아(target-group background) 조사가 많이 된 곳에 치우치는 편향을 줄였습니다. 예측력은 3겹 교차검증 AUC, ‘적합’ 기준은 출현 칸의 90%가 들어가는 값입니다(놓치는 종이 적도록 넉넉하게 잡음).</li>
+        <li><b>서식 조건 지수</b>(${fmt(n - mx)}종): 기록이 적거나 바다에 사는 종. 서식지 유형별 토지피복·지형·물과의 거리로 계산하고, 기록이 있으면 기록에서 멀수록 낮췄습니다. 통계 모형이 아닌 참고값입니다.</li>
+        <li>환경 변수: 고도·경사(Copernicus DEM GLO-90), 토지피복 비율 7종(ESA WorldCover 2021), 물·해안까지 거리, 기후 4종(CHELSA V2.1 1981–2010).</li>
+        <li>출현 자료: GBIF 공개 기록과 iNaturalist 관찰(멸종위기종 종합관리 사이트와 같은 자료). 사이트에는 1 km 칸으로만 보여 줍니다.</li>
+      </ul>
+      <h2>영향 예측</h2>
+      <ul class="plain">
+        <li>사업지 안 ‘적합’ 이상 서식지 면적, 주변 범위 안 적합 서식지, 가장 가까운 출현 기록을 종마다 계산해 영향 정도(높음·보통·낮음)를 매깁니다.</li>
+        <li><b>높음</b>: 사업지 안에 적합 서식지가 있고 주변 범위 안에 출현 기록이 있음. <b>보통</b>: 사업지 안에 적합 서식지가 있음(기록 없음), 또는 주변 범위 안에 적합 서식지와 기록이 함께 있음. <b>낮음</b>: 주변 범위 안에만 적합 서식지가 있거나 기록만 있음. 서식 조건 지수로 계산한 종은 기록이 없으면 ‘낮음’까지만 매깁니다.</li>
+        <li>대체서식지 후보: 사업지 밖, 정한 거리 안에서 그 종의 ‘적합’ 이상이고 시가지가 20% 미만인 칸을 이어 묶은 곳입니다. 적합도·면적·거리로 순위를 매깁니다.</li>
+        <li>저감방안은 종의 위협 요인과 민감 시기에 맞춘 일반 방안입니다.</li>
+      </ul>
+      <h2>한계</h2>
+      <p>출현 기록은 공개된 것만 썼고, 위치를 흐린 기록이나 비공개 조사 자료는 빠져 있습니다. 결과는 현지조사를 대신하지 않으며, 계획 초기 검토와 조사 지점 선정에 참고하세요.</p>
+      <h2>출처</h2>
+      <ul class="plain small">
+        <li>GBIF.org, iNaturalist — 출현 기록</li>
+        <li>국가유산청 국가유산 검색 오픈API — 천연기념물 목록</li>
+        <li>Karger et al. CHELSA V2.1 · Copernicus DEM GLO-90 (© DLR, © Airbus) · ESA WorldCover 2021 (CC BY 4.0)</li>
+        <li>국토교통부 브이월드 — 시군구 경계</li>
+        <li>생태적 특징 요약: 국립생물자원관 한반도의 생물다양성, 국립생태원 멸종위기 야생생물 정보 등 공개 자료</li>
+      </ul>`;
+  };
+
+  // ---------- 화면 전환 ----------
+  const show = async () => {
+    const [name, arg] = (location.hash.slice(1) || "species").split("/");
+    const view = ["species", "impact", "about"].includes(name) ? name : "species";
+    $$(".view").forEach((v) => v.classList.toggle("active", v.id === `view-${view}`));
+    $$(".tab").forEach((t) => t.classList.toggle("active", t.dataset.view === view));
+    try { await load(); } catch (err) { console.warn(err); toast("자료를 불러오지 못했습니다. 새로 고침해 보세요.", 6000); return; }
+    if (!show.bound) { show.bound = true; bindSpecies(); }
+    if (view === "species") renderSpecies(decodeURIComponent(arg || ""));
+    if (view === "impact") window.Impact.show();
+    if (view === "about") renderAbout();
+  };
+  window.addEventListener("hashchange", show);
+
+  $("#dl-sheet-close").onclick = closeSheet;
+  $("#dl-sheet-save").addEventListener("click", () => setTimeout(closeSheet, 1500));
+  if (IN_APP) {
+    $("#inapp-bar").hidden = false;
+    $("#inapp-open").textContent = KAKAO ? "크롬·사파리로 열기" : "여는 방법";
+    $("#inapp-open").onclick = () => openOutside();
+    $("#inapp-close").onclick = () => { $("#inapp-bar").hidden = true; };
+  }
+
+  window.H = { S, $, $$, esc, fmt, debounce, toast, saveBlob, loadScript, loadJSZip, decodeGray, makeMap, SuitLayer, legendHtml, classOf, thrOf, CLASSES,
+    occCellLatLngs, loadOcc, REC_STYLE, GROUPS, GRADE, STRESS, VARS, badges, shortBadge, methodName, tagList, photoUrl };
+  setTimeout(show, 0);
+})();
