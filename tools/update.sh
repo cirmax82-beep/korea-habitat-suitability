@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # 자료 갱신: 종 목록·출현 칸(멸종위기종 종합관리 자료) → 종별 적합성 → 사이트 자료 → 릴리스·저장소에 올리기
-# 환경 격자(work/env)는 한 번 만들어 두면 다시 만들 필요가 없습니다(tools/build_env.py).
+# 환경 격자(work/env)와 보호지역 비율(work/env/pa.npz)은 한 번 만들어 두면 다시 만들 필요가 없습니다(tools/build_env.py·build_pa.py).
 set -euo pipefail
 cd "$(dirname "$0")/.."
 export PYTHONIOENCODING=utf-8

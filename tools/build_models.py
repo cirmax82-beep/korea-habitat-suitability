@@ -28,6 +28,8 @@
 - 문헌 프로필(tools/profiles/*.json)이 있는 종: 서식지 층(번식지·채식지 등)마다 그 토지피복·조건을 만족하는 칸만 → data/suit/<id>@<층>.webp,
   대표 지도는 main 층들의 최댓값
 - 결과: data/suit/<id>.webp(무손실 회색조, 0–100 = 적합성×100을 5 단위로, 255 = 분석 범위 밖), data/models.json
+- 분석리포트: data/report/<id>.json — 등급별·시도별 적합 면적, 토지피복·고도 구성(적합 서식지·출현 칸·국토), 환경변수 요약,
+  MaxEnt 반응곡선(다른 변수는 출현 칸 중앙값으로 고정), 서식지 조각(8방향 연결), 보호지역(KDPA, work/env/pa.npz)·도로 영향권 안 비율
 """
 import json
 import sys
@@ -57,6 +59,11 @@ SUIT = ROOT / "data" / "suit"
 MIN_CELLS = 15
 RANGE_KM = {"bird": 25, "mammal": 15, "fish": 10}   # 알려진 분포(출현 칸·기록 시군구)에서 이 거리 안은 그대로, 그만큼 더 가면서 0으로. 그 밖의 분류군 5 km
 MOBILE = ("bird", "mammal")   # 그 밖의 분류군은 출현 칸이 없으면(시군구 기록만 있으면) ‘가능’까지만, 칸이 있으면 시군구로 넓히지 않음
+REPORT = ROOT / "data" / "report"
+ELEV_BINS = [0, 100, 200, 300, 500, 700, 1000, 1300, 9999]   # 고도 구간(m)
+LC_KEYS = ["broad", "conifer", "grass", "paddy", "field", "wetland", "river", "lake", "tidal", "sea", "rock", "bare", "built", "road", "artbare"]
+CORE_VARS = ["elev", "slope", "tree", "grass", "paddy", "wetland", "river", "lake", "dist_river", "dist_coast", "bio1", "bio12"]   # 모든 종 리포트에 넣는 환경변수
+SIDO = ["서울", "부산", "대구", "인천", "광주", "대전", "울산", "세종", "경기", "강원", "충북", "충남", "전북", "전남", "경북", "경남", "제주"]
 RULE_T = (0.5, 0.7, 0.85)                 # 서식 조건 지수의 가능·적합·매우 적합 기준
 OCC_SGG = ROOT / "work" / "occ_sgg"
 N_BG = 10000
@@ -179,6 +186,67 @@ def main():
         vals.ravel()[idx] = pred
         to_img(SUIT / f"{name}.webp", vals[land], land)
 
+    # ---------- 분석리포트 통계 ----------
+    REPORT.mkdir(parents=True, exist_ok=True)
+    pa = np.load(ENV / "pa.npz") if (ENV / "pa.npz").exists() else None
+    PA = {k: pa[k].astype("float32").ravel()[idx] for k in pa.files} if pa is not None else {}
+    nat = {v: float(np.nanmean(E[v])) for v in set(LC_KEYS + CORE_VARS + names) if v in E}
+    elev_bin = np.clip(np.digitize(np.nan_to_num(E["elev"]), ELEV_BINS) - 1, 0, len(ELEV_BINS) - 2)
+    pct = lambda a: [round(float(x) * 100, 1) for x in a / max(a.sum(), 1e-9)]  # noqa: E731
+
+    def r4(v):
+        return None if v is None or not np.isfinite(v) else round(float(v), 4)
+
+    def report_stats(s, info, pred, area, pres, resp):
+        km2 = (grid["res"] / 1000) ** 2
+        T = (info["tLo"], info["threshold"], info["tHi"])
+        cls = np.digitize(pred, T)   # 0 낮음, 1 가능, 2 적합, 3 매우 적합
+        suit = cls >= 2
+        w = area * suit
+        R = {"id": s["id"], "landKm2": round(float(idx.size) * km2), "classKm2": [round(float(area[cls == k].sum()) * km2, 1) for k in (1, 2, 3)],
+             "model": {k: info[k] for k in ("method", "vars", "auc", "aucTrain", "tLo", "threshold", "tHi", "importance", "cells", "raw", "dropped",
+                                             "outliers", "sgg", "noRecord", "road", "aqua", "reason", "suitableKm2", "layers") if k in info}}
+        sido = sido_cell
+        by = np.bincount(sido, weights=w, minlength=len(SIDO) + 1) * km2
+        rec = np.bincount(sido[pres], minlength=len(SIDO) + 1) if pres.size else np.zeros(len(SIDO) + 1)
+        land_by = np.bincount(sido, minlength=len(SIDO) + 1) * km2
+        R["sido"] = [{"name": (["기타"] + SIDO)[i], "km2": round(float(by[i]), 1), "rec": int(rec[i]), "share": round(float(by[i] / land_by[i] * 100), 2) if land_by[i] else 0}
+                     for i in range(len(SIDO) + 1) if by[i] >= 0.05 or rec[i]]
+        R["elev"] = {"bins": ELEV_BINS, "suit": pct(np.bincount(elev_bin, weights=w, minlength=len(ELEV_BINS) - 1)),
+                     "rec": pct(np.bincount(elev_bin[pres], minlength=len(ELEV_BINS) - 1).astype(float)) if pres.size else None,
+                     "land": pct(np.bincount(elev_bin, minlength=len(ELEV_BINS) - 1).astype(float))}
+        tot = w.sum()
+        R["landcover"] = {k: {"suit": round(float((E[k] * w).sum() / tot * 100), 1) if tot else None, "land": round(nat[k] * 100, 1)} for k in LC_KEYS if k in E}
+        vs = list(dict.fromkeys(CORE_VARS + (info.get("vars") or [])))
+        env = {}
+        for v in vs:
+            row = {"land": r4(nat.get(v)), "suit": r4(float((np.nan_to_num(E[v]) * w).sum() / tot)) if tot else None}
+            if pres.size:
+                a = E[v][pres]
+                a = a[np.isfinite(a)]
+                if a.size:
+                    row |= {"rec": r4(a.mean()), "recSd": r4(a.std()), "recP10": r4(np.percentile(a, 10)), "recP90": r4(np.percentile(a, 90))}
+            env[v] = row
+        R["env"] = env
+        if resp:
+            R["response"] = resp
+        full_s = np.zeros(land.shape, dtype=bool)
+        full_s.ravel()[idx] = suit
+        lab, n = ndimage.label(full_s, structure=np.ones((3, 3)))
+        if n:
+            ar = np.asarray(ndimage.sum(full(area), lab, index=np.arange(1, n + 1))) * km2
+            R["patches"] = {"n": int(n), "largest": round(float(ar.max()), 2), "median": round(float(np.median(ar)), 3),
+                            "over1": int((ar >= 1).sum()), "largestShare": round(float(ar.max() / ar.sum() * 100), 1),
+                            "sizes": [int(x) for x in np.histogram(ar, bins=[0, 0.1, 0.5, 1, 5, 10, 50, 1e9])[0]]}
+        if PA and tot:
+            R["protected"] = {k: round(float((PA[k] * w).sum() / tot * 100), 1) for k in PA}
+            R["protectedLand"] = {k: round(float(PA[k].mean() * 100), 1) for k in PA}
+            if pres.size:
+                R["protectedRec"] = round(float((PA["any"][pres] >= 0.5).mean() * 100), 1)
+        if tot:
+            R["roadZone"] = round(float((w * (E["road_eff"] > 0.05)).sum() / tot * 100), 1)
+        (REPORT / f"{s['id']}.json").write_text(json.dumps(R, ensure_ascii=False, separators=(",", ":")), encoding="utf-8")
+
     # 문헌 프로필의 서식지 층: 토지피복 묶음 비율(활엽·혼효 = 산림 − 침엽), 가까이 있어야 할 것까지 거리, 고도
     def group_frac(groups):
         g, f = set(groups), np.zeros(idx.size, dtype="float32")
@@ -209,6 +277,9 @@ def main():
     gid_idx = {g: i + 1 for i, g in enumerate(sg["gid"])}
     sgg_r = rasterize(((geom, i + 1) for i, geom in enumerate(sg.geometry)), out_shape=land.shape,
                       transform=from_origin(grid["x0"], grid["y1"], grid["res"], grid["res"]), fill=0, dtype="int16")
+
+    sido_of_row = np.array([0] + [SIDO.index(x) + 1 if x in SIDO else 0 for x in sg["short"]])   # sgg_r 값 → 시도 번호(0 = 경계 밖)
+    sido_cell = sido_of_row[sgg_r.ravel()[idx]]
 
     def area_rows(areas):
         areas = set(areas)
@@ -320,6 +391,7 @@ def main():
         filter_geo(s["id"], kept, "해양" in tr["habitat"])   # 사이트에 보여 줄 기록도 학습에 쓴 칸만
         marine = bool(tr["habitat"]) and set(tr["habitat"]) <= MARINE | {"섬", "해안"} and "해양" in tr["habitat"]
         info = {"cells": int(pres.size), "habitat": tr["habitat"], "dropped": int(pres_all.size - pres.size), "outliers": info_out}
+        resp = {}
         if pres.size >= MIN_CELLS and not marine:
             bg_pool = np.setdiff1d(effort, pres)
             if bg_pool.size < N_BG:   # 조사 노력 칸이 모자라면 육지 무작위로 채움
@@ -345,6 +417,13 @@ def main():
                 Xp[:, j] = RNG.permutation(Xp[:, j])
                 imp[n] = max(0.0, base - roc_auc_score(y, m.predict(Xp)))
             tot = sum(imp.values()) or 1
+            med = np.nanmedian(Xt[:pres.size], axis=0)   # 반응곡선: 한 변수만 바꾸고 나머지는 출현 칸 중앙값
+            for n in [k for k, _ in sorted(imp.items(), key=lambda x: -x[1])][:6]:
+                j = vnames.index(n)
+                xs = np.unique(np.round(np.nanpercentile(Xs[:, j], np.linspace(1, 99, 25)), 4))
+                Xr = np.tile(med, (xs.size, 1))
+                Xr[:, j] = xs
+                resp[n] = {"x": [float(v) for v in xs], "y": [round(float(v), 3) for v in m.predict(Xr)]}
             pred = np.concatenate([m.predict(Xs[k:k + 100000]) for k in range(0, Xs.shape[0], 100000)])
             info.update({"method": "maxent", "vars": vnames, "auc": round(float(np.mean(aucs)), 3), "aucTrain": round(float(base), 3),
                          "tLo": round(float(np.percentile(p_tr[:pres.size], 10)), 3), "threshold": round(float(np.percentile(p_tr[:pres.size], 20)), 3),
@@ -399,6 +478,8 @@ def main():
         write(s["id"], pred)
         p_hi = pred >= info["threshold"]
         info["suitableKm2"] = round(float(area[p_hi].sum()) * km2, 1)
+        info["raw"] = int(pres_all.size)
+        report_stats(s, info, pred, area, pres, resp)
         models[s["id"]] = info
         log(f"{s['ko']}: {info['method']} 칸 {pres.size} AUC {info.get('auc', '-')} 적합 {info['suitableKm2']:,}㎢ · {time.time() - t0:.0f}s")
         models_path.write_text(json.dumps(models, ensure_ascii=False, separators=(",", ":")), encoding="utf-8")

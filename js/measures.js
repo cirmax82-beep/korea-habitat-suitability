@@ -1,9 +1,8 @@
-// 저감방안 — 종의 위협 요인(분류군 기본 + 종별)과 민감 시기, 사업지 영향 정도에 맞춰 회피·최소화·보상·관리 방안을 고름
+// 저감방안 — 종의 위협 요인(분류군 기본 + 종별)과 민감 시기에 맞춰 회피·최소화·보상·관리 방안을 고름
 // 환경영향평가에서 흔히 쓰는 일반 방안을 요약한 것으로, 실제 적용은 현지조사와 관계 기관 협의로 정함
 window.Measures = (() => {
   const STAGE = { avoid: ["회피", "s-avoid"], min: ["최소화", "s-min"], comp: ["보상", "s-comp"], mon: ["관리", "s-mon"] };
   const ORDER = ["avoid", "min", "comp", "mon"];
-  const ha = (v) => `${Number(v).toLocaleString("ko-KR", { maximumFractionDigits: 1 })} ha`;
 
   // ‘번식 4–7’, ‘이동 4–5·8–10’, ‘포자 연중’ → { kind, text: ‘번식기(4~7월)’ }
   const season = (s) => {
@@ -15,17 +14,15 @@ window.Measures = (() => {
   };
 
   const BY_STRESS = {
-    훼손: (c) => [
-      ["avoid", c && c.lostHa > 0 ? `사업 구역 안의 적합 서식지(약 ${ha(c.lostHa)})를 구역에서 빼거나 시설 배치를 바꿔 훼손을 피합니다.`
-        : "적합 서식지(지도의 ‘적합’ 이상)에는 시설을 두지 않도록 배치합니다."],
-      ["comp", c && c.lostHa > 0 ? `피할 수 없는 훼손 면적 이상(약 ${ha(c.lostHa)} 이상)을 가까운 대체서식지에 조성·복원합니다.`
-        : "피할 수 없는 훼손이 생기면 그 면적 이상을 가까운 대체서식지에 조성·복원합니다."],
+    훼손: () => [
+      ["avoid", "적합 서식지(지도의 ‘적합’ 이상)에는 시설을 두지 않도록 배치합니다."],
+      ["comp", "피할 수 없는 훼손이 생기면 그 면적 이상을 가까운 대체서식지에 조성·복원합니다."],
     ],
     소음: () => [["min", "저소음·저진동 공법과 장비를 쓰고 서식지 쪽에 가설 방음벽을 세웁니다. 발파·항타는 시간을 정해 짧게 합니다."]],
     수질: () => [["min", "가배수로·침사지·오탁방지막으로 흙탕물이 물길에 들지 않게 하고, 물속 공사는 갈수기에 짧게 합니다."]],
     조명: () => [["min", "야간 공사를 줄이고, 조명은 아래로 비추는 차광형·장파장(주황빛) 등으로 서식지 쪽 빛을 막습니다."]],
     로드킬: () => [["min", "도로·공사 진입로를 따라 유도 울타리와 생태통로(암거형·박스형)를 두고, 공사 차량은 서행합니다."]],
-    단절: (c, sp) => [["min", sp.group === "fish"
+    단절: (sp) => [["min", sp.group === "fish"
       ? "보·낙차공 등 하천을 가로지르는 시설에는 어도를 두고 하천 바닥이 끊기지 않게 해 물고기가 오르내리게 합니다."
       : "서식지가 끊기지 않도록 생태통로·녹지 띠를 두고, 물길을 건너는 구조물은 동물이 지날 수 있는 높이·폭으로 만듭니다."]],
     채집: () => [["min", "서식 위치는 공개하지 않고, 공사 관계자 교육과 출입 통제로 불법 채집·포획을 막습니다."]],
@@ -62,13 +59,12 @@ window.Measures = (() => {
     return [];
   };
 
-  // ctx(영향 예측 결과): { lostHa, grade } — 없으면 일반 방안
-  const list = (sp, ctx) => {
+  const list = (sp) => {
     const out = [];
     const seen = new Set();
     const add = ([stage, text]) => { if (!seen.has(text)) { seen.add(text); out.push({ stage, text }); } };
     bySeason(sp).forEach(add);
-    (sp.stress || []).forEach((k) => (BY_STRESS[k] ? BY_STRESS[k](ctx, sp) : []).forEach(add));
+    (sp.stress || []).forEach((k) => (BY_STRESS[k] ? BY_STRESS[k](sp) : []).forEach(add));
     (BY_GROUP[sp.group] || []).forEach(add);
     if (sp.grade) add(["mon", "멸종위기 야생생물을 포획·채취·이식하거나 훼손하려면 환경부(유역·지방환경청) 허가를 받아야 합니다(야생생물 보호 및 관리에 관한 법률 제14조)."]);
     if (sp.nm) add(["mon", "천연기념물은 포획·채취나 서식지 현상변경에 국가유산청 허가가 필요한지 확인합니다(자연유산의 보존 및 활용에 관한 법률)."]);
@@ -77,7 +73,6 @@ window.Measures = (() => {
   };
 
   const html = (items, esc) => `<ul class="measures">${items.map((m) => `<li><span class="stage ${STAGE[m.stage][1]}">${STAGE[m.stage][0]}</span><span>${esc(m.text)}</span></li>`).join("")}</ul>`;
-  const text = (items) => items.map((m) => `[${STAGE[m.stage][0]}] ${m.text}`).join("\n");
 
-  return { list, html, text, season };
+  return { list, html, season };
 })();

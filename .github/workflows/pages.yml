@@ -1,5 +1,5 @@
 # main에 올리면 GitHub Pages로 배포합니다.
-# 종별 적합성 격자(data/suit)와 위치별 묶음(data/blocks)은 용량이 커서 저장소 대신 릴리스(data-latest)의 site-data.zip에 두고 배포 때 받아 넣습니다.
+# 종별 적합성 격자(data/suit)·분석리포트 통계(data/report)·10 m 토지피복(data/lc10)은 용량이 커서 저장소 대신 릴리스(data-latest)의 site-data.zip에 두고 배포 때 받아 넣습니다.
 name: 배포
 
 on:
@@ -37,18 +37,6 @@ jobs:
           gh release download data-latest -p site-data.zip -R "$GITHUB_REPOSITORY" -D /tmp
           unzip -q /tmp/site-data.zip -d _site/data
           ls _site _site/data; du -sh _site
-      # 영향 예측의 주소 검색(브이월드 검색 API)용. 브라우저에서 쓰는 키라 배포된 사이트에서는 보임
-      - name: 주소 검색용 설정 만들기
-        env:
-          VWORLD_KEY: ${{ secrets.VWORLD_KEY }}
-        run: |
-          KEY=$(printf '%s' "$VWORLD_KEY" | tr -d '[:space:]')
-          if printf '%s' "$KEY" | grep -Eq '^[A-Za-z0-9-]{20,64}$'; then
-            printf 'window.PORTAL_CONFIG = { vworldKey: "%s" };\n' "$KEY" > _site/js/config.js
-          else
-            echo 'window.PORTAL_CONFIG = {};' > _site/js/config.js
-            echo "::warning::VWORLD_KEY 비밀값이 없어 주소 검색은 오픈스트리트맵만 씁니다."
-          fi
       - uses: actions/upload-pages-artifact@v5
         with:
           path: _site

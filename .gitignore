@@ -4,5 +4,5 @@ __pycache__/
 .claude/
 js/config.js
 data/suit/
-data/blocks/
+data/report/
 data/lc10/

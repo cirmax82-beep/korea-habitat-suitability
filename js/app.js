@@ -1,11 +1,10 @@
-// 멸종위기종 서식지 분석 — 공용 도구, 자료 불러오기, 적합성 지도 그리기, 종 정보 화면, 화면 전환
+// 멸종위기종 서식지 분석 — 공용 도구, 자료 불러오기, 적합성 지도 그리기, 종 정보 화면, 화면 전환(분석리포트는 report.js)
 (() => {
   const $ = (s, r = document) => r.querySelector(s);
   const $$ = (s, r = document) => Array.from(r.querySelectorAll(s));
   const esc = (v) => String(v ?? "").replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
   const fmt = (n, d = 0) => Number(n || 0).toLocaleString("ko-KR", { maximumFractionDigits: d });
   const debounce = (fn, ms) => { let t; return (...a) => { clearTimeout(t); t = setTimeout(() => fn(...a), ms); }; };
-  const JSZIP_URL = "https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js";
   const ENDANGERED_SITE = "https://endangered.biogrideia.com/";
 
   const GROUPS = { mammal: "포유류", bird: "조류", herp: "양서·파충류", fish: "어류", insect: "곤충", invert: "무척추동물", plant: "육상식물", algae: "해조류", fungi: "고등균류" };
@@ -97,20 +96,6 @@
     $("#dl-sheet").hidden = false;
   };
 
-  const scripts = new Map();
-  const loadScript = (url, global) => {
-    if (global && window[global]) return Promise.resolve();
-    if (!scripts.has(url)) scripts.set(url, new Promise((resolve, reject) => {
-      const s = document.createElement("script");
-      s.src = url;
-      s.onload = resolve;
-      s.onerror = () => { scripts.delete(url); s.remove(); reject(new Error("도구를 불러오지 못했습니다. 인터넷 연결을 확인하세요.")); };
-      document.head.appendChild(s);
-    }));
-    return scripts.get(url);
-  };
-  const loadJSZip = () => loadScript(JSZIP_URL, "JSZip");
-
   // ---------- 자료 ----------
   const load = () => S.ready || (S.ready = (async () => {
     const [cat, grid] = await Promise.all(["data/catalog.json", "data/grid.json"].map((u) => fetch(u, { cache: "no-cache" }).then((r) => {
@@ -119,13 +104,15 @@
     })));
     S.at = cat.generatedAt;
     S.cat = cat.species;
-    S.cat.forEach((s, i) => { s.row = grid.rows.indexOf(s.id); s.i = i; S.byId.set(s.id, s); });
+    S.cat.forEach((s, i) => { s.i = i; S.byId.set(s.id, s); });
     S.grid = grid;
-    S.blockSet = new Set(grid.blocks);
     S.utmk = proj4("WGS84", grid.proj);
   })());
   // 출현 기록 칸(경위도 약 250 m) — 종 id → 칸 번호. 칸 격자 정보는 S.occGrid
   const loadOcc = () => S.occ || (S.occ = fetch("data/occ.json").then((r) => r.json()).then((d) => { S.occGrid = d.grid; return d.species; }));
+  // 문헌 프로필(종 id → 개요·분포·서식지·서식지 층·참고문헌)
+  let profilesP = null;
+  const loadProfiles = () => profilesP || (profilesP = fetch("data/profiles.json").then((r) => r.json()).catch((err) => { profilesP = null; throw err; }));
 
   // 회색조 webp·png → 값 배열(빨강 채널). 색 관리·알파 곱하기를 끄고 읽어 값이 그대로 나오게 함
   const decodeGray = async (url) => {
@@ -372,6 +359,7 @@
           <div class="badges">${badges(sp)}</div>
           ${sp.remark ? `<p class="small">${esc(sp.remark)}</p>` : ""}
           <div class="sp-links">
+            <a class="btn btn-primary btn-sm" href="#report/${esc(sp.id)}">분석리포트</a>
             ${sp.grade ? `<a href="${ENDANGERED_SITE}" target="_blank" rel="noopener">멸종위기종 종합관리</a>` : ""}
             ${sp.gbif ? `<a href="https://www.gbif.org/species/${sp.gbif}" target="_blank" rel="noopener">GBIF</a>` : ""}
             ${sp.inat ? `<a href="https://www.inaturalist.org/taxa/${sp.inat}" target="_blank" rel="noopener">iNaturalist</a>` : ""}
@@ -418,7 +406,7 @@
       <div class="panel">
         <h3>저감방안</h3>
         ${Measures.html(Measures.list(sp), esc)}
-        <p class="small muted" style="margin:10px 0 0">사업지에 맞춘 방안과 대체서식지 후보는 <a href="#impact">영향 예측</a>에서 볼 수 있습니다.</p>
+        <p class="small muted" style="margin:10px 0 0">표·그래프·참고문헌을 갖춘 자세한 결과는 <a href="#report/${esc(sp.id)}">분석리포트</a>에서 볼 수 있습니다.</p>
       </div>`;
     $("#sp-back").onclick = () => { location.hash = "#species"; };
     $("#sp-main").scrollTop = 0;
@@ -456,11 +444,10 @@
   };
 
   // 문헌 기반 종 정보(data/profiles.json): 개요·분포·서식지·생활사·먹이·위협·보전, 서식지 층 설명, 참고문헌
-  let profilesP = null;
   const renderProfile = async (sp) => {
     const box = $("#sp-profile");
     try {
-      const all = await (profilesP || (profilesP = fetch("data/profiles.json").then((r) => r.json())));
+      const all = await loadProfiles();
       const P = all[sp.id];
       if (!P || !box || L1.cur !== sp.id) return;
       const cite = (ns) => (ns && ns.length ? ` <span class="cite">[${ns.join(", ")}]</span>` : "");
@@ -505,17 +492,17 @@
         <li><b>시가지·도로·나대지 제외</b>: 시가지(주거·상업·공업 등)·도로·철도·나대지(채광지·운동장·기타나지)는 서식지로 보지 않아, 칸의 적합도와 면적에서 그 비율만큼 뺍니다.</li>
         <li><b>도로 영향권</b>: 도로는 주변까지 소음·불빛·로드킬·단절로 서식지 질을 떨어뜨려, 국가교통정보센터 표준노드링크의 도로 등급별로 고속도로 500 m, 일반국도·광역시도 300 m, 지방도 200 m, 시군도 100~150 m 안은 도로에 가까울수록 적합도를 낮춥니다(농로·마을길은 제외). 최대 낮춤은 로드킬·소음·교란·단절에 민감한 포유류·조류·양서파충류 60%, 그 밖의 동물 30%, 육상식물 20%, 어류·물에 사는 무척추동물·수생식물 0%입니다.</li>
         <li><b>대도시·도심</b>: 주변 약 1 km와 약 5 km의 시가지·도로 비율로 도시 지수를 매겨, 15%를 넘으면 낮추기 시작해 45% 이상이면 모든 종의 적합도를 0으로 봅니다. 서울 같은 대도시 안 녹지·하천도 서식이 어렵다고 보는 보수적 기준입니다. <b>바다 종</b>은 실제 해안에서 1 km 안 칸만 봅니다.</li>
-        <li><b>10 m 표현</b>: 적합도는 250 m 칸으로 계산하지만, 지도를 확대하거나 사업지 면적을 셀 때는 10 m 토지피복(환경부 세분류)으로 칸 안에서 서식지가 될 수 없는 곳(건물·도로·나대지, 물에 사는 종은 물 밖)을 뺍니다.</li>
+        <li><b>10 m 표현</b>: 적합도는 250 m 칸으로 계산하지만, 지도를 확대하면 10 m 토지피복(환경부 세분류)으로 칸 안에서 서식지가 될 수 없는 곳(건물·도로·나대지, 물에 사는 종은 물 밖)을 뺍니다.</li>
         <li><b>물에 사는 종</b>(서식 유형이 하천·계곡·호소·습지·논습지·하구·갯벌·바다뿐인 어류·저서성 무척추동물·수서곤충·습지식물 등): 그 물이 있는 칸에서만 서식 가능으로 보고, 면적은 칸 안의 물 면적만 셉니다.</li>
         <li>출현 자료: GBIF 공개 기록과 iNaturalist 관찰(멸종위기종 종합관리 사이트와 같은 자료) 중 2000년 이후 기록만 씁니다. 위치 오차가 1 km를 넘거나 위치를 흐린 기록, 연도를 모르는 기록은 빼고, 기록마다의 좌표 대신 약 250 m 칸으로만 보여 줍니다.</li>
-        <li><b>현재 토지이용과 맞지 않는 기록 제외</b>: 대도시 한가운데(도시 지수 45% 이상)와 동물원·사육 시설 주변 1.5 km 기록(방사·탈출·사육 개체)은 모든 종에서, 땅에 사는 종은 지금 시가지·도로·나대지가 80% 이상인 칸, 물에 사는 종은 주변 250 m에 그 물이 없는 칸, 바다 종은 실제 해안에서 2 km 넘게 떨어진 칸의 기록을 학습·분포 범위·영향 예측에서 뺍니다.</li>
+        <li><b>현재 토지이용과 맞지 않는 기록 제외</b>: 대도시 한가운데(도시 지수 45% 이상)와 동물원·사육 시설 주변 1.5 km 기록(방사·탈출·사육 개체)은 모든 종에서, 땅에 사는 종은 지금 시가지·도로·나대지가 80% 이상인 칸, 물에 사는 종은 주변 250 m에 그 물이 없는 칸, 바다 종은 실제 해안에서 2 km 넘게 떨어진 칸의 기록을 학습·분포 범위·지도에서 뺍니다.</li>
       </ul>
-      <h2>영향 예측</h2>
+      <h2>분석리포트</h2>
       <ul class="plain">
-        <li>사업지 안 ‘적합’ 이상 서식지 면적, 주변 범위 안 적합 서식지, 가장 가까운 출현 기록을 종마다 계산해 영향 정도(높음·보통·낮음)를 매깁니다.</li>
-        <li><b>높음</b>: 사업지 안에 적합 서식지가 있고 주변 범위 안에 출현 기록이 있음. <b>보통</b>: 사업지 안에 적합 서식지가 있음(기록 없음), 또는 주변 범위 안에 적합 서식지와 기록이 함께 있음. <b>낮음</b>: 주변 범위 안에만 적합 서식지가 있거나 기록만 있음. 서식 조건 지수로 계산한 종은 기록이 없으면 ‘낮음’까지만 매깁니다.</li>
-        <li>대체서식지 후보: 사업지 밖, 정한 거리 안에서 그 종의 ‘적합’ 이상이고 시가지가 20% 미만인 칸을 이어 묶은 곳입니다. 적합도·면적·거리로 순위를 매깁니다.</li>
-        <li>저감방안은 종의 위협 요인과 민감 시기에 맞춘 일반 방안입니다.</li>
+        <li>종마다 연구 보고서 형식으로 요약, 생태적 특징(문헌), 재료 및 방법, 결과, 고찰, 보전·관리 제언, 참고문헌을 정리합니다. 문장의 수치는 계산 결과로 종마다 채웁니다.</li>
+        <li>결과: 모형 성능(AUC), 환경변수 기여도, 반응곡선(다른 변수는 출현 칸 중앙값으로 고정), 적합성 지도, 등급별·서식지 층별·시도별 면적, 서식 환경 비교(국토 평균·적합 서식지·출현 칸), 고도·토지피복 구성, 서식지 조각(‘적합’ 이상 칸의 8방향 연결), 보호지역 포함 비율, 도로 영향권 안 비율.</li>
+        <li><b>보호지역 포함 비율(공백 분석)</b>: 한국보호지역통합DB(KDPA 2025, 1,767곳)를 50 m로 그려 칸별 비율로 만들고, ‘적합’ 이상 서식지 중 보호지역 안의 비율을 국토 전체(18.2%)와 비교합니다. 자연공원, 생태·습지·야생생물 보호지역 등, 국가유산(천연기념물·천연보호구역·명승), 그 밖(상수원·수산자원·도시자연공원구역 등)으로 나눕니다.</li>
+        <li>인쇄·PDF 저장과 표 CSV 받기를 지원합니다. 저감방안은 종의 위협 요인과 민감 시기에 맞춘 일반 방안입니다.</li>
       </ul>
       <h2>한계</h2>
       <p>출현 기록은 공개된 것만 썼고, 위치를 흐린 기록이나 비공개 조사 자료는 빠져 있습니다. 결과는 현지조사를 대신하지 않으며, 계획 초기 검토와 조사 지점 선정에 참고하세요.</p>
@@ -526,6 +513,8 @@
         <li>기후에너지환경부 환경공간정보서비스 — 세분류 토지피복지도 2025년(토지피복지도 맵 서비스)</li>
         <li>Karger et al. CHELSA V2.1 · Copernicus DEM GLO-90 (© DLR, © Airbus)</li>
         <li>국토교통부 브이월드 — 시군구 경계</li>
+        <li>국립공원공단 한국보호지역통합DB(KDPA) 2025 — 보호지역</li>
+        <li>국토교통부 국가교통정보센터 표준노드링크 — 도로 등급</li>
         <li>생태적 특징 요약: 국립생물자원관 한반도의 생물다양성, 국립생태원 멸종위기 야생생물 정보 등 공개 자료</li>
       </ul>`;
   };
@@ -533,13 +522,15 @@
   // ---------- 화면 전환 ----------
   const show = async () => {
     const [name, arg] = (location.hash.slice(1) || "species").split("/");
-    const view = ["species", "impact", "about"].includes(name) ? name : "species";
+    const view = ["species", "report", "about"].includes(name) ? name : "species";
+    if (view === "report" && !arg && L1.cur) { location.replace(`#report/${L1.cur}`); return; }
     $$(".view").forEach((v) => v.classList.toggle("active", v.id === `view-${view}`));
     $$(".tab").forEach((t) => t.classList.toggle("active", t.dataset.view === view));
     try { await load(); } catch (err) { console.warn(err); toast("자료를 불러오지 못했습니다. 새로 고침해 보세요.", 6000); return; }
     if (!show.bound) { show.bound = true; bindSpecies(); }
+    if (view !== "report") window.Report.hide();
     if (view === "species") renderSpecies(decodeURIComponent(arg || ""));
-    if (view === "impact") window.Impact.show();
+    if (view === "report") window.Report.show(decodeURIComponent(arg || ""));
     if (view === "about") renderAbout();
   };
   window.addEventListener("hashchange", show);
@@ -553,7 +544,7 @@
     $("#inapp-close").onclick = () => { $("#inapp-bar").hidden = true; };
   }
 
-  window.H = { S, $, $$, esc, fmt, debounce, toast, saveBlob, loadScript, loadJSZip, decodeGray, makeMap, SuitLayer, legendHtml, classOf, thrOf, thrsOf, CLASSES, lcIndex, lcReader, habLut, LC,
-    occCellLatLngs, occCenter, loadOcc, aquaText, REC_STYLE, GROUPS, GRADE, STRESS, VARS, badges, shortBadge, methodName, tagList, photoUrl };
+  window.H = { S, $, $$, esc, fmt, debounce, toast, saveBlob, decodeGray, makeMap, SuitLayer, legendHtml, classOf, thrOf, thrsOf, CLASSES, lcIndex, lcReader, habLut, LC,
+    occCellLatLngs, occCenter, loadOcc, loadProfiles, suitOf, rasterGet, aquaText, REC_STYLE, GROUPS, GRADE, STRESS, VARS, badges, shortBadge, methodName, tagList, photoUrl };
   setTimeout(show, 0);
 })();
