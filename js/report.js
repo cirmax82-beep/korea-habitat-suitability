@@ -27,7 +27,7 @@ window.Report = (() => {
   };
   const LCN = { broad: "활엽·혼효림", conifer: "침엽수림", grass: "초지", paddy: "논", field: "밭·과수원", wetland: "내륙습지", river: "하천", lake: "호소",
     tidal: "갯벌", sea: "바다", rock: "암벽·바위", bare: "자연 나지", built: "시가지", road: "도로·철도", artbare: "나대지", mixed: "혼효림" };
-  const LG = { broad: "활엽수림", mixed: "혼효림" };   // 서식지 층의 토지피복 이름(층에서는 활엽·혼효를 나눠 씀)
+  const LG = { broad: "활엽수림", mixed: "혼효림", riverbar: "강기슭 나지(모래·자갈톱)" };   // 서식지 층의 토지피복 이름(층에서는 활엽·혼효를 나눠 씀)
   const PA = [["any", "보호지역 전체"], ["park", "자연공원(국립·도립·군립)"], ["eco", "생태·습지·야생생물 보호지역 등"], ["heritage", "국가유산(천연기념물·천연보호구역·명승)"],
     ["other", "그 밖(상수원·수산자원·도시자연공원구역 등)"]];
   const SERIES = { suit: ["적합 서식지", "var(--s1)"], rec: ["출현 칸", "var(--s2)"], land: ["국토 전체", "var(--s3)"] };

@@ -190,7 +190,7 @@
   const habLut = (sp, layer) => {
     const lut = new Uint8Array(256).fill(1);
     const groups = LC.groups || [];
-    const allow = layer ? layer.groups : sp.hab;
+    const allow = (layer ? layer.groups : sp.hab)?.map((g) => (g === "riverbar" ? "bare" : g));   // 강기슭 나지 → 10 m 자연 나지
     groups.forEach((g, i) => {
       if (sp.urban && !allow) return;
       const ok = allow ? allow.includes(g) : sp.aqua ? sp.aqua.includes(g) : !["built", "road", "artbare"].includes(g);

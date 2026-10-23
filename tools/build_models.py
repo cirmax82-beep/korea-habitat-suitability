@@ -25,7 +25,8 @@
   가능 0.5, 적합 0.7, 매우 적합 0.85
 - 알려진 분포 범위: 출현 칸에서 R km(조류 25, 포유류 15, 그 밖 5) 안과 기록이 있는 시군구(위치를 흐린 기록 포함, +2 km)는
   그대로, 그 밖은 R km에 걸쳐 0으로 낮춤. 칸·시군구 기록이 모두 없는 종은 ‘가능’까지만
-- 문헌 프로필(tools/profiles/*.json)이 있는 종: 서식지 층(번식지·채식지 등)마다 그 토지피복·조건을 만족하는 칸만 → data/suit/<id>@<층>.webp,
+- 문헌 프로필(tools/profiles/*.json)이 있는 종: 서식지 층(번식지·채식지 등)마다 그 토지피복·조건을 만족하는 칸만
+  (토지피복 묶음 riverbar = 강기슭 나지(모래·자갈톱): 해안 2 km 밖의 자연 나지) → data/suit/<id>@<층>.webp,
   대표 지도는 main 층들의 최댓값
 - 결과: data/suit/<id>.webp(무손실 회색조, 0–100 = 적합성×100을 5 단위로, 255 = 분석 범위 밖), data/models.json
 - 분석리포트: data/report/<id>.json — 등급별·시도별 적합 면적, 토지피복·고도 구성(적합 서식지·출현 칸·국토), 환경변수 요약,
@@ -255,7 +256,9 @@ def main():
             f += np.clip(E["tree"] - E["conifer"], 0, 1)
         if "conifer" in g:
             f += E["conifer"]
-        for k in g - {"broad", "mixed", "conifer"}:
+        if "riverbar" in g:   # 강기슭 나지(모래·자갈톱): 해안 2 km 밖의 자연 나지(해변 모래는 뺌)
+            f += np.where(E["dist_coast"] > 2, E["bare"], 0)
+        for k in g - {"broad", "mixed", "conifer", "riverbar"}:
             f += E[k]
         return np.clip(f, 0, 1)
 

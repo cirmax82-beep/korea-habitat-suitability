@@ -208,7 +208,7 @@
     "near": [
      {
       "groups": [
-       "bare"
+       "riverbar"
       ],
       "km": 0.5,
       "min": 0.003
@@ -273,7 +273,7 @@
     "near": [
      {
       "groups": [
-       "bare"
+       "riverbar"
       ],
       "km": 0.3,
       "min": 0.003

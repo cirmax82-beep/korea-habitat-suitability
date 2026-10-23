@@ -2223,7 +2223,7 @@
     "season": "3~7월",
     "main": true,
     "groups": [
-     "bare",
+     "riverbar",
      "river"
     ],
     "desc": "하천 100 m 안의 자갈·모래톱과 얕은 물(해발 700 m 이하)",
@@ -2234,7 +2234,7 @@
     "near": [
      {
       "groups": [
-       "bare"
+       "riverbar"
       ],
       "km": 0.25,
       "min": 0.005

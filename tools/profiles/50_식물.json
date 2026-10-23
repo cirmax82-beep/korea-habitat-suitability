@@ -1636,7 +1636,7 @@
     "season": "연중",
     "main": true,
     "groups": [
-     "bare",
+     "riverbar",
      "grass"
     ],
     "desc": "남한강 시군의 하천 200 m 안 모래·자갈밭·초지(해발 250 m 이하)",
