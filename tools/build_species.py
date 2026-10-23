@@ -32,6 +32,9 @@ OCC_SGG = ROOT / "work" / "occ_sgg"   # 기록이 있는 시군구(GADM 코드) 
 MAX_UNC = 1000   # 위치 오차 한도(m)
 MIN_YEAR = 2000  # 이보다 오래된 기록과 연도를 모르는 기록은 뺌(그 뒤로 토지이용이 크게 바뀐 곳이 많아서)
 RECENT = (1, 2, 3)   # heat-gbif 기간 번호: 0 = 1999년 이전, 1 = 2000~2009, 2 = 2010~2019, 3 = 2020년 이후, 4 = 연도 미상
+PERIOD_FROM = {2000: (1, 2, 3), 2010: (2, 3), 2020: (3,)}
+# 문헌 프로필의 min_year: 최근 급감한 종은 감소 전 분포가 섞이지 않게 더 최근 기록만
+PROFILES = {k: v for k, v in json.loads((ROOT / "tools" / "profiles.json").read_text(encoding="utf-8")).items() if not k.startswith("_")}
 NM_API = "https://www.khs.go.kr/cha/SearchKindOpenapiList.do?ccbaKdcd=16&pageUnit=2000&pageIndex=1"
 NM_REGIONAL = {"한강의 황쏘가리": "황쏘가리", "금강의 어름치": "어름치", "제주의 한란": "한란"}   # 지역을 붙인 종 지정
 NM_ALIAS = {"점박이물범": "물범", "느시(들칠면조)": "느시", "붉은박쥐(오렌지윗수염박쥐)": "붉은박쥐", "까막딱따구리": "까막딱다구리"}   # 천연기념물 이름 → 멸종위기종 목록 이름
@@ -118,17 +121,19 @@ def main():
     species = []
     for s in cat:
         flat = heat["species"].get(s["id"], [])
-        hc = [flat[k] for k in range(0, len(flat), 3) if flat[k + 1] in RECENT]
-        ic = [o[-1] for o in inat["obs"].get(s["id"], []) if o[-1] is not None and o[-1] >= 0 and o[2] // 10000 >= MIN_YEAR]
+        my = (PROFILES.get(s["name"]) or {}).get("min_year", MIN_YEAR)
+        periods = PERIOD_FROM[my]
+        hc = [flat[k] for k in range(0, len(flat), 3) if flat[k + 1] in periods]
+        ic = [o[-1] for o in inat["obs"].get(s["id"], []) if o[-1] is not None and o[-1] >= 0 and o[2] // 10000 >= my]
         geo = sorted(set(hc) | set(ic))
         pts = [center(c) for c in geo]
         occ = cells([p[0] for p in pts], [p[1] for p in pts]) if pts else []
         (OCC / f"{s['id']}.json").write_text(json.dumps(occ), encoding="utf-8")
         (OCC_GEO / f"{s['id']}.json").write_text(json.dumps(geo), encoding="utf-8")
         units = (gsnap.get(s["id"]) or {}).get("units", {})
-        gids = {g: sum(per[i] for i in RECENT) for g, per in units.items()}   # 시군구 → 2000년 이후 기록 수
+        gids = {g: sum(per[i] for i in periods) for g, per in units.items()}   # 시군구 → 기준 연도 이후 기록 수
         for o in inat["obs"].get(s["id"], []):
-            if o[1] and o[2] // 10000 >= MIN_YEAR:
+            if o[1] and o[2] // 10000 >= my:
                 gids[o[1]] = gids.get(o[1], 0) + 1
         (OCC_SGG / f"{s['id']}.json").write_text(json.dumps({g: n for g, n in sorted(gids.items()) if n}), encoding="utf-8")
         photo = inat["taxa"].get(s["id"], {})
