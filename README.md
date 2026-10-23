@@ -9,6 +9,7 @@
 ## 화면
 
 - 종 정보(`#species/<종 id>`): 생태적 특징(서식 환경·민감 시기·위협 요인), 서식지 적합성 지도(250 m), 모형 정보, 일반 저감방안
+  · 내 기록: 직접 아는 위치를 지도에 찍거나 주소·좌표로 넣음(브라우저에만 저장). CSV로 받아 `work/manual/`에 두면 다음 계산 때 출현 기록으로 반영(토지이용·외딴 기록 거르기 제외, 공개 지도에는 약 250 m 칸으로만)
 - 분석리포트(`#report/<종 id>`): 연구 보고서 형식 — 요약, 생태적 특징, 재료·방법(출현 자료 정제, 환경변수, 모형, 서식지 층, 보정), 결과(모형 성능, 변수 기여도, 반응곡선, 적합성 지도, 등급·층·시도별 면적, 환경 특성, 고도·토지피복 구성, 서식지 조각, 보호지역 포함 비율), 고찰, 보전·관리 제언, 참고문헌. 인쇄·PDF 저장과 표 CSV 받기
 - 자료·방법(`#about`)
 
@@ -16,6 +17,7 @@
 
 ```
 python tools/build_env.py         # 환경 변수 250 m 격자(work/env) — 원격 COG에서 한국 범위만 읽음
+python tools/fetch_streams.py     # 작은 하천·개울(오픈스트리트맵 물길) → 10 m 토지피복에 그려 넣고 250 m 하천 비율(work/env/stream.npy). build_env.py 앞에
 python tools/build_species.py     # 종 목록·출현 칸(data/species.json, work/occ)
 python tools/build_pa.py          # 국가 보호지역(KDPA, work/kdpa.gpkg) → 칸별 비율(work/env/pa.npz)
 python tools/build_models.py      # 종별 적합성(data/suit/*.webp, data/models.json)·분석리포트 통계(data/report/*.json)
@@ -30,6 +32,7 @@ bash tools/publish_data.sh        # data/suit·data/report·data/lc10을 릴리�
 - 대도시·도심: 도시 지수(주변 1 km·5 km 개발 비율) 15~45%에 걸쳐 모든 종의 적합도를 0까지 낮춤. 바다 종은 실제 해안 1 km 안만
 - 10 m 표현: 확대 지도는 10 m 토지피복 분류 그림(data/lc10, `tools/fetch_landcover.py`)으로 칸 안 비서식지를 뺌
 - 물에 사는 종(서식 태그가 모두 물 유형): 그 물이 있는 칸에서만 서식 가능, 면적은 칸 안의 물 면적
+- 작은 하천·개울: 세분류 토지피복에 면으로 안 잡히는 폭 좁은 물줄기는 오픈스트리트맵 물길(river·stream·brook, 마른 계곡·복개 구간 제외)을 더함. 250 m 칸에는 길이 × 폭(개울 3 m·강 선 5 m)으로 물 비율을, 10 m 확대 지도에는 하천 화소로
 - 적합성: 출현 칸 15개 이상은 MaxEnt(elapid, target-group background, 3겹 교차검증 AUC, 등급 기준은 학습 출현 칸 예측값의 분위수: 가능 P10·적합 P20·매우 적합 P50), 나머지는 `tools/traits.tsv`의 서식 태그로 만든 서식 조건 지수(가능 0.5·적합 0.7·매우 적합 0.85)
 - 알려진 분포 범위: 출현 칸에서 조류 25 km·포유류 15 km·그 밖 5 km 안과 기록 시군구(+2 km)는 그대로, 그 밖은 같은 거리에 걸쳐 0으로. 조류·포유류가 아닌 종은 출현 칸이 있으면 시군구 기록으로 넓히지 않음. 프로필의 `range.areas`(문헌상 분포 시도·시군구)는 기록과 멀어도 ‘가능’까지 두고, `range.only`면 그 밖의 기록(수목원 식재·오동정)은 뺌. 칸·시군구 기록이 모두 없는 종과, 조류·포유류가 아니면서 칸 기록 없이 시군구 기록만 있는 종은 ‘가능’까지만. 어류는 범위 거리 10 km
 - 생태적 특징: `tools/traits.tsv`(공개 자료 요약). 저감방안 규칙은 `js/measures.js`

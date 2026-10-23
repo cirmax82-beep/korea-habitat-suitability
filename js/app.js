@@ -344,7 +344,7 @@
     $("#sp-empty").hidden = !!sp;
     const box = $("#sp-detail");
     box.hidden = !sp;
-    if (L1.map) { L1.map.remove(); L1.map = null; }
+    if (L1.map) { window.MyRec.detach(); L1.map.remove(); L1.map = null; }
     if (!sp) return;
     const m = sp.model || {};
     const imp = Object.entries(m.importance || {}).slice(0, 6);
@@ -374,6 +374,7 @@
             <label class="map-toggles"><span><input type="checkbox" id="sp-rec" checked> 출현 기록</span></label>
           </div>
           <p class="small muted">${m.method === "rule" ? "출현 기록이 적어 서식 환경 조건(서식지 유형·토지피복·지형)으로 계산한 참고 지수입니다." : m.method === "maxent" ? "출현 기록과 환경 변수로 계산한 서식 가능성입니다(250 m 격자)." : ""} 서식 가능성은 잠재적인 값이며 실제 서식 여부는 현지조사로 확인해야 합니다.</p>
+          <div class="panel myrec" id="sp-myrec"></div>
         </div>
         <div>
           <div class="panel" style="margin-top:0">
@@ -413,6 +414,7 @@
 
     const map = L1.map = makeMap($("#sp-map"));
     const recLayer = L.featureGroup().addTo(map);
+    window.MyRec.attach(map, sp, $("#sp-myrec"));
     $("#sp-rec").onchange = (e) => { if (e.target.checked) recLayer.addTo(map); else recLayer.remove(); };
     if (sp.profile) renderProfile(sp);
     let suit = null;

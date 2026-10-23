@@ -165,6 +165,21 @@ h3 { margin: 0 0 10px; font-size: 15px; }
 .refs a { word-break: break-all; }
 .cite { color: var(--muted); font-size: 12px; }
 
+/* 내 기록 입력 */
+.myrec { display: grid; gap: 8px; margin-top: 10px; }
+.myrec p { margin: 0; line-height: 1.5; }
+.myrec-head { display: flex; gap: 8px; align-items: baseline; flex-wrap: wrap; }
+.myrec .btn-light.on { background: var(--primary); border-color: var(--primary); color: #fff; }
+.myrec-res button { font-size: 12.5px; }
+.leaflet-container.picking { cursor: crosshair; }
+.myrec-pop { display: grid; gap: 6px; font-size: 13px; }
+.myrec-pop label { display: grid; gap: 2px; font-size: 12px; color: var(--text-2); }
+.myrec-pop .input { padding: 4px 6px; font-size: 13px; }
+.search-results { border: 1px solid var(--border); border-radius: 8px; max-height: 240px; overflow: auto; }
+.search-results button { display: block; width: 100%; text-align: left; border: 0; border-bottom: 1px solid var(--border); background: var(--surface); color: var(--text); padding: 7px 10px; cursor: pointer; font: inherit; }
+.search-results button:hover { background: var(--row-hover); }
+.pad { padding: 8px 10px; margin: 0; }
+
 /* 분석리포트 — 논문 형식 문서. 그래프 계열 색(검증된 3색)은 밝은·어두운 화면 각각 */
 .rp-doc { --s1: #2a78d6; --s2: #eb6834; --s3: #1baf7a; --grid: #e3e8e7; }
 @media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .rp-doc { --s1: #3987e5; --s2: #d95926; --s3: #199e70; --grid: #2f3b3c; } }

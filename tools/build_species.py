@@ -11,7 +11,11 @@
   work/occ_geo/<종 id>.json(원래 경위도 약 250 m 칸 번호 — 멸종위기종 종합관리 열지도와 같은 칸, 사이트 표시·거리 계산용)
 - 위치 오차가 1 km를 넘는 기록과 iNaturalist가 위치를 흐린 관찰은 뺌(멸종위기종 종합관리와 같은 기준)
 - 2000년 이전 기록과 연도를 모르는 기록도 뺌. 현재 토지이용과 맞지 않는 기록은 build_models.py에서 뺌
+- 직접 확인 기록: 사이트 종 화면 ‘내 기록’에서 받은 CSV(종id·국명·위도·경도·날짜·메모)를 work/manual/에 두면 출현 칸에 더함.
+  정확한 좌표는 이 컴퓨터에만 두고(work/는 저장소에 안 올림) 공개 자료에는 약 250 m 칸으로만 들어감.
+  work/occ_manual/<종 id>.json에 따로 남겨 build_models.py가 토지이용·외딴 기록 거르기에서 빼지 않게 함
 """
+import csv
 import json
 import re
 import subprocess
@@ -31,6 +35,8 @@ END = ROOT.parent / "멸종위기종 종합관리"
 OCC = ROOT / "work" / "occ"
 OCC_GEO = ROOT / "work" / "occ_geo"
 OCC_SGG = ROOT / "work" / "occ_sgg"   # 기록이 있는 시군구(GADM 코드) — 위치를 흐린 기록도 포함. 분포 범위 판단용
+MANUAL = ROOT / "work" / "manual"          # 직접 확인 기록 CSV(사이트 ‘내 기록’에서 받은 것)
+OCC_MANUAL = ROOT / "work" / "occ_manual"
 MAX_UNC = 1000   # 위치 오차 한도(m)
 MIN_YEAR = 2000  # 이보다 오래된 기록과 연도를 모르는 기록은 뺌(그 뒤로 토지이용이 크게 바뀐 곳이 많아서)
 RECENT = (1, 2, 3)   # heat-gbif 기간 번호: 0 = 1999년 이전, 1 = 2000~2009, 2 = 2010~2019, 3 = 2020년 이후, 4 = 연도 미상
@@ -82,9 +88,34 @@ def natural_monuments():
     return out
 
 
+def read_manual(species):
+    """work/manual/*.csv → {종 id: [(경도, 위도, 날짜)]}. 종은 종id나 국명으로 찾고, 같은 종·위치·날짜는 한 번만"""
+    by_id, by_ko = {s["id"]: s for s in species}, {s["ko"]: s for s in species}
+    out, seen, bad = {}, set(), 0
+    for f in sorted(MANUAL.glob("*.csv")):
+        with f.open(encoding="utf-8-sig", newline="") as fh:
+            for row in csv.DictReader(fh):
+                s = by_id.get((row.get("종id") or "").strip()) or by_ko.get((row.get("국명") or "").strip())
+                try:
+                    lat, lng = float(row.get("위도") or ""), float(row.get("경도") or "")
+                except ValueError:
+                    s = None
+                if not s or not (33 <= lat <= 39 and 124 <= lng <= 132):
+                    bad += 1
+                    continue
+                k = (s["id"], round(lat, 5), round(lng, 5), (row.get("날짜") or "").strip())
+                if k not in seen:
+                    seen.add(k)
+                    out.setdefault(s["id"], []).append((lng, lat, k[3]))
+    if out or bad:
+        print(f"직접 확인 기록 {sum(len(v) for v in out.values())}건({len(out)}종)" + (f", 읽지 못한 줄 {bad}개" if bad else ""))
+    return out
+
+
 def main():
     sys.stdout.reconfigure(encoding="utf-8")
     OCC.mkdir(parents=True, exist_ok=True)
+    OCC_MANUAL.mkdir(parents=True, exist_ok=True)
     OCC_GEO.mkdir(parents=True, exist_ok=True)
     OCC_SGG.mkdir(parents=True, exist_ok=True)
     grid = json.loads((ROOT / "work" / "env" / "grid.json").read_text(encoding="utf-8"))
@@ -198,6 +229,23 @@ def main():
         species.append({"id": sid, "ko": n["name"], "sci": sci, "group": NM_GROUP.get(n["name"], "bird"), "grade": "", "family": "",
                         "nm": n["no"], "gbif": key, "note": "", "cells": len(occ), "photo": photo, "photoBy": photo_by, "inat": inat_id})
         print(f"  천연기념물 {n['name']}({sci}) {n['no']} · GBIF {key} · 칸 {len(occ)}", flush=True)
+
+    # 직접 확인 기록을 출현 칸에 더하고 따로 표시
+    manual = read_manual(species)
+    for s in species:
+        mf = OCC_MANUAL / f"{s['id']}.json"
+        recs = manual.get(s["id"])
+        if not recs:
+            mf.unlink(missing_ok=True)
+            continue
+        mc = cells([r[0] for r in recs], [r[1] for r in recs])
+        mg = sorted({c for c in (geo_cell(x, y) for x, y, _ in recs) if c is not None})
+        occ = sorted({tuple(c) for c in json.loads((OCC / f"{s['id']}.json").read_text(encoding="utf-8"))} | set(mc))
+        geo = sorted(set(json.loads((OCC_GEO / f"{s['id']}.json").read_text(encoding="utf-8"))) | set(mg))
+        (OCC / f"{s['id']}.json").write_text(json.dumps(occ), encoding="utf-8")
+        (OCC_GEO / f"{s['id']}.json").write_text(json.dumps(geo), encoding="utf-8")
+        mf.write_text(json.dumps({"cells": mc, "geo": mg, "n": len(recs)}), encoding="utf-8")
+        s["cells"] = len(occ)
 
     (ROOT / "data").mkdir(exist_ok=True)
     (ROOT / "data" / "species.json").write_text(json.dumps({"generatedAt": time.strftime("%Y-%m-%dT%H:%M:%S"), "species": species},

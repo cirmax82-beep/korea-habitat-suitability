@@ -37,6 +37,7 @@ window.Report = (() => {
     inat: ["iNaturalist (2026) Research-grade observations", "https://www.inaturalist.org"],
     lc: ["기후에너지환경부 (2025) 세분류 토지피복지도. 환경공간정보서비스", "https://aid.mcee.go.kr"],
     wc: ["Zanaga D 외 (2022) ESA WorldCover 10 m 2021 v200", "https://doi.org/10.5281/zenodo.7254221"],
+    osm: ["OpenStreetMap contributors (2026) OpenStreetMap 물길(waterway) 자료, ODbL", "https://www.openstreetmap.org"],
     dem: ["European Space Agency (2022) Copernicus DEM GLO-90", "https://doi.org/10.5270/ESA-c5d3d65"],
     chelsa: ["Karger DN, Conrad O, Böhner J 외 (2017) Climatologies at high resolution for the earth’s land surface areas. Scientific Data 4:170122", "https://doi.org/10.1038/sdata.2017.122"],
     its: ["국토교통부 국가교통정보센터 (2026) 표준노드링크", "https://www.its.go.kr"],
@@ -176,6 +177,7 @@ window.Report = (() => {
       <tr><td>2000년 이후 공개 기록</td><td class="num">${fmt(M.raw ?? M.cells)}</td><td>위치 오차 1 km 이하, 연도 확인</td></tr>
       <tr><td>현재 토지이용·분포 범위와 맞지 않아 제외</td><td class="num">${fmt((M.dropped || 0) - (M.outliers || 0))}</td><td>시가지·물 없는 칸·도심·동물원 주변 등</td></tr>
       <tr><td>외딴 기록·지역 밖 기록 제외</td><td class="num">${fmt(M.outliers || 0)}</td><td>10 km 안 다른 기록 없음, 문헌상 분포 지역 밖</td></tr>
+      ${M.manual ? `<tr><td>직접 확인 기록(거르지 않고 포함)</td><td class="num">${fmt(M.manual)}건</td><td>현지에서 확인한 위치(정확한 좌표는 비공개)</td></tr>` : ""}
       <tr class="sum"><td>분석에 쓴 출현 칸</td><td class="num">${fmt(M.cells || 0)}</td><td>${M.sgg ? `그 밖에 시군구 단위 기록 ${fmt(M.sgg)}곳` : ""}</td></tr></tbody></table>`;
     // 표: 환경변수
     const varTable = `<table class="rtable">${tcap("vars", maxent ? "모형에 쓴 환경변수와 리포트에 함께 비교한 변수" : "서식 환경 비교에 쓴 환경변수")}

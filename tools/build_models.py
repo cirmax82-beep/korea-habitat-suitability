@@ -66,6 +66,7 @@ CORE_VARS = ["elev", "slope", "tree", "grass", "paddy", "wetland", "river", "lak
 SIDO = ["서울", "부산", "대구", "인천", "광주", "대전", "울산", "세종", "경기", "강원", "충북", "충남", "전북", "전남", "경북", "경남", "제주"]
 RULE_T = (0.5, 0.7, 0.85)                 # 서식 조건 지수의 가능·적합·매우 적합 기준
 OCC_SGG = ROOT / "work" / "occ_sgg"
+OCC_MANUAL = ROOT / "work" / "occ_manual"   # 직접 확인 기록(build_species.py) — 거르기 없이 그대로 씀
 N_BG = 10000
 MARINE = {"해양"}
 RNG = np.random.default_rng(20261023)
@@ -205,7 +206,7 @@ def main():
         w = area * suit
         R = {"id": s["id"], "landKm2": round(float(idx.size) * km2), "classKm2": [round(float(area[cls == k].sum()) * km2, 1) for k in (1, 2, 3)],
              "model": {k: info[k] for k in ("method", "vars", "auc", "aucTrain", "tLo", "threshold", "tHi", "importance", "cells", "raw", "dropped",
-                                             "outliers", "sgg", "noRecord", "road", "aqua", "reason", "suitableKm2", "layers") if k in info}}
+                                             "outliers", "sgg", "noRecord", "road", "aqua", "reason", "suitableKm2", "layers", "manual") if k in info}}
         sido = sido_cell
         by = np.bincount(sido, weights=w, minlength=len(SIDO) + 1) * km2
         rec = np.bincount(sido[pres], minlength=len(SIDO) + 1) if pres.size else np.zeros(len(SIDO) + 1)
@@ -340,7 +341,7 @@ def main():
     OK_GEO = ROOT / "work" / "occ_geo_ok"
     OK_GEO.mkdir(exist_ok=True)
 
-    def filter_geo(sid, ok, keep_sea):
+    def filter_geo(sid, ok, keep_sea, force=()):
         f = ROOT / "work" / "occ_geo" / f"{sid}.json"
         cells = np.array(json.loads(f.read_text(encoding="utf-8")) if f.exists() else [], dtype=np.int64)
         if cells.size:
@@ -352,6 +353,7 @@ def main():
             pp[inside] = pos[r[inside] * W + c[inside]]
             keep = np.where(pp >= 0, ok[np.maximum(pp, 0)], keep_sea)
             cells = cells[keep]
+        cells = np.union1d(cells, np.array(list(force), dtype=np.int64))   # 직접 확인 기록 칸은 늘 보임
         (OK_GEO / f"{sid}.json").write_text(json.dumps(cells.tolist()), encoding="utf-8")
 
     # 조사 노력(모든 종의 출현 칸) 배경
@@ -386,11 +388,17 @@ def main():
             info_out += int((~in_area[pres]).sum())
             pres = pres[in_area[pres]]
             gids = {g: n for g, n in gids.items() if gid_idx.get(g) in rows}
+        man = json.loads((OCC_MANUAL / f"{s['id']}.json").read_text(encoding="utf-8")) if (OCC_MANUAL / f"{s['id']}.json").exists() else None
+        if man:   # 직접 확인 기록: 토지이용·외딴 기록·지역 밖 거르기를 하지 않음
+            mrows = pos[[r * W + c for r, c in man["cells"]]] if man["cells"] else np.array([], dtype=np.int64)
+            pres = np.union1d(pres, mrows[mrows >= 0])
         kept = np.zeros(idx.size, dtype=bool)
         kept[pres] = True
-        filter_geo(s["id"], kept, "해양" in tr["habitat"])   # 사이트에 보여 줄 기록도 학습에 쓴 칸만
+        filter_geo(s["id"], kept, "해양" in tr["habitat"], man["geo"] if man else ())   # 사이트에 보여 줄 기록도 학습에 쓴 칸만
         marine = bool(tr["habitat"]) and set(tr["habitat"]) <= MARINE | {"섬", "해안"} and "해양" in tr["habitat"]
-        info = {"cells": int(pres.size), "habitat": tr["habitat"], "dropped": int(pres_all.size - pres.size), "outliers": info_out}
+        info = {"cells": int(pres.size), "habitat": tr["habitat"], "dropped": max(0, int(pres_all.size - pres.size)), "outliers": info_out}
+        if man:
+            info["manual"] = man["n"]
         resp = {}
         if pres.size >= MIN_CELLS and not marine:
             bg_pool = np.setdiff1d(effort, pres)
