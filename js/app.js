@@ -10,8 +10,11 @@
 
   const GROUPS = { mammal: "포유류", bird: "조류", herp: "양서·파충류", fish: "어류", insect: "곤충", invert: "무척추동물", plant: "육상식물", algae: "해조류", fungi: "고등균류" };
   const GRADE = { en1: "멸종위기 Ⅰ급", en2: "멸종위기 Ⅱ급" };
-  const VARS = { elev: "고도", slope: "경사", tree: "산림", grass: "초지·관목", crop: "농경지", built: "시가지", bare: "나지", water: "수역", wetland: "습지",
-    dist_water: "물까지 거리", dist_coast: "해안까지 거리", bio1: "연평균기온", bio4: "기온 계절성", bio12: "연강수량", bio15: "강수 계절성" };
+  const VARS = { elev: "고도", slope: "경사", tree: "산림", conifer: "침엽수림", grass: "초지", paddy: "논", field: "밭·과수", built: "시가지", bare: "나지",
+    rock: "암벽", wetland: "내륙습지", tidal: "갯벌", river: "하천", lake: "호소", dist_river: "하천까지 거리", dist_lake: "호소·습지까지 거리",
+    dist_coast: "해안까지 거리", bio1: "연평균기온", bio4: "기온 계절성", bio12: "연강수량", bio15: "강수 계절성" };
+  const AQUA = { river: "하천", lake: "호소", wetland: "습지", paddy: "논", tidal: "갯벌", sea: "바다" };
+  const aquaText = (sp) => (sp.aqua ? sp.aqua.map((k) => AQUA[k]).join("·") : "");
   const STRESS = { 훼손: "서식지 훼손", 소음: "소음·진동", 수질: "탁수·수질 오염", 조명: "야간 조명", 로드킬: "로드킬", 단절: "서식지 단절",
     채집: "불법 채집·포획", 교란: "사람 출입·교란", 수위: "수위 변화", 벌채: "벌채" };
   // 적합성 등급 — 모형 임계값(t, 0–100) 기준. 임계값 이상이 ‘적합’, 그 위 절반이 ‘매우 적합’, 임계값 절반까지 ‘가능’
@@ -117,7 +120,8 @@
     S.blockSet = new Set(grid.blocks);
     S.utmk = proj4("WGS84", grid.proj);
   })());
-  const loadOcc = () => S.occ || (S.occ = fetch("data/occ.json").then((r) => r.json()));
+  // 출현 기록 칸(경위도 약 250 m) — 종 id → 칸 번호. 칸 격자 정보는 S.occGrid
+  const loadOcc = () => S.occ || (S.occ = fetch("data/occ.json").then((r) => r.json()).then((d) => { S.occGrid = d.grid; return d.species; }));
 
   // 회색조 webp·png → 값 배열(빨강 채널). 색 관리·알파 곱하기를 끄고 읽어 값이 그대로 나오게 함
   const decodeGray = async (url) => {
@@ -159,7 +163,8 @@
   // ---------- 적합성 지도 층 ----------
   // 분석 격자(UTM-K 250 m) 값을 지도 타일마다 다시 투영해 그림. 타일을 8×8로 나눠 꼭짓점만 정확히 바꾸고 안은 보간
   const SuitLayer = L.GridLayer.extend({
-    options: { tileSize: 256, opacity: 0.8, updateWhenZooming: false, maxNativeZoom: 19 },
+    // zIndex: 지도 바꾸기 단추가 바탕지도에 1·2·3을 매기므로 그보다 위에
+    options: { tileSize: 256, opacity: 0.8, updateWhenZooming: false, maxNativeZoom: 19, zIndex: 10 },
     initialize(get, t, opts) {
       this.get = get;   // (행, 열) → 0–100, 범위 밖 255
       this.lut = new Uint8ClampedArray(256 * 4);
@@ -210,12 +215,15 @@
   const rasterGet = (R) => (r, c) => (r >= 0 && r < R.h && c >= 0 && c < R.w ? R.data[r * R.w + c] : 255);
   const legendHtml = (sp, extra = "") => `<b>${esc(sp.ko)} 서식 가능성</b>${CLASSES.map((c) => `<div><i style="background:rgb(${c.color})"></i>${c.name}</div>`).join("")}${extra}`;
 
-  // 출현 기록 1 km 칸 → 경위도 사각형
+  // 출현 기록 칸 → 경위도 사각형, 칸 가운데 [경도, 위도]
   const occCellLatLngs = (cell) => {
-    const G = S.grid, size = G.res * G.occRes;
-    const r = Math.floor(cell / G.occW), c = cell % G.occW;
-    const x = G.x0 + c * size, y = G.y1 - r * size;
-    return [[x, y], [x + size, y], [x + size, y - size], [x, y - size]].map((p) => { const q = S.utmk.inverse(p); return [q[1], q[0]]; });
+    const g = S.occGrid, i = Math.floor(cell / g.w), j = cell % g.w;
+    const la = g.lat0 + i * g.dlat, lo = g.lng0 + j * g.dlng;
+    return [[la, lo], [la, lo + g.dlng], [la + g.dlat, lo + g.dlng], [la + g.dlat, lo]];
+  };
+  const occCenter = (cell) => {
+    const g = S.occGrid;
+    return [g.lng0 + ((cell % g.w) + 0.5) * g.dlng, g.lat0 + (Math.floor(cell / g.w) + 0.5) * g.dlat];
   };
   const REC_STYLE = { color: "#d6336c", weight: 1.5, fill: false, interactive: false };
 
@@ -300,7 +308,7 @@
       <div class="sp-grid">
         <div>
           <div class="sp-map-wrap"><div class="sp-map" id="sp-map"></div>
-            <div class="legend" id="sp-legend">${legendHtml(sp, `<div><i class="rec"></i>출현 기록(1 km 칸)</div>`)}</div>
+            <div class="legend" id="sp-legend">${legendHtml(sp, `<div><i class="rec"></i>출현 기록(약 250 m 칸)</div>`)}</div>
             <label class="map-toggles"><span><input type="checkbox" id="sp-rec" checked> 출현 기록</span></label>
           </div>
           <p class="small muted">${m.method === "rule" ? "출현 기록이 적어 서식 환경 조건(서식지 유형·토지피복·지형)으로 계산한 참고 지수입니다." : m.method === "maxent" ? "출현 기록과 환경 변수로 계산한 서식 가능성입니다(250 m 격자)." : ""} 서식 가능성은 잠재적인 값이며 실제 서식 여부는 현지조사로 확인해야 합니다.</p>
@@ -313,6 +321,7 @@
               ${se ? `<dt>민감 시기</dt><dd>${esc(se.text)}</dd>` : ""}
               ${sp.note ? `<dt>특징</dt><dd>${esc(sp.note)}</dd>` : ""}
               <dt>주요 위협</dt><dd>${tagList((sp.stress || []).map((k) => STRESS[k] || k), "warn")}</dd>
+              ${sp.aqua ? `<dt>서식 칸</dt><dd>${esc(aquaText(sp))}이 있는 칸만(면적은 칸 안의 물 면적)</dd>` : ""}
             </dl>
           </div>
           <div class="panel">
@@ -370,8 +379,9 @@
       <ul class="plain">
         <li><b>MaxEnt 종분포모형</b>(${fmt(mx)}종): 출현 기록이 15칸 이상인 종. 모든 대상 종의 출현 칸에서 배경을 뽑아(target-group background) 조사가 많이 된 곳에 치우치는 편향을 줄였습니다. 예측력은 3겹 교차검증 AUC, ‘적합’ 기준은 출현 칸의 90%가 들어가는 값입니다(놓치는 종이 적도록 넉넉하게 잡음).</li>
         <li><b>서식 조건 지수</b>(${fmt(n - mx)}종): 기록이 적거나 바다에 사는 종. 서식지 유형별 토지피복·지형·물과의 거리로 계산하고, 기록이 있으면 기록에서 멀수록 낮췄습니다. 통계 모형이 아닌 참고값입니다.</li>
-        <li>환경 변수: 고도·경사(Copernicus DEM GLO-90), 토지피복 비율 7종(ESA WorldCover 2021), 물·해안까지 거리, 기후 4종(CHELSA V2.1 1981–2010).</li>
-        <li>출현 자료: GBIF 공개 기록과 iNaturalist 관찰(멸종위기종 종합관리 사이트와 같은 자료). 사이트에는 1 km 칸으로만 보여 줍니다.</li>
+        <li>환경 변수: 토지피복 비율 12종과 하천·호소까지 거리(환경부 세분류 토지피복지도 2025년, 1 m급 41개 분류를 묶음), 고도·경사(Copernicus DEM GLO-90), 해안까지 거리, 기후 4종(CHELSA V2.1 1981–2010).</li>
+        <li><b>물에 사는 종</b>(서식 유형이 하천·계곡·호소·습지·논습지·하구·갯벌·바다뿐인 어류·저서성 무척추동물·수서곤충·습지식물 등): 그 물이 있는 칸에서만 서식 가능으로 보고, 면적은 칸 안의 물 면적만 셉니다.</li>
+        <li>출현 자료: GBIF 공개 기록과 iNaturalist 관찰(멸종위기종 종합관리 사이트와 같은 자료). 위치 오차가 1 km를 넘거나 위치를 흐린 기록은 빼고, 기록마다의 좌표 대신 약 250 m 칸으로만 보여 줍니다.</li>
       </ul>
       <h2>영향 예측</h2>
       <ul class="plain">
@@ -386,7 +396,8 @@
       <ul class="plain small">
         <li>GBIF.org, iNaturalist — 출현 기록</li>
         <li>국가유산청 국가유산 검색 오픈API — 천연기념물 목록</li>
-        <li>Karger et al. CHELSA V2.1 · Copernicus DEM GLO-90 (© DLR, © Airbus) · ESA WorldCover 2021 (CC BY 4.0)</li>
+        <li>기후에너지환경부 환경공간정보서비스 — 세분류 토지피복지도 2025년(토지피복지도 맵 서비스)</li>
+        <li>Karger et al. CHELSA V2.1 · Copernicus DEM GLO-90 (© DLR, © Airbus)</li>
         <li>국토교통부 브이월드 — 시군구 경계</li>
         <li>생태적 특징 요약: 국립생물자원관 한반도의 생물다양성, 국립생태원 멸종위기 야생생물 정보 등 공개 자료</li>
       </ul>`;
@@ -416,6 +427,6 @@
   }
 
   window.H = { S, $, $$, esc, fmt, debounce, toast, saveBlob, loadScript, loadJSZip, decodeGray, makeMap, SuitLayer, legendHtml, classOf, thrOf, CLASSES,
-    occCellLatLngs, loadOcc, REC_STYLE, GROUPS, GRADE, STRESS, VARS, badges, shortBadge, methodName, tagList, photoUrl };
+    occCellLatLngs, occCenter, loadOcc, aquaText, REC_STYLE, GROUPS, GRADE, STRESS, VARS, badges, shortBadge, methodName, tagList, photoUrl };
   setTimeout(show, 0);
 })();

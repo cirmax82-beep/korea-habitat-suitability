@@ -10,8 +10,10 @@
   const ALT_TOP = 5;
   const GRADE_NAME = { high: "높음", mid: "보통", low: "낮음" };
   const GRADE_RANK = { high: 0, mid: 1, low: 2 };
-  const COVER = [["tree", "산림", "#2f9e44"], ["grass", "초지·관목", "#94d82d"], ["crop", "농경지", "#fcc419"], ["built", "시가지", "#868e96"],
-    ["bare", "나지", "#d8c39a"], ["water", "수역", "#339af0"], ["wetland", "습지", "#22b8cf"]];
+  // 토지피복(환경부 세분류 2025년 묶음)
+  const COVER = [["tree", "산림", "#2f9e44"], ["grass", "초지", "#94d82d"], ["paddy", "논", "#fff3a0"], ["field", "밭·과수", "#fcc419"],
+    ["built", "시가지", "#868e96"], ["bare", "나지", "#d8c39a"], ["rock", "암벽", "#a1887f"], ["river", "하천", "#1c7ed6"],
+    ["lake", "호소", "#4dabf7"], ["wetland", "습지", "#22b8cf"], ["tidal", "갯벌", "#b197fc"], ["sea", "바다", "#1864ab"]];
   const ALT_COLOR = "#7048e8";
   const I = { inited: false, map: null, res: null, sel: null, running: false, km: 1, showLow: false };
 
@@ -32,6 +34,15 @@
     return d ? d[row * b * b + (r % b) * b + (c % b)] : 255;
   };
   const envRow = (name) => S.grid.rows.length + S.grid.env.findIndex((e) => e[0] === name);
+  const envK = (name) => (S.grid.env.find((e) => e[0] === name) || [0, 1])[1];
+  // 칸의 토지피복 비율(0–1)을 읽는 함수
+  const fracOf = (get, name) => { const row = envRow(name), k = envK(name); return (r, c) => get(row, r, c) / k; };
+  // 물에 사는 종: 칸 안 그 물(하천·호소 등)의 비율 — 면적을 셀 때 곱함. 아니면 null
+  const aquaOf = (get, sp) => {
+    if (!sp.aqua) return null;
+    const fs = sp.aqua.map((n) => fracOf(get, n));
+    return (r, c) => Math.min(1, fs.reduce((a, f) => a + f(r, c), 0));
+  };
 
   // ---------- 사업지 도형(UTM-K) ----------
   const prepSite = async (features, widthM) => {
@@ -228,35 +239,34 @@
       // 사업지·주변 면적과 토지피복
       let siteHa = 0, ringHa = 0;
       const cover = { site: {}, ring: {} };
-      const envIdx = COVER.map(([k]) => envRow(k));
+      const envF = COVER.map(([k]) => fracOf(get, k));
       for (let k = 0; k < n; k++) {
         const r = r0 + Math.floor(k / win.w), c = c0 + (k % win.w);
         if (!land(r, c)) continue;
         const a = cov[k] * cellHa, ra = dist[k] <= R ? (1 - cov[k]) * cellHa : 0;
         siteHa += a; ringHa += ra;
         COVER.forEach(([key], j) => {
-          const v = get(envIdx[j], r, c) / 100;
+          const v = envF[j](r, c);
           cover.site[key] = (cover.site[key] || 0) + v * a;
           cover.ring[key] = (cover.ring[key] || 0) + v * ra;
         });
       }
-      if (!G.polys.length) ptCells.forEach(([r, c]) => { if (land(r, c)) COVER.forEach(([key], j) => { cover.site[key] = (cover.site[key] || 0) + get(envIdx[j], r, c) / 100; }); });
+      if (!G.polys.length) ptCells.forEach(([r, c]) => { if (land(r, c)) COVER.forEach(([key], j) => { cover.site[key] = (cover.site[key] || 0) + envF[j](r, c); }); });
       // 위치(시군구)
       const cx = (G.bb[0] + G.bb[2]) / 2, cy = (G.bb[1] + G.bb[3]) / 2;
       const rc = [Math.floor((Gd.y1 - cy) / res), Math.floor((cx - Gd.x0) / res)];
       const sggIdx = get(envRow("sgg_lo"), ...rc) + 256 * get(envRow("sgg_hi"), ...rc);
       if (!siteHa && !ptCells.some(([r, c]) => land(r, c)) && !ringHa) throw new Error("사업지와 주변이 모두 바다입니다. 이 사이트는 육상 격자만 다룹니다.");
 
-      // 출현 기록(1 km 칸) — 사업지까지 거리
+      // 출현 기록 칸(약 250 m) — 칸 가운데에서 사업지까지 거리
       progress(0.85, "종별 계산 중…");
       await tick();
       const occ = await H.loadOcc();
-      const os = res * Gd.occRes;
       const wx0 = Gd.x0 + c0 * res, wx1 = Gd.x0 + (c1 + 1) * res, wy1 = Gd.y1 - r0 * res, wy0 = Gd.y1 - (r1 + 1) * res;
       const recDist = (id) => {
         let best = null, nIn = 0;
         (occ[id] || []).forEach((cell) => {
-          const x = Gd.x0 + ((cell % Gd.occW) + 0.5) * os, y = Gd.y1 - (Math.floor(cell / Gd.occW) + 0.5) * os;
+          const [x, y] = S.utmk.forward(H.occCenter(cell));
           if (x < wx0 || x > wx1 || y < wy0 || y > wy1) return;
           const kr = Math.floor((Gd.y1 - y) / res) - r0, kc = Math.floor((x - Gd.x0) / res) - c0;
           const d = kr >= 0 && kr < win.h && kc >= 0 && kc < win.w && cov[kr * win.w + kc] > 0 ? 0 : distTo(G, x, y);
@@ -273,14 +283,14 @@
       for (let k = 0; k < n; k++) if (dist[k] <= R) near.push(k);
       const rows = [];
       targets.forEach((sp) => {
-        const t = H.thrOf(sp), row = sp.row;
+        const t = H.thrOf(sp), row = sp.row, aq = aquaOf(get, sp);
         let suitIn = 0, sumV = 0, sumW = 0, ringSuit = 0, atPt = -1;
         near.forEach((k) => {
-          const v = get(row, r0 + Math.floor(k / win.w), c0 + (k % win.w));
+          const r = r0 + Math.floor(k / win.w), c = c0 + (k % win.w), v = get(row, r, c);
           if (v > 100) return;
-          const cw = cov[k];
-          if (cw > 0) { if (v >= t) suitIn += cw * cellHa; sumV += v * cw; sumW += cw; }
-          if (cw < 1 && v >= t) ringSuit += (1 - cw) * cellHa;
+          const cw = cov[k], a = cellHa * (aq ? aq(r, c) : 1);   // 물에 사는 종은 칸 안 물 면적만
+          if (cw > 0) { if (v >= t) suitIn += cw * a; sumV += v * cw; sumW += cw; }
+          if (cw < 1 && v >= t) ringSuit += (1 - cw) * a;
         });
         ptCells.forEach(([r, c]) => { const v = get(row, r, c); if (v <= 100) atPt = Math.max(atPt, v); });
         const [rd, nRec] = recDist(sp.id);
@@ -343,7 +353,8 @@
     const Gd = S.grid;
     const { r0, c0, h, w } = res.win;
     (occ[sp.id] || []).forEach((cell) => {
-      const rr = (Math.floor(cell / Gd.occW) + 0.5) * Gd.occRes, cc = ((cell % Gd.occW) + 0.5) * Gd.occRes;
+      const [x, y] = S.utmk.forward(H.occCenter(cell));
+      const rr = (Gd.y1 - y) / Gd.res, cc = (x - Gd.x0) / Gd.res;
       if (rr >= r0 && rr < r0 + h && cc >= c0 && cc < c0 + w) L.polygon(H.occCellLatLngs(cell), { ...H.REC_STYLE, renderer: I.renderer }).addTo(I.recLayer);
     });
     row.alt = row.alt || altPatches(row);
@@ -352,7 +363,7 @@
         .bindTooltip(`대체서식지 후보 ${i + 1}`, { sticky: true }).addTo(I.altLayer);
     });
     $("#an-legend").hidden = false;
-    $("#an-legend").innerHTML = H.legendHtml(sp, `<div><i class="rec"></i>출현 기록(1 km 칸)</div><div><i style="background:rgba(112,72,232,.15);border:2px solid ${ALT_COLOR}"></i>대체서식지 후보</div>`);
+    $("#an-legend").innerHTML = H.legendHtml(sp, `<div><i class="rec"></i>출현 기록(약 250 m 칸)</div><div><i style="background:rgba(112,72,232,.15);border:2px solid ${ALT_COLOR}"></i>대체서식지 후보</div>`);
     Site.toFront();
   };
 
@@ -360,15 +371,15 @@
   // 사업지 밖, 정한 거리 안, ‘적합’ 이상이고 시가지 20% 미만인 칸을 상하좌우로 이어 묶고 적합도·면적·거리로 순위
   const altPatches = (row) => {
     const res = I.res, { win, get, cov, dist } = res, { h, w, r0, c0 } = win, n = h * w;
-    const maxD = res.alt * 1000, BUILT = envRow("built"), cellHa = (S.grid.res ** 2) / 1e4;
+    const maxD = res.alt * 1000, built = fracOf(get, "built"), aq = aquaOf(get, row.sp), cellHa = (S.grid.res ** 2) / 1e4;
     const cand = new Uint8Array(n);
     for (let k = 0; k < n; k++) {
       if (cov[k] > 0 || dist[k] > maxD) continue;
       const r = r0 + Math.floor(k / w), c = c0 + (k % w), v = get(row.sp.row, r, c);
-      if (v <= 100 && v >= row.t && get(BUILT, r, c) < BUILT_MAX) cand[k] = 1;
+      if (v <= 100 && v >= row.t && built(r, c) * 100 < BUILT_MAX) cand[k] = 1;
     }
     const label = new Int32Array(n).fill(-1), patches = [];
-    const envIdx = COVER.map(([k]) => envRow(k)), lo = envRow("sgg_lo"), hi = envRow("sgg_hi");
+    const envF = COVER.map(([k]) => fracOf(get, k)), lo = envRow("sgg_lo"), hi = envRow("sgg_hi");
     for (let k = 0; k < n; k++) {
       if (!cand[k] || label[k] >= 0) continue;
       const id = patches.length, stack = [k], cells = [];
@@ -383,17 +394,18 @@
           if (cand[m] && label[m] < 0) { label[m] = id; stack.push(m); }
         });
       }
-      let sumV = 0, minD = Infinity;
+      let sumV = 0, minD = Infinity, ha = 0;
       const cv = {}, sgg = new Map();
       cells.forEach((q) => {
         const r = r0 + Math.floor(q / w), c = c0 + (q % w);
         sumV += get(row.sp.row, r, c);
         minD = Math.min(minD, dist[q]);
-        COVER.forEach(([key], j) => { cv[key] = (cv[key] || 0) + get(envIdx[j], r, c); });
+        ha += cellHa * (aq ? aq(r, c) : 1);
+        COVER.forEach(([key], j) => { cv[key] = (cv[key] || 0) + envF[j](r, c) * 100; });
         const s = get(lo, r, c) + 256 * get(hi, r, c);
         sgg.set(s, (sgg.get(s) || 0) + 1);
       });
-      const ha = cells.length * cellHa, mean = sumV / cells.length;
+      const mean = sumV / cells.length;
       const main = COVER.map(([key, name]) => [name, cv[key] / cells.length]).sort((a, b) => b[1] - a[1])[0];
       const sg = [...sgg].sort((a, b) => b[1] - a[1])[0][0];
       patches.push({ id, cells, ha, mean, minD, cover: main ? `${main[0]} ${fmt(main[1])}%` : "", sgg: S.grid.sgg[sg - 1] || "",
@@ -459,9 +471,9 @@
         <div class="badges" style="margin:6px 0 10px">${H.badges(sp)}</div>
         <dl class="facts">
           ${r.ptOnly ? `<dt>지점 적합도</dt><dd>${x.meanIn === null ? "-" : `${fmt(x.meanIn)}%`} <span class="muted small">‘적합’ 기준 ${x.t}%</span></dd>`
-            : `<dt>사업지 안 적합 서식지</dt><dd>${x.suitIn ? haText(x.suitIn) : "없음"} <span class="muted small">평균 적합도 ${x.meanIn === null ? "-" : `${fmt(x.meanIn)}%`}, ‘적합’ 기준 ${x.t}%</span></dd>`}
+            : `<dt>사업지 안 적합 서식지</dt><dd>${x.suitIn ? haText(x.suitIn) : "없음"}${sp.aqua ? ` <span class="muted small">${esc(H.aquaText(sp))} 면적</span>` : ""} <span class="muted small">평균 적합도 ${x.meanIn === null ? "-" : `${fmt(x.meanIn)}%`}, ‘적합’ 기준 ${x.t}%</span></dd>`}
           <dt>주변 ${fmt(r.km, 1)} km 적합 서식지</dt><dd>${x.ringSuit ? haText(x.ringSuit) : "없음"}</dd>
-          <dt>가까운 출현 기록</dt><dd>${distText(x.recDist)}${x.nRec ? ` <span class="muted small">주변 ${fmt(r.km, 1)} km 안 ${fmt(x.nRec)}칸(1 km)</span>` : ""}</dd>
+          <dt>가까운 출현 기록</dt><dd>${distText(x.recDist)}${x.nRec ? ` <span class="muted small">주변 ${fmt(r.km, 1)} km 안 ${fmt(x.nRec)}칸</span>` : ""}</dd>
           <dt>서식 환경</dt><dd>${H.tagList(sp.habitat) || "-"}</dd>
           ${se ? `<dt>민감 시기</dt><dd>${esc(se.text)}</dd>` : ""}
           <dt>계산 방식</dt><dd>${H.methodName(sp.model)}${sp.model && sp.model.auc ? ` (AUC ${sp.model.auc.toFixed(2)})` : ""}</dd>

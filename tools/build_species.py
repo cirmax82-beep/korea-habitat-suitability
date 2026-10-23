@@ -7,7 +7,9 @@
 - 천연기념물(종 단위 지정): 국가유산청 국가유산 검색 오픈API(천연기념물, 지정 해제 제외)에서 지역 구분이 ‘기타’인 종과
   지역을 붙여 종으로 지정한 것(황쏘가리·어름치·한란). 가축 품종·장소 지정(노거수·숲·동굴)은 뺌.
   멸종위기종과 겹치면 그 종에 천연기념물 번호를 붙이고, 아닌 종은 GBIF에서 국내 기록을 받음
-- 결과: data/species.json(공개), work/occ/<종 id>.json(분석 격자의 출현 칸 — 공개하지 않음)
+- 결과: data/species.json(공개), work/occ/<종 id>.json(분석 격자 UTM-K 250 m의 출현 칸),
+  work/occ_geo/<종 id>.json(원래 경위도 약 250 m 칸 번호 — 멸종위기종 종합관리 열지도와 같은 칸, 사이트 표시·거리 계산용)
+- 위치 오차가 1 km를 넘는 기록과 iNaturalist가 위치를 흐린 관찰은 뺌(멸종위기종 종합관리와 같은 기준)
 """
 import json
 import re
@@ -24,6 +26,8 @@ from pyproj import Transformer
 ROOT = Path(__file__).resolve().parent.parent
 END = ROOT.parent / "멸종위기종 종합관리"
 OCC = ROOT / "work" / "occ"
+OCC_GEO = ROOT / "work" / "occ_geo"
+MAX_UNC = 1000   # 위치 오차 한도(m)
 NM_API = "https://www.khs.go.kr/cha/SearchKindOpenapiList.do?ccbaKdcd=16&pageUnit=2000&pageIndex=1"
 NM_REGIONAL = {"한강의 황쏘가리": "황쏘가리", "금강의 어름치": "어름치", "제주의 한란": "한란"}   # 지역을 붙인 종 지정
 NM_ALIAS = {"점박이물범": "물범", "느시(들칠면조)": "느시", "붉은박쥐(오렌지윗수염박쥐)": "붉은박쥐", "까막딱따구리": "까막딱다구리"}   # 천연기념물 이름 → 멸종위기종 목록 이름
@@ -72,6 +76,7 @@ def natural_monuments():
 def main():
     sys.stdout.reconfigure(encoding="utf-8")
     OCC.mkdir(parents=True, exist_ok=True)
+    OCC_GEO.mkdir(parents=True, exist_ok=True)
     grid = json.loads((ROOT / "work" / "env" / "grid.json").read_text(encoding="utf-8"))
     to5179 = Transformer.from_crs(4326, 5179, always_xy=True)
 
@@ -90,18 +95,26 @@ def main():
     inat = json.loads((END / "data" / "inat-snapshot.json").read_text(encoding="utf-8"))
     g = heat["grid"]
 
+    (OCC_GEO / "_grid.json").write_text(json.dumps(g), encoding="utf-8")
+
     def center(cell):
         i, j = divmod(cell, g["w"])
         return g["lng0"] + (j + 0.5) * g["dlng"], g["lat0"] + (i + 0.5) * g["dlat"]
+
+    def geo_cell(lng, lat):
+        i, j = int((lat - g["lat0"]) // g["dlat"]), int((lng - g["lng0"]) // g["dlng"])
+        return i * g["w"] + j if i >= 0 and 0 <= j < g["w"] else None
 
     species = []
     for s in cat:
         flat = heat["species"].get(s["id"], [])
         hc = [flat[k] for k in range(0, len(flat), 3)]
         ic = [o[-1] for o in inat["obs"].get(s["id"], []) if o[-1] is not None and o[-1] >= 0]
-        pts = [center(c) for c in set(hc) | set(ic)]
+        geo = sorted(set(hc) | set(ic))
+        pts = [center(c) for c in geo]
         occ = cells([p[0] for p in pts], [p[1] for p in pts]) if pts else []
         (OCC / f"{s['id']}.json").write_text(json.dumps(occ), encoding="utf-8")
+        (OCC_GEO / f"{s['id']}.json").write_text(json.dumps(geo), encoding="utf-8")
         photo = inat["taxa"].get(s["id"], {})
         species.append({"id": s["id"], "ko": s["name"], "sci": s["sci"], "group": s["group"], "grade": s["grade"], "family": s.get("family", ""),
                         "nm": "", "gbif": s.get("gbif"), "note": s.get("note", ""), "cells": len(occ),
@@ -123,21 +136,23 @@ def main():
     for n, sci in extra:
         m = json.loads(get("https://api.gbif.org/v1/species/match?" + urllib.parse.urlencode({"name": sci, "kingdom": "Animalia" if n["name"] != "한란" else "Plantae"})))
         key = m.get("usageKey")
-        lons, lats = [], []
-        cache = ROOT / "work" / "gbif" / f"{key}.json"
+        lons, lats, uncs = [], [], []
+        cache = ROOT / "work" / "gbif" / f"{key}-unc.json"   # [경도, 위도, 위치 오차(m, 없으면 -1)]
         if key and cache.exists():
-            lons, lats = json.loads(cache.read_text(encoding="utf-8"))
+            lons, lats, uncs = json.loads(cache.read_text(encoding="utf-8"))
         elif key:
             for off in range(0, 6000, 300):
                 d = json.loads(get("https://api.gbif.org/v1/occurrence/search?" + urllib.parse.urlencode(
                     {"taxonKey": key, "country": "KR", "hasCoordinate": "true", "hasGeospatialIssue": "false", "limit": 300, "offset": off})))
                 for r in d["results"]:
-                    if (r.get("coordinateUncertaintyInMeters") or 0) <= 5000:
-                        lons.append(r["decimalLongitude"]); lats.append(r["decimalLatitude"])
+                    u = r.get("coordinateUncertaintyInMeters")
+                    lons.append(r["decimalLongitude"]); lats.append(r["decimalLatitude"]); uncs.append(-1 if u is None else u)
                 if d.get("endOfRecords"):
                     break
             cache.parent.mkdir(exist_ok=True)
-            cache.write_text(json.dumps([lons, lats]), encoding="utf-8")
+            cache.write_text(json.dumps([lons, lats, uncs]), encoding="utf-8")
+        keep = [k for k, u in enumerate(uncs) if u <= MAX_UNC]
+        lons, lats = [lons[k] for k in keep], [lats[k] for k in keep]
         # iNaturalist 대표 사진(공개 이용 허락이 있는 것만)
         photo, photo_by, inat_id = "", "", None
         try:
@@ -154,6 +169,8 @@ def main():
         sid = re.sub(r"[^a-z0-9]+", "-", sci.lower()).strip("-")
         occ = cells(lons, lats) if lons else []
         (OCC / f"{sid}.json").write_text(json.dumps(occ), encoding="utf-8")
+        geo = sorted({c for c in (geo_cell(x, y) for x, y in zip(lons, lats)) if c is not None})
+        (OCC_GEO / f"{sid}.json").write_text(json.dumps(geo), encoding="utf-8")
         species.append({"id": sid, "ko": n["name"], "sci": sci, "group": NM_GROUP.get(n["name"], "bird"), "grade": "", "family": "",
                         "nm": n["no"], "gbif": key, "note": "", "cells": len(occ), "photo": photo, "photoBy": photo_by, "inat": inat_id})
         print(f"  천연기념물 {n['name']}({sci}) {n['no']} · GBIF {key} · 칸 {len(occ)}", flush=True)
