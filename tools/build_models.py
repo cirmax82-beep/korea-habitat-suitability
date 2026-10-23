@@ -211,19 +211,23 @@ def main():
 
     def range_weight(group, pres, gids, rng=None):
         """알려진 분포 범위 가중치(0–1): 출현 칸에서 R km 안과 기록 시군구(+2 km)는 1, 그 밖은 R km에 걸쳐 0으로. 기록이 없으면 None
-        rng: 문헌 프로필의 범위 조정 {"km": R, "sgg": 시군구 기록을 쓸지}"""
-        if rng and rng.get("sgg") is False:
+        rng: 문헌 프로필의 범위 조정 {"km": R, "sgg": 시군구 기록을 쓸지, "areas": 문헌상 분포 시도·시군구 이름}"""
+        rng = rng or {}
+        if rng.get("sgg") is False:
             gids = []
-        if not pres.size and not gids:
+        areas = set(rng.get("areas") or [])
+        if not pres.size and not gids and not areas:
             return None
-        R = (rng or {}).get("km", RANGE_KM.get(group, 5))
-        seen = np.zeros(land.size, dtype=bool)
-        seen[idx[pres]] = True
-        d_cell = ndimage.distance_transform_edt(~seen.reshape(land.shape)) * grid["res"] / 1000
-        known = d_cell <= R
-        if gids:
-            in_sgg = np.isin(sgg_r, [gid_idx[g] for g in gids if g in gid_idx])
-            known |= ndimage.distance_transform_edt(~in_sgg) * grid["res"] / 1000 <= 2
+        R = rng.get("km", RANGE_KM.get(group, 5))
+        known = np.zeros(land.shape, dtype=bool)
+        if pres.size:
+            seen = np.zeros(land.size, dtype=bool)
+            seen[idx[pres]] = True
+            known = ndimage.distance_transform_edt(~seen.reshape(land.shape)) * grid["res"] / 1000 <= R
+        rows = [gid_idx[g] for g in gids if g in gid_idx] + [i + 1 for i, r in enumerate(sg.itertuples())
+                                                             if areas & {r.name, r.short, r.sidoName}]
+        if rows:
+            known |= ndimage.distance_transform_edt(~np.isin(sgg_r, rows)) * grid["res"] / 1000 <= 2
         d = ndimage.distance_transform_edt(~known) * grid["res"] / 1000
         return np.clip(1 - d / R, 0, 1).ravel()[idx]
 
@@ -335,10 +339,10 @@ def main():
                          "reason": "해양 종" if marine else f"출현 칸 {pres.size}개(모형에는 {MIN_CELLS}개 이상 필요)"})
         # 알려진 분포 범위 밖은 환경이 비슷해도 낮춤(바다 종은 바다 기록이 시군구로 잡힘). 칸·시군구 기록이 모두 없으면 ‘가능’까지만
         wgt = range_weight(s["group"], pres, list(gids), (PROFILES.get(s["ko"]) or {}).get("range"))
-        if wgt is None:
+        if wgt is None or not (pres.size or gids):   # 기록이 없으면 문헌상 분포 지역 안에서도 ‘가능’까지만
             pred = np.minimum(pred, info["threshold"] - 0.05)
             info["noRecord"] = True
-        else:
+        if wgt is not None:
             pred = pred * wgt
         info["sgg"] = len(gids)
         area = np.ones(idx.size, dtype="float32")

@@ -1,0 +1,1243 @@
+{
+ "검붉은수지맨드라미": {
+  "summary": "제주 연안 암반에 붙어 사는 연산호.",
+  "distribution": "제주 서귀포 문섬·범섬·섶섬 일대 등 제주 연안과 남해 일부.",
+  "habitat": "수심 수~수십 m의 조류가 빠른 암반. 바닷속 암반에 붙어 사는 종이라 육상 격자로는 직접 나타낼 수 없어, 기록이 있는 해안선 칸으로 표시한다.",
+  "life": "연중 고착 생활.",
+  "diet": "물속 플랑크톤.",
+  "threats": "연안 개발·수온 상승, 다이빙·낚시 훼손, 해양 쓰레기.",
+  "conservation": "멸종위기 야생생물 Ⅱ급. 서식 암반 해역 보호, 연안 공사 시 부유사 저감.",
+  "vars": [
+   "dist_coast",
+   "rock",
+   "tidal",
+   "bio1"
+  ],
+  "layers": [
+   {
+    "key": "main",
+    "name": "서식 해역(해안선 칸)",
+    "season": "연중",
+    "main": true,
+    "groups": [
+     "sea",
+     "rock"
+    ],
+    "desc": "해안 300 m 안의 바다·바위(바닷속 암반을 대신해 표시)",
+    "coast_km": 0.3,
+    "elev": [
+     0,
+     20
+    ]
+   }
+  ],
+  "refs": [],
+  "range": {
+   "km": 10
+  }
+ },
+ "금빛나팔돌산호": {
+  "summary": "제주·남해 연안 암반의 주황빛 돌산호.",
+  "distribution": "제주 서귀포 문섬·범섬·섶섬 일대 등 제주 연안과 남해 일부.",
+  "habitat": "수심 수~수십 m의 조류가 빠른 암반. 바닷속 암반에 붙어 사는 종이라 육상 격자로는 직접 나타낼 수 없어, 기록이 있는 해안선 칸으로 표시한다.",
+  "life": "연중 고착 생활.",
+  "diet": "물속 플랑크톤.",
+  "threats": "연안 개발·수온 상승, 다이빙·낚시 훼손, 해양 쓰레기.",
+  "conservation": "멸종위기 야생생물 Ⅱ급. 서식 암반 해역 보호, 연안 공사 시 부유사 저감.",
+  "vars": [
+   "dist_coast",
+   "rock",
+   "tidal",
+   "bio1"
+  ],
+  "layers": [
+   {
+    "key": "main",
+    "name": "서식 해역(해안선 칸)",
+    "season": "연중",
+    "main": true,
+    "groups": [
+     "sea",
+     "rock"
+    ],
+    "desc": "해안 300 m 안의 바다·바위(바닷속 암반을 대신해 표시)",
+    "coast_km": 0.3,
+    "elev": [
+     0,
+     20
+    ]
+   }
+  ],
+  "refs": [],
+  "range": {
+   "km": 10
+  }
+ },
+ "깃산호": {
+  "summary": "제주 연안의 깃 모양 산호.",
+  "distribution": "제주 서귀포 문섬·범섬·섶섬 일대 등 제주 연안과 남해 일부.",
+  "habitat": "수심 수~수십 m의 조류가 빠른 암반. 바닷속 암반에 붙어 사는 종이라 육상 격자로는 직접 나타낼 수 없어, 기록이 있는 해안선 칸으로 표시한다.",
+  "life": "연중 고착 생활.",
+  "diet": "물속 플랑크톤.",
+  "threats": "연안 개발·수온 상승, 다이빙·낚시 훼손, 해양 쓰레기.",
+  "conservation": "멸종위기 야생생물 Ⅱ급. 서식 암반 해역 보호, 연안 공사 시 부유사 저감.",
+  "vars": [
+   "dist_coast",
+   "rock",
+   "tidal",
+   "bio1"
+  ],
+  "layers": [
+   {
+    "key": "main",
+    "name": "서식 해역(해안선 칸)",
+    "season": "연중",
+    "main": true,
+    "groups": [
+     "sea",
+     "rock"
+    ],
+    "desc": "해안 300 m 안의 바다·바위(바닷속 암반을 대신해 표시)",
+    "coast_km": 0.3,
+    "elev": [
+     0,
+     20
+    ]
+   }
+  ],
+  "refs": [],
+  "range": {
+   "km": 10
+  }
+ },
+ "둔한진총산호": {
+  "summary": "제주 연안의 산호.",
+  "distribution": "제주 서귀포 문섬·범섬·섶섬 일대 등 제주 연안과 남해 일부.",
+  "habitat": "수심 수~수십 m의 조류가 빠른 암반. 바닷속 암반에 붙어 사는 종이라 육상 격자로는 직접 나타낼 수 없어, 기록이 있는 해안선 칸으로 표시한다.",
+  "life": "연중 고착 생활.",
+  "diet": "물속 플랑크톤.",
+  "threats": "연안 개발·수온 상승, 다이빙·낚시 훼손, 해양 쓰레기.",
+  "conservation": "멸종위기 야생생물 Ⅱ급. 서식 암반 해역 보호, 연안 공사 시 부유사 저감.",
+  "vars": [
+   "dist_coast",
+   "rock",
+   "tidal",
+   "bio1"
+  ],
+  "layers": [
+   {
+    "key": "main",
+    "name": "서식 해역(해안선 칸)",
+    "season": "연중",
+    "main": true,
+    "groups": [
+     "sea",
+     "rock"
+    ],
+    "desc": "해안 300 m 안의 바다·바위(바닷속 암반을 대신해 표시)",
+    "coast_km": 0.3,
+    "elev": [
+     0,
+     20
+    ]
+   }
+  ],
+  "refs": [],
+  "range": {
+   "km": 10
+  }
+ },
+ "망상맵시산호": {
+  "summary": "그물 모양의 맵시산호.",
+  "distribution": "제주 서귀포 문섬·범섬·섶섬 일대 등 제주 연안과 남해 일부.",
+  "habitat": "수심 수~수십 m의 조류가 빠른 암반. 바닷속 암반에 붙어 사는 종이라 육상 격자로는 직접 나타낼 수 없어, 기록이 있는 해안선 칸으로 표시한다.",
+  "life": "연중 고착 생활.",
+  "diet": "물속 플랑크톤.",
+  "threats": "연안 개발·수온 상승, 다이빙·낚시 훼손, 해양 쓰레기.",
+  "conservation": "멸종위기 야생생물 Ⅱ급. 서식 암반 해역 보호, 연안 공사 시 부유사 저감.",
+  "vars": [
+   "dist_coast",
+   "rock",
+   "tidal",
+   "bio1"
+  ],
+  "layers": [
+   {
+    "key": "main",
+    "name": "서식 해역(해안선 칸)",
+    "season": "연중",
+    "main": true,
+    "groups": [
+     "sea",
+     "rock"
+    ],
+    "desc": "해안 300 m 안의 바다·바위(바닷속 암반을 대신해 표시)",
+    "coast_km": 0.3,
+    "elev": [
+     0,
+     20
+    ]
+   }
+  ],
+  "refs": [],
+  "range": {
+   "km": 10
+  }
+ },
+ "밤수지맨드라미": {
+  "summary": "제주 연안 연산호.",
+  "distribution": "제주 서귀포 문섬·범섬·섶섬 일대 등 제주 연안과 남해 일부.",
+  "habitat": "수심 수~수십 m의 조류가 빠른 암반. 바닷속 암반에 붙어 사는 종이라 육상 격자로는 직접 나타낼 수 없어, 기록이 있는 해안선 칸으로 표시한다.",
+  "life": "연중 고착 생활.",
+  "diet": "물속 플랑크톤.",
+  "threats": "연안 개발·수온 상승, 다이빙·낚시 훼손, 해양 쓰레기.",
+  "conservation": "멸종위기 야생생물 Ⅱ급. 서식 암반 해역 보호, 연안 공사 시 부유사 저감.",
+  "vars": [
+   "dist_coast",
+   "rock",
+   "tidal",
+   "bio1"
+  ],
+  "layers": [
+   {
+    "key": "main",
+    "name": "서식 해역(해안선 칸)",
+    "season": "연중",
+    "main": true,
+    "groups": [
+     "sea",
+     "rock"
+    ],
+    "desc": "해안 300 m 안의 바다·바위(바닷속 암반을 대신해 표시)",
+    "coast_km": 0.3,
+    "elev": [
+     0,
+     20
+    ]
+   }
+  ],
+  "refs": [],
+  "range": {
+   "km": 10
+  }
+ },
+ "별혹산호": {
+  "summary": "제주 연안의 산호.",
+  "distribution": "제주 서귀포 문섬·범섬·섶섬 일대 등 제주 연안과 남해 일부.",
+  "habitat": "수심 수~수십 m의 조류가 빠른 암반. 바닷속 암반에 붙어 사는 종이라 육상 격자로는 직접 나타낼 수 없어, 기록이 있는 해안선 칸으로 표시한다.",
+  "life": "연중 고착 생활.",
+  "diet": "물속 플랑크톤.",
+  "threats": "연안 개발·수온 상승, 다이빙·낚시 훼손, 해양 쓰레기.",
+  "conservation": "멸종위기 야생생물 Ⅱ급. 서식 암반 해역 보호, 연안 공사 시 부유사 저감.",
+  "vars": [
+   "dist_coast",
+   "rock",
+   "tidal",
+   "bio1"
+  ],
+  "layers": [
+   {
+    "key": "main",
+    "name": "서식 해역(해안선 칸)",
+    "season": "연중",
+    "main": true,
+    "groups": [
+     "sea",
+     "rock"
+    ],
+    "desc": "해안 300 m 안의 바다·바위(바닷속 암반을 대신해 표시)",
+    "coast_km": 0.3,
+    "elev": [
+     0,
+     20
+    ]
+   }
+  ],
+  "refs": [],
+  "range": {
+   "km": 10
+  }
+ },
+ "연수지맨드라미": {
+  "summary": "제주 연안 연산호.",
+  "distribution": "제주 서귀포 문섬·범섬·섶섬 일대 등 제주 연안과 남해 일부.",
+  "habitat": "수심 수~수십 m의 조류가 빠른 암반. 바닷속 암반에 붙어 사는 종이라 육상 격자로는 직접 나타낼 수 없어, 기록이 있는 해안선 칸으로 표시한다.",
+  "life": "연중 고착 생활.",
+  "diet": "물속 플랑크톤.",
+  "threats": "연안 개발·수온 상승, 다이빙·낚시 훼손, 해양 쓰레기.",
+  "conservation": "멸종위기 야생생물 Ⅱ급. 서식 암반 해역 보호, 연안 공사 시 부유사 저감.",
+  "vars": [
+   "dist_coast",
+   "rock",
+   "tidal",
+   "bio1"
+  ],
+  "layers": [
+   {
+    "key": "main",
+    "name": "서식 해역(해안선 칸)",
+    "season": "연중",
+    "main": true,
+    "groups": [
+     "sea",
+     "rock"
+    ],
+    "desc": "해안 300 m 안의 바다·바위(바닷속 암반을 대신해 표시)",
+    "coast_km": 0.3,
+    "elev": [
+     0,
+     20
+    ]
+   }
+  ],
+  "refs": [],
+  "range": {
+   "km": 10
+  }
+ },
+ "유착나무돌산호": {
+  "summary": "제주 연안의 나무 모양 돌산호.",
+  "distribution": "제주 서귀포 문섬·범섬·섶섬 일대 등 제주 연안과 남해 일부.",
+  "habitat": "수심 수~수십 m의 조류가 빠른 암반. 바닷속 암반에 붙어 사는 종이라 육상 격자로는 직접 나타낼 수 없어, 기록이 있는 해안선 칸으로 표시한다.",
+  "life": "연중 고착 생활.",
+  "diet": "물속 플랑크톤.",
+  "threats": "연안 개발·수온 상승, 다이빙·낚시 훼손, 해양 쓰레기.",
+  "conservation": "멸종위기 야생생물 Ⅱ급. 서식 암반 해역 보호, 연안 공사 시 부유사 저감.",
+  "vars": [
+   "dist_coast",
+   "rock",
+   "tidal",
+   "bio1"
+  ],
+  "layers": [
+   {
+    "key": "main",
+    "name": "서식 해역(해안선 칸)",
+    "season": "연중",
+    "main": true,
+    "groups": [
+     "sea",
+     "rock"
+    ],
+    "desc": "해안 300 m 안의 바다·바위(바닷속 암반을 대신해 표시)",
+    "coast_km": 0.3,
+    "elev": [
+     0,
+     20
+    ]
+   }
+  ],
+  "refs": [],
+  "range": {
+   "km": 10
+  }
+ },
+ "자색수지맨드라미": {
+  "summary": "제주 연안 연산호.",
+  "distribution": "제주 서귀포 문섬·범섬·섶섬 일대 등 제주 연안과 남해 일부.",
+  "habitat": "수심 수~수십 m의 조류가 빠른 암반. 바닷속 암반에 붙어 사는 종이라 육상 격자로는 직접 나타낼 수 없어, 기록이 있는 해안선 칸으로 표시한다.",
+  "life": "연중 고착 생활.",
+  "diet": "물속 플랑크톤.",
+  "threats": "연안 개발·수온 상승, 다이빙·낚시 훼손, 해양 쓰레기.",
+  "conservation": "멸종위기 야생생물 Ⅱ급. 서식 암반 해역 보호, 연안 공사 시 부유사 저감.",
+  "vars": [
+   "dist_coast",
+   "rock",
+   "tidal",
+   "bio1"
+  ],
+  "layers": [
+   {
+    "key": "main",
+    "name": "서식 해역(해안선 칸)",
+    "season": "연중",
+    "main": true,
+    "groups": [
+     "sea",
+     "rock"
+    ],
+    "desc": "해안 300 m 안의 바다·바위(바닷속 암반을 대신해 표시)",
+    "coast_km": 0.3,
+    "elev": [
+     0,
+     20
+    ]
+   }
+  ],
+  "refs": [],
+  "range": {
+   "km": 10
+  }
+ },
+ "잔가지나무돌산호": {
+  "summary": "제주 연안 돌산호.",
+  "distribution": "제주 서귀포 문섬·범섬·섶섬 일대 등 제주 연안과 남해 일부.",
+  "habitat": "수심 수~수십 m의 조류가 빠른 암반. 바닷속 암반에 붙어 사는 종이라 육상 격자로는 직접 나타낼 수 없어, 기록이 있는 해안선 칸으로 표시한다.",
+  "life": "연중 고착 생활.",
+  "diet": "물속 플랑크톤.",
+  "threats": "연안 개발·수온 상승, 다이빙·낚시 훼손, 해양 쓰레기.",
+  "conservation": "멸종위기 야생생물 Ⅱ급. 서식 암반 해역 보호, 연안 공사 시 부유사 저감.",
+  "vars": [
+   "dist_coast",
+   "rock",
+   "tidal",
+   "bio1"
+  ],
+  "layers": [
+   {
+    "key": "main",
+    "name": "서식 해역(해안선 칸)",
+    "season": "연중",
+    "main": true,
+    "groups": [
+     "sea",
+     "rock"
+    ],
+    "desc": "해안 300 m 안의 바다·바위(바닷속 암반을 대신해 표시)",
+    "coast_km": 0.3,
+    "elev": [
+     0,
+     20
+    ]
+   }
+  ],
+  "refs": [],
+  "range": {
+   "km": 10
+  }
+ },
+ "착생깃산호": {
+  "summary": "제주 연안 깃산호.",
+  "distribution": "제주 서귀포 문섬·범섬·섶섬 일대 등 제주 연안과 남해 일부.",
+  "habitat": "수심 수~수십 m의 조류가 빠른 암반. 바닷속 암반에 붙어 사는 종이라 육상 격자로는 직접 나타낼 수 없어, 기록이 있는 해안선 칸으로 표시한다.",
+  "life": "연중 고착 생활.",
+  "diet": "물속 플랑크톤.",
+  "threats": "연안 개발·수온 상승, 다이빙·낚시 훼손, 해양 쓰레기.",
+  "conservation": "멸종위기 야생생물 Ⅱ급. 서식 암반 해역 보호, 연안 공사 시 부유사 저감.",
+  "vars": [
+   "dist_coast",
+   "rock",
+   "tidal",
+   "bio1"
+  ],
+  "layers": [
+   {
+    "key": "main",
+    "name": "서식 해역(해안선 칸)",
+    "season": "연중",
+    "main": true,
+    "groups": [
+     "sea",
+     "rock"
+    ],
+    "desc": "해안 300 m 안의 바다·바위(바닷속 암반을 대신해 표시)",
+    "coast_km": 0.3,
+    "elev": [
+     0,
+     20
+    ]
+   }
+  ],
+  "refs": [],
+  "range": {
+   "km": 10
+  }
+ },
+ "측맵시산호": {
+  "summary": "제주 연안 맵시산호.",
+  "distribution": "제주 서귀포 문섬·범섬·섶섬 일대 등 제주 연안과 남해 일부.",
+  "habitat": "수심 수~수십 m의 조류가 빠른 암반. 바닷속 암반에 붙어 사는 종이라 육상 격자로는 직접 나타낼 수 없어, 기록이 있는 해안선 칸으로 표시한다.",
+  "life": "연중 고착 생활.",
+  "diet": "물속 플랑크톤.",
+  "threats": "연안 개발·수온 상승, 다이빙·낚시 훼손, 해양 쓰레기.",
+  "conservation": "멸종위기 야생생물 Ⅱ급. 서식 암반 해역 보호, 연안 공사 시 부유사 저감.",
+  "vars": [
+   "dist_coast",
+   "rock",
+   "tidal",
+   "bio1"
+  ],
+  "layers": [
+   {
+    "key": "main",
+    "name": "서식 해역(해안선 칸)",
+    "season": "연중",
+    "main": true,
+    "groups": [
+     "sea",
+     "rock"
+    ],
+    "desc": "해안 300 m 안의 바다·바위(바닷속 암반을 대신해 표시)",
+    "coast_km": 0.3,
+    "elev": [
+     0,
+     20
+    ]
+   }
+  ],
+  "refs": [],
+  "range": {
+   "km": 10
+  }
+ },
+ "흰수지맨드라미": {
+  "summary": "제주 연안 연산호.",
+  "distribution": "제주 서귀포 문섬·범섬·섶섬 일대 등 제주 연안과 남해 일부.",
+  "habitat": "수심 수~수십 m의 조류가 빠른 암반. 바닷속 암반에 붙어 사는 종이라 육상 격자로는 직접 나타낼 수 없어, 기록이 있는 해안선 칸으로 표시한다.",
+  "life": "연중 고착 생활.",
+  "diet": "물속 플랑크톤.",
+  "threats": "연안 개발·수온 상승, 다이빙·낚시 훼손, 해양 쓰레기.",
+  "conservation": "멸종위기 야생생물 Ⅱ급. 서식 암반 해역 보호, 연안 공사 시 부유사 저감.",
+  "vars": [
+   "dist_coast",
+   "rock",
+   "tidal",
+   "bio1"
+  ],
+  "layers": [
+   {
+    "key": "main",
+    "name": "서식 해역(해안선 칸)",
+    "season": "연중",
+    "main": true,
+    "groups": [
+     "sea",
+     "rock"
+    ],
+    "desc": "해안 300 m 안의 바다·바위(바닷속 암반을 대신해 표시)",
+    "coast_km": 0.3,
+    "elev": [
+     0,
+     20
+    ]
+   }
+  ],
+  "refs": [],
+  "range": {
+   "km": 10
+  }
+ },
+ "해송": {
+  "summary": "깊은 암반에 사는 검은 산호(각산호).",
+  "distribution": "제주 서귀포 문섬·범섬·섶섬 일대 등 제주 연안과 남해 일부.",
+  "habitat": "수심 수~수십 m의 조류가 빠른 암반. 바닷속 암반에 붙어 사는 종이라 육상 격자로는 직접 나타낼 수 없어, 기록이 있는 해안선 칸으로 표시한다.",
+  "life": "연중 고착 생활.",
+  "diet": "물속 플랑크톤.",
+  "threats": "연안 개발·수온 상승, 다이빙·낚시 훼손, 해양 쓰레기.",
+  "conservation": "멸종위기 야생생물 Ⅱ급, 천연기념물 제456호. 서식 암반 해역 보호, 연안 공사 시 부유사 저감.",
+  "vars": [
+   "dist_coast",
+   "rock",
+   "tidal",
+   "bio1"
+  ],
+  "layers": [
+   {
+    "key": "main",
+    "name": "서식 해역(해안선 칸)",
+    "season": "연중",
+    "main": true,
+    "groups": [
+     "sea",
+     "rock"
+    ],
+    "desc": "해안 300 m 안의 바다·바위(바닷속 암반을 대신해 표시)",
+    "coast_km": 0.3,
+    "elev": [
+     0,
+     20
+    ]
+   }
+  ],
+  "refs": [],
+  "range": {
+   "km": 10
+  }
+ },
+ "긴가지해송": {
+  "summary": "가지가 긴 검은 산호(각산호).",
+  "distribution": "제주 서귀포 문섬·범섬·섶섬 일대 등 제주 연안과 남해 일부.",
+  "habitat": "수심 수~수십 m의 조류가 빠른 암반. 바닷속 암반에 붙어 사는 종이라 육상 격자로는 직접 나타낼 수 없어, 기록이 있는 해안선 칸으로 표시한다.",
+  "life": "연중 고착 생활.",
+  "diet": "물속 플랑크톤.",
+  "threats": "연안 개발·수온 상승, 다이빙·낚시 훼손, 해양 쓰레기.",
+  "conservation": "천연기념물 제457호. 서식 암반 해역 보호, 연안 공사 시 부유사 저감.",
+  "vars": [
+   "dist_coast",
+   "rock",
+   "tidal",
+   "bio1"
+  ],
+  "layers": [
+   {
+    "key": "main",
+    "name": "서식 해역(해안선 칸)",
+    "season": "연중",
+    "main": true,
+    "groups": [
+     "sea",
+     "rock"
+    ],
+    "desc": "해안 300 m 안의 바다·바위(바닷속 암반을 대신해 표시)",
+    "coast_km": 0.3,
+    "elev": [
+     0,
+     20
+    ]
+   }
+  ],
+  "refs": [],
+  "range": {
+   "km": 10
+  }
+ },
+ "선침거미불가사리": {
+  "summary": "제주 연안 암반의 거미불가사리.",
+  "distribution": "제주 서귀포 문섬·범섬·섶섬 일대 등 제주 연안과 남해 일부.",
+  "habitat": "수심 수~수십 m의 조류가 빠른 암반. 바닷속 암반에 붙어 사는 종이라 육상 격자로는 직접 나타낼 수 없어, 기록이 있는 해안선 칸으로 표시한다.",
+  "life": "연중 고착 생활.",
+  "diet": "물속 플랑크톤.",
+  "threats": "연안 개발·수온 상승, 다이빙·낚시 훼손, 해양 쓰레기.",
+  "conservation": "멸종위기 야생생물 Ⅱ급. 서식 암반 해역 보호, 연안 공사 시 부유사 저감.",
+  "vars": [
+   "dist_coast",
+   "rock",
+   "tidal",
+   "bio1"
+  ],
+  "layers": [
+   {
+    "key": "main",
+    "name": "서식 해역(해안선 칸)",
+    "season": "연중",
+    "main": true,
+    "groups": [
+     "sea",
+     "rock"
+    ],
+    "desc": "해안 300 m 안의 바다·바위(바닷속 암반을 대신해 표시)",
+    "coast_km": 0.3,
+    "elev": [
+     0,
+     20
+    ]
+   }
+  ],
+  "refs": [],
+  "range": {
+   "km": 10
+  }
+ },
+ "나팔고둥": {
+  "summary": "국내에서 가장 큰 고둥으로 불가사리를 잡아먹는다.",
+  "distribution": "제주와 남해 연안·섬.",
+  "habitat": "조간대 아래 암반.",
+  "life": "봄~여름 산란.",
+  "diet": "불가사리.",
+  "threats": "남획, 연안 개발.",
+  "conservation": "멸종위기 야생생물 Ⅰ급. 채집 금지, 연안 암반 보전.",
+  "vars": [
+   "dist_coast",
+   "rock",
+   "tidal",
+   "bio1"
+  ],
+  "layers": [
+   {
+    "key": "main",
+    "name": "서식 해역(해안선 칸)",
+    "season": "연중",
+    "main": true,
+    "groups": [
+     "sea",
+     "rock"
+    ],
+    "desc": "해안 300 m 안의 바다·바위",
+    "coast_km": 0.3,
+    "elev": [
+     0,
+     20
+    ]
+   }
+  ],
+  "refs": [],
+  "range": {
+   "km": 10
+  }
+ },
+ "의염통성게": {
+  "summary": "모래 해저에 묻혀 사는 성게.",
+  "distribution": "남해·제주 연안.",
+  "habitat": "얕은 바다의 모래 바닥.",
+  "life": "연중.",
+  "diet": "모래 속 유기물.",
+  "threats": "연안 준설·매립.",
+  "conservation": "멸종위기 야생생물 Ⅱ급. 연안 모래 바닥 보전.",
+  "vars": [
+   "dist_coast",
+   "rock",
+   "tidal",
+   "bio1"
+  ],
+  "layers": [
+   {
+    "key": "main",
+    "name": "서식 해역(해안선 칸)",
+    "season": "연중",
+    "main": true,
+    "groups": [
+     "sea",
+     "tidal",
+     "bare"
+    ],
+    "desc": "해안 300 m 안의 바다·모래",
+    "coast_km": 0.3,
+    "elev": [
+     0,
+     10
+    ]
+   }
+  ],
+  "refs": [],
+  "range": {
+   "km": 10
+  }
+ },
+ "남방방게": {
+  "summary": "남해안 하구 갈대밭에 사는 게.",
+  "distribution": "전남·경남 하구.",
+  "habitat": "하구 염습지의 갈대밭과 그 위쪽 땅(굴을 파고 산다).",
+  "life": "여름 번식.",
+  "diet": "식물 조각·유기물.",
+  "threats": "하구 매립·제방, 갈대밭 감소.",
+  "conservation": "멸종위기 야생생물 Ⅰ급. 하구 염습지·갈대밭 보전.",
+  "vars": [
+   "elev",
+   "tidal",
+   "wetland",
+   "river",
+   "dist_coast",
+   "bio1",
+   "bio12"
+  ],
+  "layers": [
+   {
+    "key": "main",
+    "name": "서식지",
+    "season": "연중",
+    "main": true,
+    "groups": [
+     "wetland",
+     "tidal",
+     "grass"
+    ],
+    "desc": "해안 2 km 안, 하천 1 km 안의 하구 염습지·갈대밭",
+    "coast_km": 2,
+    "elev": [
+     0,
+     10
+    ],
+    "near": [
+     {
+      "groups": [
+       "river",
+       "tidal"
+      ],
+      "km": 1,
+      "min": 0.03
+     }
+    ]
+   }
+  ],
+  "refs": []
+ },
+ "갯게": {
+  "summary": "하구 갈대밭과 자갈 해안에 사는 게.",
+  "distribution": "남·서해 하구와 해안.",
+  "habitat": "하구 염습지의 갈대밭과 그 위쪽 땅(굴을 파고 산다).",
+  "life": "여름 번식.",
+  "diet": "식물 조각·유기물.",
+  "threats": "하구 매립·제방, 갈대밭 감소.",
+  "conservation": "멸종위기 야생생물 Ⅱ급. 하구 염습지·갈대밭 보전.",
+  "vars": [
+   "elev",
+   "tidal",
+   "wetland",
+   "river",
+   "dist_coast",
+   "bio1",
+   "bio12"
+  ],
+  "layers": [
+   {
+    "key": "main",
+    "name": "서식지",
+    "season": "연중",
+    "main": true,
+    "groups": [
+     "wetland",
+     "tidal",
+     "grass"
+    ],
+    "desc": "해안 2 km 안, 하천 1 km 안의 하구 염습지·갈대밭",
+    "coast_km": 2,
+    "elev": [
+     0,
+     10
+    ],
+    "near": [
+     {
+      "groups": [
+       "river",
+       "tidal"
+      ],
+      "km": 1,
+      "min": 0.03
+     }
+    ]
+   }
+  ],
+  "refs": []
+ },
+ "붉은발말똥게": {
+  "summary": "다리가 붉은 말똥게. 하구 갈대밭 위쪽에 산다.",
+  "distribution": "서·남해 하구.",
+  "habitat": "하구 염습지의 갈대밭과 그 위쪽 땅(굴을 파고 산다).",
+  "life": "여름 번식.",
+  "diet": "식물 조각·유기물.",
+  "threats": "하구 매립·제방, 갈대밭 감소.",
+  "conservation": "멸종위기 야생생물 Ⅱ급. 하구 염습지·갈대밭 보전.",
+  "vars": [
+   "elev",
+   "tidal",
+   "wetland",
+   "river",
+   "dist_coast",
+   "bio1",
+   "bio12"
+  ],
+  "layers": [
+   {
+    "key": "main",
+    "name": "서식지",
+    "season": "연중",
+    "main": true,
+    "groups": [
+     "wetland",
+     "tidal",
+     "grass"
+    ],
+    "desc": "해안 2 km 안, 하천 1 km 안의 하구 염습지·갈대밭",
+    "coast_km": 2,
+    "elev": [
+     0,
+     10
+    ],
+    "near": [
+     {
+      "groups": [
+       "river",
+       "tidal"
+      ],
+      "km": 1,
+      "min": 0.03
+     }
+    ]
+   }
+  ],
+  "refs": []
+ },
+ "대추귀고둥": {
+  "summary": "하구 갈대밭에 사는 고둥.",
+  "distribution": "남해안 하구(순천·광양 등).",
+  "habitat": "하구 염습지의 갈대밭과 그 위쪽 땅(굴을 파고 산다).",
+  "life": "여름 번식.",
+  "diet": "식물 조각·유기물.",
+  "threats": "하구 매립·제방, 갈대밭 감소.",
+  "conservation": "멸종위기 야생생물 Ⅱ급. 하구 염습지·갈대밭 보전.",
+  "vars": [
+   "elev",
+   "tidal",
+   "wetland",
+   "river",
+   "dist_coast",
+   "bio1",
+   "bio12"
+  ],
+  "layers": [
+   {
+    "key": "main",
+    "name": "서식지",
+    "season": "연중",
+    "main": true,
+    "groups": [
+     "wetland",
+     "tidal",
+     "grass"
+    ],
+    "desc": "해안 2 km 안, 하천 1 km 안의 하구 염습지·갈대밭",
+    "coast_km": 2,
+    "elev": [
+     0,
+     10
+    ],
+    "near": [
+     {
+      "groups": [
+       "river",
+       "tidal"
+      ],
+      "km": 1,
+      "min": 0.03
+     }
+    ]
+   }
+  ],
+  "refs": []
+ },
+ "흰발농게": {
+  "summary": "집게발이 흰 농게. 서·남해의 모래 섞인 갯벌에 산다.",
+  "distribution": "인천·충남·전북·전남 갯벌.",
+  "habitat": "모래가 섞인 상부 갯벌.",
+  "life": "6~8월 번식.",
+  "diet": "갯벌 유기물.",
+  "threats": "갯벌 매립·개발.",
+  "conservation": "멸종위기 야생생물 Ⅱ급. 갯벌 보전.",
+  "vars": [
+   "elev",
+   "tidal",
+   "wetland",
+   "river",
+   "dist_coast",
+   "bio1",
+   "bio12"
+  ],
+  "layers": [
+   {
+    "key": "main",
+    "name": "서식지",
+    "season": "연중",
+    "main": true,
+    "groups": [
+     "tidal",
+     "bare"
+    ],
+    "desc": "해안 1 km 안의 갯벌",
+    "coast_km": 1,
+    "elev": [
+     0,
+     10
+    ]
+   }
+  ],
+  "refs": []
+ },
+ "기수갈고둥": {
+  "summary": "바닷물과 민물이 섞이는 하구의 자갈 바닥에 사는 고둥.",
+  "distribution": "남해·동해 남부·제주 하천 하구.",
+  "habitat": "하구 기수역의 자갈·돌 바닥.",
+  "life": "여름 산란.",
+  "diet": "부착 조류.",
+  "threats": "하구 둑·정비, 수질 악화.",
+  "conservation": "멸종위기 야생생물 Ⅱ급. 하구 자연성 유지.",
+  "vars": [
+   "elev",
+   "tidal",
+   "wetland",
+   "river",
+   "dist_coast",
+   "bio1",
+   "bio12"
+  ],
+  "layers": [
+   {
+    "key": "main",
+    "name": "서식지",
+    "season": "연중",
+    "main": true,
+    "groups": [
+     "river",
+     "tidal"
+    ],
+    "desc": "해안 3 km 안의 하천 하구",
+    "coast_km": 3,
+    "elev": [
+     0,
+     20
+    ]
+   }
+  ],
+  "refs": []
+ },
+ "두드럭조개": {
+  "summary": "큰 강의 모래·자갈 바닥에 사는 민물조개.",
+  "distribution": "금강·낙동강 등 큰 강.",
+  "habitat": "물이 흐르는 큰 강의 모래·자갈 바닥.",
+  "life": "봄~여름 번식(유생이 물고기에 기생).",
+  "diet": "플랑크톤·유기물.",
+  "threats": "준설·보로 바닥 변화, 수질 악화, 숙주 어류 감소.",
+  "conservation": "멸종위기 야생생물 Ⅰ급. 하천 바닥 보전, 공사 전 이주.",
+  "vars": [
+   "elev",
+   "slope",
+   "river",
+   "lake",
+   "bare",
+   "bio1",
+   "bio12"
+  ],
+  "layers": [
+   {
+    "key": "main",
+    "name": "서식지",
+    "season": "연중",
+    "main": true,
+    "groups": [
+     "river"
+    ],
+    "desc": "물이 칸의 3% 이상인 큰 강(해발 200 m 이하)",
+    "elev": [
+     0,
+     200
+    ],
+    "cell_min": 0.03
+   }
+  ],
+  "refs": []
+ },
+ "염주알다슬기": {
+  "summary": "남부 하천에 사는 다슬기.",
+  "distribution": "섬진강·낙동강 수계 등 남부 하천.",
+  "habitat": "물이 맑은 하천의 자갈 바닥.",
+  "life": "여름 번식.",
+  "diet": "부착 조류.",
+  "threats": "하천 정비, 수질 악화.",
+  "conservation": "멸종위기 야생생물 Ⅱ급. 하천 자연성 유지.",
+  "vars": [
+   "elev",
+   "slope",
+   "river",
+   "lake",
+   "bare",
+   "bio1",
+   "bio12"
+  ],
+  "layers": [
+   {
+    "key": "main",
+    "name": "서식지",
+    "season": "연중",
+    "main": true,
+    "groups": [
+     "river"
+    ],
+    "desc": "해발 300 m 이하의 하천",
+    "elev": [
+     0,
+     300
+    ],
+    "cell_min": 0.005
+   }
+  ],
+  "refs": []
+ },
+ "물거미": {
+  "summary": "물속에 공기집을 짓고 사는 거미.",
+  "distribution": "경기 연천 은대리 습지 등 일부 습지.",
+  "habitat": "수생식물이 많은 맑은 습지·연못.",
+  "life": "여름 번식.",
+  "diet": "작은 수서동물.",
+  "threats": "습지 매립·수질 악화.",
+  "conservation": "멸종위기 야생생물 Ⅱ급. 서식 습지 보전.",
+  "vars": [
+   "elev",
+   "slope",
+   "river",
+   "lake",
+   "bare",
+   "bio1",
+   "bio12"
+  ],
+  "layers": [
+   {
+    "key": "main",
+    "name": "서식지",
+    "season": "연중",
+    "main": true,
+    "groups": [
+     "wetland",
+     "lake"
+    ],
+    "desc": "해발 200 m 이하의 습지·연못",
+    "elev": [
+     0,
+     200
+    ]
+   }
+  ],
+  "refs": [],
+  "range": {
+   "km": 10
+  }
+ },
+ "거제외줄달팽이": {
+  "summary": "거제도 숲에 사는 달팽이.",
+  "distribution": "경남 거제도.",
+  "habitat": "습한 활엽수림 바닥의 낙엽층·돌 밑.",
+  "life": "여름 산란.",
+  "diet": "낙엽·버섯.",
+  "threats": "숲 개발.",
+  "conservation": "멸종위기 야생생물 Ⅱ급. 섬 숲 보전.",
+  "vars": [
+   "elev",
+   "slope",
+   "tree",
+   "broad",
+   "dist_coast",
+   "bio1",
+   "bio12"
+  ],
+  "layers": [
+   {
+    "key": "main",
+    "name": "서식지",
+    "season": "연중",
+    "main": true,
+    "groups": [
+     "broad",
+     "mixed"
+    ],
+    "desc": "섬의 활엽수림(해발 600 m 이하)",
+    "elev": [
+     0,
+     600
+    ]
+   }
+  ],
+  "refs": [],
+  "range": {
+   "km": 5
+  }
+ },
+ "울릉도달팽이": {
+  "summary": "울릉도 숲에 사는 달팽이.",
+  "distribution": "울릉도.",
+  "habitat": "습한 활엽수림 바닥의 낙엽층·돌 밑.",
+  "life": "여름 산란.",
+  "diet": "낙엽·버섯.",
+  "threats": "숲 개발.",
+  "conservation": "멸종위기 야생생물 Ⅱ급. 섬 숲 보전.",
+  "vars": [
+   "elev",
+   "slope",
+   "tree",
+   "broad",
+   "dist_coast",
+   "bio1",
+   "bio12"
+  ],
+  "layers": [
+   {
+    "key": "main",
+    "name": "서식지",
+    "season": "연중",
+    "main": true,
+    "groups": [
+     "broad",
+     "mixed"
+    ],
+    "desc": "섬의 활엽수림(해발 600 m 이하)",
+    "elev": [
+     0,
+     600
+    ]
+   }
+  ],
+  "refs": [],
+  "range": {
+   "km": 5
+  }
+ },
+ "참달팽이": {
+  "summary": "남해 섬 숲에 사는 대형 달팽이.",
+  "distribution": "남해 섬.",
+  "habitat": "습한 활엽수림 바닥의 낙엽층·돌 밑.",
+  "life": "여름 산란.",
+  "diet": "낙엽·버섯.",
+  "threats": "숲 개발.",
+  "conservation": "멸종위기 야생생물 Ⅱ급. 섬 숲 보전.",
+  "vars": [
+   "elev",
+   "slope",
+   "tree",
+   "broad",
+   "dist_coast",
+   "bio1",
+   "bio12"
+  ],
+  "layers": [
+   {
+    "key": "main",
+    "name": "서식지",
+    "season": "연중",
+    "main": true,
+    "groups": [
+     "broad",
+     "mixed"
+    ],
+    "desc": "섬의 활엽수림(해발 600 m 이하)",
+    "elev": [
+     0,
+     600
+    ],
+    "coast_km": 3
+   }
+  ],
+  "refs": [],
+  "range": {
+   "km": 5
+  }
+ },
+ "칼세오리옆새우": {
+  "summary": "석회암 동굴 지하수에 사는 옆새우.",
+  "distribution": "강원·충북 석회암 동굴.",
+  "habitat": "동굴 속 지하수 웅덩이. 동굴 위치 자료가 없어 지도에 나타내기 어렵다.",
+  "life": "연중.",
+  "diet": "유기물.",
+  "threats": "동굴 개발·수질 오염.",
+  "conservation": "멸종위기 야생생물 Ⅱ급. 서식 동굴 보호.",
+  "vars": [
+   "elev",
+   "slope",
+   "river",
+   "lake",
+   "bare",
+   "bio1",
+   "bio12"
+  ],
+  "layers": [
+   {
+    "key": "main",
+    "name": "잠재 서식지",
+    "season": "연중",
+    "main": true,
+    "groups": [
+     "rock",
+     "broad",
+     "mixed",
+     "conifer"
+    ],
+    "desc": "석회암 산지(동굴 자료 없음, 참고)",
+    "elev": [
+     100,
+     1000
+    ],
+    "slope": [
+     10,
+     90
+    ]
+   }
+  ],
+  "refs": []
+ }
+}

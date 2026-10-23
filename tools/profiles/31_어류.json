@@ -1,0 +1,1665 @@
+{
+ "감돌고기": {
+  "summary": "금강·만경강 상류에만 사는 고유종. 꺽지 둥지에 알을 맡긴다.",
+  "distribution": "금강·만경강 수계 상류(무주·금산·완주 등).",
+  "habitat": "물이 맑은 자갈·바위 여울. 꺽지가 사는 구간이어야 한다.",
+  "life": "5~6월 산란.",
+  "diet": "수서곤충.",
+  "threats": "보·댐·하천 정비로 여울 감소, 탁수, 꺽지 감소.",
+  "conservation": "멸종위기 야생생물 Ⅰ급. 하천 공사 때 탁수 저감, 산란기 공사 회피, 물막이 전 포획·이주.",
+  "vars": [
+   "elev",
+   "slope",
+   "river",
+   "lake",
+   "bare",
+   "tree",
+   "dist_coast",
+   "bio1",
+   "bio4",
+   "bio12",
+   "bio15"
+  ],
+  "layers": [
+   {
+    "key": "main",
+    "name": "서식지(여울)",
+    "season": "연중",
+    "main": true,
+    "groups": [
+     "river"
+    ],
+    "desc": "해발 50~500 m의 하천 여울",
+    "elev": [
+     50,
+     500
+    ],
+    "cell_min": 0.005,
+    "refs": [
+     1,
+     2
+    ]
+   }
+  ],
+  "refs": [
+   {
+    "text": "Yeong-Ho Kwak 외 (2024) Characteristics of Fish Community and Inhabit Status of Endangered Species Black Shinner, &lt;i&gt;Pseudopungtungia nigra&lt;/i&gt; (Pisces: Cyprinidae) in Yudeungcheon Stream, Korea. Korean Journal of Ecology and Environment",
+    "url": "https://doi.org/10.11614/ksl.2024.57.3.134"
+   },
+   {
+    "text": "(2023) Pseudopungtungia nigra: Lee, S.-H. &amp; Won, S.-Y.. IUCN Red List of Threatened Species",
+    "url": "https://doi.org/10.2305/iucn.uk.2023-1.rlts.t148448746a148448791.en"
+   }
+  ],
+  "range": {
+   "km": 10
+  }
+ },
+ "꼬치동자개": {
+  "summary": "낙동강 수계에 사는 작은 동자개류 고유종.",
+  "distribution": "낙동강 수계 중·상류(경북 일대).",
+  "habitat": "자갈·바위가 깔린 맑은 여울.",
+  "life": "5~7월 산란.",
+  "diet": "수서곤충.",
+  "threats": "하천 정비·보, 탁수.",
+  "conservation": "멸종위기 야생생물 Ⅰ급, 천연기념물 제455호. 하천 공사 때 탁수 저감, 산란기 공사 회피, 물막이 전 포획·이주.",
+  "vars": [
+   "elev",
+   "slope",
+   "river",
+   "lake",
+   "bare",
+   "tree",
+   "dist_coast",
+   "bio1",
+   "bio4",
+   "bio12",
+   "bio15"
+  ],
+  "layers": [
+   {
+    "key": "main",
+    "name": "서식지(여울)",
+    "season": "연중",
+    "main": true,
+    "groups": [
+     "river"
+    ],
+    "desc": "해발 30~400 m의 하천 여울",
+    "elev": [
+     30,
+     400
+    ],
+    "cell_min": 0.005,
+    "refs": [
+     1,
+     2
+    ]
+   }
+  ],
+  "refs": [
+   {
+    "text": "Jong‐Young Park 외 (2007) Habitats and air uptake based on analysis of skin structure of two Korean bullheads,Pseudobagrus brevicorpusandP. koreanus(Pisces; Bagridae). Integrative Biosciences",
+    "url": "https://doi.org/10.1080/17386357.2007.9647329"
+   },
+   {
+    "text": "Yeong-Ho Kwak 외 (2019) Diel Activity and Feeding Habitat of Pseudobagrus brevicorpus (Pisces: Bagridae) in the Daegacheon Stream of Nakdonggang River, Korea. Korean Journal of Ichthyology",
+    "url": "https://doi.org/10.35399/isk.31.1.7"
+   }
+  ],
+  "range": {
+   "km": 10
+  }
+ },
+ "남방동사리": {
+  "summary": "거제도 일부 하천에만 사는 고유종.",
+  "distribution": "경남 거제도 하천.",
+  "habitat": "물살이 느린 하천의 돌 밑·수초 지대.",
+  "life": "5~7월 산란.",
+  "diet": "작은 물고기·수서곤충.",
+  "threats": "하천 정비, 탁수, 서식지가 아주 좁음.",
+  "conservation": "멸종위기 야생생물 Ⅰ급. 하천 공사 때 탁수 저감, 산란기 공사 회피, 물막이 전 포획·이주.",
+  "vars": [
+   "elev",
+   "slope",
+   "river",
+   "lake",
+   "bare",
+   "tree",
+   "dist_coast",
+   "bio1",
+   "bio4",
+   "bio12",
+   "bio15"
+  ],
+  "layers": [
+   {
+    "key": "main",
+    "name": "서식지",
+    "season": "연중",
+    "main": true,
+    "groups": [
+     "river",
+     "lake"
+    ],
+    "desc": "해발 200 m 이하의 하천",
+    "elev": [
+     0,
+     200
+    ],
+    "cell_min": 0.002,
+    "refs": [
+     1,
+     2
+    ]
+   }
+  ],
+  "refs": [
+   {
+    "text": "외 (2021) Distribution and Habitat Characteristics of &lt;i&gt;Odontobutis obscura&lt;/i&gt;, Endangered Species. Korean Journal of Ecology and Environment",
+    "url": "https://doi.org/10.11614/ksl.2021.54.2.079"
+   },
+   {
+    "text": "Jeong-Hui Kim 외 (2024) Identifying Distribution Areas and Population Sizes for the Conservation of the Endangered Species &lt;i&gt;Odontobutis&lt;/i&gt; obscura. Korean Journal of Ecology and Environment",
+    "url": "https://doi.org/10.11614/ksl.2024.57.2.102"
+   }
+  ],
+  "range": {
+   "km": 5,
+   "note": "거제도 확인 지점 주변만"
+  }
+ },
+ "모래주사": {
+  "summary": "섬진강·낙동강 수계의 모래·자갈 여울에 사는 고유종.",
+  "distribution": "섬진강·낙동강 수계 중·상류.",
+  "habitat": "모래와 잔자갈이 섞인 얕은 여울.",
+  "life": "4~6월 산란.",
+  "diet": "부착 조류·수서곤충.",
+  "threats": "골재 채취·준설로 모래 여울 감소, 탁수.",
+  "conservation": "멸종위기 야생생물 Ⅰ급. 하천 공사 때 탁수 저감, 산란기 공사 회피, 물막이 전 포획·이주.",
+  "vars": [
+   "elev",
+   "slope",
+   "river",
+   "lake",
+   "bare",
+   "tree",
+   "dist_coast",
+   "bio1",
+   "bio4",
+   "bio12",
+   "bio15"
+  ],
+  "layers": [
+   {
+    "key": "main",
+    "name": "서식지",
+    "season": "연중",
+    "main": true,
+    "groups": [
+     "river"
+    ],
+    "desc": "모래톱 500 m 안의 하천(해발 20~400 m)",
+    "elev": [
+     20,
+     400
+    ],
+    "cell_min": 0.005,
+    "near": [
+     {
+      "groups": [
+       "bare"
+      ],
+      "km": 0.5,
+      "min": 0.003
+     }
+    ],
+    "refs": [
+     1,
+     2
+    ]
+   }
+  ],
+  "refs": [
+   {
+    "text": "Jong Sung Park 외 (2021) Spawning Behavior of Microphysogobio koreensis (Cyprinidae) in Korea. Korean Journal of Ichthyology",
+    "url": "https://doi.org/10.35399/isk.33.1.2"
+   },
+   {
+    "text": "(2023) Microphysogobio koreensis: Won, S.-Y.. IUCN Red List of Threatened Species",
+    "url": "https://doi.org/10.2305/iucn.uk.2023-1.rlts.t148448179a148448183.en"
+   }
+  ],
+  "range": {
+   "km": 10
+  }
+ },
+ "미호종개": {
+  "summary": "금강 수계의 맑은 모래 하천에만 사는 고유종 미꾸리류.",
+  "distribution": "금강 수계(미호천·지천·유구천 등) 일부 구간.",
+  "habitat": "물이 맑고 고운 모래가 깔린 얕은 하천. 모래 속에 몸을 묻는다.",
+  "life": "5~6월 산란.",
+  "diet": "모래 속 유기물·작은 무척추동물.",
+  "threats": "준설·골재 채취·보로 모래 바닥 소실, 수질 악화.",
+  "conservation": "멸종위기 야생생물 Ⅰ급, 천연기념물 제454호. 하천 공사 때 탁수 저감, 산란기 공사 회피, 물막이 전 포획·이주.",
+  "vars": [
+   "elev",
+   "slope",
+   "river",
+   "lake",
+   "bare",
+   "tree",
+   "dist_coast",
+   "bio1",
+   "bio4",
+   "bio12",
+   "bio15"
+  ],
+  "layers": [
+   {
+    "key": "main",
+    "name": "서식지",
+    "season": "연중",
+    "main": true,
+    "groups": [
+     "river"
+    ],
+    "desc": "모래톱 300 m 안의 하천(해발 20~200 m)",
+    "elev": [
+     20,
+     200
+    ],
+    "cell_min": 0.005,
+    "near": [
+     {
+      "groups": [
+       "bare"
+      ],
+      "km": 0.3,
+      "min": 0.003
+     }
+    ],
+    "refs": [
+     1,
+     2,
+     3
+    ]
+   }
+  ],
+  "refs": [
+   {
+    "text": "Paulina Vilela 외 (2020) Population response modeling and habitat suitability of Cobitis choii fish species in South Korea for climate change adaptation. Ecotoxicology and Environmental Safety",
+    "url": "https://doi.org/10.1016/j.ecoenv.2019.109949"
+   },
+   {
+    "text": "외 (2012) Community Structure of Fish and Inhabiting Status of Endangered Species, Cobitis choii and Gobiobotia naktongensis in the Ji Stream, a Tributary of the Geum River Drainage System of Korea. Korean Journal of Lomnology",
+    "url": "https://doi.org/10.11614/ksl.2012.45.4.356"
+   },
+   {
+    "text": "Myeong-Hun Ko 외 (2018) Feeding Ecology of the Endangered Korean Endemic Miho Spine Loach, Cobitis choii (Pisces: Cobitidae) in Geumgang River, Korea. Korean Journal of Ichthyology",
+    "url": "https://doi.org/10.35399/isk.30.2.4"
+   },
+   {
+    "text": "Myeong-Hun Ko 외 (2018) Habitat Characteristics and Estimation of the Age of the Endangered Miho Spine Loach, Cobitis choii (Pisces: Cobitidae) in Ji Stream, Guem River, Korea. Korean Journal of Ichthyology",
+    "url": "https://doi.org/10.35399/isk.30.1.6"
+   },
+   {
+    "text": "(2022) Cobitis choii: Won, S.-Y.. IUCN Red List of Threatened Species",
+    "url": "https://doi.org/10.2305/iucn.uk.2023-1.rlts.t148444988a148445000.en"
+   }
+  ],
+  "range": {
+   "km": 8
+  }
+ },
+ "얼룩새코미꾸리": {
+  "summary": "낙동강 수계 자갈 여울에 사는 고유종.",
+  "distribution": "낙동강 수계 중·상류.",
+  "habitat": "자갈이 깔린 물살 빠른 여울.",
+  "life": "5~6월 산란.",
+  "diet": "부착 조류·수서곤충.",
+  "threats": "보·하천 정비, 탁수.",
+  "conservation": "멸종위기 야생생물 Ⅰ급. 하천 공사 때 탁수 저감, 산란기 공사 회피, 물막이 전 포획·이주.",
+  "vars": [
+   "elev",
+   "slope",
+   "river",
+   "lake",
+   "bare",
+   "tree",
+   "dist_coast",
+   "bio1",
+   "bio4",
+   "bio12",
+   "bio15"
+  ],
+  "layers": [
+   {
+    "key": "main",
+    "name": "서식지(여울)",
+    "season": "연중",
+    "main": true,
+    "groups": [
+     "river"
+    ],
+    "desc": "해발 30~500 m의 하천 여울",
+    "elev": [
+     30,
+     500
+    ],
+    "cell_min": 0.005,
+    "refs": [
+     1
+    ]
+   }
+  ],
+  "refs": [
+   {
+    "text": "Yang-Ki Hong 외 (2021) The Spawning Behaviour of the Endangered Freshwater Fish Koreocobitis naktongensis (Cypriniformes: Cobitidae) under Artificial Conditions. Korean Journal of Ichthyology",
+    "url": "https://doi.org/10.35399/isk.33.1.3"
+   }
+  ],
+  "range": {
+   "km": 10
+  }
+ },
+ "여울마자": {
+  "summary": "낙동강 중·상류 여울에 사는 고유종.",
+  "distribution": "낙동강 수계 중·상류.",
+  "habitat": "자갈·모래가 섞인 얕은 여울.",
+  "life": "4~6월 산란.",
+  "diet": "부착 조류·수서곤충.",
+  "threats": "보·준설, 탁수.",
+  "conservation": "멸종위기 야생생물 Ⅰ급. 하천 공사 때 탁수 저감, 산란기 공사 회피, 물막이 전 포획·이주.",
+  "vars": [
+   "elev",
+   "slope",
+   "river",
+   "lake",
+   "bare",
+   "tree",
+   "dist_coast",
+   "bio1",
+   "bio4",
+   "bio12",
+   "bio15"
+  ],
+  "layers": [
+   {
+    "key": "main",
+    "name": "서식지(여울)",
+    "season": "연중",
+    "main": true,
+    "groups": [
+     "river"
+    ],
+    "desc": "해발 30~400 m의 하천 여울",
+    "elev": [
+     30,
+     400
+    ],
+    "cell_min": 0.005,
+    "refs": [
+     1,
+     2,
+     3
+    ]
+   }
+  ],
+  "refs": [
+   {
+    "text": "Yang-Ki Hong 외 (2023) The Impact of Weir Construction in Korea’s Nakdong River on the Population Genetic Variability of the Endangered Fish Species, Rapid Small Gudgeon (Microphysogobio rapidus). Genes",
+    "url": "https://doi.org/10.3390/genes14081611"
+   },
+   {
+    "text": "Ju-Duk Yoon 외 (2023) Identifying Degradation Causes of Endangered Freshwater Fish, &lt;i&gt;Microphysogobio rapidus&lt;/i&gt; Using Habitat-Environmental Characteristics. Korean Journal of Ecology and Environment",
+    "url": "https://doi.org/10.11614/ksl.2023.56.3.229"
+   },
+   {
+    "text": "Dae-Hee Lee 외 (2024) Trophic Level and Ecological Niche Assessment of Two Sympatric Freshwater Fish, &lt;i&gt;Microphysogobio rapidus&lt;/i&gt; and &lt;i&gt;Microphysogobio yaluensis&lt;/i&gt; Using Stable Isotope Analysis. Korean Journal of Ecology and Environment",
+    "url": "https://doi.org/10.11614/ksl.2024.57.1.039"
+   },
+   {
+    "text": "(2023) Microphysogobio rapidus: IUCN-Republic of Korea Global Red List Partnership Review Workshop. IUCN Red List of Threatened Species",
+    "url": "https://doi.org/10.2305/iucn.uk.2023-1.rlts.t148448254a148448300.en"
+   }
+  ],
+  "range": {
+   "km": 10
+  }
+ },
+ "임실납자루": {
+  "summary": "섬진강 상류에만 사는 납자루 고유종. 민물조개 속에 알을 낳는다.",
+  "distribution": "섬진강 상류(임실·순창 일대).",
+  "habitat": "수초가 있고 민물조개가 사는 하천.",
+  "life": "4~6월 산란.",
+  "diet": "부착 조류·작은 무척추동물.",
+  "threats": "하천 정비, 민물조개 감소, 수질 악화.",
+  "conservation": "멸종위기 야생생물 Ⅰ급. 하천 공사 때 탁수 저감, 산란기 공사 회피, 물막이 전 포획·이주.",
+  "vars": [
+   "elev",
+   "slope",
+   "river",
+   "lake",
+   "bare",
+   "tree",
+   "dist_coast",
+   "bio1",
+   "bio4",
+   "bio12",
+   "bio15"
+  ],
+  "layers": [
+   {
+    "key": "main",
+    "name": "서식지",
+    "season": "연중",
+    "main": true,
+    "groups": [
+     "river"
+    ],
+    "desc": "해발 100~400 m의 하천",
+    "elev": [
+     100,
+     400
+    ],
+    "cell_min": 0.003,
+    "refs": []
+   }
+  ],
+  "refs": [],
+  "range": {
+   "km": 15,
+   "note": "섬진강 상류(임실·순창) 기록 시군구 주변"
+  }
+ },
+ "좀수수치": {
+  "summary": "전남 일부 하천에만 사는 아주 작은 미꾸리류 고유종.",
+  "distribution": "전남 고흥 등 일부 하천과 섬.",
+  "habitat": "모래·자갈이 깔린 작은 하천.",
+  "life": "5~6월 산란.",
+  "diet": "작은 무척추동물.",
+  "threats": "하천 정비·탁수, 서식지가 아주 좁음.",
+  "conservation": "멸종위기 야생생물 Ⅰ급. 하천 공사 때 탁수 저감, 산란기 공사 회피, 물막이 전 포획·이주.",
+  "vars": [
+   "elev",
+   "slope",
+   "river",
+   "lake",
+   "bare",
+   "tree",
+   "dist_coast",
+   "bio1",
+   "bio4",
+   "bio12",
+   "bio15"
+  ],
+  "layers": [
+   {
+    "key": "main",
+    "name": "서식지",
+    "season": "연중",
+    "main": true,
+    "groups": [
+     "river"
+    ],
+    "desc": "해발 200 m 이하의 하천",
+    "elev": [
+     0,
+     200
+    ],
+    "cell_min": 0.002,
+    "refs": [
+     1
+    ]
+   }
+  ],
+  "refs": [
+   {
+    "text": "Eun-Jin Kim 외 (2012) Habitat Features of Dwarf Loach, Kichulchoia brevifasciata (Pisces: Cobitidae) from Korea in a Conservative Perspective. Journal of the Faculty of Agriculture, Kyushu University",
+    "url": "https://doi.org/10.5109/22054"
+   }
+  ],
+  "range": {
+   "km": 5
+  }
+ },
+ "퉁사리": {
+  "summary": "금강·만경강 수계에 사는 퉁가리류 고유종.",
+  "distribution": "금강·만경강·영산강 수계 일부.",
+  "habitat": "자갈·돌이 많은 여울의 돌 밑.",
+  "life": "5~6월 산란.",
+  "diet": "수서곤충.",
+  "threats": "하천 정비, 탁수.",
+  "conservation": "멸종위기 야생생물 Ⅰ급. 하천 공사 때 탁수 저감, 산란기 공사 회피, 물막이 전 포획·이주.",
+  "vars": [
+   "elev",
+   "slope",
+   "river",
+   "lake",
+   "bare",
+   "tree",
+   "dist_coast",
+   "bio1",
+   "bio4",
+   "bio12",
+   "bio15"
+  ],
+  "layers": [
+   {
+    "key": "main",
+    "name": "서식지(여울)",
+    "season": "연중",
+    "main": true,
+    "groups": [
+     "river"
+    ],
+    "desc": "해발 20~300 m의 하천 여울",
+    "elev": [
+     20,
+     300
+    ],
+    "cell_min": 0.005,
+    "refs": [
+     1
+    ]
+   }
+  ],
+  "refs": [
+   {
+    "text": "(2023) Liobagrus obesus: Won, S.-Y.. IUCN Red List of Threatened Species",
+    "url": "https://doi.org/10.2305/iucn.uk.2023-1.rlts.t148448139a148448152.en"
+   }
+  ],
+  "range": {
+   "km": 10
+  }
+ },
+ "가는돌고기": {
+  "summary": "한강 수계 상류 맑은 여울에 사는 고유종.",
+  "distribution": "한강 수계 상류(강원 일대).",
+  "habitat": "물이 맑은 자갈·바위 여울.",
+  "life": "4~6월 산란.",
+  "diet": "수서곤충.",
+  "threats": "보·댐, 탁수.",
+  "conservation": "멸종위기 야생생물 Ⅱ급. 하천 공사 때 탁수 저감, 산란기 공사 회피, 물막이 전 포획·이주.",
+  "vars": [
+   "elev",
+   "slope",
+   "river",
+   "lake",
+   "bare",
+   "tree",
+   "dist_coast",
+   "bio1",
+   "bio4",
+   "bio12",
+   "bio15"
+  ],
+  "layers": [
+   {
+    "key": "main",
+    "name": "서식지(여울)",
+    "season": "연중",
+    "main": true,
+    "groups": [
+     "river"
+    ],
+    "desc": "해발 80~600 m의 하천 여울",
+    "elev": [
+     80,
+     600
+    ],
+    "cell_min": 0.005,
+    "refs": [
+     1,
+     2
+    ]
+   }
+  ],
+  "refs": [
+   {
+    "text": "Myeong-Hun Ko 외 (2019) Fish Community Characteristics and Habitats Aspects of Endangered Species Pseudopungtungia tenuicorpa and Acheilognathus signifer in the Hwayangcheon Stream, Hangang River of Songnisan National Park, Korea. Korean Journal of Ichthyology",
+    "url": "https://doi.org/10.35399/isk.31.4.6"
+   },
+   {
+    "text": "Mee-Sook Han 외 (2020) Has the Restoration Project of Pseudopungtungia tenuicorpa (Pisces: Cyprinidae) in the Jojongcheon Stream, Hangang River failed?. Korean Journal of Ichthyology",
+    "url": "https://doi.org/10.35399/isk.32.3.8"
+   }
+  ]
+ },
+ "가시고기": {
+  "summary": "수초로 둥지를 짓고 수컷이 알을 지키는 물고기.",
+  "distribution": "강원 동해안 하천, 한강 수계 상류 일부.",
+  "habitat": "물이 맑고 수초가 많은 느린 하천·연못.",
+  "life": "4~6월 산란.",
+  "diet": "작은 무척추동물.",
+  "threats": "수초 제거·하천 정비, 수질 악화.",
+  "conservation": "멸종위기 야생생물 Ⅱ급. 하천 공사 때 탁수 저감, 산란기 공사 회피, 물막이 전 포획·이주.",
+  "vars": [
+   "elev",
+   "slope",
+   "river",
+   "lake",
+   "bare",
+   "tree",
+   "dist_coast",
+   "bio1",
+   "bio4",
+   "bio12",
+   "bio15"
+  ],
+  "layers": [
+   {
+    "key": "main",
+    "name": "서식지",
+    "season": "연중",
+    "main": true,
+    "groups": [
+     "river",
+     "lake",
+     "wetland"
+    ],
+    "desc": "해발 600 m 이하의 하천·연못·습지",
+    "elev": [
+     0,
+     600
+    ],
+    "cell_min": 0.003,
+    "refs": [
+     1
+    ]
+   }
+  ],
+  "refs": [
+   {
+    "text": "(2020) Pungitius sinensis: Bogutskaya, N., Martins, J. &amp; Wiswedel, S.. IUCN Red List of Threatened Species",
+    "url": "https://doi.org/10.2305/iucn.uk.2022-1.rlts.t19915743a159638809.en"
+   }
+  ]
+ },
+ "꺽저기": {
+  "summary": "남부 하천 수초 지대에 사는 꺽지류.",
+  "distribution": "낙동강·섬진강·탐진강 등 남부 하천.",
+  "habitat": "수초가 우거진 느린 하천·저수지 가장자리.",
+  "life": "5~6월 산란.",
+  "diet": "작은 물고기·새우.",
+  "threats": "수초 제거·하천 정비, 외래어종(배스 등).",
+  "conservation": "멸종위기 야생생물 Ⅱ급. 하천 공사 때 탁수 저감, 산란기 공사 회피, 물막이 전 포획·이주.",
+  "vars": [
+   "elev",
+   "slope",
+   "river",
+   "lake",
+   "bare",
+   "tree",
+   "dist_coast",
+   "bio1",
+   "bio4",
+   "bio12",
+   "bio15"
+  ],
+  "layers": [
+   {
+    "key": "main",
+    "name": "서식지(수초 지대)",
+    "season": "연중",
+    "main": true,
+    "groups": [
+     "river",
+     "lake"
+    ],
+    "desc": "해발 200 m 이하의 하천·저수지",
+    "elev": [
+     0,
+     200
+    ],
+    "cell_min": 0.01,
+    "refs": [
+     1,
+     2,
+     3
+    ]
+   }
+  ],
+  "refs": [
+   {
+    "text": "Jong-Yun Choi 외 (2020) Effect of Microhabitat Structure on the Distribution of an Endangered Fish, Coreoperca kawamebari (Temminck &amp; Schlegel, 1843) in the Geum River, South Korea. Water",
+    "url": "https://doi.org/10.3390/w12061690"
+   },
+   {
+    "text": "Jong-Yun Choi 외 (2020) Trophic position and diet shift based on the body size of Coreoperca kawamebari (Temminck &amp; Schlegel, 1843). Journal of Ecology and Environment",
+    "url": "https://doi.org/10.1186/s41610-019-0145-0"
+   },
+   {
+    "text": "외 (2013) Distribution of Coreoperca kawamebari and C. herzi and Fish Community Structure in Relation to Environmental Differences in Their Sympatric Area of the Boseong River, Korea. Korean Journal of Lomnology",
+    "url": "https://doi.org/10.11614/ksl.2013.46.3.367"
+   }
+  ]
+ },
+ "꾸구리": {
+  "summary": "한강 수계의 빠른 자갈 여울에 사는 고유종.",
+  "distribution": "한강 수계(남한강·북한강) 중·상류.",
+  "habitat": "물살이 빠른 자갈 여울.",
+  "life": "4~5월 산란.",
+  "diet": "수서곤충.",
+  "threats": "보·댐으로 여울 감소, 탁수.",
+  "conservation": "멸종위기 야생생물 Ⅱ급. 하천 공사 때 탁수 저감, 산란기 공사 회피, 물막이 전 포획·이주.",
+  "vars": [
+   "elev",
+   "slope",
+   "river",
+   "lake",
+   "bare",
+   "tree",
+   "dist_coast",
+   "bio1",
+   "bio4",
+   "bio12",
+   "bio15"
+  ],
+  "layers": [
+   {
+    "key": "main",
+    "name": "서식지(여울)",
+    "season": "연중",
+    "main": true,
+    "groups": [
+     "river"
+    ],
+    "desc": "해발 50~500 m의 하천 여울",
+    "elev": [
+     50,
+     500
+    ],
+    "cell_min": 0.005,
+    "refs": [
+     1
+    ]
+   }
+  ],
+  "refs": [
+   {
+    "text": "(2023) Gobiobotia macrocephala: Won, S.-Y.. IUCN Red List of Threatened Species",
+    "url": "https://doi.org/10.2305/iucn.uk.2023-1.rlts.t148445143a148445170.en"
+   }
+  ]
+ },
+ "다묵장어": {
+  "summary": "바다로 가지 않는 민물 칠성장어류.",
+  "distribution": "전국 맑은 산간 하천 일부.",
+  "habitat": "물이 맑고 모래·진흙이 쌓인 하천 가장자리(유생은 바닥 속에서 수년).",
+  "life": "4~6월 산란.",
+  "diet": "유생은 바닥의 유기물을 걸러 먹음(성체는 먹지 않음).",
+  "threats": "하천 정비·준설, 수질 악화.",
+  "conservation": "멸종위기 야생생물 Ⅱ급. 하천 공사 때 탁수 저감, 산란기 공사 회피, 물막이 전 포획·이주.",
+  "vars": [
+   "elev",
+   "slope",
+   "river",
+   "lake",
+   "bare",
+   "tree",
+   "dist_coast",
+   "bio1",
+   "bio4",
+   "bio12",
+   "bio15"
+  ],
+  "layers": [
+   {
+    "key": "main",
+    "name": "서식지",
+    "season": "연중",
+    "main": true,
+    "groups": [
+     "river"
+    ],
+    "desc": "숲 500 m 안의 맑은 하천(해발 50~600 m)",
+    "elev": [
+     50,
+     600
+    ],
+    "cell_min": 0.003,
+    "near": [
+     {
+      "groups": [
+       "broad",
+       "mixed",
+       "conifer"
+      ],
+      "km": 0.5,
+      "min": 0.3
+     }
+    ],
+    "refs": [
+     1
+    ]
+   }
+  ],
+  "refs": [
+   {
+    "text": "(2022) Lethenteron reissneri: Freyhof, J.. IUCN Red List of Threatened Species",
+    "url": "https://doi.org/10.2305/iucn.uk.2024-2.rlts.t135609a221272016.en"
+   }
+  ]
+ },
+ "돌상어": {
+  "summary": "한강·금강 수계 자갈 여울에 사는 고유종.",
+  "distribution": "한강·금강 수계 중·상류.",
+  "habitat": "자갈이 깔린 물살 빠른 여울.",
+  "life": "4~6월 산란.",
+  "diet": "수서곤충.",
+  "threats": "보·준설, 탁수.",
+  "conservation": "멸종위기 야생생물 Ⅱ급. 하천 공사 때 탁수 저감, 산란기 공사 회피, 물막이 전 포획·이주.",
+  "vars": [
+   "elev",
+   "slope",
+   "river",
+   "lake",
+   "bare",
+   "tree",
+   "dist_coast",
+   "bio1",
+   "bio4",
+   "bio12",
+   "bio15"
+  ],
+  "layers": [
+   {
+    "key": "main",
+    "name": "서식지(여울)",
+    "season": "연중",
+    "main": true,
+    "groups": [
+     "river"
+    ],
+    "desc": "해발 50~500 m의 하천 여울",
+    "elev": [
+     50,
+     500
+    ],
+    "cell_min": 0.005,
+    "refs": [
+     1
+    ]
+   }
+  ],
+  "refs": [
+   {
+    "text": "Keun-Sik Kim 외 (2025) Assessing Genetic Diversity and Population Structure of the Endangered Freshwater Fish Gobiobotia brevibarba for Conservation Genetics in Korea. Fishes",
+    "url": "https://doi.org/10.3390/fishes11010004"
+   }
+  ]
+ },
+ "둑중개": {
+  "summary": "차가운 산간 계곡에 사는 둑중개과 고유종.",
+  "distribution": "강원·경북 북부 산간 하천.",
+  "habitat": "수온이 낮고 물이 맑은 계곡의 돌 밑.",
+  "life": "3~4월 산란.",
+  "diet": "수서곤충.",
+  "threats": "계곡 정비·사방댐, 수온 상승, 탁수.",
+  "conservation": "멸종위기 야생생물 Ⅱ급. 하천 공사 때 탁수 저감, 산란기 공사 회피, 물막이 전 포획·이주.",
+  "vars": [
+   "elev",
+   "slope",
+   "river",
+   "lake",
+   "bare",
+   "tree",
+   "dist_coast",
+   "bio1",
+   "bio4",
+   "bio12",
+   "bio15"
+  ],
+  "layers": [
+   {
+    "key": "main",
+    "name": "서식지(찬 계곡)",
+    "season": "연중",
+    "main": true,
+    "groups": [
+     "river"
+    ],
+    "desc": "숲으로 둘러싸인 해발 150 m 이상의 찬 계곡",
+    "elev": [
+     150,
+     1500
+    ],
+    "cell_min": 0.003,
+    "near": [
+     {
+      "groups": [
+       "broad",
+       "mixed",
+       "conifer"
+      ],
+      "km": 0.3,
+      "min": 0.4
+     }
+    ],
+    "refs": [
+     1,
+     2,
+     3
+    ]
+   }
+  ],
+  "refs": [
+   {
+    "text": "Jeong-Hui Kim 외 (2016) Home range and habitat use of translocated endangered species,Cottus koreanus, in South Korea. Animal Cells and Systems",
+    "url": "https://doi.org/10.1080/19768354.2016.1165286"
+   },
+   {
+    "text": "외 (2017) The Population Characteristic of First Record on the Cottus koreanus from Hoam Stream, Korea. Korean Journal of Environment and Ecology",
+    "url": "https://doi.org/10.13047/kjee.2017.31.2.166"
+   },
+   {
+    "text": "Ryouji Fujii 외 (2005) A New Species of Freshwater Sculpin, Cottus koreanus (Pisces: Cottidae) from Korea. Species Diversity",
+    "url": "https://doi.org/10.12782/specdiv.10.7"
+   }
+  ]
+ },
+ "묵납자루": {
+  "summary": "한강·금강 수계의 수초 지대에 사는 납자루 고유종.",
+  "distribution": "한강·금강 수계 일부.",
+  "habitat": "수초가 있고 민물조개가 사는 하천.",
+  "life": "4~6월 산란.",
+  "diet": "부착 조류.",
+  "threats": "하천 정비, 민물조개 감소.",
+  "conservation": "멸종위기 야생생물 Ⅱ급. 하천 공사 때 탁수 저감, 산란기 공사 회피, 물막이 전 포획·이주.",
+  "vars": [
+   "elev",
+   "slope",
+   "river",
+   "lake",
+   "bare",
+   "tree",
+   "dist_coast",
+   "bio1",
+   "bio4",
+   "bio12",
+   "bio15"
+  ],
+  "layers": [
+   {
+    "key": "main",
+    "name": "서식지(수초 지대)",
+    "season": "연중",
+    "main": true,
+    "groups": [
+     "river",
+     "lake"
+    ],
+    "desc": "해발 200 m 이하의 하천·저수지",
+    "elev": [
+     0,
+     200
+    ],
+    "cell_min": 0.01,
+    "refs": [
+     1,
+     2,
+     3
+    ]
+   }
+  ],
+  "refs": [
+   {
+    "text": "Myeong-Hun Ko 외 (2019) Fish Community Characteristics and Habitats Aspects of Endangered Species Pseudopungtungia tenuicorpa and Acheilognathus signifer in the Hwayangcheon Stream, Hangang River of Songnisan National Park, Korea. Korean Journal of Ichthyology",
+    "url": "https://doi.org/10.35399/isk.31.4.6"
+   },
+   {
+    "text": "Myeong-Hun Ko 외 (2019) Recovery Success and Habitat Status of the Reintroduced Endangered Species, Acheilognathus signifer (Pisces: Cyprinidae: Acheilognathinae). Korean Journal of Ichthyology",
+    "url": "https://doi.org/10.35399/isk.31.2.1"
+   },
+   {
+    "text": "Hyeong-Su Kim 외 (2016) Comparison of reproductive characteristics and host use of the Korean bitterling,Acheilognathus signifer(Cyprinidae, Pisces), between two populations in the wild environment. Folia Zoologica",
+    "url": "https://doi.org/10.25225/fozo.v65.i2.a2.2016"
+   }
+  ]
+ },
+ "버들가지": {
+  "summary": "강원 동해안 하천 상류의 찬물에 사는 고유종.",
+  "distribution": "강원 고성·양양 등 동해로 흐르는 하천 상류.",
+  "habitat": "수온이 낮은 계류.",
+  "life": "4~6월 산란.",
+  "diet": "수서곤충.",
+  "threats": "계곡 정비, 수온 상승.",
+  "conservation": "멸종위기 야생생물 Ⅱ급. 하천 공사 때 탁수 저감, 산란기 공사 회피, 물막이 전 포획·이주.",
+  "vars": [
+   "elev",
+   "slope",
+   "river",
+   "lake",
+   "bare",
+   "tree",
+   "dist_coast",
+   "bio1",
+   "bio4",
+   "bio12",
+   "bio15"
+  ],
+  "layers": [
+   {
+    "key": "main",
+    "name": "서식지(찬 계곡)",
+    "season": "연중",
+    "main": true,
+    "groups": [
+     "river"
+    ],
+    "desc": "숲으로 둘러싸인 해발 100 m 이상의 동해안 하천 상류",
+    "elev": [
+     100,
+     1500
+    ],
+    "cell_min": 0.003,
+    "near": [
+     {
+      "groups": [
+       "broad",
+       "mixed",
+       "conifer"
+      ],
+      "km": 0.3,
+      "min": 0.4
+     }
+    ],
+    "refs": [
+     1,
+     2,
+     3
+    ]
+   }
+  ],
+  "refs": [
+   {
+    "text": "Kwang-Seek Choi 외 (2021) Distribution Aspects and Extinction Threat Evaluation of the Endangered Species, Rhynchocypris semotilus (Pisces: Cyprinidae). Korean Journal of Ichthyology",
+    "url": "https://doi.org/10.35399/isk.33.3.3"
+   },
+   {
+    "text": "Hyeok-Yeong Kwon 외 (2024) Feeding Ecology of the Endangered Endemic Species, Rhynchocypris semotilus (Pisces: Cyprinidae) in the Songhyeoncheon (Stream), Korea. Korean Journal of Ichthyology",
+    "url": "https://doi.org/10.35399/isk.36.1.8"
+   },
+   {
+    "text": "Hyeok-Yeong Kwon 외 (2025) Comparison of Habitat Selectivity and Feeding by Population of the Endangered Species, Rhynchocypris semotilus (Pisces: Cyprinidae). Korean Journal of Ichthyology",
+    "url": "https://doi.org/10.35399/isk.37.1.5"
+   },
+   {
+    "text": "Myeong-Hun Ko 외 (2023) \"Life History of the Endangered Endemic Species, Rhynchocypris semotilus (Pisces: Cyprinidae) in the Songhyeoncheon (Stream), Korea\". Korean Journal of Ichthyology",
+    "url": "https://doi.org/10.35399/isk.35.3.2"
+   }
+  ],
+  "range": {
+   "km": 10
+  }
+ },
+ "부안종개": {
+  "summary": "전북 부안 백천 수계에만 사는 미꾸리류 고유종.",
+  "distribution": "전북 부안 백천 수계.",
+  "habitat": "모래·자갈이 깔린 맑은 하천.",
+  "life": "5~6월 산란.",
+  "diet": "작은 무척추동물.",
+  "threats": "하천 정비·댐(부안댐), 서식지가 아주 좁음.",
+  "conservation": "멸종위기 야생생물 Ⅱ급. 하천 공사 때 탁수 저감, 산란기 공사 회피, 물막이 전 포획·이주.",
+  "vars": [
+   "elev",
+   "slope",
+   "river",
+   "lake",
+   "bare",
+   "tree",
+   "dist_coast",
+   "bio1",
+   "bio4",
+   "bio12",
+   "bio15"
+  ],
+  "layers": [
+   {
+    "key": "main",
+    "name": "서식지",
+    "season": "연중",
+    "main": true,
+    "groups": [
+     "river"
+    ],
+    "desc": "해발 300 m 이하의 하천",
+    "elev": [
+     0,
+     300
+    ],
+    "cell_min": 0.002,
+    "refs": [
+     1
+    ]
+   }
+  ],
+  "refs": [
+   {
+    "text": "(2023) Cobitis pumila: IUCN-Republic of Korea Global Red List Partnership Review Workshop. IUCN Red List of Threatened Species",
+    "url": "https://doi.org/10.2305/iucn.uk.2023-1.rlts.t148447462a148447559.en"
+   }
+  ],
+  "range": {
+   "km": 5,
+   "note": "부안 백천 수계 확인 지점 주변만"
+  }
+ },
+ "새미": {
+  "summary": "한강·금강 수계 상류 여울에 사는 잉어과 물고기.",
+  "distribution": "한강·금강 수계 상류.",
+  "habitat": "물이 맑은 자갈 여울.",
+  "life": "4~6월 산란.",
+  "diet": "부착 조류·수서곤충.",
+  "threats": "보·탁수.",
+  "conservation": "멸종위기 야생생물 Ⅱ급. 하천 공사 때 탁수 저감, 산란기 공사 회피, 물막이 전 포획·이주.",
+  "vars": [
+   "elev",
+   "slope",
+   "river",
+   "lake",
+   "bare",
+   "tree",
+   "dist_coast",
+   "bio1",
+   "bio4",
+   "bio12",
+   "bio15"
+  ],
+  "layers": [
+   {
+    "key": "main",
+    "name": "서식지(여울)",
+    "season": "연중",
+    "main": true,
+    "groups": [
+     "river"
+    ],
+    "desc": "해발 80~600 m의 하천 여울",
+    "elev": [
+     80,
+     600
+    ],
+    "cell_min": 0.005,
+    "refs": [
+     1,
+     2,
+     3
+    ]
+   }
+  ],
+  "refs": [
+   {
+    "text": "Kwang-Seek Choi 외 (2025) Life History of the Endangered Cold-water Species, Ladislavia taczanowskii (Pisces: Cyprinidae) in the Jindonggyegok, Bangtaecheon (Stream). Korean Journal of Ichthyology",
+    "url": "https://doi.org/10.35399/isk.37.2.3"
+   },
+   {
+    "text": "Jae-Min Park 외 (2024) Larvae and Juveniles of the Ladislavia taczanowskiifrom Hongcheongang-River. Korean Journal of Ichthyology",
+    "url": "https://doi.org/10.35399/isk.36.2.1"
+   },
+   {
+    "text": "(2020) Ladislavia taczanowskii: Bogutskaya, N.. IUCN Red List of Threatened Species",
+    "url": "https://doi.org/10.2305/iucn.uk.2022-1.rlts.t159671588a159671598.en"
+   }
+  ]
+ },
+ "어름치": {
+  "summary": "자갈로 산란탑을 쌓는 고유종. 한강·금강 상류의 맑은 여울에 산다.",
+  "distribution": "한강 수계 상류(홍천강·내린천·동강 등), 금강 상류(복원).",
+  "habitat": "물이 맑고 자갈·바위가 깔린 큰 하천 여울.",
+  "life": "4~5월 산란.",
+  "diet": "수서곤충·작은 갑각류.",
+  "threats": "댐·보, 골재 채취, 탁수.",
+  "conservation": "멸종위기 야생생물 Ⅱ급, 천연기념물 제259호. 하천 공사 때 탁수 저감, 산란기 공사 회피, 물막이 전 포획·이주.",
+  "vars": [
+   "elev",
+   "slope",
+   "river",
+   "lake",
+   "bare",
+   "tree",
+   "dist_coast",
+   "bio1",
+   "bio4",
+   "bio12",
+   "bio15"
+  ],
+  "layers": [
+   {
+    "key": "main",
+    "name": "서식지(여울)",
+    "season": "연중",
+    "main": true,
+    "groups": [
+     "river"
+    ],
+    "desc": "해발 80~500 m, 물이 칸의 1% 이상인 하천",
+    "elev": [
+     80,
+     500
+    ],
+    "cell_min": 0.01,
+    "refs": [
+     1
+    ]
+   }
+  ],
+  "refs": [
+   {
+    "text": "Ha-Yun Song 외 (2024) Evaluation on the Restoration and Conservation of Natural Monument Species, Hemibarbus mylodon (Pisces: Cyprinidae: Gobioninae) in Geumgang River Upstream Area. Korean Journal of Ichthyology",
+    "url": "https://doi.org/10.35399/isk.36.3.4"
+   }
+  ]
+ },
+ "연준모치": {
+  "summary": "강원 산간의 찬 계곡에 사는 잉어과 물고기.",
+  "distribution": "강원 정선·평창 등 한강 상류 계곡.",
+  "habitat": "수온이 낮은 계류.",
+  "life": "4~6월 산란.",
+  "diet": "수서곤충.",
+  "threats": "계곡 정비, 수온 상승.",
+  "conservation": "멸종위기 야생생물 Ⅱ급. 하천 공사 때 탁수 저감, 산란기 공사 회피, 물막이 전 포획·이주.",
+  "vars": [
+   "elev",
+   "slope",
+   "river",
+   "lake",
+   "bare",
+   "tree",
+   "dist_coast",
+   "bio1",
+   "bio4",
+   "bio12",
+   "bio15"
+  ],
+  "layers": [
+   {
+    "key": "main",
+    "name": "서식지(찬 계곡)",
+    "season": "연중",
+    "main": true,
+    "groups": [
+     "river"
+    ],
+    "desc": "숲으로 둘러싸인 해발 300 m 이상의 찬 계곡",
+    "elev": [
+     300,
+     1500
+    ],
+    "cell_min": 0.003,
+    "near": [
+     {
+      "groups": [
+       "broad",
+       "mixed",
+       "conifer"
+      ],
+      "km": 0.3,
+      "min": 0.4
+     }
+    ],
+    "refs": [
+     1,
+     2
+    ]
+   }
+  ],
+  "refs": [
+   {
+    "text": "외 (2019) Ecological Characteristics of &lt;i&gt;Phoxinus phoxinus&lt;/i&gt; (Cyprinidae) at the Spring Water in Eocheon Stream, Korea. Korean Journal of Environment and Ecology",
+    "url": "https://doi.org/10.13047/kjee.2019.33.3.256"
+   },
+   {
+    "text": "(2024) Phoxinus phoxinus: Ford, M.. IUCN Red List of Threatened Species",
+    "url": "https://doi.org/10.2305/iucn.uk.2024-2.rlts.t17067a135091520.en"
+   }
+  ]
+ },
+ "열목어": {
+  "summary": "수온이 낮은 강원·경북 산간 계곡에 사는 연어과 물고기. 국내가 세계 분포의 남쪽 끝이다.",
+  "distribution": "강원 정선·평창·인제·홍천, 경북 봉화 등 산간 계곡.",
+  "habitat": "여름에도 수온이 20℃를 넘지 않는 맑은 계곡의 소와 여울.",
+  "life": "3~5월 산란.",
+  "diet": "수서곤충·작은 물고기.",
+  "threats": "수온 상승, 계곡 정비·사방댐, 탁수, 남획.",
+  "conservation": "멸종위기 야생생물 Ⅱ급. 하천 공사 때 탁수 저감, 산란기 공사 회피, 물막이 전 포획·이주.",
+  "vars": [
+   "elev",
+   "slope",
+   "river",
+   "lake",
+   "bare",
+   "tree",
+   "dist_coast",
+   "bio1",
+   "bio4",
+   "bio12",
+   "bio15"
+  ],
+  "layers": [
+   {
+    "key": "main",
+    "name": "서식지(찬 계곡)",
+    "season": "연중",
+    "main": true,
+    "groups": [
+     "river"
+    ],
+    "desc": "숲으로 둘러싸인 해발 300 m 이상의 찬 계곡",
+    "elev": [
+     300,
+     1500
+    ],
+    "cell_min": 0.003,
+    "near": [
+     {
+      "groups": [
+       "broad",
+       "mixed",
+       "conifer"
+      ],
+      "km": 0.3,
+      "min": 0.4
+     }
+    ],
+    "refs": [
+     1,
+     2
+    ]
+   }
+  ],
+  "refs": [
+   {
+    "text": "Myeong-Hun Ko 외 (2021) Distribution status, habitat characteristics and extinction threat evaluation of the endangered species, Brachymystax lenok tsinlingensis (Pisces: Salmonidae). Korean Journal of Ichthyology",
+    "url": "https://doi.org/10.35399/isk.33.2.4"
+   },
+   {
+    "text": "Dohun Lim 외 (2019) Fish fauna and the population of a Korean endangered freshwater fish, Brachymystax lenok tsinlingensis, in Korea: Bonghwa Habitat. Environmental Engineering Research",
+    "url": "https://doi.org/10.4491/eer.2018.353"
+   }
+  ]
+ },
+ "칠성장어": {
+  "summary": "바다에서 자라 하천으로 올라와 산란하는 회유성 장어류.",
+  "distribution": "동해·남해로 흐르는 하천(강원·경북 동해안 하천 등).",
+  "habitat": "바다와 이어진 하천 중·하류의 자갈·모래 바닥(산란·유생).",
+  "life": "4~6월(소상) 산란.",
+  "diet": "유생은 유기물, 성체는 다른 물고기에 붙어 체액을 먹음.",
+  "threats": "하구 둑·보로 회유 차단, 하천 정비.",
+  "conservation": "멸종위기 야생생물 Ⅱ급. 하천 공사 때 탁수 저감, 산란기 공사 회피, 물막이 전 포획·이주.",
+  "vars": [
+   "elev",
+   "slope",
+   "river",
+   "lake",
+   "bare",
+   "tree",
+   "dist_coast",
+   "bio1",
+   "bio4",
+   "bio12",
+   "bio15"
+  ],
+  "layers": [
+   {
+    "key": "main",
+    "name": "산란·유생 서식지",
+    "season": "4~6월",
+    "main": true,
+    "groups": [
+     "river"
+    ],
+    "desc": "해안에서 30 km 안의 하천(해발 200 m 이하)",
+    "elev": [
+     0,
+     200
+    ],
+    "cell_min": 0.003,
+    "coast_km": 30,
+    "refs": [
+     1
+    ]
+   }
+  ],
+  "refs": [
+   {
+    "text": "Myeong-Hun Ko 외 (2025) Distribution Aspect and Extinction Threat Evaluation of the Endangered Arctic Lamprey, Lethenteron japoni-cus (Pisces: Petromyzontidae). Korean Journal of Ichthyology",
+    "url": "https://doi.org/10.35399/isk.37.4.15"
+   }
+  ]
+ },
+ "큰줄납자루": {
+  "summary": "낙동강·섬진강 수계의 납자루류.",
+  "distribution": "낙동강·섬진강 수계.",
+  "habitat": "수초와 민물조개가 있는 하천.",
+  "life": "4~6월 산란.",
+  "diet": "부착 조류.",
+  "threats": "하천 정비, 민물조개 감소.",
+  "conservation": "멸종위기 야생생물 Ⅱ급. 하천 공사 때 탁수 저감, 산란기 공사 회피, 물막이 전 포획·이주.",
+  "vars": [
+   "elev",
+   "slope",
+   "river",
+   "lake",
+   "bare",
+   "tree",
+   "dist_coast",
+   "bio1",
+   "bio4",
+   "bio12",
+   "bio15"
+  ],
+  "layers": [
+   {
+    "key": "main",
+    "name": "서식지(수초 지대)",
+    "season": "연중",
+    "main": true,
+    "groups": [
+     "river",
+     "lake"
+    ],
+    "desc": "해발 200 m 이하의 하천·저수지",
+    "elev": [
+     0,
+     200
+    ],
+    "cell_min": 0.01,
+    "refs": [
+     1,
+     2
+    ]
+   }
+  ],
+  "refs": [
+   {
+    "text": "Jin-Yeong Lim 외 (2017) Annual Reproductive Cycle of Acheilognathus\n            majusculus, a Korean Endemic Species. Development &amp; Reproduction",
+    "url": "https://doi.org/10.12717/dr.2017.21.3.297"
+   },
+   {
+    "text": "Ik‐Soo Kim 외 (1998) Acheilognathus majusculus, a new bitterling (Pisces, Cyprinidae) from Korea, with revised key to species of the genusAcheilognathusof Korea. Korean Journal of Biological Sciences",
+    "url": "https://doi.org/10.1080/12265071.1998.9647387"
+   }
+  ]
+ },
+ "한강납줄개": {
+  "summary": "한강 수계 수초 지대에 사는 고유종.",
+  "distribution": "한강 수계 일부.",
+  "habitat": "수초가 있고 민물조개가 사는 느린 하천.",
+  "life": "4~6월 산란.",
+  "diet": "부착 조류.",
+  "threats": "하천 정비, 민물조개 감소.",
+  "conservation": "멸종위기 야생생물 Ⅱ급. 하천 공사 때 탁수 저감, 산란기 공사 회피, 물막이 전 포획·이주.",
+  "vars": [
+   "elev",
+   "slope",
+   "river",
+   "lake",
+   "bare",
+   "tree",
+   "dist_coast",
+   "bio1",
+   "bio4",
+   "bio12",
+   "bio15"
+  ],
+  "layers": [
+   {
+    "key": "main",
+    "name": "서식지(수초 지대)",
+    "season": "연중",
+    "main": true,
+    "groups": [
+     "river",
+     "lake"
+    ],
+    "desc": "해발 200 m 이하의 하천·호소",
+    "elev": [
+     0,
+     200
+    ],
+    "cell_min": 0.01,
+    "refs": [
+     1,
+     2,
+     3
+    ]
+   }
+  ],
+  "refs": [
+   {
+    "text": "Myeong-Hun Ko 외 (2018) Distribution Aspect and Extinction Threat Evaluation of the Endangered Species, Rhodeus pseudosericeus (Pisces: Cyprinidae) in Korea. Korean Journal of Ichthyology",
+    "url": "https://doi.org/10.35399/isk.30.2.5"
+   },
+   {
+    "text": "외 (2019) Fish Community Characteristics and Habitat Aspects of Endangered Species, &lt;i&gt;Rhodeus pseudosericeus&lt;/i&gt; in Heuk Stream, a Tributary of the Han River Drainage System. Korean Journal of Environment and Ecology",
+    "url": "https://doi.org/10.13047/kjee.2019.33.3.266"
+   },
+   {
+    "text": "외 (2023) Fish Community Characteristics and Distribution Aspect of &lt;i&gt;Rhodeus pseudosericeus&lt;/i&gt;(Cyprinidae) in the Geumdangcheon(Stream), a Tributary of the Hangang Drainage System of Korea&lt;sup&gt;1a&lt;/sup&gt;. Korean Journal of Environment and Ecology",
+    "url": "https://doi.org/10.13047/kjee.2023.37.2.151"
+   },
+   {
+    "text": "(2021) Rhodeus pseudosericeus: IUCN-Republic of Korea Global Red List Partnership Review Workshop. IUCN Red List of Threatened Species",
+    "url": "https://doi.org/10.2305/iucn.uk.2023-1.rlts.t148448839a148448856.en"
+   }
+  ]
+ },
+ "한둑중개": {
+  "summary": "동해안 하천 하류에 사는 둑중개류.",
+  "distribution": "강원·경북 동해안 하천 하류.",
+  "habitat": "바다와 가까운 하천 하류의 자갈 바닥.",
+  "life": "2~4월 산란.",
+  "diet": "수서곤충·작은 갑각류.",
+  "threats": "하구 정비·보, 탁수.",
+  "conservation": "멸종위기 야생생물 Ⅱ급. 하천 공사 때 탁수 저감, 산란기 공사 회피, 물막이 전 포획·이주.",
+  "vars": [
+   "elev",
+   "slope",
+   "river",
+   "lake",
+   "bare",
+   "tree",
+   "dist_coast",
+   "bio1",
+   "bio4",
+   "bio12",
+   "bio15"
+  ],
+  "layers": [
+   {
+    "key": "main",
+    "name": "서식지",
+    "season": "연중",
+    "main": true,
+    "groups": [
+     "river"
+    ],
+    "desc": "해안에서 10 km 안의 하천 하류(해발 100 m 이하)",
+    "elev": [
+     0,
+     100
+    ],
+    "cell_min": 0.003,
+    "coast_km": 10,
+    "refs": [
+     1,
+     2,
+     3
+    ]
+   }
+  ],
+  "refs": [
+   {
+    "text": "Myeong-Hun Ko 외 (2018) Distribution Aspect and Extinction Threat Evaluation of the Endangered Species, Cottus hangiongensis (Pisces: Cottidae) in Korea. Korean Journal of Ichthyology",
+    "url": "https://doi.org/10.35399/isk.30.3.4"
+   },
+   {
+    "text": "Won-Il Seo 외 (2010) Spawning Behavior and Early Life History of Endangered Cottus hangiongensis. Korean Journal of Fisheries and Aquatic Sciences",
+    "url": "https://doi.org/10.5657/kfas.2010.43.1.046"
+   },
+   {
+    "text": "Akira Goto (1989) Growth differences in males of the river-sculpin Cottus hangiongensis along a river course, a correlate of life-history variation. Environmental Biology of Fishes",
+    "url": "https://doi.org/10.1007/bf00001398"
+   },
+   {
+    "text": "(2020) Cottus hangiongensis: Bogutskaya, N.. IUCN Red List of Threatened Species",
+    "url": "https://doi.org/10.2305/iucn.uk.2022-1.rlts.t159630073a159630092.en"
+   }
+  ]
+ },
+ "황쏘가리": {
+  "summary": "몸이 황금색인 쏘가리. 한강 수계 바위 많은 하천에 산다.",
+  "distribution": "한강 수계(남한강·북한강 등).",
+  "habitat": "바위·큰 돌이 많은 큰 하천의 깊은 소와 여울.",
+  "life": "5~7월 산란.",
+  "diet": "작은 물고기·새우.",
+  "threats": "보·댐, 탁수, 남획.",
+  "conservation": "천연기념물 제190호. 바위 하천 보전, 포획 금지.",
+  "vars": [
+   "elev",
+   "slope",
+   "river",
+   "lake",
+   "bare",
+   "tree",
+   "dist_coast",
+   "bio1",
+   "bio4",
+   "bio12",
+   "bio15",
+   "rock"
+  ],
+  "layers": [
+   {
+    "key": "main",
+    "name": "서식지",
+    "season": "연중",
+    "main": true,
+    "groups": [
+     "river"
+    ],
+    "desc": "바위 1 km 안의 큰 하천(물이 칸의 3% 이상, 해발 30~400 m)",
+    "elev": [
+     30,
+     400
+    ],
+    "cell_min": 0.03,
+    "near": [
+     {
+      "groups": [
+       "rock"
+      ],
+      "km": 1,
+      "min": 0.002
+     }
+    ],
+    "refs": []
+   }
+  ],
+  "refs": []
+ }
+}

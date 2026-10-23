@@ -18,7 +18,7 @@ def main():
     lit_search.OUT.mkdir(parents=True, exist_ok=True)
     for i, s in enumerate(species):
         f = lit_search.OUT / f"{s['sci'].replace(' ', '_')}.json"
-        if f.exists():
+        if f.exists() and json.loads(f.read_text(encoding="utf-8")):   # 결과가 비어 있으면(검색 실패) 다시
             continue
         seen, res = set(), []
         for q in [s["sci"], f"{s['sci']} Korea", s["ko"]]:

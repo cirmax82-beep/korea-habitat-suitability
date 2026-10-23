@@ -1,4 +1,4 @@
-"""종별 문헌 찾기 — OpenAlex(학술 문헌 데이터베이스)에서 학명·국명으로 검색해 제목·저자·연도·학술지·DOI·초록을 모음.
+"""종별 문헌 찾기 — OpenAlex(학술 문헌 데이터베이스, 하루 사용량이 막히면 Crossref)에서 학명·국명으로 검색해 제목·저자·연도·학술지·DOI·초록을 모음.
 
     python tools/lit_search.py "Halcyon pileata" [추가 검색어 …]
 
@@ -10,6 +10,7 @@ import re
 import sys
 import time
 import urllib.parse
+import urllib.error
 import urllib.request
 from pathlib import Path
 
@@ -23,6 +24,10 @@ def get(url):
         try:
             with urllib.request.urlopen(urllib.request.Request(url, headers=UA), timeout=60) as r:
                 return json.loads(r.read().decode("utf-8"))
+        except urllib.error.HTTPError as e:
+            if e.code == 429 or i == 3:   # 사용량 초과는 바로 넘김(다른 검색으로)
+                raise
+            time.sleep(2 * (i + 1))
         except Exception:   # noqa: BLE001
             if i == 3:
                 raise
@@ -36,7 +41,30 @@ def abstract(inv):
     return " ".join(w for _, w in pos)
 
 
+def crossref(query, n=25):
+    """Crossref(키 없이 쓰는 DOI 등록 기관 검색) — OpenAlex 하루 사용량이 막혔을 때"""
+    url = "https://api.crossref.org/works?" + urllib.parse.urlencode({"query.bibliographic": query, "rows": n, "mailto": UA["User-Agent"].split("mailto:")[1].rstrip(")"),
+                                                                   "select": "DOI,title,author,issued,container-title,is-referenced-by-count,abstract"})
+    tag = re.compile(r"<[^>]+>")
+    out = []
+    for w in get(url).get("message", {}).get("items", []):
+        out.append({"title": tag.sub("", (w.get("title") or [""])[0]).strip(), "year": ((w.get("issued") or {}).get("date-parts") or [[None]])[0][0],
+                    "venue": (w.get("container-title") or [""])[0], "doi": f"https://doi.org/{w['DOI']}" if w.get("DOI") else "",
+                    "authors": [f"{a.get('given', '')} {a.get('family', '')}".strip() for a in w.get("author", [])][:6],
+                    "cited": w.get("is-referenced-by-count", 0), "abstract": tag.sub("", w.get("abstract") or "").strip()})
+    return out
+
+
 def search(query, n=25):
+    try:
+        return openalex(query, n)
+    except urllib.error.HTTPError as e:
+        if e.code != 429:
+            raise
+        return crossref(query, n)
+
+
+def openalex(query, n=25):
     url = "https://api.openalex.org/works?" + urllib.parse.urlencode({"search": query, "per-page": n,
                                                                      "select": "id,doi,title,publication_year,authorships,primary_location,cited_by_count,abstract_inverted_index"})
     out = []

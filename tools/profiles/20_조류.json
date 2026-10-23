@@ -1,0 +1,4994 @@
+{
+ "고니": {
+  "summary": "툰드라에서 번식하고 국내 호수·하구에서 겨울을 나는 백조. 큰고니보다 작고 부리의 노란 부분이 좁다.",
+  "distribution": "낙동강 하구, 주남저수지, 한강 하구·팔당, 강릉 경포호 등 하구·호소에 소수가 월동한다.",
+  "habitat": "얕은 호소·하구·하천에서 물풀의 뿌리줄기를 먹고 물 위에서 잔다. 주변 논에서 낙곡을 먹기도 한다.",
+  "life": "10~11월 도래, 2~3월 북상. 가족 단위로 지낸다.",
+  "diet": "수생식물(줄·매자기 등)의 덩이줄기·뿌리, 낙곡.",
+  "threats": "하구 개발·준설, 수위 변화로 먹이 식물 감소, 사람·선박 방해, 납 중독.",
+  "conservation": "멸종위기 야생생물 Ⅰ급, 천연기념물 제201호. 월동기 하구·호소 공사 시기 조정, 먹이 식물 서식처 보전.",
+  "vars": [
+   "elev",
+   "paddy",
+   "field",
+   "wetland",
+   "river",
+   "lake",
+   "tidal",
+   "dist_river",
+   "dist_lake",
+   "dist_coast",
+   "bio1",
+   "bio4"
+  ],
+  "layers": [
+   {
+    "key": "roost",
+    "name": "잠자리·채식지(물)",
+    "season": "11~3월",
+    "main": true,
+    "groups": [
+     "lake",
+     "river",
+     "tidal",
+     "wetland"
+    ],
+    "desc": "호소·하구·하천·습지의 얕은 물",
+    "elev": [
+     0,
+     300
+    ],
+    "cell_min": 0.03,
+    "refs": [
+     1,
+     2,
+     3
+    ]
+   },
+   {
+    "key": "field",
+    "name": "채식지(논)",
+    "season": "11~3월",
+    "main": true,
+    "groups": [
+     "paddy"
+    ],
+    "desc": "물가에서 2 km 안의 논",
+    "elev": [
+     0,
+     300
+    ],
+    "near": [
+     {
+      "groups": [
+       "lake",
+       "river",
+       "tidal"
+      ],
+      "km": 2,
+      "min": 0.05
+     }
+    ],
+    "refs": [
+     1,
+     2,
+     3
+    ]
+   }
+  ],
+  "refs": [
+   {
+    "text": "Qiang Jia 외 (2016) Population estimates and geographical distributions of swans and geese in East Asia based on counts during the non-breeding season. Bird Conservation International",
+    "url": "https://doi.org/10.1017/s0959270915000386"
+   },
+   {
+    "text": "Lei Fang 외 (2020) Two distinct flyways with different population trends of Bewick's Swan Cygnus columbianus bewickii in East Asia. Wildfowl (Wildfowl & Wetlands Trust)",
+    "url": ""
+   },
+   {
+    "text": "Soo-Dong Lee 외 (2022) Analyzing the Effect of River Ecosystem Fragmentation by Bridges on Changes in the Wintering Population of Whooper Swans (Cygnus cygnus): Targeting the Nakdong River, Busan. Journal of people, plants, and environment",
+    "url": "https://doi.org/10.11628/ksppe.2022.25.5.457"
+   },
+   {
+    "text": "IUCN (2025) Cygnus columbianus: BirdLife International. IUCN Red List of Threatened Species",
+    "url": "https://doi.org/10.2305/iucn.uk.2025-2.rlts.t22679862a269937332.en"
+   }
+  ]
+ },
+ "큰고니": {
+  "summary": "국내에 가장 많이 오는 백조로 수천 마리가 월동한다.",
+  "distribution": "낙동강 하구, 주남·우포 등 경남 습지, 한강 하구·팔당, 강릉·고성 석호, 천수만 등.",
+  "habitat": "넓은 호소·하구·하천의 얕은 물에서 물풀 뿌리를 먹고, 논의 낙곡도 먹는다. 사람이 접근하기 어려운 물 위에서 잔다.",
+  "life": "10월 도래, 3월 북상.",
+  "diet": "수생식물 덩이줄기·뿌리, 낙곡.",
+  "threats": "하구 개발·준설, 수위 관리 변화, 방해, 납 중독.",
+  "conservation": "멸종위기 야생생물 Ⅱ급, 천연기념물 제201호. 월동지 수위·먹이 식물 보전, 월동기 방해 최소화.",
+  "vars": [
+   "elev",
+   "paddy",
+   "field",
+   "wetland",
+   "river",
+   "lake",
+   "tidal",
+   "dist_river",
+   "dist_lake",
+   "dist_coast",
+   "bio1",
+   "bio4"
+  ],
+  "layers": [
+   {
+    "key": "roost",
+    "name": "잠자리·채식지(물)",
+    "season": "10~3월",
+    "main": true,
+    "groups": [
+     "lake",
+     "river",
+     "tidal",
+     "wetland"
+    ],
+    "desc": "호소·하구·하천·습지의 얕은 물",
+    "elev": [
+     0,
+     300
+    ],
+    "cell_min": 0.03,
+    "refs": [
+     1,
+     2,
+     3
+    ]
+   },
+   {
+    "key": "field",
+    "name": "채식지(논)",
+    "season": "10~3월",
+    "main": true,
+    "groups": [
+     "paddy"
+    ],
+    "desc": "물가에서 2 km 안의 논",
+    "elev": [
+     0,
+     300
+    ],
+    "near": [
+     {
+      "groups": [
+       "lake",
+       "river",
+       "tidal"
+      ],
+      "km": 2,
+      "min": 0.05
+     }
+    ],
+    "refs": [
+     1,
+     2,
+     3
+    ]
+   }
+  ],
+  "refs": [
+   {
+    "text": "외 (2015) Management Plan of Whooper Swan(Cygnus cygnus) Habitat Using Causal Loop Analysis. Korean Journal of Environment and Ecology",
+    "url": "https://doi.org/10.13047/kjee.2015.29.3.353"
+   },
+   {
+    "text": "Jong-nam Lee 외 (2022) A study on the wintering distribution of the Whooper Swan (Cygnus cygnus) within the lower Nakdong River, Busan city. The Korean Journal of Ornithology",
+    "url": "https://doi.org/10.30980/kjo.2022.6.29.1.1"
+   },
+   {
+    "text": "외 (2020) Relationship between Population of Wintering Whopper Swan (&lt;i&gt;Cygnus cygnus&lt;/i&gt;) and Bridge Spacing in the Lower Nakdong River, Korea. Korean Journal of Environment and Ecology",
+    "url": "https://doi.org/10.13047/kjee.2020.34.3.191"
+   },
+   {
+    "text": "(2016) Cygnus cygnus: BirdLife International. IUCN Red List of Threatened Species",
+    "url": "https://doi.org/10.2305/iucn.uk.2016-3.rlts.t22679856a85965262.en"
+   }
+  ]
+ },
+ "혹고니": {
+  "summary": "부리에 검은 혹이 있는 백조. 국내에서는 동해안 석호 일대에 아주 적은 수가 겨울을 난다.",
+  "distribution": "강원 고성 화진포·송지호, 강릉 경포호 등 동해안 석호와 주변 바다.",
+  "habitat": "석호·하구의 얕은 물과 연안에서 물풀을 먹고 쉰다.",
+  "life": "11월 도래, 3월 북상.",
+  "diet": "수생식물(거머리말 등)·해조류.",
+  "threats": "석호 매립·개발, 수질 악화, 방해.",
+  "conservation": "멸종위기 야생생물 Ⅰ급, 천연기념물 제201호. 석호 보전과 월동기 방해 최소화.",
+  "vars": [
+   "elev",
+   "paddy",
+   "field",
+   "wetland",
+   "river",
+   "lake",
+   "tidal",
+   "dist_river",
+   "dist_lake",
+   "dist_coast",
+   "bio1",
+   "bio4"
+  ],
+  "layers": [
+   {
+    "key": "main",
+    "name": "월동지",
+    "season": "11~3월",
+    "main": true,
+    "groups": [
+     "lake",
+     "tidal",
+     "sea",
+     "wetland"
+    ],
+    "desc": "해안 2 km 안의 석호·하구·연안",
+    "coast_km": 2,
+    "elev": [
+     0,
+     50
+    ],
+    "refs": [
+     1
+    ]
+   }
+  ],
+  "refs": [
+   {
+    "text": "(2016) Cygnus olor: BirdLife International. IUCN Red List of Threatened Species",
+    "url": "https://doi.org/10.2305/iucn.uk.2016-3.rlts.t22679839a85946855.en"
+   }
+  ],
+  "range": {
+   "km": 15,
+   "note": "동해안 석호 등 기록 주변"
+  }
+ },
+ "개리": {
+  "summary": "부리가 검고 긴 대형 기러기. 세계적으로 줄고 있으며 국내는 한강 하구가 가장 중요한 월동·중간기착지다.",
+  "distribution": "한강 하구(김포·파주·강화), 장항·서천 갯벌, 낙동강 하구 등.",
+  "habitat": "하구 갯벌과 염습지에서 새섬매자기 등의 덩이줄기를 파먹고, 주변 논에서도 먹는다.",
+  "life": "10월 도래, 3월 북상.",
+  "diet": "새섬매자기 등 갯벌 식물의 덩이줄기, 낙곡.",
+  "threats": "하구 매립·개발, 염습지 감소, 사냥(과거), 방해.",
+  "conservation": "멸종위기 야생생물 Ⅱ급, 천연기념물 제325호. 하구 염습지와 먹이 식물 보전.",
+  "vars": [
+   "elev",
+   "paddy",
+   "field",
+   "wetland",
+   "river",
+   "lake",
+   "tidal",
+   "dist_river",
+   "dist_lake",
+   "dist_coast",
+   "bio1",
+   "bio4"
+  ],
+  "layers": [
+   {
+    "key": "main",
+    "name": "월동지",
+    "season": "10~3월",
+    "main": true,
+    "groups": [
+     "tidal",
+     "wetland",
+     "paddy",
+     "river"
+    ],
+    "desc": "해안에서 5 km 안의 하구 갯벌·염습지·논",
+    "coast_km": 5,
+    "elev": [
+     0,
+     50
+    ],
+    "refs": [
+     1
+    ]
+   }
+  ],
+  "refs": [
+   {
+    "text": "Sungbae Joo 외 (2022) Home Range and Habitat Use of the Swan Goose (Anser cygnoides L. 1758) during Wintering in the Seocheon Tidal Flat, South Korea, Using GPS-Based Telemetry. Animals",
+    "url": "https://doi.org/10.3390/ani12213048"
+   }
+  ]
+ },
+ "큰기러기": {
+  "summary": "국내에 많은 수가 오는 기러기로 큰 무리를 지어 월동한다.",
+  "distribution": "철원·파주·김포 평야, 금강·천수만, 주남저수지 일대, 낙동강 등 넓은 평야와 저수지.",
+  "habitat": "낮에는 넓은 논에서 낙곡을 먹고, 밤에는 저수지·하천·호소 물 위나 모래톱에서 잔다.",
+  "life": "10월 도래, 3월 북상.",
+  "diet": "낙곡, 풀.",
+  "threats": "농경지 감소·비닐하우스, 볏짚 수거, 방해, 사냥(과거).",
+  "conservation": "멸종위기 야생생물 Ⅱ급. 월동 평야의 낙곡·무논 유지, 잠자리 수면 보전.",
+  "vars": [
+   "elev",
+   "paddy",
+   "field",
+   "wetland",
+   "river",
+   "lake",
+   "tidal",
+   "dist_river",
+   "dist_lake",
+   "dist_coast",
+   "bio1",
+   "bio4"
+  ],
+  "layers": [
+   {
+    "key": "field",
+    "name": "채식지(논)",
+    "season": "10~3월",
+    "main": true,
+    "groups": [
+     "paddy",
+     "field"
+    ],
+    "desc": "잠자리 물에서 5 km 안의 넓은 논·밭",
+    "elev": [
+     0,
+     300
+    ],
+    "cell_min": 0.3,
+    "near": [
+     {
+      "groups": [
+       "lake",
+       "river",
+       "tidal"
+      ],
+      "km": 5,
+      "min": 0.05
+     }
+    ],
+    "refs": [
+     1,
+     2,
+     3
+    ]
+   },
+   {
+    "key": "roost",
+    "name": "잠자리",
+    "season": "10~3월",
+    "main": true,
+    "groups": [
+     "lake",
+     "river",
+     "tidal"
+    ],
+    "desc": "논에서 5 km 안의 저수지·하천·하구",
+    "elev": [
+     0,
+     300
+    ],
+    "cell_min": 0.03,
+    "near": [
+     {
+      "groups": [
+       "paddy"
+      ],
+      "km": 5,
+      "min": 0.3
+     }
+    ],
+    "refs": [
+     1,
+     2,
+     3
+    ]
+   }
+  ],
+  "refs": [
+   {
+    "text": "Eun-Jeong Kim 외 (2024) Population trend and spatio-temporal distribution of Greater White-fronted (Anser albifrons) and Bean Geese (Anser fabalis) in Korea. Avian Research",
+    "url": "https://doi.org/10.1016/j.avrs.2024.100214"
+   },
+   {
+    "text": "외 (2013) Habitat Selection by the Eastern Bean Goose Anser fabalis Wintering in the Upo Wetland, South Korea. Korean Journal of Nature Conservation",
+    "url": "https://doi.org/10.11624/kjnc.2013.7.2.120"
+   },
+   {
+    "text": "(2020) Anser fabalis: BirdLife International. IUCN Red List of Threatened Species",
+    "url": "https://doi.org/10.2305/iucn.uk.2021-3.rlts.t22679875a166192296.en"
+   }
+  ]
+ },
+ "흰이마기러기": {
+  "summary": "이마가 흰 작은 기러기로 큰기러기·쇠기러기 무리에 섞여 드물게 온다.",
+  "distribution": "철원·파주 등 한강 유역 평야, 천수만, 주남저수지 등.",
+  "habitat": "큰기러기와 같이 논에서 먹고 저수지·하천에서 잔다.",
+  "life": "10월 도래, 3월 북상.",
+  "diet": "풀·낙곡.",
+  "threats": "월동 평야 감소, 방해.",
+  "conservation": "멸종위기 야생생물 Ⅱ급. 월동 평야·잠자리 보전.",
+  "vars": [
+   "elev",
+   "paddy",
+   "field",
+   "wetland",
+   "river",
+   "lake",
+   "tidal",
+   "dist_river",
+   "dist_lake",
+   "dist_coast",
+   "bio1",
+   "bio4"
+  ],
+  "layers": [
+   {
+    "key": "field",
+    "name": "채식지(논)",
+    "season": "10~3월",
+    "main": true,
+    "groups": [
+     "paddy",
+     "field"
+    ],
+    "desc": "물가에서 5 km 안의 넓은 논·밭",
+    "elev": [
+     0,
+     300
+    ],
+    "cell_min": 0.3,
+    "near": [
+     {
+      "groups": [
+       "lake",
+       "river",
+       "tidal"
+      ],
+      "km": 5,
+      "min": 0.05
+     }
+    ],
+    "refs": [
+     1,
+     2
+    ]
+   },
+   {
+    "key": "roost",
+    "name": "잠자리",
+    "season": "10~3월",
+    "main": true,
+    "groups": [
+     "lake",
+     "river",
+     "tidal"
+    ],
+    "desc": "논에서 5 km 안의 저수지·하천·하구",
+    "elev": [
+     0,
+     300
+    ],
+    "cell_min": 0.03,
+    "near": [
+     {
+      "groups": [
+       "paddy"
+      ],
+      "km": 5,
+      "min": 0.3
+     }
+    ],
+    "refs": [
+     1,
+     2
+    ]
+   }
+  ],
+  "refs": [
+   {
+    "text": "N. Kuroda (1934) A Collection Record of Anser erythropus from Japan, Korea, etc.. Japanese Journal of Ornithology",
+    "url": "https://doi.org/10.3838/jjo1915.8.38_282"
+   },
+   {
+    "text": "(2013) Anser erythropus: BirdLife International. IUCN Red List of Threatened Species",
+    "url": "https://doi.org/10.2305/iucn.uk.2013-2.rlts.t22679886a48131045.en"
+   }
+  ]
+ },
+ "흑기러기": {
+  "summary": "바다를 좋아하는 작은 검은 기러기. 잘피(거머리말) 군락이 있는 연안에서 겨울을 난다.",
+  "distribution": "남해안(고흥·순천·여수)·동해 남부(포항 등)·제주 연안의 잘피밭이 있는 하구·만.",
+  "habitat": "얕은 연안·하구의 잘피밭에서 먹고 물 위에서 쉰다.",
+  "life": "11월 도래, 3월 북상.",
+  "diet": "잘피(거머리말)·파래 등 해초.",
+  "threats": "연안 매립·준설로 잘피밭 감소, 선박 방해.",
+  "conservation": "멸종위기 야생생물 Ⅱ급, 천연기념물 제325호. 잘피밭 보전.",
+  "vars": [
+   "elev",
+   "tidal",
+   "bare",
+   "wetland",
+   "river",
+   "lake",
+   "dist_coast",
+   "bio1",
+   "bio4"
+  ],
+  "layers": [
+   {
+    "key": "main",
+    "name": "월동지",
+    "season": "11~3월",
+    "main": true,
+    "groups": [
+     "sea",
+     "tidal"
+    ],
+    "desc": "해안 1 km 안의 얕은 연안·갯벌",
+    "coast_km": 1,
+    "elev": [
+     0,
+     20
+    ],
+    "refs": [
+     1,
+     2
+    ]
+   }
+  ],
+  "refs": [
+   {
+    "text": "C.R. Tubbs 외 (1982) Brent geese Branta bernicla bernicla and their food in the solent, Southern England. Biological Conservation",
+    "url": "https://doi.org/10.1016/0006-3207(82)90052-0"
+   },
+   {
+    "text": "(2012) Branta bernicla: BirdLife International. IUCN Red List of Threatened Species",
+    "url": "https://doi.org/10.2305/iucn.uk.2012-1.rlts.t22679946a40125597.en"
+   }
+  ],
+  "range": {
+   "km": 10
+  }
+ },
+ "붉은가슴흰죽지": {
+  "summary": "세계적 위급종인 잠수성 오리. 국내에는 드물게 겨울을 난다.",
+  "distribution": "저수지·호소(주남저수지, 한강 등)에 다른 흰죽지류와 섞여 드물게 나타난다.",
+  "habitat": "수심이 적당하고 물풀이 있는 저수지·호소.",
+  "life": "11월 도래, 3월 북상.",
+  "diet": "수생식물·수서곤충·조개류.",
+  "threats": "번식지(중국 북부) 습지 감소, 월동지 수질 악화.",
+  "conservation": "멸종위기 야생생물 Ⅱ급. 월동 호소의 수질·수생식물 보전.",
+  "vars": [
+   "elev",
+   "paddy",
+   "field",
+   "wetland",
+   "river",
+   "lake",
+   "tidal",
+   "dist_river",
+   "dist_lake",
+   "dist_coast",
+   "bio1",
+   "bio4"
+  ],
+  "layers": [
+   {
+    "key": "main",
+    "name": "월동지",
+    "season": "11~3월",
+    "main": true,
+    "groups": [
+     "lake",
+     "wetland",
+     "river"
+    ],
+    "desc": "저수지·호소·습지",
+    "elev": [
+     0,
+     300
+    ],
+    "cell_min": 0.03,
+    "refs": [
+     1,
+     2
+    ]
+   }
+  ],
+  "refs": [
+   {
+    "text": "Zengrui Tian 외 (2023) Evaluation of Suitable Habitats for Birds Based on MaxEnt and Google Earth Engine—A Case Study of Baer’s Pochard (Aythya baeri) in Baiyangdian, China. Remote Sensing",
+    "url": "https://doi.org/10.3390/rs16010064"
+   },
+   {
+    "text": "(2015) Aythya baeri: BirdLife International. IUCN Red List of Threatened Species",
+    "url": "https://doi.org/10.2305/iucn.uk.2015-4.rlts.t22680384a78336675.en"
+   }
+  ]
+ },
+ "호사비오리": {
+  "summary": "옆구리 비늘 무늬가 있는 비오리. 세계적 위기종으로 맑은 산간 하천에서 겨울을 난다.",
+  "distribution": "가평 조종천, 홍천강, 남한강 상류, 지리산 주변 섬진강·경호강 등 맑은 하천.",
+  "habitat": "물이 맑고 여울과 소가 번갈아 나타나는 산간 하천. 강변 숲이 있는 구간에서 잠수해 먹이를 잡는다.",
+  "life": "11월 도래, 3월 북상(번식지는 러시아 연해주·중국 동북부 산간 하천).",
+  "diet": "물고기·수서곤충·갑각류.",
+  "threats": "하천 정비·보·골재 채취로 여울 감소, 탁수, 수상 레저 방해.",
+  "conservation": "멸종위기 야생생물 Ⅰ급, 천연기념물 제448호. 월동 하천의 여울·하안림 보전, 월동기 공사 회피.",
+  "vars": [
+   "elev",
+   "paddy",
+   "field",
+   "wetland",
+   "river",
+   "lake",
+   "tidal",
+   "dist_river",
+   "dist_lake",
+   "dist_coast",
+   "bio1",
+   "bio4"
+  ],
+  "layers": [
+   {
+    "key": "main",
+    "name": "월동지",
+    "season": "11~3월",
+    "main": true,
+    "groups": [
+     "river"
+    ],
+    "desc": "강변 숲 500 m 안의 산간 하천(해발 30~600 m)",
+    "elev": [
+     30,
+     600
+    ],
+    "cell_min": 0.01,
+    "near": [
+     {
+      "groups": [
+       "broad",
+       "mixed",
+       "conifer"
+      ],
+      "km": 0.5,
+      "min": 0.3
+     }
+    ],
+    "refs": [
+     1
+    ]
+   }
+  ],
+  "refs": [
+   {
+    "text": "(2016) Mergus squamatus: BirdLife International. IUCN Red List of Threatened Species",
+    "url": "https://doi.org/10.2305/iucn.uk.2016-3.rlts.t22680488a92864303.en"
+   }
+  ]
+ },
+ "재두루미": {
+  "summary": "대형 두루미류로 국내 평야·습지에서 겨울을 난다. 월동 개체수가 많고 이동 시기 중간기착지도 중요하다.",
+  "distribution": "철원 평야, 한강 하구(파주·김포), 주남저수지, 구미 해평습지 등.",
+  "habitat": "낮에는 추수가 끝난 넓은 논과 갯벌에서 먹고, 밤에는 얕은 여울·저수지·갯벌에서 잔다. 사람·차량 방해를 피한다.",
+  "life": "10~11월 도래, 2~3월 북상. 가족 단위 무리.",
+  "diet": "낙곡·뿌리, 수서동물, 갯벌의 게·갯지렁이.",
+  "threats": "농경지 개발·비닐하우스, 볏짚 수거로 낙곡 감소, 전선 충돌, 관광·차량 방해.",
+  "conservation": "멸종위기 야생생물 Ⅱ급, 천연기념물 제203호. 월동기 잠자리·채식지 주변 공사·출입 제한, 낙곡 남기기·무논 조성.",
+  "vars": [
+   "elev",
+   "paddy",
+   "field",
+   "wetland",
+   "river",
+   "lake",
+   "tidal",
+   "dist_river",
+   "dist_lake",
+   "dist_coast",
+   "bio1",
+   "bio4"
+  ],
+  "layers": [
+   {
+    "key": "feed",
+    "name": "채식지",
+    "season": "10~3월",
+    "main": true,
+    "groups": [
+     "paddy",
+     "tidal"
+    ],
+    "desc": "잠자리 물에서 5 km 안의 넓은 논·갯벌",
+    "elev": [
+     0,
+     300
+    ],
+    "cell_min": 0.2,
+    "near": [
+     {
+      "groups": [
+       "river",
+       "lake",
+       "tidal"
+      ],
+      "km": 5,
+      "min": 0.02
+     }
+    ],
+    "refs": [
+     1,
+     2
+    ]
+   },
+   {
+    "key": "roost",
+    "name": "잠자리",
+    "season": "10~3월",
+    "main": true,
+    "groups": [
+     "river",
+     "lake",
+     "tidal"
+    ],
+    "desc": "채식지에서 3 km 안의 얕은 하천·저수지·갯벌",
+    "elev": [
+     0,
+     300
+    ],
+    "near": [
+     {
+      "groups": [
+       "paddy",
+       "tidal"
+      ],
+      "km": 3,
+      "min": 0.2
+     }
+    ],
+    "refs": [
+     1,
+     2
+    ]
+   }
+  ],
+  "refs": [
+   {
+    "text": "Tae-Han Kang 외 (2009) Current Status and Importance of Grus vipio Coming to Hangang Estuary. Journal of Korean Nature",
+    "url": "https://doi.org/10.1016/s1976-8648(14)60043-8"
+   },
+   {
+    "text": "Go Fujita 외 (2004) Comparing areas of suitable habitats along travelled and possible shortest routes in migration of White‐naped Cranes Grus vipio in East Asia. Ibis",
+    "url": "https://doi.org/10.1111/j.1474-919x.2004.00286.x"
+   }
+  ]
+ },
+ "흑두루미": {
+  "summary": "대형 두루미류로 국내 평야·습지에서 겨울을 난다. 순천만에서는 논의 전봇대를 없애고 무논을 만들어 월동 개체가 크게 늘었다.",
+  "distribution": "순천만, 천수만, 구미 해평습지, 낙동강 일대. 순천만에서 3천 마리 넘게 월동한다.",
+  "habitat": "낮에는 추수가 끝난 넓은 논과 갯벌에서 먹고, 밤에는 얕은 여울·저수지·갯벌에서 잔다. 사람·차량 방해를 피한다.",
+  "life": "10~11월 도래, 2~3월 북상. 가족 단위 무리.",
+  "diet": "낙곡·뿌리, 수서동물, 갯벌의 게·갯지렁이.",
+  "threats": "농경지 개발·비닐하우스, 볏짚 수거로 낙곡 감소, 전선 충돌, 관광·차량 방해.",
+  "conservation": "멸종위기 야생생물 Ⅱ급, 천연기념물 제228호. 월동기 잠자리·채식지 주변 공사·출입 제한, 낙곡 남기기·무논 조성.",
+  "vars": [
+   "elev",
+   "paddy",
+   "field",
+   "wetland",
+   "river",
+   "lake",
+   "tidal",
+   "dist_river",
+   "dist_lake",
+   "dist_coast",
+   "bio1",
+   "bio4"
+  ],
+  "layers": [
+   {
+    "key": "feed",
+    "name": "채식지",
+    "season": "10~3월",
+    "main": true,
+    "groups": [
+     "paddy",
+     "tidal"
+    ],
+    "desc": "잠자리 물에서 5 km 안의 넓은 논·갯벌",
+    "elev": [
+     0,
+     300
+    ],
+    "cell_min": 0.2,
+    "near": [
+     {
+      "groups": [
+       "river",
+       "lake",
+       "tidal"
+      ],
+      "km": 5,
+      "min": 0.02
+     }
+    ],
+    "refs": [
+     1,
+     2,
+     3
+    ]
+   },
+   {
+    "key": "roost",
+    "name": "잠자리",
+    "season": "10~3월",
+    "main": true,
+    "groups": [
+     "river",
+     "lake",
+     "tidal"
+    ],
+    "desc": "채식지에서 3 km 안의 얕은 하천·저수지·갯벌",
+    "elev": [
+     0,
+     300
+    ],
+    "near": [
+     {
+      "groups": [
+       "paddy",
+       "tidal"
+      ],
+      "km": 3,
+      "min": 0.2
+     }
+    ],
+    "refs": [
+     1,
+     2,
+     3
+    ]
+   }
+  ],
+  "refs": [
+   {
+    "text": "Young-Hun Jeong 외 (2025) Northern migration patterns and winter habitat use of hooded cranes (Grus monacha) in Suncheon Bay, South Korea. BMC Ecology and Evolution",
+    "url": "https://doi.org/10.1186/s12862-025-02482-9"
+   },
+   {
+    "text": "Dae-Han Cho 외 (2026) Migration Patterns, Utilization Distribution, and Site Fidelity of Two GPS-tracked Hooded Cranes (Grus monacha). Korean Journal of Environmental Agriculture",
+    "url": "https://doi.org/10.5338/kjea.2026.45.15"
+   },
+   {
+    "text": "(2012) Grus monacha: BirdLife International. IUCN Red List of Threatened Species",
+    "url": "https://doi.org/10.2305/iucn.uk.2012-1.rlts.t22692151a38043007.en"
+   }
+  ]
+ },
+ "검은목두루미": {
+  "summary": "대형 두루미류로 국내 평야·습지에서 겨울을 난다.",
+  "distribution": "철원·천수만·순천만 등에서 다른 두루미 무리에 섞여 드물게 월동한다.",
+  "habitat": "낮에는 추수가 끝난 넓은 논과 갯벌에서 먹고, 밤에는 얕은 여울·저수지·갯벌에서 잔다. 사람·차량 방해를 피한다.",
+  "life": "10~11월 도래, 2~3월 북상. 가족 단위 무리.",
+  "diet": "낙곡·뿌리, 수서동물, 갯벌의 게·갯지렁이.",
+  "threats": "농경지 개발·비닐하우스, 볏짚 수거로 낙곡 감소, 전선 충돌, 관광·차량 방해.",
+  "conservation": "멸종위기 야생생물 Ⅱ급, 천연기념물 제451호. 월동기 잠자리·채식지 주변 공사·출입 제한, 낙곡 남기기·무논 조성.",
+  "vars": [
+   "elev",
+   "paddy",
+   "field",
+   "wetland",
+   "river",
+   "lake",
+   "tidal",
+   "dist_river",
+   "dist_lake",
+   "dist_coast",
+   "bio1",
+   "bio4"
+  ],
+  "layers": [
+   {
+    "key": "feed",
+    "name": "채식지",
+    "season": "10~3월",
+    "main": true,
+    "groups": [
+     "paddy",
+     "tidal"
+    ],
+    "desc": "잠자리 물에서 5 km 안의 넓은 논·갯벌",
+    "elev": [
+     0,
+     300
+    ],
+    "cell_min": 0.2,
+    "near": [
+     {
+      "groups": [
+       "river",
+       "lake",
+       "tidal"
+      ],
+      "km": 5,
+      "min": 0.02
+     }
+    ],
+    "refs": [
+     1
+    ]
+   },
+   {
+    "key": "roost",
+    "name": "잠자리",
+    "season": "10~3월",
+    "main": true,
+    "groups": [
+     "river",
+     "lake",
+     "tidal"
+    ],
+    "desc": "채식지에서 3 km 안의 얕은 하천·저수지·갯벌",
+    "elev": [
+     0,
+     300
+    ],
+    "near": [
+     {
+      "groups": [
+       "paddy",
+       "tidal"
+      ],
+      "km": 3,
+      "min": 0.2
+     }
+    ],
+    "refs": [
+     1
+    ]
+   }
+  ],
+  "refs": [
+   {
+    "text": "(2012) Grus grus: BirdLife International. IUCN Red List of Threatened Species",
+    "url": "https://doi.org/10.2305/iucn.uk.2012-1.rlts.t22692146a38448467.en"
+   }
+  ]
+ },
+ "시베리아흰두루미": {
+  "summary": "대형 두루미류로 국내 평야·습지에서 겨울을 난다. 세계적 위급종으로 대부분 중국 포양호에서 월동한다.",
+  "distribution": "철원·한강 하구·순천만 등에서 아주 드물게 확인된다.",
+  "habitat": "낮에는 추수가 끝난 넓은 논과 갯벌에서 먹고, 밤에는 얕은 여울·저수지·갯벌에서 잔다. 사람·차량 방해를 피한다.",
+  "life": "10~11월 도래, 2~3월 북상. 가족 단위 무리.",
+  "diet": "낙곡·뿌리, 수서동물, 갯벌의 게·갯지렁이.",
+  "threats": "농경지 개발·비닐하우스, 볏짚 수거로 낙곡 감소, 전선 충돌, 관광·차량 방해.",
+  "conservation": "멸종위기 야생생물 Ⅱ급. 월동기 잠자리·채식지 주변 공사·출입 제한, 낙곡 남기기·무논 조성.",
+  "vars": [
+   "elev",
+   "paddy",
+   "field",
+   "wetland",
+   "river",
+   "lake",
+   "tidal",
+   "dist_river",
+   "dist_lake",
+   "dist_coast",
+   "bio1",
+   "bio4"
+  ],
+  "layers": [
+   {
+    "key": "feed",
+    "name": "채식지",
+    "season": "10~3월",
+    "main": true,
+    "groups": [
+     "paddy",
+     "tidal"
+    ],
+    "desc": "잠자리 물에서 5 km 안의 넓은 논·갯벌",
+    "elev": [
+     0,
+     300
+    ],
+    "cell_min": 0.2,
+    "near": [
+     {
+      "groups": [
+       "river",
+       "lake",
+       "tidal"
+      ],
+      "km": 5,
+      "min": 0.02
+     }
+    ],
+    "refs": []
+   },
+   {
+    "key": "roost",
+    "name": "잠자리",
+    "season": "10~3월",
+    "main": true,
+    "groups": [
+     "river",
+     "lake",
+     "tidal"
+    ],
+    "desc": "채식지에서 3 km 안의 얕은 하천·저수지·갯벌",
+    "elev": [
+     0,
+     300
+    ],
+    "near": [
+     {
+      "groups": [
+       "paddy",
+       "tidal"
+      ],
+      "km": 3,
+      "min": 0.2
+     }
+    ],
+    "refs": []
+   }
+  ],
+  "refs": []
+ },
+ "저어새": {
+  "summary": "주걱 모양 부리의 저어새. 세계 개체수의 대부분이 서해 무인도에서 번식한다.",
+  "distribution": "인천 강화·영종·송도 갯벌의 무인도(남동유수지 인공섬 포함), 서해안 섬들에서 번식하고 대만·홍콩·일본 등에서 월동한다.",
+  "habitat": "작은 무인도의 풀밭·바위에서 집단 번식하고, 하구 갯벌·얕은 갯골·논·유수지에서 부리를 저으며 먹이를 찾는다.",
+  "life": "3~4월 도래, 4~8월 번식, 10~11월 남하.",
+  "diet": "작은 물고기·새우·게.",
+  "threats": "갯벌 매립, 번식섬 교란·포식자, 하구 수질 악화.",
+  "conservation": "멸종위기 야생생물 Ⅰ급, 천연기념물 제205호. 번식섬 출입 통제, 갯벌·유수지 보전.",
+  "vars": [
+   "elev",
+   "tidal",
+   "bare",
+   "wetland",
+   "river",
+   "lake",
+   "dist_coast",
+   "bio1",
+   "bio4"
+  ],
+  "layers": [
+   {
+    "key": "breed",
+    "name": "번식지(무인도)",
+    "season": "4~8월",
+    "main": true,
+    "groups": [
+     "grass",
+     "rock",
+     "bare",
+     "broad",
+     "mixed",
+     "conifer"
+    ],
+    "desc": "갯벌에 둘러싸인 해안 300 m 안의 섬·해안 풀밭·바위",
+    "coast_km": 0.3,
+    "elev": [
+     0,
+     80
+    ],
+    "near": [
+     {
+      "groups": [
+       "tidal"
+      ],
+      "km": 1,
+      "min": 0.1
+     }
+    ],
+    "refs": [
+     1,
+     2,
+     3
+    ]
+   },
+   {
+    "key": "feed",
+    "name": "채식지",
+    "season": "4~10월",
+    "main": true,
+    "groups": [
+     "tidal",
+     "wetland",
+     "river",
+     "paddy"
+    ],
+    "desc": "해안 3 km 안의 갯벌·염습지·하구·논",
+    "coast_km": 3,
+    "elev": [
+     0,
+     30
+    ],
+    "refs": [
+     1,
+     2,
+     3
+    ]
+   }
+  ],
+  "refs": [
+   {
+    "text": "Chang-Yong Choi 외 (2015) Behavioural responses of wintering black-faced spoonbills (Platalea minor) to disturbance. Wildlife Research",
+    "url": "https://doi.org/10.1071/wr14150"
+   },
+   {
+    "text": "Jung-Hoon Kang 외 (2016) Distribution, breeding status, and conservation of the black-faced spoonbill (Platalea minor) in South Korea. Forest Science and Technology",
+    "url": "https://doi.org/10.1080/21580103.2015.1090483"
+   },
+   {
+    "text": "Jung-Hoon Kang 외 (2017) Home range and movement of juvenile black-faced spoonbill Platalea minor in South Korea. Journal of Ecology and Environment",
+    "url": "https://doi.org/10.1186/s41610-017-0024-5"
+   },
+   {
+    "text": "Seok-Jun Son 외 (2021) Black-Faced Spoonbill Platalea minor Population Trends, Breeding Success, and Nest Characteristics in the Chilsan Archipelago, South Korea. Ornithological Science",
+    "url": "https://doi.org/10.2326/osj.20.57"
+   },
+   {
+    "text": "(2012) Platalea minor: BirdLife International. IUCN Red List of Threatened Species",
+    "url": "https://doi.org/10.2305/iucn.uk.2015.rlts.t22697568a84646222.en"
+   }
+  ]
+ },
+ "노랑부리저어새": {
+  "summary": "부리 끝이 노란 저어새. 국내에는 겨울철새로 남부 하구·호소에 온다.",
+  "distribution": "낙동강 하구, 주남저수지, 순천만, 제주 하도리·성산 등.",
+  "habitat": "하구 갯벌, 얕은 저수지·습지에서 부리를 저어 먹이를 찾는다.",
+  "life": "10월 도래, 3월 북상.",
+  "diet": "작은 물고기·새우·수서곤충.",
+  "threats": "하구 개발, 수질 악화, 방해.",
+  "conservation": "멸종위기 야생생물 Ⅱ급, 천연기념물 제205호. 월동 습지·하구 보전.",
+  "vars": [
+   "elev",
+   "paddy",
+   "field",
+   "wetland",
+   "river",
+   "lake",
+   "tidal",
+   "dist_river",
+   "dist_lake",
+   "dist_coast",
+   "bio1",
+   "bio4"
+  ],
+  "layers": [
+   {
+    "key": "main",
+    "name": "월동지",
+    "season": "10~3월",
+    "main": true,
+    "groups": [
+     "tidal",
+     "wetland",
+     "lake",
+     "river"
+    ],
+    "desc": "해안 10 km 안의 하구·갯벌·얕은 저수지·습지",
+    "coast_km": 10,
+    "elev": [
+     0,
+     100
+    ],
+    "cell_min": 0.02,
+    "refs": [
+     1
+    ]
+   }
+  ],
+  "refs": [
+   {
+    "text": "(2016) Platalea leucorodia: BirdLife International. IUCN Red List of Threatened Species",
+    "url": "https://doi.org/10.2305/iucn.uk.2019-3.rlts.t22697555a155460986.en"
+   }
+  ]
+ },
+ "노랑부리백로": {
+  "summary": "번식기 부리가 노란 백로. 세계적 취약종으로 서해 무인도에서 번식한다.",
+  "distribution": "옹진·태안·신안 등 서해 무인도에서 번식하고 주변 갯벌에서 먹이를 찾는다.",
+  "habitat": "무인도 숲·덤불에서 집단 번식하고 썰물 갯벌의 얕은 물에서 먹이를 잡는다.",
+  "life": "4~5월 도래, 5~7월 번식, 9~10월 남하.",
+  "diet": "작은 물고기·새우·게.",
+  "threats": "갯벌 매립, 번식섬 교란.",
+  "conservation": "멸종위기 야생생물 Ⅰ급, 천연기념물 제361호. 번식섬 출입 통제, 갯벌 보전.",
+  "vars": [
+   "elev",
+   "tidal",
+   "bare",
+   "wetland",
+   "river",
+   "lake",
+   "dist_coast",
+   "bio1",
+   "bio4"
+  ],
+  "layers": [
+   {
+    "key": "breed",
+    "name": "번식지(무인도)",
+    "season": "5~7월",
+    "main": true,
+    "groups": [
+     "broad",
+     "mixed",
+     "conifer",
+     "grass",
+     "rock"
+    ],
+    "desc": "갯벌 1 km 안의 해안 300 m 안 섬·해안 숲",
+    "coast_km": 0.3,
+    "elev": [
+     0,
+     100
+    ],
+    "near": [
+     {
+      "groups": [
+       "tidal"
+      ],
+      "km": 1,
+      "min": 0.1
+     }
+    ],
+    "refs": [
+     1,
+     2,
+     3
+    ]
+   },
+   {
+    "key": "feed",
+    "name": "채식지",
+    "season": "4~9월",
+    "main": true,
+    "groups": [
+     "tidal"
+    ],
+    "desc": "해안 2 km 안의 갯벌",
+    "coast_km": 2,
+    "elev": [
+     0,
+     10
+    ],
+    "refs": [
+     1,
+     2,
+     3
+    ]
+   }
+  ],
+  "refs": [
+   {
+    "text": "Seok-Jun Son 외 (2022) First Record of Autumn Migration of Juvenile Chinese Egrets Egretta eulophotes from South Korea Tracked with GPS Telemetry. Pakistan Journal of Zoology",
+    "url": "https://doi.org/10.17582/journal.pjz/20210121080119"
+   },
+   {
+    "text": "외 (2021) Home Range of Juvenile Chinese Egrets &lt;i&gt;Egretta\n              eulophotes&lt;/i&gt; during Post-fledging Stage in Chilsan Archipelago,\n            Republic of Korea. Korean Journal of Environment and Ecology",
+    "url": "https://doi.org/10.13047/kjee.2021.35.2.98"
+   },
+   {
+    "text": "(2025) Egretta eulophotes: BirdLife International. IUCN Red List of Threatened Species",
+    "url": "https://doi.org/10.2305/iucn.uk.2025-2.rlts.t22696977a154698211.en"
+   }
+  ]
+ },
+ "황새": {
+  "summary": "흰 몸에 검은 날개깃의 대형 황새. 국내 번식 집단은 사라졌다가 예산에서 복원해 방사하고 있다.",
+  "distribution": "충남 예산 황새공원 방사 개체가 예산·서산·아산·김해 등 평야로 퍼졌고, 겨울에는 야생 개체가 소수 도래한다.",
+  "habitat": "넓은 논·습지·하천에서 미꾸라지·개구리를 잡고, 높은 나무나 인공 둥지탑·전신주에 둥지를 튼다.",
+  "life": "3~6월 번식(복원 개체), 야생 개체는 11~3월 월동.",
+  "diet": "물고기·개구리·뱀·곤충.",
+  "threats": "농약·농경지 감소, 전선 충돌, 무논 감소.",
+  "conservation": "멸종위기 야생생물 Ⅰ급, 천연기념물 제199호. 무논·둠벙 조성, 친환경 농업, 인공 둥지탑, 전선 표지.",
+  "vars": [
+   "elev",
+   "paddy",
+   "field",
+   "wetland",
+   "river",
+   "lake",
+   "tidal",
+   "dist_river",
+   "dist_lake",
+   "dist_coast",
+   "bio1",
+   "bio4"
+  ],
+  "layers": [
+   {
+    "key": "main",
+    "name": "채식지(논·습지)",
+    "season": "연중",
+    "main": true,
+    "groups": [
+     "paddy",
+     "wetland",
+     "river"
+    ],
+    "desc": "해발 100 m 이하 평야의 논·습지·하천",
+    "elev": [
+     0,
+     100
+    ],
+    "cell_min": 0.2,
+    "refs": [
+     1,
+     2,
+     3
+    ]
+   }
+  ],
+  "refs": [
+   {
+    "text": "Dong-Soo Ha 외 (2024) Demography, habitat use, and movement patterns of founder Oriental Storks Ciconia boyciana in South Korea. Bird Conservation International",
+    "url": "https://doi.org/10.1017/s0959270924000194"
+   },
+   {
+    "text": "Dong-Soo Ha 외 (2018) An experimental study of electrocution-decreasing methods for Oriental Storks(Ciconia boyciana) in captivity. The Korean Journal of Ornithology",
+    "url": "https://doi.org/10.30980/kjo.2018.12.25.2.112"
+   },
+   {
+    "text": "(2018) Ciconia boyciana: BirdLife International. IUCN Red List of Threatened Species",
+    "url": "https://doi.org/10.2305/iucn.uk.2018-2.rlts.t22697695a131942061.en"
+   }
+  ]
+ },
+ "먹황새": {
+  "summary": "검은 몸의 황새. 과거 국내 번식지(안동·영월)는 사라졌고 지금은 겨울에 소수가 온다.",
+  "distribution": "영월·정선 동강, 화천·양구 북한강 상류, 안동 등 바위 절벽이 있는 산간 하천.",
+  "habitat": "물이 맑고 절벽이 가까운 산간 하천의 여울에서 물고기를 잡는다. 과거 하천 절벽에서 번식했다.",
+  "life": "11~3월 월동.",
+  "diet": "물고기·개구리.",
+  "threats": "하천 정비·댐, 탁수, 레저 방해.",
+  "conservation": "멸종위기 야생생물 Ⅰ급, 천연기념물 제200호. 산간 하천 여울·절벽 보전.",
+  "vars": [
+   "elev",
+   "slope",
+   "rock",
+   "tree",
+   "river",
+   "paddy",
+   "field",
+   "dist_river",
+   "bio1",
+   "bio12"
+  ],
+  "layers": [
+   {
+    "key": "main",
+    "name": "월동지",
+    "season": "11~3월",
+    "main": true,
+    "groups": [
+     "river"
+    ],
+    "desc": "바위 절벽 500 m 안의 산간 하천(해발 50~600 m)",
+    "elev": [
+     50,
+     600
+    ],
+    "cell_min": 0.01,
+    "near": [
+     {
+      "groups": [
+       "rock"
+      ],
+      "km": 0.5,
+      "min": 0.003
+     }
+    ],
+    "refs": [
+     1,
+     2
+    ]
+   }
+  ],
+  "refs": [
+   {
+    "text": "Jin Choi 외 (2024) Pattern comparison in breeding status and local extinction of Black Storks (Ciconia nigra) extirpated in Mt. Geumgang and Andong City of the Korean Peninsula. The Korean Journal of Ornithology",
+    "url": "https://doi.org/10.30980/kjo.2024.12.31.2.196"
+   },
+   {
+    "text": "(2016) Ciconia nigra: BirdLife International. IUCN Red List of Threatened Species",
+    "url": "https://doi.org/10.2305/iucn.uk.2016-3.rlts.t22697669a86245658.en"
+   }
+  ]
+ },
+ "따오기": {
+  "summary": "국내에서 사라졌다가 2019년부터 창녕 우포늪에서 복원·방사하는 따오기.",
+  "distribution": "창녕 우포늪 일대를 중심으로 방사 개체가 경남 일대로 퍼지고 있다.",
+  "habitat": "논·습지·얕은 물가에서 미꾸라지·수서곤충을 잡고, 가까운 숲의 큰 나무에서 잠자고 둥지를 튼다.",
+  "life": "3~6월 번식.",
+  "diet": "미꾸라지·개구리·수서곤충·갑각류.",
+  "threats": "농약, 논 감소, 숲 가장자리 훼손.",
+  "conservation": "멸종위기 야생생물 Ⅱ급, 천연기념물 제198호. 무논·친환경 농업, 둥지 숲 보전.",
+  "vars": [
+   "elev",
+   "paddy",
+   "field",
+   "wetland",
+   "river",
+   "lake",
+   "tidal",
+   "dist_river",
+   "dist_lake",
+   "dist_coast",
+   "bio1",
+   "bio4"
+  ],
+  "layers": [
+   {
+    "key": "feed",
+    "name": "채식지",
+    "season": "연중",
+    "main": true,
+    "groups": [
+     "paddy",
+     "wetland",
+     "river"
+    ],
+    "desc": "숲 1 km 안의 논·습지(해발 150 m 이하)",
+    "elev": [
+     0,
+     150
+    ],
+    "near": [
+     {
+      "groups": [
+       "broad",
+       "mixed",
+       "conifer"
+      ],
+      "km": 1,
+      "min": 0.3
+     }
+    ],
+    "refs": [
+     1
+    ]
+   },
+   {
+    "key": "nest",
+    "name": "둥지·잠자리 숲",
+    "season": "3~6월",
+    "main": true,
+    "groups": [
+     "broad",
+     "mixed",
+     "conifer"
+    ],
+    "desc": "논·습지 500 m 안의 숲(해발 300 m 이하)",
+    "elev": [
+     0,
+     300
+    ],
+    "near": [
+     {
+      "groups": [
+       "paddy",
+       "wetland"
+      ],
+      "km": 0.5,
+      "min": 0.1
+     }
+    ],
+    "refs": [
+     1
+    ]
+   }
+  ],
+  "refs": [
+   {
+    "text": "(2016) Nipponia nippon: BirdLife International. IUCN Red List of Threatened Species",
+    "url": "https://doi.org/10.2305/iucn.uk.2016-3.rlts.t22697548a93620321.en"
+   }
+  ],
+  "range": {
+   "km": 20,
+   "note": "우포늪 복원 개체군 주변"
+  }
+ },
+ "큰덤불해오라기": {
+  "summary": "갈대 습지에 숨어 사는 작은 해오라기. 기록이 드물다.",
+  "distribution": "중부 이남 습지·논에서 드물게 번식한다.",
+  "habitat": "갈대·부들이 우거진 습지와 묵논.",
+  "life": "5~8월 번식.",
+  "diet": "작은 물고기·개구리·수서곤충.",
+  "threats": "습지 매립, 갈대밭 제거.",
+  "conservation": "멸종위기 야생생물 Ⅱ급. 갈대 습지 보전.",
+  "vars": [
+   "elev",
+   "paddy",
+   "field",
+   "wetland",
+   "river",
+   "lake",
+   "tidal",
+   "dist_river",
+   "dist_lake",
+   "dist_coast",
+   "bio1",
+   "bio4"
+  ],
+  "layers": [
+   {
+    "key": "main",
+    "name": "서식지",
+    "season": "5~8월",
+    "main": true,
+    "groups": [
+     "wetland",
+     "paddy",
+     "lake"
+    ],
+    "desc": "해발 100 m 이하의 갈대 습지·묵논·저수지 가장자리",
+    "elev": [
+     0,
+     100
+    ],
+    "near": [
+     {
+      "groups": [
+       "wetland"
+      ],
+      "km": 0.5,
+      "min": 0.03
+     }
+    ],
+    "refs": []
+   }
+  ],
+  "refs": []
+ },
+ "붉은해오라기": {
+  "summary": "어두운 숲 계곡에 사는 해오라기. 기록이 드물다.",
+  "distribution": "제주와 남해안·남부 지방의 숲 계곡에서 드물게 확인된다.",
+  "habitat": "울창한 상록·낙엽활엽수림 속 계곡과 습한 숲 바닥.",
+  "life": "5~8월 번식.",
+  "diet": "지렁이·개구리·곤충.",
+  "threats": "숲 계곡 훼손, 벌채.",
+  "conservation": "멸종위기 야생생물 Ⅱ급. 숲 계곡 보전.",
+  "vars": [
+   "elev",
+   "slope",
+   "tree",
+   "broad",
+   "dist_river",
+   "dist_coast",
+   "bio1",
+   "bio4",
+   "bio12"
+  ],
+  "layers": [
+   {
+    "key": "main",
+    "name": "서식지",
+    "season": "5~8월",
+    "main": true,
+    "groups": [
+     "broad",
+     "mixed"
+    ],
+    "desc": "계곡·하천 300 m 안의 활엽수림(해발 800 m 이하)",
+    "elev": [
+     0,
+     800
+    ],
+    "cell_min": 0.4,
+    "near": [
+     {
+      "groups": [
+       "river"
+      ],
+      "km": 0.3,
+      "min": 0.003
+     }
+    ],
+    "refs": [
+     1
+    ]
+   }
+  ],
+  "refs": [
+   {
+    "text": "Oh Hongshik 외 (2010) First Breeding Record of Japanese Night HeronGorsachius goisagiin Korea. Ornithological Science",
+    "url": "https://doi.org/10.2326/osj.9.131"
+   }
+  ]
+ },
+ "넓적부리도요": {
+  "summary": "부리 끝이 주걱 모양인 세계적 위급종 도요. 서·남해 갯벌을 이동 중에 들른다.",
+  "distribution": "인천·경기만, 충남 서천·유부도, 전북 곰소만, 전남 순천만·무안 등 서·남해 갯벌.",
+  "habitat": "넓은 펄·모래 갯벌에서 갯지렁이·게를 먹고, 만조 때는 갯벌 가까운 모래톱·염전·매립지에서 쉰다.",
+  "life": "이동 시기(4~5·8~10월) 서해 갯벌에 머문다.",
+  "diet": "갯지렁이·게·조개류.",
+  "threats": "갯벌 매립(새만금 등)과 만조 휴식지 감소, 방해, 해양 오염.",
+  "conservation": "멸종위기 야생생물 Ⅰ급. 갯벌·만조 휴식지 보전, 이동 시기 공사·출입 조정.",
+  "vars": [
+   "elev",
+   "tidal",
+   "bare",
+   "wetland",
+   "river",
+   "lake",
+   "dist_coast",
+   "bio1",
+   "bio4"
+  ],
+  "layers": [
+   {
+    "key": "main",
+    "name": "갯벌·만조 휴식지",
+    "season": "4~5·8~10월",
+    "main": true,
+    "groups": [
+     "tidal",
+     "bare",
+     "wetland"
+    ],
+    "desc": "해안 1 km 안의 갯벌·모래톱·염습지",
+    "coast_km": 1,
+    "elev": [
+     0,
+     10
+    ],
+    "refs": [
+     1,
+     2,
+     3
+    ]
+   }
+  ],
+  "refs": [
+   {
+    "text": "김창회 외 (2010) 제2차 전국자연환경조사 결과 분석을 통한 멸종위기조류의 국내 분포현황. 한국조류학회지",
+    "url": ""
+   },
+   {
+    "text": "Christoph Zöckler 외 (2010) Rapid and continued population decline in the Spoon-billed Sandpiper Eurynorhynchus pygmeus indicates imminent extinction unless conservation action is taken. Bird Conservation International",
+    "url": "https://doi.org/10.1017/s0959270910000316"
+   },
+   {
+    "text": "Pavel S. Tomkovich 외 (2002) First indications of a sharp population decline in the globally threatened Spoon-billed Sandpiper Eurynorhynchus pygmeus. Bird Conservation International",
+    "url": "https://doi.org/10.1017/s0959270902002010"
+   }
+  ],
+  "range": {
+   "km": 20
+  }
+ },
+ "청다리도요사촌": {
+  "summary": "세계적 위기종 도요로 서해 갯벌을 이동 중에 들른다.",
+  "distribution": "인천·경기만, 충남 서천·유부도, 전북 곰소만, 전남 순천만·무안 등 서·남해 갯벌.",
+  "habitat": "넓은 펄·모래 갯벌에서 갯지렁이·게를 먹고, 만조 때는 갯벌 가까운 모래톱·염전·매립지에서 쉰다.",
+  "life": "이동 시기(4~5·8~10월) 서해 갯벌에 머문다.",
+  "diet": "갯지렁이·게·조개류.",
+  "threats": "갯벌 매립(새만금 등)과 만조 휴식지 감소, 방해, 해양 오염.",
+  "conservation": "멸종위기 야생생물 Ⅰ급. 갯벌·만조 휴식지 보전, 이동 시기 공사·출입 조정.",
+  "vars": [
+   "elev",
+   "tidal",
+   "bare",
+   "wetland",
+   "river",
+   "lake",
+   "dist_coast",
+   "bio1",
+   "bio4"
+  ],
+  "layers": [
+   {
+    "key": "main",
+    "name": "갯벌·만조 휴식지",
+    "season": "4~5·8~10월",
+    "main": true,
+    "groups": [
+     "tidal",
+     "bare",
+     "wetland"
+    ],
+    "desc": "해안 1 km 안의 갯벌·모래톱·염습지",
+    "coast_km": 1,
+    "elev": [
+     0,
+     10
+    ],
+    "refs": [
+     1,
+     2
+    ]
+   }
+  ],
+  "refs": [
+   {
+    "text": "C. Swennen 외 (1991) Spotted Greenshank Tringa guttifer Feeding on an Intertidal Flat in Korea.. Journal of the Yamashina Institute for Ornithology",
+    "url": "https://doi.org/10.3312/jyio1952.23.13"
+   },
+   {
+    "text": "(2016) Tringa guttifer: BirdLife International. IUCN Red List of Threatened Species",
+    "url": "https://doi.org/10.2305/iucn.uk.2016-3.rlts.t22693225a93391729.en"
+   }
+  ],
+  "range": {
+   "km": 20
+  }
+ },
+ "붉은어깨도요": {
+  "summary": "서해 갯벌을 지나는 대표적인 장거리 이동 도요. 새만금 매립 뒤 크게 줄었다.",
+  "distribution": "인천·경기만, 충남 서천·유부도, 전북 곰소만, 전남 순천만·무안 등 서·남해 갯벌.",
+  "habitat": "넓은 펄·모래 갯벌에서 갯지렁이·게를 먹고, 만조 때는 갯벌 가까운 모래톱·염전·매립지에서 쉰다.",
+  "life": "이동 시기(4~5·8~10월) 서해 갯벌에 머문다.",
+  "diet": "갯지렁이·게·조개류.",
+  "threats": "갯벌 매립(새만금 등)과 만조 휴식지 감소, 방해, 해양 오염.",
+  "conservation": "멸종위기 야생생물 Ⅱ급. 갯벌·만조 휴식지 보전, 이동 시기 공사·출입 조정.",
+  "vars": [
+   "elev",
+   "tidal",
+   "bare",
+   "wetland",
+   "river",
+   "lake",
+   "dist_coast",
+   "bio1",
+   "bio4"
+  ],
+  "layers": [
+   {
+    "key": "main",
+    "name": "갯벌·만조 휴식지",
+    "season": "4~5·8~10월",
+    "main": true,
+    "groups": [
+     "tidal",
+     "bare",
+     "wetland"
+    ],
+    "desc": "해안 1 km 안의 갯벌·모래톱·염습지",
+    "coast_km": 1,
+    "elev": [
+     0,
+     10
+    ],
+    "refs": [
+     1,
+     2,
+     3
+    ]
+   }
+  ],
+  "refs": [
+   {
+    "text": "Simeon Lisovski 외 (2016) Tracking the full annual-cycle of the Great Knot, Calidris tenuirostris, a long-distance migratory shorebird of the East Asian-Australasian Flyway. Wader Study",
+    "url": "https://doi.org/10.18194/ws.00048"
+   },
+   {
+    "text": "Pavel S. Tomkovich (1997) Breeding Distribution, Migrations and Conservation Status of the Great Knot Calidris tenuirostris in Russia. Emu - Austral Ornithology",
+    "url": "https://doi.org/10.1071/mu97040"
+   },
+   {
+    "text": "(2016) Calidris tenuirostris: BirdLife International. IUCN Red List of Threatened Species",
+    "url": "https://doi.org/10.2305/iucn.uk.2016-3.rlts.t22693359a93398599.en"
+   }
+  ],
+  "range": {
+   "km": 20
+  }
+ },
+ "알락꼬리마도요": {
+  "summary": "부리가 아주 긴 대형 도요. 서해 갯벌이 핵심 중간기착지다.",
+  "distribution": "인천·경기만, 충남 서천·유부도, 전북 곰소만, 전남 순천만·무안 등 서·남해 갯벌.",
+  "habitat": "넓은 펄·모래 갯벌에서 갯지렁이·게를 먹고, 만조 때는 갯벌 가까운 모래톱·염전·매립지에서 쉰다.",
+  "life": "이동 시기(3~5·7~10월) 서해 갯벌에 머문다.",
+  "diet": "갯지렁이·게·조개류.",
+  "threats": "갯벌 매립(새만금 등)과 만조 휴식지 감소, 방해, 해양 오염.",
+  "conservation": "멸종위기 야생생물 Ⅱ급. 갯벌·만조 휴식지 보전, 이동 시기 공사·출입 조정.",
+  "vars": [
+   "elev",
+   "tidal",
+   "bare",
+   "wetland",
+   "river",
+   "lake",
+   "dist_coast",
+   "bio1",
+   "bio4"
+  ],
+  "layers": [
+   {
+    "key": "main",
+    "name": "갯벌·만조 휴식지",
+    "season": "3~5·7~10월",
+    "main": true,
+    "groups": [
+     "tidal",
+     "bare",
+     "wetland"
+    ],
+    "desc": "해안 1 km 안의 갯벌·모래톱·염습지",
+    "coast_km": 1,
+    "elev": [
+     0,
+     10
+    ],
+    "refs": [
+     1,
+     2,
+     3
+    ]
+   }
+  ],
+  "refs": [
+   {
+    "text": "Peter V. Driscoll 외 (2002) The migration route and behaviour of Eastern Curlews Numenius madagascariensis. Ibis",
+    "url": "https://doi.org/10.1046/j.1474-919x.2002.00081.x"
+   },
+   {
+    "text": "Theunis Piersma (1986) Eastern Curlews Numenius Madagascariensis Feeding on Macrophthalmus and Other Ocypodid Crabs in the Nakdong Estuary, South Korea. Emu - Austral Ornithology",
+    "url": "https://doi.org/10.1071/mu9860155"
+   },
+   {
+    "text": "Yuri Zharikov 외 (2004) Why do eastern curlews\n          Numenius madagascariensis\n          feed on prey that lowers intake rate before migration?. Journal of Avian Biology",
+    "url": "https://doi.org/10.1111/j.0908-8857.2004.03275.x"
+   },
+   {
+    "text": "(2024) Numenius madagascariensis: BirdLife International. IUCN Red List of Threatened Species",
+    "url": "https://doi.org/10.2305/iucn.uk.2024-2.rlts.t22693199a250045646.en"
+   }
+  ],
+  "range": {
+   "km": 20
+  }
+ },
+ "큰뒷부리도요": {
+  "summary": "알래스카~뉴질랜드를 오가는 장거리 이동 도요. 서해 갯벌에서 먹이를 보충한다.",
+  "distribution": "인천·경기만, 충남 서천·유부도, 전북 곰소만, 전남 순천만·무안 등 서·남해 갯벌.",
+  "habitat": "넓은 펄·모래 갯벌에서 갯지렁이·게를 먹고, 만조 때는 갯벌 가까운 모래톱·염전·매립지에서 쉰다.",
+  "life": "이동 시기(4~5·8~10월) 서해 갯벌에 머문다.",
+  "diet": "갯지렁이·게·조개류.",
+  "threats": "갯벌 매립(새만금 등)과 만조 휴식지 감소, 방해, 해양 오염.",
+  "conservation": "멸종위기 야생생물 Ⅱ급. 갯벌·만조 휴식지 보전, 이동 시기 공사·출입 조정.",
+  "vars": [
+   "elev",
+   "tidal",
+   "bare",
+   "wetland",
+   "river",
+   "lake",
+   "dist_coast",
+   "bio1",
+   "bio4"
+  ],
+  "layers": [
+   {
+    "key": "main",
+    "name": "갯벌·만조 휴식지",
+    "season": "4~5·8~10월",
+    "main": true,
+    "groups": [
+     "tidal",
+     "bare",
+     "wetland"
+    ],
+    "desc": "해안 1 km 안의 갯벌·모래톱·염습지",
+    "coast_km": 1,
+    "elev": [
+     0,
+     10
+    ],
+    "refs": [
+     1
+    ]
+   }
+  ],
+  "refs": [
+   {
+    "text": "(2016) Limosa lapponica: BirdLife International. IUCN Red List of Threatened Species",
+    "url": "https://doi.org/10.2305/iucn.uk.2017-1.rlts.t22693158a111221714.en"
+   }
+  ],
+  "range": {
+   "km": 20
+  }
+ },
+ "검은머리물떼새": {
+  "summary": "검은 몸에 붉은 부리의 물떼새. 서해 갯벌과 무인도 자갈밭에서 번식하고 겨울에도 남는다.",
+  "distribution": "인천·경기·충남·전북 서해 갯벌과 섬, 한강 하구.",
+  "habitat": "갯벌에서 조개를 먹고 무인도·해안의 자갈밭·모래밭에서 번식한다.",
+  "life": "4~7월 번식, 연중 관찰.",
+  "diet": "조개·갯지렁이·게.",
+  "threats": "갯벌 매립, 번식지 교란(낚시·관광).",
+  "conservation": "멸종위기 야생생물 Ⅱ급, 천연기념물 제326호. 번식기 섬·해안 출입 통제, 갯벌 보전.",
+  "vars": [
+   "elev",
+   "tidal",
+   "bare",
+   "wetland",
+   "river",
+   "lake",
+   "dist_coast",
+   "bio1",
+   "bio4"
+  ],
+  "layers": [
+   {
+    "key": "main",
+    "name": "서식지",
+    "season": "연중(번식 4~7월)",
+    "main": true,
+    "groups": [
+     "tidal",
+     "bare",
+     "rock"
+    ],
+    "desc": "해안 500 m 안의 갯벌·자갈밭·바위",
+    "coast_km": 0.5,
+    "elev": [
+     0,
+     20
+    ],
+    "refs": [
+     1,
+     2
+    ]
+   }
+  ],
+  "refs": [
+   {
+    "text": "Chang-Uk Park 외 (2025) Breeding Status, Home Range, and Post-Breeding Movement Pattern of Eurasian Oystercatcher (Haematopus ostralegus) in Shinan Tidal Flats, South Korea. The Korean Journal of Ornithology",
+    "url": "https://doi.org/10.30980/kjo.2025.6.32.1.13"
+   },
+   {
+    "text": "(2015) Haematopus ostralegus: BirdLife International. IUCN Red List of Threatened Species",
+    "url": "https://doi.org/10.2305/iucn.uk.2015-1.rlts.t22693613a202662669.en"
+   }
+  ]
+ },
+ "검은머리갈매기": {
+  "summary": "번식기 머리가 검은 작은 갈매기. 세계 번식 집단의 상당수가 서해 매립지에서 번식한다.",
+  "distribution": "인천 송도·영종, 시화호, 새만금 등 서해안 매립지와 염습지.",
+  "habitat": "칠면초 등이 자라는 매립지·염습지의 맨땅에서 집단 번식하고 갯벌에서 게를 잡는다.",
+  "life": "4~7월 번식, 겨울에는 남부 갯벌.",
+  "diet": "게·갯지렁이.",
+  "threats": "매립지 개발(번식지 소멸), 갯벌 감소, 포식자.",
+  "conservation": "멸종위기 야생생물 Ⅱ급. 매립지 번식지 보전, 번식기 공사·출입 조정.",
+  "vars": [
+   "elev",
+   "tidal",
+   "bare",
+   "wetland",
+   "river",
+   "lake",
+   "dist_coast",
+   "bio1",
+   "bio4"
+  ],
+  "layers": [
+   {
+    "key": "breed",
+    "name": "번식지",
+    "season": "4~7월",
+    "main": true,
+    "groups": [
+     "bare",
+     "artbare",
+     "grass",
+     "tidal",
+     "wetland"
+    ],
+    "desc": "해안 1 km 안의 매립지 맨땅·염습지",
+    "coast_km": 1,
+    "elev": [
+     0,
+     15
+    ],
+    "refs": [
+     1,
+     2,
+     3
+    ]
+   },
+   {
+    "key": "feed",
+    "name": "채식지",
+    "season": "연중",
+    "main": true,
+    "groups": [
+     "tidal"
+    ],
+    "desc": "해안 2 km 안의 갯벌",
+    "coast_km": 2,
+    "elev": [
+     0,
+     10
+    ],
+    "refs": [
+     1,
+     2,
+     3
+    ]
+   }
+  ],
+  "refs": [
+   {
+    "text": "H. X. JIANG 외 (2010) Breeding population dynamics and habitat transition of Saunders's GullLarus saundersiin Yancheng National Nature Reserve, China. Bird Conservation International",
+    "url": "https://doi.org/10.1017/s0959270910000055"
+   },
+   {
+    "text": "Young-Soo Kwon 외 (2009) Breeding Status and Ecology of Saunders' Gulls (Larus saundersi) in Songdo Reclaimed Land, West Coast of Korea. Ocean and Polar Research",
+    "url": "https://doi.org/10.4217/opr.2009.31.3.277"
+   },
+   {
+    "text": "Han-I Choi 외 (2020) Testing the potential of lightweight drones as a tool for monitoring the status of colonially breeding Saunders\"s gulls (Saundersilarus saundersi). The Korean Journal of Ornithology",
+    "url": "https://doi.org/10.30980/kjo.2020.6.27.1.10"
+   },
+   {
+    "text": "(2012) Saundersilarus saundersi: BirdLife International. IUCN Red List of Threatened Species",
+    "url": "https://doi.org/10.2305/iucn.uk.2012-1.rlts.t22694436a38857729.en"
+   }
+  ]
+ },
+ "고대갈매기": {
+  "summary": "세계적 취약종 갈매기. 서·남해안에서 드물게 겨울을 난다.",
+  "distribution": "서해·남해 하구와 갯벌.",
+  "habitat": "넓은 갯벌과 하구.",
+  "life": "11~3월 월동.",
+  "diet": "갯지렁이·게·작은 물고기.",
+  "threats": "갯벌 매립.",
+  "conservation": "멸종위기 야생생물 Ⅱ급. 갯벌 보전.",
+  "vars": [
+   "elev",
+   "tidal",
+   "bare",
+   "wetland",
+   "river",
+   "lake",
+   "dist_coast",
+   "bio1",
+   "bio4"
+  ],
+  "layers": [
+   {
+    "key": "main",
+    "name": "월동지",
+    "season": "11~3월",
+    "main": true,
+    "groups": [
+     "tidal",
+     "bare"
+    ],
+    "desc": "해안 1 km 안의 갯벌·모래톱",
+    "coast_km": 1,
+    "elev": [
+     0,
+     10
+    ],
+    "refs": [
+     1,
+     2,
+     3
+    ]
+   }
+  ],
+  "refs": [
+   {
+    "text": "외 (2025) Migration of Relict gull (Larus relictus) in Mongolia. Korea National Park Research Institute",
+    "url": "https://doi.org/10.54406/jnpr.2025.16.2.181"
+   },
+   {
+    "text": "Dongping Liu 외 (2017) Seasonal dispersal and longitudinal migration in the Relict Gull\n          Larus relictus\n          across the Inner-Mongolian Plateau. PeerJ",
+    "url": "https://doi.org/10.7717/peerj.3380"
+   },
+   {
+    "text": "(2016) Larus relictus: BirdLife International. IUCN Red List of Threatened Species",
+    "url": "https://doi.org/10.2305/iucn.uk.2016-3.rlts.t22694447a93453868.en"
+   }
+  ]
+ },
+ "쇠제비갈매기": {
+  "summary": "작은 제비갈매기. 하천 모래톱과 해안 사구에서 집단 번식한다.",
+  "distribution": "낙동강·금강 등 큰 강의 모래톱, 동해안 사구, 서해 매립지.",
+  "habitat": "물이 둘러싼 모래톱·자갈밭과 해안 모래밭에서 번식하고 강·바다에서 작은 물고기를 잡는다.",
+  "life": "4~7월 번식.",
+  "diet": "작은 물고기.",
+  "threats": "모래톱 소실(보·준설·골재 채취), 수위 상승으로 둥지 침수, 사람 출입.",
+  "conservation": "멸종위기 야생생물 Ⅱ급. 번식기 모래톱 출입 통제, 수위 관리, 모래톱 복원.",
+  "vars": [
+   "elev",
+   "tidal",
+   "bare",
+   "wetland",
+   "river",
+   "lake",
+   "dist_coast",
+   "bio1",
+   "bio4"
+  ],
+  "layers": [
+   {
+    "key": "breed",
+    "name": "번식지",
+    "season": "4~7월",
+    "main": true,
+    "groups": [
+     "bare"
+    ],
+    "desc": "하천·바다 300 m 안의 모래톱·사구",
+    "elev": [
+     0,
+     100
+    ],
+    "near": [
+     {
+      "groups": [
+       "river",
+       "sea",
+       "lake"
+      ],
+      "km": 0.3,
+      "min": 0.05
+     }
+    ],
+    "refs": [
+     1,
+     2
+    ]
+   },
+   {
+    "key": "feed",
+    "name": "채식지",
+    "season": "4~8월",
+    "main": true,
+    "groups": [
+     "river",
+     "lake",
+     "sea",
+     "tidal"
+    ],
+    "desc": "모래톱 2 km 안의 강·호소·연안",
+    "elev": [
+     0,
+     100
+    ],
+    "near": [
+     {
+      "groups": [
+       "bare"
+      ],
+      "km": 2,
+      "min": 0.005
+     }
+    ],
+    "refs": [
+     1,
+     2
+    ]
+   }
+  ],
+  "refs": [
+   {
+    "text": "Kwang-Seuk Jeong 외 (2011) Waterfowls habitat modeling: Simulation of nest site selection for the migratory Little Tern (Sterna albifrons) in the Nakdong estuary. Ecological Modelling",
+    "url": "https://doi.org/10.1016/j.ecolmodel.2011.05.032"
+   },
+   {
+    "text": "(2009) Changes of the Breeding State of Little Tern (Sterna albifrons) in the Nakdong Estuary, Busan, Republic of Korea. Journal of Life Science",
+    "url": "https://doi.org/10.5352/jls.2009.19.11.1611"
+   }
+  ]
+ },
+ "흰목물떼새": {
+  "summary": "자갈 하천에서 번식하는 물떼새. 하천 정비로 번식지가 줄고 있다.",
+  "distribution": "전국 중·상류 하천의 자갈·모래톱(한강·금강·낙동강 지류 등).",
+  "habitat": "물이 얕게 흐르는 하천의 자갈·모래톱에 오목하게 둥지를 만든다.",
+  "life": "3~7월 번식, 일부는 겨울에도 남는다.",
+  "diet": "수서곤충·갯지렁이.",
+  "threats": "하천 정비(둔치 개발·준설), 차량·사람 출입, 수위 변화.",
+  "conservation": "멸종위기 야생생물 Ⅱ급. 번식기 하천 자갈톱 출입 통제, 자연 하천 유지.",
+  "vars": [
+   "elev",
+   "tidal",
+   "bare",
+   "wetland",
+   "river",
+   "lake",
+   "dist_coast",
+   "bio1",
+   "bio4"
+  ],
+  "layers": [
+   {
+    "key": "main",
+    "name": "서식지(자갈·모래톱)",
+    "season": "3~7월",
+    "main": true,
+    "groups": [
+     "bare",
+     "river"
+    ],
+    "desc": "하천 100 m 안의 자갈·모래톱과 얕은 물(해발 700 m 이하)",
+    "elev": [
+     0,
+     700
+    ],
+    "near": [
+     {
+      "groups": [
+       "bare"
+      ],
+      "km": 0.25,
+      "min": 0.005
+     }
+    ],
+    "refs": [
+     1,
+     2
+    ]
+   }
+  ],
+  "refs": [
+   {
+    "text": "In-Kyu Kim 외 (2009) Distribution and Conservation of Long-billed Plovers Charadrius placidus in Korea. Journal of Korean Nature",
+    "url": "https://doi.org/10.1016/s1976-8648(14)60047-5"
+   },
+   {
+    "text": "(2025) Charadrius placidus: BirdLife International. IUCN Red List of Threatened Species",
+    "url": "https://doi.org/10.2305/iucn.uk.2025-2.rlts.t22693767a275471448.en"
+   }
+  ]
+ },
+ "뿔제비갈매기": {
+  "summary": "세계에 100마리 남짓 남은 위급종. 서해 무인도에서 드물게 번식한다.",
+  "distribution": "전남 영광 칠산도 등 서해 무인도.",
+  "habitat": "작은 무인도의 맨땅·풀밭에서 괭이갈매기·제비갈매기 무리에 섞여 번식한다.",
+  "life": "5~8월 번식.",
+  "diet": "작은 물고기.",
+  "threats": "번식섬 교란, 알 채집, 먹이 감소.",
+  "conservation": "멸종위기 야생생물 Ⅰ급. 번식섬 출입 통제.",
+  "vars": [
+   "elev",
+   "tidal",
+   "bare",
+   "wetland",
+   "river",
+   "lake",
+   "dist_coast",
+   "bio1",
+   "bio4"
+  ],
+  "layers": [
+   {
+    "key": "main",
+    "name": "번식지(무인도)",
+    "season": "5~8월",
+    "main": true,
+    "groups": [
+     "grass",
+     "bare",
+     "rock"
+    ],
+    "desc": "해안 200 m 안의 섬·해안 맨땅·풀밭",
+    "coast_km": 0.2,
+    "elev": [
+     0,
+     50
+    ],
+    "refs": [
+     1,
+     2,
+     3
+    ]
+   }
+  ],
+  "refs": [
+   {
+    "text": "Se-Kyu Song 외 (2017) First report and breeding record of the Chinese Crested Tern Thalasseus bernsteini on the Korean Peninsula. Journal of Asia-Pacific Biodiversity",
+    "url": "https://doi.org/10.1016/j.japb.2017.04.005"
+   },
+   {
+    "text": "CHUNG-HANG HUNG 외 (2018) Trends in numbers of the Critically Endangered Chinese Crested Tern Thalasseus bernsteini and sympatrically nesting Greater Crested Tern T. bergii in the Matsu Archipelago, Taiwan. Bird Conservation International",
+    "url": "https://doi.org/10.1017/s0959270918000369"
+   },
+   {
+    "text": "Yunkyoung Lee 외 (2021) Arrival and breeding status of the Chinese Crested Tern (Thalasseus bernsteini) in Korea. The Korean Journal of Ornithology",
+    "url": "https://doi.org/10.30980/kjo.2021.12.28.2.66"
+   },
+   {
+    "text": "Yunkyoung Lee 외 (2024) Individual identification of Chinese Crested Tern (Thalasseus bernsteini) from image-appearance characteristics. The Korean Journal of Ornithology",
+    "url": "https://doi.org/10.30980/kjo.2024.12.31.2.126"
+   },
+   {
+    "text": "(2013) Thalasseus bernsteini: BirdLife International. IUCN Red List of Threatened Species",
+    "url": "https://doi.org/10.2305/iucn.uk.2013-2.rlts.t22694585a49820318.en"
+   }
+  ],
+  "range": {
+   "km": 10
+  }
+ },
+ "뿔쇠오리": {
+  "summary": "바다쇠오리류로 남해 무인도 바위틈에서 번식한다.",
+  "distribution": "남해 구굴도·백도 등 무인도, 독도.",
+  "habitat": "바다와 맞닿은 바위섬의 틈·풀밭에서 번식하고 먼바다에서 먹이를 찾는다. 밤에 섬으로 드나들며 불빛에 이끌린다.",
+  "life": "2~5월 번식.",
+  "diet": "작은 물고기·동물성 플랑크톤.",
+  "threats": "번식섬 쥐 등 포식자, 낚시객 출입, 야간 조명, 기름 오염.",
+  "conservation": "멸종위기 야생생물 Ⅱ급, 천연기념물 제450호. 번식섬 출입 통제, 야간 조명 관리.",
+  "vars": [
+   "elev",
+   "tidal",
+   "bare",
+   "wetland",
+   "river",
+   "lake",
+   "dist_coast",
+   "bio1",
+   "bio4"
+  ],
+  "layers": [
+   {
+    "key": "main",
+    "name": "번식지(바위섬)",
+    "season": "2~5월",
+    "main": true,
+    "groups": [
+     "rock",
+     "grass",
+     "bare"
+    ],
+    "desc": "해안 200 m 안의 바위섬·바위 해안",
+    "coast_km": 0.2,
+    "elev": [
+     0,
+     100
+    ],
+    "refs": [
+     1,
+     2,
+     3
+    ]
+   }
+  ],
+  "refs": [
+   {
+    "text": "Praeploy Kongsurakan 외 (2023) Impacts of Depredation by Large-billed Crows &lt;i&gt;Corvus macrorhynchos&lt;/i&gt; on the Colony of Japanese Murrelets &lt;i&gt;Synthliboramphus wumizusume&lt;/i&gt; at Eboshijima, Japan. Marine Ornithology",
+    "url": "https://doi.org/10.5038/2074-1235.51.2.1530"
+   },
+   {
+    "text": "MARK G. R. MILLER 외 (2018) At-sea distribution and habitat of breeding Japanese Murrelets Synthliboramphus wumizusume: implications for conservation management. Bird Conservation International",
+    "url": "https://doi.org/10.1017/s095927091800028x"
+   },
+   {
+    "text": "(2016) Synthliboramphus wumizusume: BirdLife International. IUCN Red List of Threatened Species",
+    "url": "https://doi.org/10.2305/iucn.uk.2016-3.rlts.t22694899a93475195.en"
+   }
+  ],
+  "range": {
+   "km": 10
+  }
+ },
+ "섬개개비": {
+  "summary": "남·서해 섬의 덤불에서 번식하는 개개비류. 기록이 드물다.",
+  "distribution": "신안·여수·제주 주변 등 남·서해 섬.",
+  "habitat": "섬의 덤불·풀숲과 숲 가장자리.",
+  "life": "5~8월 번식.",
+  "diet": "곤충·거미.",
+  "threats": "섬 개발, 덤불 제거.",
+  "conservation": "멸종위기 야생생물 Ⅱ급. 섬 덤불 보전.",
+  "vars": [
+   "elev",
+   "slope",
+   "tree",
+   "broad",
+   "dist_river",
+   "dist_coast",
+   "bio1",
+   "bio4",
+   "bio12"
+  ],
+  "layers": [
+   {
+    "key": "main",
+    "name": "번식지",
+    "season": "5~8월",
+    "main": true,
+    "groups": [
+     "grass",
+     "broad",
+     "mixed"
+    ],
+    "desc": "해안 1 km 안의 섬 덤불·풀숲·숲 가장자리",
+    "coast_km": 1,
+    "elev": [
+     0,
+     200
+    ],
+    "refs": [
+     1
+    ]
+   }
+  ],
+  "refs": [
+   {
+    "text": "(2012) Locustella pleskei: BirdLife International. IUCN Red List of Threatened Species",
+    "url": "https://doi.org/10.2305/iucn.uk.2012-1.rlts.t22714674a38222546.en"
+   }
+  ],
+  "range": {
+   "km": 10
+  }
+ },
+ "참수리": {
+  "summary": "대형 수리. 겨울에 동해안·하구·호소에 소수가 온다.",
+  "distribution": "강원 동해안, 한강·낙동강 하구, 팔당·대청호 등.",
+  "habitat": "물고기가 많은 하구·연안·큰 호소와 강. 물가 큰 나무·절벽에 앉아 쉰다.",
+  "life": "11~3월 월동.",
+  "diet": "물고기·물새·사체.",
+  "threats": "하구 개발, 납 중독, 방해.",
+  "conservation": "멸종위기 야생생물 Ⅰ급, 천연기념물 제243호. 월동지 하구·호소 보전, 납 탄환 사용 제한.",
+  "vars": [
+   "elev",
+   "dist_coast",
+   "tidal",
+   "river",
+   "lake",
+   "tree",
+   "rock",
+   "bio1",
+   "bio4"
+  ],
+  "layers": [
+   {
+    "key": "water",
+    "name": "채식지(물)",
+    "season": "11~3월",
+    "main": true,
+    "groups": [
+     "river",
+     "lake",
+     "tidal",
+     "sea"
+    ],
+    "desc": "하구·연안·큰 호소·강(물이 칸의 5% 이상)",
+    "elev": [
+     0,
+     300
+    ],
+    "cell_min": 0.05,
+    "refs": [
+     1,
+     2,
+     3
+    ]
+   },
+   {
+    "key": "perch",
+    "name": "휴식지(물가 숲)",
+    "season": "11~3월",
+    "main": true,
+    "groups": [
+     "broad",
+     "mixed",
+     "conifer",
+     "rock"
+    ],
+    "desc": "큰 물에서 500 m 안의 숲·바위",
+    "elev": [
+     0,
+     400
+    ],
+    "near": [
+     {
+      "groups": [
+       "river",
+       "lake",
+       "tidal",
+       "sea"
+      ],
+      "km": 0.5,
+      "min": 0.05
+     }
+    ],
+    "refs": [
+     1,
+     2,
+     3
+    ]
+   }
+  ],
+  "refs": [
+   {
+    "text": "Bong-Kyun Kim 외 (2024) A case study of spring migration of a Steller’s Sea Eagle (Haliaeetus pelagicus) rescued and recovered from pesticide poisoning. The Korean Journal of Ornithology",
+    "url": "https://doi.org/10.30980/kjo.2024.6.31.1.37"
+   },
+   {
+    "text": "MUTSUYUKI UETA 외 (2000) Migration routes and differences of migration schedule between adult and young Steller's Sea Eagles Haliaeetus pelagicus. Ibis",
+    "url": "https://doi.org/10.1111/j.1474-919x.2000.tb07681.x"
+   },
+   {
+    "text": "(2013) Haliaeetus pelagicus: BirdLife International. IUCN Red List of Threatened Species",
+    "url": "https://doi.org/10.2305/iucn.uk.2013-2.rlts.t22695147a48127455.en"
+   }
+  ]
+ },
+ "흰꼬리수리": {
+  "summary": "대형 수리. 겨울에 하구·호소·해안에 비교적 많이 온다.",
+  "distribution": "한강·낙동강·금강 하구, 팔당, 주남저수지, 동해안.",
+  "habitat": "물고기·오리가 많은 하구·호소·큰 강. 물가 큰 나무·절벽에서 쉰다.",
+  "life": "11~3월 월동.",
+  "diet": "물고기·물새·사체.",
+  "threats": "하구 개발, 납 중독, 방해.",
+  "conservation": "멸종위기 야생생물 Ⅰ급, 천연기념물 제243호. 월동지 보전, 납 탄환 제한.",
+  "vars": [
+   "elev",
+   "dist_coast",
+   "tidal",
+   "river",
+   "lake",
+   "tree",
+   "rock",
+   "bio1",
+   "bio4"
+  ],
+  "layers": [
+   {
+    "key": "water",
+    "name": "채식지(물)",
+    "season": "11~3월",
+    "main": true,
+    "groups": [
+     "river",
+     "lake",
+     "tidal",
+     "sea"
+    ],
+    "desc": "하구·연안·큰 호소·강(물이 칸의 5% 이상)",
+    "elev": [
+     0,
+     300
+    ],
+    "cell_min": 0.05,
+    "refs": [
+     1
+    ]
+   },
+   {
+    "key": "perch",
+    "name": "휴식지(물가 숲)",
+    "season": "11~3월",
+    "main": true,
+    "groups": [
+     "broad",
+     "mixed",
+     "conifer",
+     "rock"
+    ],
+    "desc": "큰 물에서 500 m 안의 숲·바위",
+    "elev": [
+     0,
+     400
+    ],
+    "near": [
+     {
+      "groups": [
+       "river",
+       "lake",
+       "tidal",
+       "sea"
+      ],
+      "km": 0.5,
+      "min": 0.05
+     }
+    ],
+    "refs": [
+     1
+    ]
+   }
+  ],
+  "refs": [
+   {
+    "text": "(2021) Haliaeetus albicilla: BirdLife International. IUCN Red List of Threatened Species",
+    "url": "https://doi.org/10.2305/iucn.uk.2021-3.rlts.t22695137a206723035.en"
+   }
+  ]
+ },
+ "검독수리": {
+  "summary": "대형 수리. 겨울에 산지와 초지가 섞인 곳에 드물게 온다.",
+  "distribution": "강원·경북 산지, 철원 등 북부 지역.",
+  "habitat": "넓은 산지·능선과 초지·농경지가 섞인 곳에서 사냥하고 절벽·큰 나무에서 쉰다.",
+  "life": "11~3월 월동.",
+  "diet": "멧토끼·꿩·사체.",
+  "threats": "산지 개발(풍력 등), 납 중독, 방해.",
+  "conservation": "멸종위기 야생생물 Ⅰ급, 천연기념물 제243호. 월동 산지 보전.",
+  "vars": [
+   "elev",
+   "slope",
+   "paddy",
+   "field",
+   "grass",
+   "wetland",
+   "river",
+   "tree",
+   "dist_river",
+   "bio1",
+   "bio4",
+   "bio12"
+  ],
+  "layers": [
+   {
+    "key": "main",
+    "name": "월동지",
+    "season": "11~3월",
+    "main": true,
+    "groups": [
+     "broad",
+     "mixed",
+     "conifer",
+     "grass",
+     "field",
+     "rock"
+    ],
+    "desc": "해발 200 m 이상에서 초지·밭이 2 km 안에 있는 산지",
+    "elev": [
+     200,
+     1700
+    ],
+    "near": [
+     {
+      "groups": [
+       "grass",
+       "field"
+      ],
+      "km": 2,
+      "min": 0.05
+     }
+    ],
+    "refs": [
+     1,
+     2
+    ]
+   }
+  ],
+  "refs": [
+   {
+    "text": "김창회 외 (2010) 제2차 전국자연환경조사 결과 분석을 통한 멸종위기조류의 국내 분포현황. 한국조류학회지",
+    "url": ""
+   },
+   {
+    "text": "IUCN (2021) Aquila chrysaetos: BirdLife International. IUCN Red List of Threatened Species",
+    "url": "https://doi.org/10.2305/iucn.uk.2021-3.rlts.t22696060a202078899.en"
+   }
+  ]
+ },
+ "독수리": {
+  "summary": "몽골에서 번식하고 겨울에 국내로 오는 대형 수리. 사체를 먹으며 먹이 주기 장소에 모인다.",
+  "distribution": "철원·파주·연천, 고성·김해·진주·고령 등 먹이 주기가 이뤄지는 농경지.",
+  "habitat": "넓은 농경지·초지와 하천 둔치. 상승기류를 타고 넓게 돌아다닌다.",
+  "life": "11~3월 월동.",
+  "diet": "가축·야생동물 사체.",
+  "threats": "먹이 부족, 납·농약 중독, 전선 충돌.",
+  "conservation": "멸종위기 야생생물 Ⅱ급, 천연기념물 제243호. 안전한 먹이 주기, 납 탄환 제한.",
+  "vars": [
+   "elev",
+   "slope",
+   "paddy",
+   "field",
+   "grass",
+   "wetland",
+   "river",
+   "tree",
+   "dist_river",
+   "bio1",
+   "bio4",
+   "bio12"
+  ],
+  "layers": [
+   {
+    "key": "main",
+    "name": "월동지(농경지·초지)",
+    "season": "11~3월",
+    "main": true,
+    "groups": [
+     "paddy",
+     "field",
+     "grass"
+    ],
+    "desc": "해발 400 m 이하에서 칸의 30% 이상이 농경지·초지인 곳",
+    "elev": [
+     0,
+     400
+    ],
+    "cell_min": 0.3,
+    "refs": [
+     1,
+     2,
+     3
+    ]
+   }
+  ],
+  "refs": [
+   {
+    "text": "Dong-Ha Nam 외 (2008) Abnormal lead exposure in globally threatened Cinereous vultures (Aegypius monachus) wintering in South Korea. Ecotoxicology",
+    "url": "https://doi.org/10.1007/s10646-008-0275-0"
+   },
+   {
+    "text": "David Kenny 외 (2015) Blood lead levels for Eurasian black vultures (Aegypius monachus) migrating between Mongolia and the Republic of Korea. Journal of Asia-Pacific Biodiversity",
+    "url": "https://doi.org/10.1016/j.japb.2015.08.004"
+   },
+   {
+    "text": "(2021) Aegypius monachus: Westrip, J.R.S. &amp; BirdLife International. IUCN Red List of Threatened Species",
+    "url": "https://doi.org/10.2305/iucn.uk.2022-1.rlts.t22695231a210500330.en"
+   }
+  ],
+  "min_year": 2010,
+  "range": {
+   "km": 15
+  }
+ },
+ "큰말똥가리": {
+  "summary": "말똥가리보다 큰 맹금. 겨울에 넓은 농경지에 온다.",
+  "distribution": "철원·파주 등 북부 평야와 서해안 간척지.",
+  "habitat": "넓게 트인 농경지·초지·간척지에서 쥐를 사냥한다.",
+  "life": "11~3월 월동.",
+  "diet": "들쥐 등 소형 포유류.",
+  "threats": "농경지 개발, 쥐약 2차 중독.",
+  "conservation": "멸종위기 야생생물 Ⅱ급. 넓은 농경지 보전.",
+  "vars": [
+   "elev",
+   "slope",
+   "paddy",
+   "field",
+   "grass",
+   "wetland",
+   "river",
+   "tree",
+   "dist_river",
+   "bio1",
+   "bio4",
+   "bio12"
+  ],
+  "layers": [
+   {
+    "key": "main",
+    "name": "월동지",
+    "season": "11~3월",
+    "main": true,
+    "groups": [
+     "paddy",
+     "field",
+     "grass",
+     "wetland"
+    ],
+    "desc": "칸의 40% 이상이 농경지·초지인 넓은 평야(해발 300 m 이하)",
+    "elev": [
+     0,
+     300
+    ],
+    "cell_min": 0.4,
+    "refs": [
+     1
+    ]
+   }
+  ],
+  "refs": [
+   {
+    "text": "(2018) Buteo hemilasius: BirdLife International. IUCN Red List of Threatened Species",
+    "url": "https://doi.org/10.2305/iucn.uk.2018-2.rlts.t22695967a131937792.en"
+   }
+  ]
+ },
+ "흰죽지수리": {
+  "summary": "대형 수리. 겨울에 넓은 농경지에 드물게 온다.",
+  "distribution": "서해안 평야·간척지, 철원 등.",
+  "habitat": "넓은 농경지·초지.",
+  "life": "11~3월 월동.",
+  "diet": "들쥐·꿩·사체.",
+  "threats": "농경지 개발, 중독.",
+  "conservation": "멸종위기 야생생물 Ⅱ급. 넓은 농경지 보전.",
+  "vars": [
+   "elev",
+   "slope",
+   "paddy",
+   "field",
+   "grass",
+   "wetland",
+   "river",
+   "tree",
+   "dist_river",
+   "bio1",
+   "bio4",
+   "bio12"
+  ],
+  "layers": [
+   {
+    "key": "main",
+    "name": "월동지",
+    "season": "11~3월",
+    "main": true,
+    "groups": [
+     "paddy",
+     "field",
+     "grass"
+    ],
+    "desc": "칸의 40% 이상이 농경지·초지인 넓은 평야",
+    "elev": [
+     0,
+     300
+    ],
+    "cell_min": 0.4,
+    "refs": [
+     1
+    ]
+   }
+  ],
+  "refs": [
+   {
+    "text": "(2021) Aquila heliaca: Westrip, J.R.S. &amp; BirdLife International. IUCN Red List of Threatened Species",
+    "url": "https://doi.org/10.2305/iucn.uk.2022-1.rlts.t22696048a210502893.en"
+   }
+  ]
+ },
+ "항라머리검독수리": {
+  "summary": "세계적 취약종 수리. 하구·습지 주변에서 드물게 겨울을 난다.",
+  "distribution": "서해안 하구·간척지, 주남저수지 등.",
+  "habitat": "하구 습지·간척지·농경지.",
+  "life": "11~3월 월동.",
+  "diet": "물새·쥐·사체.",
+  "threats": "습지 개발, 중독.",
+  "conservation": "멸종위기 야생생물 Ⅱ급. 하구 습지 보전.",
+  "vars": [
+   "elev",
+   "slope",
+   "paddy",
+   "field",
+   "grass",
+   "wetland",
+   "river",
+   "tree",
+   "dist_river",
+   "bio1",
+   "bio4",
+   "bio12"
+  ],
+  "layers": [
+   {
+    "key": "main",
+    "name": "월동지",
+    "season": "11~3월",
+    "main": true,
+    "groups": [
+     "wetland",
+     "paddy",
+     "tidal",
+     "grass"
+    ],
+    "desc": "습지·하구 3 km 안의 습지·논·초지",
+    "elev": [
+     0,
+     200
+    ],
+    "near": [
+     {
+      "groups": [
+       "wetland",
+       "tidal",
+       "lake"
+      ],
+      "km": 3,
+      "min": 0.03
+     }
+    ],
+    "refs": []
+   }
+  ],
+  "refs": []
+ },
+ "매": {
+  "summary": "해안 절벽에서 번식하는 매. 급강하로 새를 사냥한다.",
+  "distribution": "서·남해 섬과 동해안 절벽, 내륙 일부 절벽.",
+  "habitat": "바다와 맞닿은 절벽·바위섬에서 번식하고, 갯벌·해안에서 도요·비둘기 등을 사냥한다.",
+  "life": "3~6월 번식.",
+  "diet": "새.",
+  "threats": "해안 절벽 개발·낚시객 출입, 중독.",
+  "conservation": "멸종위기 야생생물 Ⅱ급, 천연기념물 제323호. 번식 절벽 출입 통제.",
+  "vars": [
+   "elev",
+   "dist_coast",
+   "tidal",
+   "river",
+   "lake",
+   "tree",
+   "rock",
+   "bio1",
+   "bio4"
+  ],
+  "layers": [
+   {
+    "key": "main",
+    "name": "번식지(해안 절벽)",
+    "season": "3~6월",
+    "main": true,
+    "groups": [
+     "rock",
+     "grass",
+     "broad",
+     "mixed",
+     "conifer"
+    ],
+    "desc": "해안 1 km 안의 경사 15° 이상 바위·절벽",
+    "coast_km": 1,
+    "slope": [
+     15,
+     90
+    ],
+    "near": [
+     {
+      "groups": [
+       "rock"
+      ],
+      "km": 0.3,
+      "min": 0.003
+     }
+    ],
+    "refs": []
+   }
+  ],
+  "refs": []
+ },
+ "물수리": {
+  "summary": "물고기만 잡는 맹금. 이동 시기 하천·호소를 지나며 일부는 겨울에도 남는다.",
+  "distribution": "전국 하천·호소·하구·해안.",
+  "habitat": "물고기가 많은 맑은 하천·호소·하구.",
+  "life": "4~5·9~10월 통과, 일부 월동.",
+  "diet": "물고기.",
+  "threats": "하구·하천 개발, 수질 악화.",
+  "conservation": "멸종위기 야생생물 Ⅱ급. 하천·호소 수질 보전.",
+  "vars": [
+   "elev",
+   "dist_coast",
+   "tidal",
+   "river",
+   "lake",
+   "tree",
+   "rock",
+   "bio1",
+   "bio4"
+  ],
+  "layers": [
+   {
+    "key": "main",
+    "name": "채식지",
+    "season": "4~10월",
+    "main": true,
+    "groups": [
+     "river",
+     "lake",
+     "tidal"
+    ],
+    "desc": "강·호소·하구(물이 칸의 5% 이상)",
+    "elev": [
+     0,
+     400
+    ],
+    "cell_min": 0.05,
+    "refs": [
+     1,
+     2
+    ]
+   }
+  ],
+  "refs": [
+   {
+    "text": "ASKO LOHMUS (2001) Habitat selection in a recovering Osprey Pandion haliaetus population. Ibis",
+    "url": "https://doi.org/10.1111/j.1474-919x.2001.tb04893.x"
+   },
+   {
+    "text": "(2021) Pandion haliaetus: BirdLife International. IUCN Red List of Threatened Species",
+    "url": "https://doi.org/10.2305/iucn.uk.2021-3.rlts.t22694938a206628879.en"
+   }
+  ]
+ },
+ "벌매": {
+  "summary": "벌집을 파먹는 맹금. 여름에 산림에서 번식한다.",
+  "distribution": "전국 산림.",
+  "habitat": "넓은 산림에서 번식하고 숲 가장자리에서 땅벌집을 찾는다.",
+  "life": "5~8월 번식.",
+  "diet": "벌 애벌레·벌집, 곤충.",
+  "threats": "산림 훼손.",
+  "conservation": "멸종위기 야생생물 Ⅱ급. 번식기 산림 공사 조정.",
+  "vars": [
+   "elev",
+   "slope",
+   "tree",
+   "broad",
+   "conifer",
+   "paddy",
+   "field",
+   "dist_river",
+   "bio1",
+   "bio4",
+   "bio12"
+  ],
+  "layers": [
+   {
+    "key": "main",
+    "name": "번식지",
+    "season": "5~8월",
+    "main": true,
+    "groups": [
+     "broad",
+     "mixed",
+     "conifer"
+    ],
+    "desc": "칸의 절반 이상이 숲인 산림(해발 100~1,200 m)",
+    "elev": [
+     100,
+     1200
+    ],
+    "cell_min": 0.5,
+    "refs": [
+     1,
+     2,
+     3
+    ]
+   }
+  ],
+  "refs": [
+   {
+    "text": "Soonkyoo Choi 외 (2017) A Study on Morphological Diversity and Migration of Pernis ptilorhynchus Using a Field Photographic Method. The Journal of Korean Island",
+    "url": "https://doi.org/10.26840/jki.29.4.213"
+   },
+   {
+    "text": "Elham Nourani 외 (2016) Wind conditions facilitate the seasonal water‐crossing behaviour of Oriental Honey‐buzzards Pernis ptilorhynchus over the East China Sea. Ibis",
+    "url": "https://doi.org/10.1111/ibi.12383"
+   },
+   {
+    "text": "(2013) Pernis ptilorhynchus: BirdLife International. IUCN Red List of Threatened Species",
+    "url": "https://doi.org/10.2305/iucn.uk.2015-4.rlts.t22694995a79926664.en"
+   }
+  ]
+ },
+ "붉은배새매": {
+  "summary": "여름에 마을 주변 숲에서 번식하는 작은 매. 개구리를 즐겨 잡는다.",
+  "distribution": "전국 저지대 산림과 농촌.",
+  "habitat": "논·하천 가까운 저지대 숲에서 번식하고 논·물가에서 개구리·곤충을 잡는다.",
+  "life": "5~8월 번식.",
+  "diet": "개구리·곤충·도마뱀.",
+  "threats": "숲 가장자리 개발, 논 감소, 농약.",
+  "conservation": "멸종위기 야생생물 Ⅱ급, 천연기념물 제323호. 번식기 숲 가장자리 공사 조정, 논 유지.",
+  "vars": [
+   "elev",
+   "slope",
+   "tree",
+   "broad",
+   "conifer",
+   "paddy",
+   "field",
+   "dist_river",
+   "bio1",
+   "bio4",
+   "bio12"
+  ],
+  "layers": [
+   {
+    "key": "main",
+    "name": "번식지",
+    "season": "5~8월",
+    "main": true,
+    "groups": [
+     "broad",
+     "mixed",
+     "conifer"
+    ],
+    "desc": "논·하천 500 m 안의 저지대 숲(해발 400 m 이하)",
+    "elev": [
+     0,
+     400
+    ],
+    "near": [
+     {
+      "groups": [
+       "paddy",
+       "river"
+      ],
+      "km": 0.5,
+      "min": 0.05
+     }
+    ],
+    "refs": [
+     1
+    ]
+   }
+  ],
+  "refs": [
+   {
+    "text": "(2012) Accipiter soloensis: BirdLife International. IUCN Red List of Threatened Species",
+    "url": "https://doi.org/10.2305/iucn.uk.2012-1.rlts.t22695503a40377879.en"
+   }
+  ]
+ },
+ "새매": {
+  "summary": "숲에서 작은 새를 사냥하는 매. 겨울에는 흔히 보인다.",
+  "distribution": "전국 산림(번식은 중부 이북 산림), 겨울에는 전국 숲 가장자리·농경지.",
+  "habitat": "숲에서 번식하고 숲 가장자리·마을 숲에서 작은 새를 사냥한다.",
+  "life": "5~7월 번식, 겨울 관찰이 많다.",
+  "diet": "작은 새.",
+  "threats": "산림 훼손.",
+  "conservation": "멸종위기 야생생물 Ⅱ급, 천연기념물 제323호. 산림 보전.",
+  "vars": [
+   "elev",
+   "slope",
+   "tree",
+   "broad",
+   "conifer",
+   "paddy",
+   "field",
+   "dist_river",
+   "bio1",
+   "bio4",
+   "bio12"
+  ],
+  "layers": [
+   {
+    "key": "main",
+    "name": "서식지",
+    "season": "연중",
+    "main": true,
+    "groups": [
+     "broad",
+     "mixed",
+     "conifer"
+    ],
+    "desc": "칸의 40% 이상이 숲인 산림(해발 50~1,200 m)",
+    "elev": [
+     50,
+     1200
+    ],
+    "cell_min": 0.4,
+    "refs": [
+     1
+    ]
+   }
+  ],
+  "refs": [
+   {
+    "text": "(2020) Accipiter nisus: BirdLife International. IUCN Red List of Threatened Species",
+    "url": "https://doi.org/10.2305/iucn.uk.2021-3.rlts.t22695624a166300043.en"
+   }
+  ]
+ },
+ "참매": {
+  "summary": "성숙한 산림에서 번식하는 대형 매.",
+  "distribution": "전국 산림(번식은 중·북부 큰 산림).",
+  "habitat": "넓은 성숙림에서 번식하고 숲과 숲 가장자리에서 꿩·비둘기 등을 사냥한다.",
+  "life": "4~7월 번식.",
+  "diet": "꿩·비둘기·청설모.",
+  "threats": "큰 산림 훼손, 번식기 교란.",
+  "conservation": "멸종위기 야생생물 Ⅱ급, 천연기념물 제323호. 번식 숲 보전, 번식기 공사 조정.",
+  "vars": [
+   "elev",
+   "slope",
+   "tree",
+   "broad",
+   "conifer",
+   "paddy",
+   "field",
+   "dist_river",
+   "bio1",
+   "bio4",
+   "bio12"
+  ],
+  "layers": [
+   {
+    "key": "main",
+    "name": "서식지",
+    "season": "연중",
+    "main": true,
+    "groups": [
+     "broad",
+     "mixed",
+     "conifer"
+    ],
+    "desc": "칸의 60% 이상이 숲인 큰 산림(해발 100~1,500 m)",
+    "elev": [
+     100,
+     1500
+    ],
+    "cell_min": 0.6,
+    "refs": [
+     1,
+     2
+    ]
+   }
+  ],
+  "refs": [
+   {
+    "text": "Jin-Hee Yi 외 (2013) Studied on Habitat and Nest Characteristic of the Breeding Goshawk [Northern Goshawk] Accipiter gentilis in South Korea. Journal of the Korea Society of Environmental Restoration Technology",
+    "url": "https://doi.org/10.13087/kosert.2013.16.5.083"
+   },
+   {
+    "text": "(2020) Accipiter gentilis: BirdLife International. IUCN Red List of Threatened Species",
+    "url": "https://doi.org/10.2305/iucn.uk.2021-3.rlts.t22695683a166300716.en"
+   }
+  ]
+ },
+ "조롱이": {
+  "summary": "작은 매. 숲에서 번식하며 도시 공원 숲에서도 번식한다.",
+  "distribution": "전국 산림.",
+  "habitat": "숲과 숲 가장자리에서 작은 새를 사냥한다.",
+  "life": "5~7월 번식.",
+  "diet": "작은 새·곤충.",
+  "threats": "산림 훼손.",
+  "conservation": "멸종위기 야생생물 Ⅱ급. 번식 숲 보전.",
+  "vars": [
+   "elev",
+   "slope",
+   "tree",
+   "broad",
+   "conifer",
+   "paddy",
+   "field",
+   "dist_river",
+   "bio1",
+   "bio4",
+   "bio12"
+  ],
+  "layers": [
+   {
+    "key": "main",
+    "name": "서식지",
+    "season": "5~7월",
+    "main": true,
+    "groups": [
+     "broad",
+     "mixed",
+     "conifer"
+    ],
+    "desc": "칸의 40% 이상이 숲인 산림(해발 1,000 m 이하)",
+    "elev": [
+     0,
+     1000
+    ],
+    "cell_min": 0.4,
+    "refs": [
+     1
+    ]
+   }
+  ],
+  "refs": [
+   {
+    "text": "(2012) Accipiter gularis: BirdLife International. IUCN Red List of Threatened Species",
+    "url": "https://doi.org/10.2305/iucn.uk.2015.rlts.t22695585a84950105.en"
+   }
+  ]
+ },
+ "새호리기": {
+  "summary": "잠자리를 공중에서 잡는 작은 매. 여름에 숲 가장자리에서 번식한다.",
+  "distribution": "전국 저지대 숲과 농경지.",
+  "habitat": "농경지·습지 가까운 숲에서(까치 등의 옛 둥지) 번식하고 논·습지 위에서 잠자리를 잡는다.",
+  "life": "5~8월 번식.",
+  "diet": "잠자리·새.",
+  "threats": "숲 가장자리 개발, 농약.",
+  "conservation": "멸종위기 야생생물 Ⅱ급. 번식기 숲 가장자리 공사 조정.",
+  "vars": [
+   "elev",
+   "slope",
+   "tree",
+   "broad",
+   "conifer",
+   "paddy",
+   "field",
+   "dist_river",
+   "bio1",
+   "bio4",
+   "bio12"
+  ],
+  "layers": [
+   {
+    "key": "main",
+    "name": "번식지",
+    "season": "5~8월",
+    "main": true,
+    "groups": [
+     "broad",
+     "mixed",
+     "conifer"
+    ],
+    "desc": "논·습지 1 km 안의 저지대 숲(해발 500 m 이하)",
+    "elev": [
+     0,
+     500
+    ],
+    "near": [
+     {
+      "groups": [
+       "paddy",
+       "wetland",
+       "lake"
+      ],
+      "km": 1,
+      "min": 0.05
+     }
+    ],
+    "refs": [
+     1
+    ]
+   }
+  ],
+  "refs": [
+   {
+    "text": "(2020) Falco subbuteo: BirdLife International. IUCN Red List of Threatened Species",
+    "url": "https://doi.org/10.2305/iucn.uk.2021-3.rlts.t22696460a166309232.en"
+   }
+  ]
+ },
+ "솔개": {
+  "summary": "갈라진 꼬리의 맹금. 과거 흔했으나 크게 줄어 지금은 해안·항구에 드물게 겨울을 난다.",
+  "distribution": "부산·울산·포항 등 남·동해안 항구와 하구.",
+  "habitat": "해안·항구·하구에서 사체와 물고기를 찾는다.",
+  "life": "11~3월 월동.",
+  "diet": "물고기·사체.",
+  "threats": "먹이 감소, 중독.",
+  "conservation": "멸종위기 야생생물 Ⅱ급. 해안·하구 보전.",
+  "vars": [
+   "elev",
+   "dist_coast",
+   "tidal",
+   "river",
+   "lake",
+   "tree",
+   "rock",
+   "bio1",
+   "bio4"
+  ],
+  "layers": [
+   {
+    "key": "main",
+    "name": "월동지",
+    "season": "11~3월",
+    "main": true,
+    "groups": [
+     "tidal",
+     "sea",
+     "river",
+     "grass"
+    ],
+    "desc": "해안 2 km 안의 하구·연안·해안 초지",
+    "coast_km": 2,
+    "elev": [
+     0,
+     100
+    ],
+    "refs": [
+     1,
+     2
+    ]
+   }
+  ],
+  "refs": [
+   {
+    "text": "Jong-Hyun Park 외 (2023) Breeding record of Black Kite (Milvus migrans) in South Korea. The Korean Journal of Ornithology",
+    "url": "https://doi.org/10.30980/kjo.2023.12.30.2.185"
+   },
+   {
+    "text": "(2020) Milvus migrans: BirdLife International. IUCN Red List of Threatened Species",
+    "url": "https://doi.org/10.2305/iucn.uk.2021-3.rlts.t181568721a166444585.en"
+   }
+  ]
+ },
+ "잿빛개구리매": {
+  "summary": "겨울에 넓은 초지·갈대밭을 낮게 날며 사냥하는 개구리매.",
+  "distribution": "서해안 간척지·하구 갈대밭, 철원 등 넓은 평야.",
+  "habitat": "갈대밭·초지·간척지·논 위를 낮게 날며 쥐와 작은 새를 사냥한다.",
+  "life": "11~3월 관찰.",
+  "diet": "들쥐·작은 새·개구리.",
+  "threats": "갈대밭·간척지 초지 개발, 쥐약.",
+  "conservation": "멸종위기 야생생물 Ⅱ급, 천연기념물 제323호. 갈대밭·초지 보전.",
+  "vars": [
+   "elev",
+   "slope",
+   "paddy",
+   "field",
+   "grass",
+   "wetland",
+   "river",
+   "tree",
+   "dist_river",
+   "bio1",
+   "bio4",
+   "bio12"
+  ],
+  "layers": [
+   {
+    "key": "main",
+    "name": "서식지",
+    "season": "11~3월",
+    "main": true,
+    "groups": [
+     "wetland",
+     "grass",
+     "paddy",
+     "tidal"
+    ],
+    "desc": "칸의 30% 이상이 습지·초지·논인 평야·간척지(해발 200 m 이하)",
+    "elev": [
+     0,
+     200
+    ],
+    "cell_min": 0.3,
+    "refs": [
+     1
+    ]
+   }
+  ],
+  "refs": [
+   {
+    "text": "(2021) Circus cyaneus: Westrip, J.R.S. &amp; BirdLife International. IUCN Red List of Threatened Species",
+    "url": "https://doi.org/10.2305/iucn.uk.2022-1.rlts.t22727733a210509233.en"
+   }
+  ]
+ },
+ "개구리매": {
+  "summary": "갈대 습지를 낮게 날며 사냥하는 개구리매. 이동 시기에 지나간다.",
+  "distribution": "서해안 간척지·하구 갈대밭, 철원 등 넓은 평야.",
+  "habitat": "갈대밭·초지·간척지·논 위를 낮게 날며 쥐와 작은 새를 사냥한다.",
+  "life": "4~5·9~10월 관찰.",
+  "diet": "들쥐·작은 새·개구리.",
+  "threats": "갈대밭·간척지 초지 개발, 쥐약.",
+  "conservation": "천연기념물 제323호. 갈대밭·초지 보전.",
+  "vars": [
+   "elev",
+   "slope",
+   "paddy",
+   "field",
+   "grass",
+   "wetland",
+   "river",
+   "tree",
+   "dist_river",
+   "bio1",
+   "bio4",
+   "bio12"
+  ],
+  "layers": [
+   {
+    "key": "main",
+    "name": "서식지",
+    "season": "4~5·9~10월",
+    "main": true,
+    "groups": [
+     "wetland",
+     "grass",
+     "paddy",
+     "tidal"
+    ],
+    "desc": "칸의 30% 이상이 습지·초지·논인 평야·간척지(해발 200 m 이하)",
+    "elev": [
+     0,
+     200
+    ],
+    "cell_min": 0.3,
+    "refs": []
+   }
+  ],
+  "refs": []
+ },
+ "알락개구리매": {
+  "summary": "흑백 무늬의 개구리매. 이동 시기 습지·초지를 지나간다.",
+  "distribution": "서해안 간척지·하구 갈대밭, 철원 등 넓은 평야.",
+  "habitat": "갈대밭·초지·간척지·논 위를 낮게 날며 쥐와 작은 새를 사냥한다.",
+  "life": "4~5·9~10월 관찰.",
+  "diet": "들쥐·작은 새·개구리.",
+  "threats": "갈대밭·간척지 초지 개발, 쥐약.",
+  "conservation": "멸종위기 야생생물 Ⅱ급, 천연기념물 제323호. 갈대밭·초지 보전.",
+  "vars": [
+   "elev",
+   "slope",
+   "paddy",
+   "field",
+   "grass",
+   "wetland",
+   "river",
+   "tree",
+   "dist_river",
+   "bio1",
+   "bio4",
+   "bio12"
+  ],
+  "layers": [
+   {
+    "key": "main",
+    "name": "서식지",
+    "season": "4~5·9~10월",
+    "main": true,
+    "groups": [
+     "wetland",
+     "grass",
+     "paddy",
+     "tidal"
+    ],
+    "desc": "칸의 30% 이상이 습지·초지·논인 평야·간척지(해발 200 m 이하)",
+    "elev": [
+     0,
+     200
+    ],
+    "cell_min": 0.3,
+    "refs": [
+     1
+    ]
+   }
+  ],
+  "refs": [
+   {
+    "text": "(2012) Circus melanoleucos: BirdLife International. IUCN Red List of Threatened Species",
+    "url": "https://doi.org/10.2305/iucn.uk.2012-1.rlts.t22695402a40361145.en"
+   }
+  ]
+ },
+ "황조롱이": {
+  "summary": "가장 흔한 매. 농경지·초지에서 정지 비행으로 쥐를 찾는다.",
+  "distribution": "전국 농경지·하천·해안.",
+  "habitat": "탁 트인 농경지·초지·하천 둔치에서 사냥하고 절벽·건물·나무 구멍에 둥지를 튼다.",
+  "life": "3~7월 번식.",
+  "diet": "들쥐·곤충·작은 새.",
+  "threats": "쥐약 2차 중독, 농경지 감소.",
+  "conservation": "천연기념물 제323호. 넓은 농경지·초지 유지.",
+  "vars": [
+   "elev",
+   "slope",
+   "paddy",
+   "field",
+   "grass",
+   "wetland",
+   "river",
+   "tree",
+   "dist_river",
+   "bio1",
+   "bio4",
+   "bio12"
+  ],
+  "layers": [
+   {
+    "key": "main",
+    "name": "서식지",
+    "season": "연중",
+    "main": true,
+    "groups": [
+     "paddy",
+     "field",
+     "grass",
+     "rock",
+     "bare"
+    ],
+    "desc": "칸의 30% 이상이 농경지·초지인 곳(해발 800 m 이하)",
+    "elev": [
+     0,
+     800
+    ],
+    "cell_min": 0.3,
+    "refs": []
+   }
+  ],
+  "refs": []
+ },
+ "수리부엉이": {
+  "summary": "국내에서 가장 큰 올빼미류. 하천·농경지 주변 바위 절벽에서 번식한다.",
+  "distribution": "전국 하천 주변 절벽, 해안 절벽.",
+  "habitat": "하천·농경지가 내려다보이는 바위 절벽 턱에서 번식하고, 주변 농경지·하천에서 밤에 사냥한다. 번식기 교란에 민감하다.",
+  "life": "1~5월 번식.",
+  "diet": "멧토끼·쥐·꿩·오리.",
+  "threats": "절벽 주변 개발·암벽 등반, 전선 충돌, 쥐약.",
+  "conservation": "멸종위기 야생생물 Ⅱ급, 천연기념물 제324호. 번식 절벽 주변 공사 시기 조정·출입 통제.",
+  "vars": [
+   "elev",
+   "slope",
+   "rock",
+   "tree",
+   "river",
+   "paddy",
+   "field",
+   "dist_river",
+   "bio1",
+   "bio12"
+  ],
+  "layers": [
+   {
+    "key": "main",
+    "name": "번식지(바위 절벽)",
+    "season": "1~5월",
+    "main": true,
+    "groups": [
+     "rock",
+     "broad",
+     "mixed",
+     "conifer"
+    ],
+    "desc": "하천·농경지 1 km 안, 경사 20° 이상 바위 사면(해발 600 m 이하)",
+    "elev": [
+     0,
+     600
+    ],
+    "slope": [
+     20,
+     90
+    ],
+    "near": [
+     {
+      "groups": [
+       "river",
+       "paddy",
+       "field"
+      ],
+      "km": 1,
+      "min": 0.05
+     },
+     {
+      "groups": [
+       "rock"
+      ],
+      "km": 0.3,
+      "min": 0.002
+     }
+    ],
+    "refs": [
+     1,
+     2
+    ]
+   }
+  ],
+  "refs": [
+   {
+    "text": "J. A. Donazar 외 (1989) Comparative Food Habits of the Eagle Owl Bubo bubo and the Great Horned Owl Bubo virginianus in Six Palearctic and Nearctic Biomes. Ornis Scandinavica",
+    "url": "https://doi.org/10.2307/3676495"
+   },
+   {
+    "text": "(2016) Bubo bubo: BirdLife International. IUCN Red List of Threatened Species",
+    "url": "https://doi.org/10.2305/iucn.uk.2016-3.rlts.t22688927a86872241.en"
+   }
+  ]
+ },
+ "올빼미": {
+  "summary": "큰 나무 구멍이 있는 숲에 사는 올빼미.",
+  "distribution": "전국 산림과 마을 숲.",
+  "habitat": "큰 나무 구멍이 있는 성숙림과 오래된 마을 숲.",
+  "life": "2~5월 번식.",
+  "diet": "쥐·작은 새.",
+  "threats": "고목 벌채.",
+  "conservation": "멸종위기 야생생물 Ⅱ급, 천연기념물 제324호. 구멍 난 고목 보존.",
+  "vars": [
+   "elev",
+   "slope",
+   "tree",
+   "broad",
+   "conifer",
+   "paddy",
+   "field",
+   "dist_river",
+   "bio1",
+   "bio4",
+   "bio12"
+  ],
+  "layers": [
+   {
+    "key": "main",
+    "name": "서식지",
+    "season": "연중",
+    "main": true,
+    "groups": [
+     "broad",
+     "mixed",
+     "conifer"
+    ],
+    "desc": "칸의 절반 이상이 숲인 산림(해발 900 m 이하)",
+    "elev": [
+     0,
+     900
+    ],
+    "cell_min": 0.5,
+    "refs": [
+     1
+    ]
+   }
+  ],
+  "refs": [
+   {
+    "text": "(2014) Strix aluco: BirdLife International. IUCN Red List of Threatened Species",
+    "url": "https://doi.org/10.2305/iucn.uk.2014-2.rlts.t22725469a40732957.en"
+   }
+  ]
+ },
+ "긴점박이올빼미": {
+  "summary": "큰 올빼미류로 고산 침엽수림·혼효림의 큰 나무 구멍에서 번식한다.",
+  "distribution": "강원 고산(오대산·설악산 등).",
+  "habitat": "해발 높은 성숙한 혼효림·침엽수림.",
+  "life": "3~6월 번식.",
+  "diet": "쥐·작은 새.",
+  "threats": "고목 벌채, 고산 산림 훼손.",
+  "conservation": "멸종위기 야생생물 Ⅱ급. 고산 성숙림 보전.",
+  "vars": [
+   "elev",
+   "slope",
+   "tree",
+   "broad",
+   "conifer",
+   "paddy",
+   "field",
+   "dist_river",
+   "bio1",
+   "bio4",
+   "bio12"
+  ],
+  "layers": [
+   {
+    "key": "main",
+    "name": "서식지",
+    "season": "연중",
+    "main": true,
+    "groups": [
+     "mixed",
+     "conifer",
+     "broad"
+    ],
+    "desc": "해발 600 m 이상, 칸의 60% 이상이 숲인 고산 산림",
+    "elev": [
+     600,
+     1700
+    ],
+    "cell_min": 0.6,
+    "refs": [
+     1,
+     2,
+     3
+    ]
+   }
+  ],
+  "refs": [
+   {
+    "text": "H. Pietiainen 외 (1993) Female Body Condition and Breeding of the Ural Owl Strix uralensis. Functional Ecology",
+    "url": "https://doi.org/10.2307/2390195"
+   },
+   {
+    "text": "Asko Lõhmus (2003) Do Ural owls (Strix uralensis) suffer from the lack of nest sites in managed forests?. Biological Conservation",
+    "url": "https://doi.org/10.1016/s0006-3207(02)00167-2"
+   },
+   {
+    "text": "Arne Lundberg (1981) Population Ecology of the Ural Owl Strix uralensis in Central Sweden. Ornis Scandinavica",
+    "url": "https://doi.org/10.2307/3676035"
+   },
+   {
+    "text": "(2021) Strix uralensis: BirdLife International. IUCN Red List of Threatened Species",
+    "url": "https://doi.org/10.2305/iucn.uk.2021-3.rlts.t22689108a199908915.en"
+   }
+  ]
+ },
+ "솔부엉이": {
+  "summary": "눈이 노란 작은 올빼미류. 여름에 마을 주변 숲의 나무 구멍에서 번식한다.",
+  "distribution": "전국 저지대 산림과 마을 숲.",
+  "habitat": "마을·농경지 가까운 숲의 나무 구멍에서 번식하고 숲 가장자리에서 밤에 곤충·쥐를 잡는다.",
+  "life": "번식 5~8월.",
+  "diet": "큰 곤충·나방·쥐·작은 새.",
+  "threats": "고목·마을 숲 벌채, 야간 조명, 농약.",
+  "conservation": "천연기념물 제324호. 구멍 난 나무·마을 숲 보존.",
+  "vars": [
+   "elev",
+   "slope",
+   "tree",
+   "broad",
+   "conifer",
+   "paddy",
+   "field",
+   "dist_river",
+   "bio1",
+   "bio4",
+   "bio12"
+  ],
+  "layers": [
+   {
+    "key": "main",
+    "name": "서식지",
+    "season": "5~8월",
+    "main": true,
+    "groups": [
+     "broad",
+     "mixed",
+     "conifer"
+    ],
+    "desc": "농경지 1 km 안의 숲(해발 800 m 이하)",
+    "elev": [
+     0,
+     800
+    ],
+    "near": [
+     {
+      "groups": [
+       "paddy",
+       "field"
+      ],
+      "km": 1,
+      "min": 0.05
+     }
+    ],
+    "refs": []
+   }
+  ],
+  "refs": []
+ },
+ "소쩍새": {
+  "summary": "‘소쩍’ 우는 작은 올빼미류. 여름에 마을 주변 숲에서 번식한다.",
+  "distribution": "전국 저지대 산림과 마을 숲.",
+  "habitat": "마을·농경지 가까운 숲의 나무 구멍에서 번식하고 숲 가장자리에서 밤에 곤충·쥐를 잡는다.",
+  "life": "번식 5~8월.",
+  "diet": "큰 곤충·나방·쥐·작은 새.",
+  "threats": "고목·마을 숲 벌채, 야간 조명, 농약.",
+  "conservation": "천연기념물 제324호. 구멍 난 나무·마을 숲 보존.",
+  "vars": [
+   "elev",
+   "slope",
+   "tree",
+   "broad",
+   "conifer",
+   "paddy",
+   "field",
+   "dist_river",
+   "bio1",
+   "bio4",
+   "bio12"
+  ],
+  "layers": [
+   {
+    "key": "main",
+    "name": "서식지",
+    "season": "5~8월",
+    "main": true,
+    "groups": [
+     "broad",
+     "mixed",
+     "conifer"
+    ],
+    "desc": "농경지 1 km 안의 숲(해발 900 m 이하)",
+    "elev": [
+     0,
+     900
+    ],
+    "near": [
+     {
+      "groups": [
+       "paddy",
+       "field"
+      ],
+      "km": 1,
+      "min": 0.05
+     }
+    ],
+    "refs": []
+   }
+  ],
+  "refs": []
+ },
+ "큰소쩍새": {
+  "summary": "소쩍새보다 큰 텃새 올빼미류. 숲의 나무 구멍에서 번식한다.",
+  "distribution": "전국 저지대 산림과 마을 숲.",
+  "habitat": "마을·농경지 가까운 숲의 나무 구멍에서 번식하고 숲 가장자리에서 밤에 곤충·쥐를 잡는다.",
+  "life": "번식 연중.",
+  "diet": "큰 곤충·나방·쥐·작은 새.",
+  "threats": "고목·마을 숲 벌채, 야간 조명, 농약.",
+  "conservation": "천연기념물 제324호. 구멍 난 나무·마을 숲 보존.",
+  "vars": [
+   "elev",
+   "slope",
+   "tree",
+   "broad",
+   "conifer",
+   "paddy",
+   "field",
+   "dist_river",
+   "bio1",
+   "bio4",
+   "bio12"
+  ],
+  "layers": [
+   {
+    "key": "main",
+    "name": "서식지",
+    "season": "연중",
+    "main": true,
+    "groups": [
+     "broad",
+     "mixed",
+     "conifer"
+    ],
+    "desc": "농경지 1 km 안의 숲(해발 1000 m 이하)",
+    "elev": [
+     0,
+     1000
+    ],
+    "near": [
+     {
+      "groups": [
+       "paddy",
+       "field"
+      ],
+      "km": 1,
+      "min": 0.05
+     }
+    ],
+    "refs": []
+   }
+  ],
+  "refs": []
+ },
+ "쇠부엉이": {
+  "summary": "귀깃이 짧은 올빼미류. 겨울에 넓은 초지·간척지에서 낮에도 사냥한다.",
+  "distribution": "서해안 간척지(시화·화성·새만금 등)와 하구 초지.",
+  "habitat": "넓은 초지·갈대밭·간척지·논.",
+  "life": "11~3월 월동.",
+  "diet": "들쥐.",
+  "threats": "간척지 초지 개발, 쥐약.",
+  "conservation": "천연기념물 제324호. 간척지 초지 보전.",
+  "vars": [
+   "elev",
+   "slope",
+   "paddy",
+   "field",
+   "grass",
+   "wetland",
+   "river",
+   "tree",
+   "dist_river",
+   "bio1",
+   "bio4",
+   "bio12"
+  ],
+  "layers": [
+   {
+    "key": "main",
+    "name": "월동지",
+    "season": "11~3월",
+    "main": true,
+    "groups": [
+     "grass",
+     "wetland",
+     "paddy",
+     "field"
+    ],
+    "desc": "칸의 40% 이상이 초지·습지·농경지인 평야·간척지(해발 100 m 이하)",
+    "elev": [
+     0,
+     100
+    ],
+    "cell_min": 0.4,
+    "refs": []
+   }
+  ],
+  "refs": []
+ },
+ "칡부엉이": {
+  "summary": "귀깃이 긴 올빼미류. 겨울에 침엽수림에서 무리로 쉬고 농경지에서 사냥한다.",
+  "distribution": "전국 농경지 주변 침엽수림.",
+  "habitat": "농경지 가까운 침엽수림(쉼터)과 논·밭(사냥터).",
+  "life": "11~3월 월동.",
+  "diet": "들쥐.",
+  "threats": "쉼터 숲 벌채, 쥐약.",
+  "conservation": "천연기념물 제324호. 월동 쉼터 숲 보존.",
+  "vars": [
+   "elev",
+   "slope",
+   "tree",
+   "broad",
+   "conifer",
+   "paddy",
+   "field",
+   "dist_river",
+   "bio1",
+   "bio4",
+   "bio12"
+  ],
+  "layers": [
+   {
+    "key": "roost",
+    "name": "쉼터 숲",
+    "season": "11~3월",
+    "main": true,
+    "groups": [
+     "conifer",
+     "mixed"
+    ],
+    "desc": "농경지 500 m 안의 침엽수림·혼효림",
+    "elev": [
+     0,
+     500
+    ],
+    "near": [
+     {
+      "groups": [
+       "paddy",
+       "field"
+      ],
+      "km": 0.5,
+      "min": 0.1
+     }
+    ],
+    "refs": []
+   },
+   {
+    "key": "hunt",
+    "name": "사냥터",
+    "season": "11~3월",
+    "main": true,
+    "groups": [
+     "paddy",
+     "field",
+     "grass"
+    ],
+    "desc": "숲 1 km 안의 논·밭·초지",
+    "elev": [
+     0,
+     500
+    ],
+    "near": [
+     {
+      "groups": [
+       "conifer",
+       "mixed"
+      ],
+      "km": 1,
+      "min": 0.2
+     }
+    ],
+    "refs": []
+   }
+  ],
+  "refs": []
+ },
+ "까막딱다구리": {
+  "summary": "국내에서 가장 큰 딱다구리. 큰 나무에 둥지 구멍을 파며, 그 구멍을 원앙·올빼미 등이 다시 쓴다.",
+  "distribution": "강원·경기 북부 등 큰 산림, 국립공원.",
+  "habitat": "지름 큰 나무가 많은 성숙한 산림(침엽수·혼효림).",
+  "life": "4~6월 번식.",
+  "diet": "개미·딱정벌레 애벌레.",
+  "threats": "고목 벌채, 숲 가꾸기.",
+  "conservation": "멸종위기 야생생물 Ⅱ급, 천연기념물 제242호. 고목·둥지목 보존.",
+  "vars": [
+   "elev",
+   "slope",
+   "tree",
+   "broad",
+   "conifer",
+   "paddy",
+   "field",
+   "dist_river",
+   "bio1",
+   "bio4",
+   "bio12"
+  ],
+  "layers": [
+   {
+    "key": "main",
+    "name": "서식지",
+    "season": "연중",
+    "main": true,
+    "groups": [
+     "mixed",
+     "conifer",
+     "broad"
+    ],
+    "desc": "칸의 60% 이상이 숲인 큰 산림(해발 100~1,500 m)",
+    "elev": [
+     100,
+     1500
+    ],
+    "cell_min": 0.6,
+    "refs": [
+     1,
+     2,
+     3
+    ]
+   }
+  ],
+  "refs": [
+   {
+    "text": "KRISTINA JOHNSSON 외 (1993) Characteristics and utilization of old Black Woodpecker Dryocopus martius holes by hole‐nesting species. Ibis",
+    "url": "https://doi.org/10.1111/j.1474-919x.1993.tb02113.x"
+   },
+   {
+    "text": "Massimo Bocca 외 (2007) Habitat use, Home Ranges and Census Techniques in the Black WoodpeckerDryocopus martiusin the Alps. Ardea",
+    "url": "https://doi.org/10.5253/078.095.0103"
+   },
+   {
+    "text": "(2020) Dryocopus martius: BirdLife International. IUCN Red List of Threatened Species",
+    "url": "https://doi.org/10.2305/iucn.uk.2021-3.rlts.t22681382a166215392.en"
+   }
+  ]
+ },
+ "크낙새": {
+  "summary": "남한에서는 1990년대 이후 기록이 없어 절멸한 것으로 본다(광릉숲이 마지막 기록지).",
+  "distribution": "과거 광릉숲 등. 현재 남한 기록 없음.",
+  "habitat": "큰 고목이 많은 성숙림(과거).",
+  "life": "4~6월 번식.",
+  "diet": "딱정벌레 애벌레.",
+  "threats": "과거 고목 벌채.",
+  "conservation": "멸종위기 야생생물 Ⅰ급, 천연기념물 제197호. 남한 기록이 없어 영향 예측 기본값에서는 뺀다.",
+  "vars": [
+   "elev",
+   "slope",
+   "tree",
+   "broad",
+   "conifer",
+   "paddy",
+   "field",
+   "dist_river",
+   "bio1",
+   "bio4",
+   "bio12"
+  ],
+  "layers": [
+   {
+    "key": "main",
+    "name": "잠재 서식지",
+    "season": "연중",
+    "main": true,
+    "groups": [
+     "broad",
+     "mixed"
+    ],
+    "desc": "칸의 70% 이상이 활엽수림인 큰 숲(과거 서식 환경 참고)",
+    "elev": [
+     50,
+     800
+    ],
+    "cell_min": 0.7,
+    "refs": [
+     1
+    ]
+   }
+  ],
+  "refs": [
+   {
+    "text": "Kyu-Hwang Ham 외 (1982) Ecology and Conservation of the Tristram's Woodpecker, Dryocopus javensis richardsi Tristram in Korea. Journal of the Yamashina Institute for Ornithology",
+    "url": "https://doi.org/10.3312/jyio1952.14.254"
+   }
+  ]
+ },
+ "팔색조": {
+  "summary": "여덟 빛깔 깃털의 여름철새. 남해안·제주의 울창한 숲 계곡에서 번식한다.",
+  "distribution": "제주, 거제·남해·완도 등 남해안 섬과 해안 산지.",
+  "habitat": "울창한 상록·낙엽활엽수림의 습한 계곡. 땅에서 지렁이를 찾는다.",
+  "life": "5~8월 번식.",
+  "diet": "지렁이·곤충.",
+  "threats": "숲 계곡 개발·벌채.",
+  "conservation": "멸종위기 야생생물 Ⅱ급, 천연기념물 제204호. 번식기 숲 계곡 공사 조정.",
+  "vars": [
+   "elev",
+   "slope",
+   "tree",
+   "broad",
+   "dist_river",
+   "dist_coast",
+   "bio1",
+   "bio4",
+   "bio12"
+  ],
+  "layers": [
+   {
+    "key": "main",
+    "name": "번식지",
+    "season": "5~8월",
+    "main": true,
+    "groups": [
+     "broad",
+     "mixed"
+    ],
+    "desc": "계곡 300 m 안의 활엽수림(해발 700 m 이하)",
+    "elev": [
+     0,
+     700
+    ],
+    "cell_min": 0.5,
+    "near": [
+     {
+      "groups": [
+       "river"
+      ],
+      "km": 0.3,
+      "min": 0.003
+     }
+    ],
+    "refs": [
+     1,
+     2,
+     3
+    ]
+   }
+  ],
+  "refs": [
+   {
+    "text": "Eun-Mi Kim 외 (2012) The nestling diet of fairy pitta &amp;lt;i&amp;gt;pitta nympha&amp;lt;/i&amp;gt; on Jeju Island, Korea. Open Journal of Ecology",
+    "url": "https://doi.org/10.4236/oje.2012.24021"
+   },
+   {
+    "text": "외 (2022) A Study on the Nationwide Song Distribution and Phenological Characteristics of Fairy Pitta &lt;i&gt;Pitta nympha&lt;/i&gt;, an Endangered Species&lt;sup&gt;1a&lt;/sup&gt;. Korean Journal of Environment and Ecology",
+    "url": "https://doi.org/10.13047/kjee.2022.36.2.139"
+   },
+   {
+    "text": "Gil-Pyo Hong 외 (2021) Distribution of the Fairy Pitta (Pitta nympha) in the South Korea: A focus on protected areas. The Korean Journal of Ornithology",
+    "url": "https://doi.org/10.30980/kjo.2021.12.28.2.88"
+   },
+   {
+    "text": "Jinseok Park 외 (2021) Sundering of earthworms by the Fairy Pitta (Pitta nympha): an unexplored strategy of prey preparation for brood provisioning by avian vermivores. Journal of Ornithology",
+    "url": "https://doi.org/10.1007/s10336-021-01955-0"
+   },
+   {
+    "text": "(2025) Pitta nympha: BirdLife International. IUCN Red List of Threatened Species",
+    "url": "https://doi.org/10.2305/iucn.uk.2025-2.rlts.t22698684a154680023.en"
+   }
+  ]
+ },
+ "긴꼬리딱새": {
+  "summary": "꼬리가 아주 긴 여름철새. 남부·제주의 어두운 활엽수림에서 번식한다.",
+  "distribution": "제주, 남해안, 지리산 일대 등 남부.",
+  "habitat": "울창한 활엽수림의 계곡 주변.",
+  "life": "5~8월 번식.",
+  "diet": "곤충.",
+  "threats": "숲 훼손.",
+  "conservation": "멸종위기 야생생물 Ⅱ급. 활엽수림 계곡 보전.",
+  "vars": [
+   "elev",
+   "slope",
+   "tree",
+   "broad",
+   "dist_river",
+   "dist_coast",
+   "bio1",
+   "bio4",
+   "bio12"
+  ],
+  "layers": [
+   {
+    "key": "main",
+    "name": "번식지",
+    "season": "5~8월",
+    "main": true,
+    "groups": [
+     "broad",
+     "mixed"
+    ],
+    "desc": "계곡 500 m 안의 활엽수림(해발 700 m 이하)",
+    "elev": [
+     0,
+     700
+    ],
+    "cell_min": 0.5,
+    "near": [
+     {
+      "groups": [
+       "river"
+      ],
+      "km": 0.5,
+      "min": 0.003
+     }
+    ],
+    "refs": [
+     1,
+     2
+    ]
+   }
+  ],
+  "refs": [
+   {
+    "text": "Seonghyeon Kim 외 (2024) Study of the Japanese Paradise Flycatcher (Terpsiphone atrocaudata) habitat through ensemble analysis. The Korean Journal of Ornithology",
+    "url": "https://doi.org/10.30980/kjo.2024.12.31.2.208"
+   },
+   {
+    "text": "외 (2023) The study on the song frequency of Black paradise flycatcher(Terpsiphone atrocaudata) by passive acoustic monitoring. Korea National Park Research Institute",
+    "url": "https://doi.org/10.54406/jnpr.2023.14.2.046"
+   }
+  ]
+ },
+ "흑비둘기": {
+  "summary": "검은 대형 비둘기. 남·서해 섬과 울릉도의 상록수림에서 산다.",
+  "distribution": "울릉도, 신안·여수·통영·제주 등 섬.",
+  "habitat": "섬의 상록활엽수림(후박나무 등)에서 열매를 먹는다.",
+  "life": "5~8월 번식.",
+  "diet": "후박나무 등 열매.",
+  "threats": "섬 숲 개발.",
+  "conservation": "멸종위기 야생생물 Ⅱ급, 천연기념물 제215호. 섬 상록수림 보전.",
+  "vars": [
+   "elev",
+   "slope",
+   "tree",
+   "broad",
+   "dist_river",
+   "dist_coast",
+   "bio1",
+   "bio4",
+   "bio12"
+  ],
+  "layers": [
+   {
+    "key": "main",
+    "name": "서식지",
+    "season": "연중",
+    "main": true,
+    "groups": [
+     "broad",
+     "mixed"
+    ],
+    "desc": "해안 2 km 안의 섬 활엽수림(해발 500 m 이하)",
+    "coast_km": 2,
+    "elev": [
+     0,
+     500
+    ],
+    "refs": [
+     1,
+     2,
+     3
+    ]
+   }
+  ],
+  "refs": [
+   {
+    "text": "외 (2019) Seasonal Distribution and Habitat Selection Characteristics of Japanese Wood Pigeon &lt;i&gt;Columba janthina&lt;/i&gt; in Ulleungdo Island. Journal of Agriculture &amp; Life Science",
+    "url": "https://doi.org/10.14397/jals.2019.53.3.99"
+   },
+   {
+    "text": "외 (2025) Home Range Analysis of the Black-Wood Pigeon (&lt;i&gt;Columba janthina&lt;/i&gt;) Inhabiting Ulleung Island&lt;sup&gt;1a&lt;/sup&gt;. Korean Journal of Environment and Ecology",
+    "url": "https://doi.org/10.13047/kjee.2025.39.1.46"
+   },
+   {
+    "text": "Soon-Kyoo Choi 외 (2019) Morphological Study of Japanese Wood Pigeon (Columba janthina janthina) in Korean Peninsula. The Korean Journal of Ornithology",
+    "url": "https://doi.org/10.30980/kjo.2019.12.26.2.65"
+   },
+   {
+    "text": "Shin-Ichi Seki 외 (2007) Distribution and genetic structure of the Japanese wood pigeon (Columba janthina) endemic to the islands of East Asia. Conservation Genetics",
+    "url": "https://doi.org/10.1007/s10592-006-9267-x"
+   },
+   {
+    "text": "(2012) Columba janthina: BirdLife International. IUCN Red List of Threatened Species",
+    "url": "https://doi.org/10.2305/iucn.uk.2012-1.rlts.t22690206a37931343.en"
+   }
+  ],
+  "range": {
+   "km": 10
+  }
+ },
+ "무당새": {
+  "summary": "노란 멧새류 나그네새. 숲 가장자리·관목을 지나간다.",
+  "distribution": "서해 섬·해안과 전국 숲 가장자리를 지나간다.",
+  "habitat": "숲 가장자리·덤불·묵밭.",
+  "life": "4~5·9~10월 통과.",
+  "diet": "씨앗·곤충.",
+  "threats": "덤불 제거.",
+  "conservation": "멸종위기 야생생물 Ⅱ급. 숲 가장자리 덤불 유지.",
+  "vars": [
+   "elev",
+   "slope",
+   "paddy",
+   "field",
+   "grass",
+   "wetland",
+   "river",
+   "tree",
+   "dist_river",
+   "bio1",
+   "bio4",
+   "bio12"
+  ],
+  "layers": [
+   {
+    "key": "main",
+    "name": "중간기착지",
+    "season": "4~5·9~10월",
+    "main": true,
+    "groups": [
+     "grass",
+     "broad",
+     "mixed",
+     "field"
+    ],
+    "desc": "숲과 초지·밭이 500 m 안에 함께 있는 곳(해발 500 m 이하)",
+    "elev": [
+     0,
+     500
+    ],
+    "near": [
+     {
+      "groups": [
+       "grass",
+       "field"
+      ],
+      "km": 0.5,
+      "min": 0.05
+     },
+     {
+      "groups": [
+       "broad",
+       "mixed"
+      ],
+      "km": 0.5,
+      "min": 0.2
+     }
+    ],
+    "refs": [
+     1
+    ]
+   }
+  ],
+  "refs": [
+   {
+    "text": "(2012) Emberiza sulphurata: BirdLife International. IUCN Red List of Threatened Species",
+    "url": "https://doi.org/10.2305/iucn.uk.2012-1.rlts.t22720996a39912645.en"
+   }
+  ]
+ },
+ "검은머리촉새": {
+  "summary": "한때 유라시아에 매우 흔했으나 남획으로 90% 넘게 줄어든 멧새류. 이동 시기에 지나간다.",
+  "distribution": "서해 섬·해안 갈대밭과 하천 둔치.",
+  "habitat": "갈대밭·초지·논 가장자리.",
+  "life": "5·9월 통과.",
+  "diet": "씨앗·곤충.",
+  "threats": "월동지 남획, 갈대밭·초지 감소.",
+  "conservation": "멸종위기 야생생물 Ⅱ급. 갈대밭·초지 보전.",
+  "vars": [
+   "elev",
+   "slope",
+   "paddy",
+   "field",
+   "grass",
+   "wetland",
+   "river",
+   "tree",
+   "dist_river",
+   "bio1",
+   "bio4",
+   "bio12"
+  ],
+  "layers": [
+   {
+    "key": "main",
+    "name": "중간기착지",
+    "season": "5·9월",
+    "main": true,
+    "groups": [
+     "grass",
+     "wetland",
+     "paddy"
+    ],
+    "desc": "물가 1 km 안의 갈대밭·초지·논(해발 200 m 이하)",
+    "elev": [
+     0,
+     200
+    ],
+    "near": [
+     {
+      "groups": [
+       "river",
+       "lake",
+       "wetland",
+       "tidal"
+      ],
+      "km": 1,
+      "min": 0.03
+     }
+    ],
+    "refs": [
+     1,
+     2,
+     3
+    ]
+   }
+  ],
+  "refs": [
+   {
+    "text": "Jong-Gil Park 외 (2019) Moult and plumage patterns of the critically endangered Yellow-breasted Bunting (Emberiza aureola) at a stopover site in Korea. Journal of Ornithology",
+    "url": "https://doi.org/10.1007/s10336-019-01716-0"
+   },
+   {
+    "text": "Jong-Gil Park 외 (2020) Population trends and migration patterns in the critically endangered Yellow-breasted Bunting (Emberiza aureola) in the Republic of Korea. The Korean Journal of Ornithology",
+    "url": "https://doi.org/10.30980/kjo.2020.6.27.1.56"
+   },
+   {
+    "text": "(2013) Emberiza aureola: BirdLife International. IUCN Red List of Threatened Species",
+    "url": "https://doi.org/10.2305/iucn.uk.2013-2.rlts.t22720966a49004426.en"
+   }
+  ],
+  "min_year": 2010
+ },
+ "쇠검은머리쑥새": {
+  "summary": "하구 갈대밭에서 겨울을 나는 멧새류.",
+  "distribution": "한강 하구, 낙동강 하구, 순천만 등.",
+  "habitat": "하구·호소의 갈대밭.",
+  "life": "11~3월 월동.",
+  "diet": "갈대 씨앗·곤충.",
+  "threats": "갈대밭 제거·매립.",
+  "conservation": "멸종위기 야생생물 Ⅱ급. 하구 갈대밭 보전.",
+  "vars": [
+   "elev",
+   "paddy",
+   "field",
+   "wetland",
+   "river",
+   "lake",
+   "tidal",
+   "dist_river",
+   "dist_lake",
+   "dist_coast",
+   "bio1",
+   "bio4"
+  ],
+  "layers": [
+   {
+    "key": "main",
+    "name": "월동지",
+    "season": "11~3월",
+    "main": true,
+    "groups": [
+     "wetland",
+     "grass",
+     "tidal"
+    ],
+    "desc": "하천·하구 1 km 안의 갈대밭·습지(해발 50 m 이하)",
+    "elev": [
+     0,
+     50
+    ],
+    "near": [
+     {
+      "groups": [
+       "river",
+       "tidal",
+       "lake"
+      ],
+      "km": 1,
+      "min": 0.05
+     }
+    ],
+    "refs": [
+     1,
+     2
+    ]
+   }
+  ],
+  "refs": [
+   {
+    "text": "Hyun-Young Nam 외 (2025) Post-juvenile moult of migrating Ochre-rumped Buntings (Emberiza yessoensis) at an East-Asian stopover site. Journal of Ornithology",
+    "url": "https://doi.org/10.1007/s10336-025-02291-3"
+   },
+   {
+    "text": "(2012) Emberiza yessoensis: BirdLife International. IUCN Red List of Threatened Species",
+    "url": "https://doi.org/10.2305/iucn.uk.2012-1.rlts.t22721016a39918329.en"
+   }
+  ]
+ },
+ "뿔종다리": {
+  "summary": "머리깃이 뾰족한 종다리. 국내 기록이 아주 드물다.",
+  "distribution": "서해안 간척지·농경지 등에서 드물게.",
+  "habitat": "탁 트인 맨땅·밭·간척지.",
+  "life": "4~6월 번식.",
+  "diet": "씨앗·곤충.",
+  "threats": "간척지·농경지 개발.",
+  "conservation": "멸종위기 야생생물 Ⅱ급. 탁 트인 농경지 보전.",
+  "vars": [
+   "elev",
+   "slope",
+   "paddy",
+   "field",
+   "grass",
+   "wetland",
+   "river",
+   "tree",
+   "dist_river",
+   "bio1",
+   "bio4",
+   "bio12"
+  ],
+  "layers": [
+   {
+    "key": "main",
+    "name": "서식지",
+    "season": "연중",
+    "main": true,
+    "groups": [
+     "field",
+     "bare",
+     "artbare",
+     "grass"
+    ],
+    "desc": "해발 100 m 이하의 밭·맨땅·초지",
+    "elev": [
+     0,
+     100
+    ],
+    "cell_min": 0.3,
+    "refs": [
+     1
+    ]
+   }
+  ],
+  "refs": [
+   {
+    "text": "(2024) Galerida cristata: BirdLife International. IUCN Red List of Threatened Species",
+    "url": "https://doi.org/10.2305/iucn.uk.2024-2.rlts.t22717383a264572635.en"
+   }
+  ]
+ },
+ "느시": {
+  "summary": "대형 땅새. 과거 겨울에 넓은 평야에 왔으나 지금은 아주 드물다.",
+  "distribution": "서해안 평야·간척지에서 드물게.",
+  "habitat": "넓게 트인 농경지·초지.",
+  "life": "11~3월 월동.",
+  "diet": "풀·씨앗·곤충.",
+  "threats": "평야 개발, 사냥(과거).",
+  "conservation": "멸종위기 야생생물 Ⅰ급, 천연기념물 제206호. 넓은 평야 보전.",
+  "vars": [
+   "elev",
+   "slope",
+   "paddy",
+   "field",
+   "grass",
+   "wetland",
+   "river",
+   "tree",
+   "dist_river",
+   "bio1",
+   "bio4",
+   "bio12"
+  ],
+  "layers": [
+   {
+    "key": "main",
+    "name": "월동지",
+    "season": "11~3월",
+    "main": true,
+    "groups": [
+     "paddy",
+     "field",
+     "grass"
+    ],
+    "desc": "칸의 60% 이상이 농경지·초지인 넓은 평야",
+    "elev": [
+     0,
+     100
+    ],
+    "cell_min": 0.6,
+    "refs": [
+     1
+    ]
+   }
+  ],
+  "refs": [
+   {
+    "text": "(2023) Otis tarda: BirdLife International. IUCN Red List of Threatened Species",
+    "url": "https://doi.org/10.2305/iucn.uk.2023-1.rlts.t22691900a226280431.en"
+   }
+  ]
+ },
+ "뜸부기": {
+  "summary": "여름에 논에서 번식하는 뜸부깃과 새. 1970년대 이후 크게 줄었다.",
+  "distribution": "서해안·남부 평야의 논·습지.",
+  "habitat": "벼가 자란 논과 습지 풀숲에 둥지를 튼다.",
+  "life": "6~8월 번식.",
+  "diet": "곤충·씨앗·작은 동물.",
+  "threats": "논 감소·농약, 경지 정리.",
+  "conservation": "멸종위기 야생생물 Ⅱ급, 천연기념물 제446호. 친환경 논·습지 유지.",
+  "vars": [
+   "elev",
+   "paddy",
+   "field",
+   "wetland",
+   "river",
+   "lake",
+   "tidal",
+   "dist_river",
+   "dist_lake",
+   "dist_coast",
+   "bio1",
+   "bio4"
+  ],
+  "layers": [
+   {
+    "key": "main",
+    "name": "번식지",
+    "season": "6~8월",
+    "main": true,
+    "groups": [
+     "paddy",
+     "wetland"
+    ],
+    "desc": "해발 100 m 이하 평야의 논·습지",
+    "elev": [
+     0,
+     100
+    ],
+    "cell_min": 0.3,
+    "refs": [
+     1
+    ]
+   }
+  ],
+  "refs": [
+   {
+    "text": "(2016) Gallicrex cinerea: BirdLife International. IUCN Red List of Threatened Species",
+    "url": "https://doi.org/10.2305/iucn.uk.2016-3.rlts.t22692789a93369824.en"
+   }
+  ],
+  "min_year": 2010
+ },
+ "호사도요": {
+  "summary": "암컷이 화려하고 수컷이 알을 품는 도요. 논·묵논에서 드물게 번식한다.",
+  "distribution": "남부·서해안 평야.",
+  "habitat": "논·묵논·습지 가장자리 풀숲.",
+  "life": "5~8월 번식.",
+  "diet": "곤충·지렁이·씨앗.",
+  "threats": "논 감소·농약, 묵논 정리.",
+  "conservation": "천연기념물 제449호. 묵논·습지 유지.",
+  "vars": [
+   "elev",
+   "paddy",
+   "field",
+   "wetland",
+   "river",
+   "lake",
+   "tidal",
+   "dist_river",
+   "dist_lake",
+   "dist_coast",
+   "bio1",
+   "bio4"
+  ],
+  "layers": [
+   {
+    "key": "main",
+    "name": "서식지",
+    "season": "5~8월",
+    "main": true,
+    "groups": [
+     "paddy",
+     "wetland"
+    ],
+    "desc": "해발 100 m 이하의 논·습지",
+    "elev": [
+     0,
+     100
+    ],
+    "cell_min": 0.2,
+    "refs": []
+   }
+  ],
+  "refs": []
+ },
+ "원앙": {
+  "summary": "나무 구멍에 둥지를 트는 오리. 숲속 하천·저수지에 산다.",
+  "distribution": "전국 산간 하천·저수지, 겨울에는 남부 하천에 많다.",
+  "habitat": "숲으로 둘러싸인 하천·저수지(먹이·쉼터)와 물가 숲의 큰 나무 구멍(둥지).",
+  "life": "4~7월 번식.",
+  "diet": "도토리·씨앗·수서곤충.",
+  "threats": "하천 정비, 물가 숲 벌채.",
+  "conservation": "천연기념물 제327호. 물가 숲·고목 보존.",
+  "vars": [
+   "elev",
+   "paddy",
+   "field",
+   "wetland",
+   "river",
+   "lake",
+   "tidal",
+   "dist_river",
+   "dist_lake",
+   "dist_coast",
+   "bio1",
+   "bio4"
+  ],
+  "layers": [
+   {
+    "key": "water",
+    "name": "물(채식·쉼터)",
+    "season": "연중",
+    "main": true,
+    "groups": [
+     "river",
+     "lake"
+    ],
+    "desc": "숲 300 m 안의 하천·저수지",
+    "elev": [
+     0,
+     800
+    ],
+    "near": [
+     {
+      "groups": [
+       "broad",
+       "mixed",
+       "conifer"
+      ],
+      "km": 0.3,
+      "min": 0.3
+     }
+    ],
+    "refs": []
+   },
+   {
+    "key": "nest",
+    "name": "둥지 숲",
+    "season": "4~7월",
+    "main": true,
+    "groups": [
+     "broad",
+     "mixed"
+    ],
+    "desc": "하천·저수지 500 m 안의 활엽수림",
+    "elev": [
+     0,
+     800
+    ],
+    "near": [
+     {
+      "groups": [
+       "river",
+       "lake"
+      ],
+      "km": 0.5,
+      "min": 0.01
+     }
+    ],
+    "refs": []
+   }
+  ],
+  "refs": []
+ },
+ "두견": {
+  "summary": "휘파람새 둥지에 알을 맡기는 뻐꾸기류.",
+  "distribution": "전국 산림.",
+  "habitat": "휘파람새가 사는 숲(덤불이 있는 숲 가장자리·계곡).",
+  "life": "5~8월.",
+  "diet": "털벌레 등 곤충.",
+  "threats": "산림 훼손.",
+  "conservation": "천연기념물 제447호. 산림 보전.",
+  "vars": [
+   "elev",
+   "slope",
+   "tree",
+   "broad",
+   "conifer",
+   "paddy",
+   "field",
+   "dist_river",
+   "bio1",
+   "bio4",
+   "bio12"
+  ],
+  "layers": [
+   {
+    "key": "main",
+    "name": "서식지",
+    "season": "5~8월",
+    "main": true,
+    "groups": [
+     "broad",
+     "mixed",
+     "conifer"
+    ],
+    "desc": "칸의 40% 이상이 숲인 산림(해발 100~1,300 m)",
+    "elev": [
+     100,
+     1300
+    ],
+    "cell_min": 0.4,
+    "refs": []
+   }
+  ],
+  "refs": []
+ },
+ "양비둘기": {
+  "summary": "바위·건물 틈에 둥지를 트는 토종 비둘기. 집비둘기와의 교잡과 서식지 감소로 야생 무리는 아주 적다.",
+  "distribution": "전남 구례(화엄사 등), 경기 연천 한탄강, 경북 경주 등 일부 지역에만 남았다.",
+  "habitat": "시골 다리 밑·하천 절벽·절 건물의 틈에서 번식하고 주변 논밭에서 낟알을 먹는다. 도시 비둘기는 대부분 집비둘기다.",
+  "life": "3~8월 번식.",
+  "diet": "낟알·씨앗.",
+  "threats": "집비둘기와의 교잡, 다리·건물 보수로 둥지 자리 소실.",
+  "conservation": "멸종위기 야생생물 Ⅱ급. 둥지 다리·절벽 보존, 집비둘기와 분리.",
+  "vars": [
+   "elev",
+   "slope",
+   "rock",
+   "tree",
+   "river",
+   "paddy",
+   "field",
+   "dist_river",
+   "bio1",
+   "bio12"
+  ],
+  "layers": [
+   {
+    "key": "nest",
+    "name": "번식지",
+    "season": "3~8월",
+    "main": true,
+    "groups": [
+     "rock",
+     "bare",
+     "river"
+    ],
+    "desc": "논밭 1 km 안의 하천 절벽·바위",
+    "elev": [
+     0,
+     500
+    ],
+    "near": [
+     {
+      "groups": [
+       "paddy",
+       "field"
+      ],
+      "km": 1,
+      "min": 0.1
+     }
+    ],
+    "refs": [
+     1,
+     2,
+     3
+    ]
+   },
+   {
+    "key": "feed",
+    "name": "채식지",
+    "season": "연중",
+    "main": true,
+    "groups": [
+     "paddy",
+     "field"
+    ],
+    "desc": "바위·하천 1 km 안의 논밭",
+    "elev": [
+     0,
+     500
+    ],
+    "near": [
+     {
+      "groups": [
+       "rock",
+       "river"
+      ],
+      "km": 1,
+      "min": 0.005
+     }
+    ],
+    "refs": [
+     1,
+     2,
+     3
+    ]
+   }
+  ],
+  "refs": [
+   {
+    "text": "Jin-Yong Kim 외 (2022) Population genetic structure and conservation management of hill pigeons (Columba rupestris) recently endangered in South Korea. Genes &amp; Genomics",
+    "url": "https://doi.org/10.1007/s13258-021-01212-x"
+   },
+   {
+    "text": "Yu-Young Lee 외 (2023) Demographic analyses of a captive Hill Pigeon (Columba rupestris) population in South Korea. The Korean Journal of Ornithology",
+    "url": "https://doi.org/10.30980/kjo.2023.12.30.2.86"
+   },
+   {
+    "text": "Jin-Yong Kim 외 (2023) Genetic investigation of interpopulation relationship and interspecific hybridization in hill pigeons(Columba rupestris) in Yeoncheon County. The Korean Journal of Ornithology",
+    "url": "https://doi.org/10.30980/kjo.2023.6.30.1.38"
+   },
+   {
+    "text": "(2016) Columba rupestris: BirdLife International. IUCN Red List of Threatened Species",
+    "url": "https://doi.org/10.2305/iucn.uk.2016-3.rlts.t22690074a93259855.en"
+   }
+  ],
+  "range": {
+   "km": 10,
+   "note": "확인된 야생 무리(구례·연천·경주 등) 주변"
+  }
+ }
+}

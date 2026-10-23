@@ -1,0 +1,1417 @@
+{
+ "닻무늬길앞잡이": {
+  "summary": "딱지날개에 닻 무늬가 있는 길앞잡이. 서해 해안 사구에만 드물게 산다.",
+  "distribution": "충남 태안 신두리 등 서·남해 해안 사구와 모래밭.",
+  "habitat": "식생이 듬성한 해안 모래밭·사구. 애벌레는 모래에 굴을 파고 산다.",
+  "life": "5~8월 성충.",
+  "diet": "작은 곤충.",
+  "threats": "해안 개발·사구 훼손, 차량·사람 출입.",
+  "conservation": "멸종위기 야생생물 Ⅰ급. 사구 출입 통제·보전.",
+  "vars": [
+   "elev",
+   "bare",
+   "grass",
+   "dist_coast",
+   "bio1",
+   "bio12"
+  ],
+  "layers": [
+   {
+    "key": "main",
+    "name": "서식지",
+    "season": "5~8월",
+    "main": true,
+    "groups": [
+     "bare",
+     "grass"
+    ],
+    "desc": "해안 500 m 안의 모래밭·사구",
+    "coast_km": 0.5,
+    "elev": [
+     0,
+     30
+    ],
+    "refs": [
+     1,
+     2
+    ]
+   }
+  ],
+  "refs": [
+   {
+    "text": "Deokjea Cha 외 (2024) Captive propagation and observations of the endangered species\n          \n           Cicindela\n          \n          (\n          \n           Abroscelis\n          \n          )\n          \n           anchoralis\n          \n          (Coleoptera: Carabidae: Cicindelinae) in South Korea. Insect Conservation and Diversity",
+    "url": "https://doi.org/10.1111/icad.12797"
+   },
+   {
+    "text": "Deokjea Cha 외 (2026) Habitat conservation strategies: behavioral traits and intrinsic threats to the coastal tiger beetle Cicindela anchoralis (Coleoptera: Carabidae: Cicindelinae). Journal of Insect Conservation",
+    "url": "https://doi.org/10.1007/s10841-026-00804-w"
+   }
+  ],
+  "range": {
+   "km": 10
+  }
+ },
+ "붉은점모시나비": {
+  "summary": "날개에 붉은 점이 있는 모시나비. 애벌레가 기린초를 먹는다.",
+  "distribution": "강원 삼척·영월·정선, 경북 일부 산지(복원 개체군 포함).",
+  "habitat": "기린초가 자라는 산지 초지·바위 비탈.",
+  "life": "5~6월 성충.",
+  "diet": "애벌레: 기린초.",
+  "threats": "초지의 숲 천이, 채집, 개발.",
+  "conservation": "멸종위기 야생생물 Ⅰ급. 기린초 초지 유지, 채집 금지.",
+  "vars": [
+   "elev",
+   "slope",
+   "grass",
+   "field",
+   "tree",
+   "rock",
+   "bio1",
+   "bio4",
+   "bio12"
+  ],
+  "layers": [
+   {
+    "key": "main",
+    "name": "서식지",
+    "season": "5~6월",
+    "main": true,
+    "groups": [
+     "grass",
+     "rock"
+    ],
+    "desc": "숲 500 m 안의 산지 초지·바위 비탈(해발 200~1,000 m)",
+    "elev": [
+     200,
+     1000
+    ],
+    "near": [
+     {
+      "groups": [
+       "broad",
+       "mixed",
+       "conifer"
+      ],
+      "km": 0.5,
+      "min": 0.2
+     }
+    ],
+    "refs": [
+     1,
+     2,
+     3
+    ]
+   }
+  ],
+  "refs": [
+   {
+    "text": "Do-Sung Kim 외 (2011) Metapopulation Structure and Movement of a Threatened Butterfly Parnassius bremeri (Lepidoptera: Papilionidae) in Korea. Korean journal of applied entomology",
+    "url": "https://doi.org/10.5656/ksae.2011.03.0.12"
+   },
+   {
+    "text": "Do-Sung Kim 외 (2012) The Analysis and Conservation of Patch Network of Endangered Butterfly Parnassius bremeri(Lepidoptera: Papilionidae) in Fragmented Landscapes. Korean journal of applied entomology",
+    "url": "https://doi.org/10.5656/ksae.2012.01.1.064"
+   },
+   {
+    "text": "Kyung Ah Koo 외 (2025) A Dark Future of Endangered Mountain Species, Parnassius bremeri, Under Climate Change. Ecology and Evolution",
+    "url": "https://doi.org/10.1002/ece3.71178"
+   },
+   {
+    "text": "Do-Sung Kim 외 (2011) Habitat Restoration Initiative for Endangered Species Parnassius bremeri (Lepidoptera: Papilionidae) in Korea. Journal of the Korean Institute of Landscape Architecture",
+    "url": "https://doi.org/10.9715/kila.2011.39.6.098"
+   }
+  ],
+  "range": {
+   "km": 10
+  }
+ },
+ "비단벌레": {
+  "summary": "금속광택이 화려한 비단벌레. 남부 난대림의 고목에서 자란다.",
+  "distribution": "전남 완도·해남·장흥 등 남해안 난대림.",
+  "habitat": "팽나무·느티나무 등 큰 활엽수 고목이 있는 남부 숲.",
+  "life": "7~8월 성충, 애벌레는 고목 속에서 수년.",
+  "diet": "애벌레: 죽어가는 나무의 목질부.",
+  "threats": "고목 벌채, 난대림 개발.",
+  "conservation": "멸종위기 야생생물 Ⅰ급, 천연기념물 제496호. 고목 보존.",
+  "vars": [
+   "elev",
+   "slope",
+   "tree",
+   "broad",
+   "conifer",
+   "grass",
+   "bio1",
+   "bio4",
+   "bio12"
+  ],
+  "layers": [
+   {
+    "key": "main",
+    "name": "서식지",
+    "season": "연중",
+    "main": true,
+    "groups": [
+     "broad",
+     "mixed"
+    ],
+    "desc": "해안 10 km 안의 남부 활엽수림(해발 300 m 이하)",
+    "elev": [
+     0,
+     300
+    ],
+    "coast_km": 10,
+    "cell_min": 0.3,
+    "refs": [
+     1
+    ]
+   }
+  ],
+  "refs": [
+   {
+    "text": "Ohseok Kwon (2013) Report on the current status of Korean jewel beetle, Chrysochroa coreana (Coleoptera: Buprestidae). Journal of Ecology and Environment",
+    "url": "https://doi.org/10.5141/ecoenv.2013.014"
+   }
+  ]
+ },
+ "산굴뚝나비": {
+  "summary": "한라산 고지대 초지에만 사는 나비.",
+  "distribution": "제주 한라산 해발 1,300 m 이상 초지.",
+  "habitat": "고산 초지·관목지.",
+  "life": "7~8월 성충.",
+  "diet": "애벌레: 벼과 식물.",
+  "threats": "고산 초지의 관목화(조릿대 확산), 기후 변화, 탐방로 훼손.",
+  "conservation": "멸종위기 야생생물 Ⅰ급, 천연기념물 제458호. 고산 초지 보전.",
+  "vars": [
+   "elev",
+   "slope",
+   "grass",
+   "field",
+   "tree",
+   "rock",
+   "bio1",
+   "bio4",
+   "bio12"
+  ],
+  "layers": [
+   {
+    "key": "main",
+    "name": "서식지",
+    "season": "7~8월",
+    "main": true,
+    "groups": [
+     "grass",
+     "rock"
+    ],
+    "desc": "해발 1,200 m 이상의 고산 초지·바위",
+    "elev": [
+     1200,
+     1950
+    ],
+    "refs": [
+     1,
+     2,
+     3
+    ]
+   }
+  ],
+  "refs": [
+   {
+    "text": "Youngho CHO 외 (2011) Conservation of Hipparchia autonoe (Esper) (Lepidoptera: Nymphalidae), Natural Monument in South Korea. Entomological Research",
+    "url": "https://doi.org/10.1111/j.1748-5967.2011.00345.x"
+   },
+   {
+    "text": "외 (2014) Distribution and Population Dynamics of Korean Endangered Species; Hipparchia autonoe (Lepidoptera: Nymphalidae) on Mt. Hallasan, Jeju Island, Korea. Korean Journal of Environment and Ecology",
+    "url": "https://doi.org/10.13047/kjee.2014.28.5.550"
+   },
+   {
+    "text": "(2023) Hipparchia autonoe: van Swaay, C., Ellis, S. &amp; Warren, M.. IUCN Red List of Threatened Species",
+    "url": "https://doi.org/10.2305/iucn.uk.2025-1.rlts.t174380a211421425.en"
+   }
+  ],
+  "range": {
+   "km": 5
+  }
+ },
+ "상제나비": {
+  "summary": "흰 날개의 흰나비. 국내에서는 1990년대 이후 기록이 거의 끊겼다.",
+  "distribution": "과거 강원 산지. 최근 확실한 기록이 거의 없다.",
+  "habitat": "산지 초지·과수 주변(과거).",
+  "life": "5~6월 성충.",
+  "diet": "애벌레: 장미과 나무(돌배나무 등).",
+  "threats": "서식지 감소, 기후 변화.",
+  "conservation": "멸종위기 야생생물 Ⅰ급. 최근 기록이 거의 없어 ‘가능’ 수준으로만 본다.",
+  "vars": [
+   "elev",
+   "slope",
+   "grass",
+   "field",
+   "tree",
+   "rock",
+   "bio1",
+   "bio4",
+   "bio12"
+  ],
+  "layers": [
+   {
+    "key": "main",
+    "name": "잠재 서식지",
+    "season": "5~6월",
+    "main": true,
+    "groups": [
+     "grass",
+     "field",
+     "broad"
+    ],
+    "desc": "숲 가장자리 초지(해발 300~1,000 m)",
+    "elev": [
+     300,
+     1000
+    ],
+    "near": [
+     {
+      "groups": [
+       "broad",
+       "mixed",
+       "conifer"
+      ],
+      "km": 0.5,
+      "min": 0.2
+     }
+    ],
+    "refs": [
+     1,
+     2
+    ]
+   }
+  ],
+  "refs": [
+   {
+    "text": "외 (2016) Assessing the Influence of Topographic Factors on the Distribution of Aporia crataegi (Lepidoptera: Pieridae) in Northeast Asia Using a MaxEnt Modeling Approach. Korean Journal of Ecology and Environment",
+    "url": "https://doi.org/10.11614/ksl.2016.49.2.142"
+   },
+   {
+    "text": "(2023) Aporia crataegi: van Swaay, C., Ellis, S. &amp; Warren, M.. IUCN Red List of Threatened Species",
+    "url": "https://doi.org/10.2305/iucn.uk.2025-1.rlts.t159814a211381664.en"
+   }
+  ]
+ },
+ "수염풍뎅이": {
+  "summary": "더듬이가 부채 모양인 대형 풍뎅이. 하천 주변 모래땅에서 애벌레가 자란다.",
+  "distribution": "금강·한강 등 하천 주변 모래땅(기록 드묾).",
+  "habitat": "하천 둔치와 주변 모래 섞인 밭·초지.",
+  "life": "6~7월 성충(불빛에 유인).",
+  "diet": "애벌레: 식물 뿌리.",
+  "threats": "하천 둔치 정비, 모래땅 개발.",
+  "conservation": "멸종위기 야생생물 Ⅰ급. 모래 둔치 보전.",
+  "vars": [
+   "elev",
+   "slope",
+   "grass",
+   "field",
+   "tree",
+   "rock",
+   "bio1",
+   "bio4",
+   "bio12"
+  ],
+  "layers": [
+   {
+    "key": "main",
+    "name": "서식지",
+    "season": "연중",
+    "main": true,
+    "groups": [
+     "bare",
+     "field",
+     "grass"
+    ],
+    "desc": "하천 500 m 안의 모래땅·밭·초지(해발 200 m 이하)",
+    "elev": [
+     0,
+     200
+    ],
+    "near": [
+     {
+      "groups": [
+       "river"
+      ],
+      "km": 0.5,
+      "min": 0.03
+     }
+    ],
+    "refs": [
+     1,
+     2
+    ]
+   }
+  ],
+  "refs": [
+   {
+    "text": "외 (2025) Analysis of the Occurrence Period and Morphological Measurement of &lt;i&gt;Polyphylla laticollis manchurica&lt;/i&gt; Adults, an Endangered Species in the Miho River. Korean Journal of Ecology and Environment",
+    "url": "https://doi.org/10.11614/ksl.2025.58.2.140"
+   },
+   {
+    "text": "외 (2025) Building a Citizen Science Platform for the Conservation of &lt;i&gt;Polyphylla laticollis manchurica&lt;/i&gt; and Analyzing Citizen Participation Awareness Changes. Korean Journal of Ecology and Environment",
+    "url": "https://doi.org/10.11614/ksl.2025.58.4.346"
+   }
+  ]
+ },
+ "큰홍띠점박이푸른부전나비": {
+  "summary": "강원 석회암 지대에만 사는 부전나비. 애벌레가 기린초를 먹는다.",
+  "distribution": "강원 영월·정선, 충북 단양 등 석회암 지대.",
+  "habitat": "석회암 바위 비탈의 초지(기린초 자생지).",
+  "life": "5~6월 성충.",
+  "diet": "애벌레: 기린초.",
+  "threats": "석회석 채굴, 숲 천이.",
+  "conservation": "멸종위기 야생생물 Ⅰ급. 석회암 초지 보전.",
+  "vars": [
+   "elev",
+   "slope",
+   "grass",
+   "field",
+   "tree",
+   "rock",
+   "bio1",
+   "bio4",
+   "bio12"
+  ],
+  "layers": [
+   {
+    "key": "main",
+    "name": "서식지",
+    "season": "5~6월",
+    "main": true,
+    "groups": [
+     "grass",
+     "rock"
+    ],
+    "desc": "바위가 드러난 경사 15° 이상 초지(해발 200~900 m)",
+    "elev": [
+     200,
+     900
+    ],
+    "slope": [
+     15,
+     90
+    ],
+    "near": [
+     {
+      "groups": [
+       "rock"
+      ],
+      "km": 0.5,
+      "min": 0.003
+     }
+    ],
+    "refs": []
+   }
+  ],
+  "refs": []
+ },
+ "깊은산부전나비": {
+  "summary": "산지 활엽수림에 사는 부전나비.",
+  "distribution": "강원·경기 북부 등 중부 산지.",
+  "habitat": "물푸레나무 등이 있는 산지 활엽수림.",
+  "life": "6~7월 성충.",
+  "diet": "애벌레: 물푸레나무류.",
+  "threats": "산림 훼손.",
+  "conservation": "멸종위기 야생생물 Ⅱ급. 산지 활엽수림 보전.",
+  "vars": [
+   "elev",
+   "slope",
+   "tree",
+   "broad",
+   "conifer",
+   "grass",
+   "bio1",
+   "bio4",
+   "bio12"
+  ],
+  "layers": [
+   {
+    "key": "main",
+    "name": "서식지",
+    "season": "6~7월",
+    "main": true,
+    "groups": [
+     "broad",
+     "mixed"
+    ],
+    "desc": "칸의 절반 이상이 숲인 산지(해발 300~1,200 m)",
+    "elev": [
+     300,
+     1200
+    ],
+    "cell_min": 0.5,
+    "refs": []
+   }
+  ],
+  "refs": []
+ },
+ "노란잔산잠자리": {
+  "summary": "맑은 하천에 사는 잔산잠자리.",
+  "distribution": "중부 이남 맑은 하천.",
+  "habitat": "물이 맑고 강변 숲이 있는 하천.",
+  "life": "6~8월 성충, 애벌레는 하천 바닥.",
+  "diet": "작은 곤충(애벌레는 수서동물).",
+  "threats": "하천 정비, 수질 악화.",
+  "conservation": "멸종위기 야생생물 Ⅱ급. 하천 수질·강변 숲 보전.",
+  "vars": [
+   "elev",
+   "lake",
+   "wetland",
+   "paddy",
+   "river",
+   "dist_lake",
+   "bio1",
+   "bio12"
+  ],
+  "layers": [
+   {
+    "key": "main",
+    "name": "서식지",
+    "season": "6~8월",
+    "main": true,
+    "groups": [
+     "river"
+    ],
+    "desc": "숲 500 m 안의 하천(해발 50~500 m)",
+    "elev": [
+     50,
+     500
+    ],
+    "cell_min": 0.005,
+    "near": [
+     {
+      "groups": [
+       "broad",
+       "mixed",
+       "conifer"
+      ],
+      "km": 0.5,
+      "min": 0.3
+     }
+    ],
+    "refs": [
+     1
+    ]
+   }
+  ],
+  "refs": [
+   {
+    "text": "(2019) Macromia daimoji: Tong, X.. IUCN Red List of Threatened Species",
+    "url": "https://doi.org/10.2305/iucn.uk.2020-1.rlts.t167174a1172156.en"
+   }
+  ]
+ },
+ "대모잠자리": {
+  "summary": "날개에 갈색 무늬가 있는 잠자리. 식생이 풍부한 연못·습지에 산다.",
+  "distribution": "중부 이남 저지대 연못·습지(김해 화포천 등).",
+  "habitat": "수생식물이 우거진 연못·습지·묵논.",
+  "life": "4~6월 성충.",
+  "diet": "작은 곤충.",
+  "threats": "연못·습지 매립, 수질 악화.",
+  "conservation": "멸종위기 야생생물 Ⅱ급. 연못·습지 보전.",
+  "vars": [
+   "elev",
+   "lake",
+   "wetland",
+   "paddy",
+   "river",
+   "dist_lake",
+   "bio1",
+   "bio12"
+  ],
+  "layers": [
+   {
+    "key": "main",
+    "name": "서식지",
+    "season": "4~6월",
+    "main": true,
+    "groups": [
+     "lake",
+     "wetland"
+    ],
+    "desc": "해발 100 m 이하의 연못·습지",
+    "elev": [
+     0,
+     100
+    ],
+    "refs": [
+     1,
+     2
+    ]
+   }
+  ],
+  "refs": [
+   {
+    "text": "Tong Liu 외 (2023) Staying on the current niche: Consensus model reveals the habitat loss of a critically endangered dragonfly Libellula angelina under climate changes.",
+    "url": "https://doi.org/10.21203/rs.3.rs-2932910/v1"
+   },
+   {
+    "text": "(2006) Libellula angelina: Inoue, K.. IUCN Red List of Threatened Species",
+    "url": "https://doi.org/10.2305/iucn.uk.2006.rlts.t11928a3315484.en"
+   }
+  ]
+ },
+ "두점박이사슴벌레": {
+  "summary": "제주에만 사는 사슴벌레.",
+  "distribution": "제주 저지대~중산간 숲.",
+  "habitat": "활엽수림의 썩은 나무(애벌레)와 수액.",
+  "life": "6~8월 성충.",
+  "diet": "수액(애벌레는 썩은 나무).",
+  "threats": "숲 개발, 채집.",
+  "conservation": "멸종위기 야생생물 Ⅱ급. 숲·고목 보전, 채집 금지.",
+  "vars": [
+   "elev",
+   "slope",
+   "tree",
+   "broad",
+   "conifer",
+   "grass",
+   "bio1",
+   "bio4",
+   "bio12"
+  ],
+  "layers": [
+   {
+    "key": "main",
+    "name": "서식지",
+    "season": "6~8월",
+    "main": true,
+    "groups": [
+     "broad",
+     "mixed"
+    ],
+    "desc": "제주 활엽수림(해발 800 m 이하)",
+    "elev": [
+     0,
+     800
+    ],
+    "refs": []
+   }
+  ],
+  "refs": [],
+  "range": {
+   "km": 15
+  }
+ },
+ "뚱보주름메뚜기": {
+  "summary": "날지 못하는 대형 메뚜기. 강원 산지 초지에 산다.",
+  "distribution": "강원 산지(평창·정선 등) 초지.",
+  "habitat": "산지 초지·숲 가장자리 풀밭.",
+  "life": "7~9월 성충.",
+  "diet": "풀.",
+  "threats": "초지 감소·천이, 개발.",
+  "conservation": "멸종위기 야생생물 Ⅱ급. 산지 초지 보전.",
+  "vars": [
+   "elev",
+   "slope",
+   "grass",
+   "field",
+   "tree",
+   "rock",
+   "bio1",
+   "bio4",
+   "bio12"
+  ],
+  "layers": [
+   {
+    "key": "main",
+    "name": "서식지",
+    "season": "7~9월",
+    "main": true,
+    "groups": [
+     "grass",
+     "field"
+    ],
+    "desc": "해발 500 m 이상의 산지 초지",
+    "elev": [
+     500,
+     1500
+    ],
+    "refs": [
+     1
+    ]
+   }
+  ],
+  "refs": [
+   {
+    "text": "Mannyun Kim 외 (2024) Identification of the endangered species Haplotropis brunneriana (Insecta: Orthoptera) from South Korea using exuviae. Journal of Insect Conservation",
+    "url": "https://doi.org/10.1007/s10841-024-00609-9"
+   }
+  ]
+ },
+ "멋조롱박딱정벌레": {
+  "summary": "남부 산지 숲 바닥의 딱정벌레.",
+  "distribution": "지리산 등 남부 산지.",
+  "habitat": "습한 숲 바닥의 낙엽층.",
+  "life": "5~9월 성충.",
+  "diet": "달팽이 등 작은 동물.",
+  "threats": "산림 훼손.",
+  "conservation": "멸종위기 야생생물 Ⅱ급. 숲 바닥 보전.",
+  "vars": [
+   "elev",
+   "slope",
+   "tree",
+   "broad",
+   "conifer",
+   "grass",
+   "bio1",
+   "bio4",
+   "bio12"
+  ],
+  "layers": [
+   {
+    "key": "main",
+    "name": "서식지",
+    "season": "연중",
+    "main": true,
+    "groups": [
+     "broad",
+     "mixed"
+    ],
+    "desc": "칸의 절반 이상이 숲인 산지(해발 200~1,500 m)",
+    "elev": [
+     200,
+     1500
+    ],
+    "cell_min": 0.5,
+    "refs": [
+     1
+    ]
+   }
+  ],
+  "refs": [
+   {
+    "text": "Jong-Kyun Park (2008) Description of a New Subspecies Acoptolabrus mirabilissimus (Coleoptera, Carabidae) from Korean Peninsula. Korean journal of applied entomology",
+    "url": "https://doi.org/10.5656/ksae.2008.47.1.001"
+   }
+  ],
+  "range": {
+   "km": 10
+  }
+ },
+ "물방개": {
+  "summary": "대형 물방개. 수초가 많은 연못·논에 산다.",
+  "distribution": "전국 저지대 연못·논(크게 줄었다).",
+  "habitat": "수초가 많고 물이 고인 연못·둠벙·논.",
+  "life": "5~8월 번식.",
+  "diet": "작은 물고기·올챙이.",
+  "threats": "농약, 둠벙·연못 매립.",
+  "conservation": "멸종위기 야생생물 Ⅱ급. 둠벙·연못 보전.",
+  "vars": [
+   "elev",
+   "lake",
+   "wetland",
+   "paddy",
+   "river",
+   "dist_lake",
+   "bio1",
+   "bio12"
+  ],
+  "layers": [
+   {
+    "key": "main",
+    "name": "서식지",
+    "season": "연중",
+    "main": true,
+    "groups": [
+     "lake",
+     "wetland",
+     "paddy"
+    ],
+    "desc": "해발 200 m 이하의 연못·습지·논",
+    "elev": [
+     0,
+     200
+    ],
+    "refs": []
+   }
+  ],
+  "refs": []
+ },
+ "물장군": {
+  "summary": "대형 수서 노린재. 연못·논 등 고인 물에 산다.",
+  "distribution": "전국 저지대(크게 줄었다).",
+  "habitat": "수초가 있는 연못·논·습지.",
+  "life": "5~7월 번식(불빛에 유인).",
+  "diet": "개구리·작은 물고기.",
+  "threats": "농약, 둠벙 매립, 야간 조명.",
+  "conservation": "멸종위기 야생생물 Ⅱ급. 둠벙·연못 보전, 야간 조명 관리.",
+  "vars": [
+   "elev",
+   "lake",
+   "wetland",
+   "paddy",
+   "river",
+   "dist_lake",
+   "bio1",
+   "bio12"
+  ],
+  "layers": [
+   {
+    "key": "main",
+    "name": "서식지",
+    "season": "연중",
+    "main": true,
+    "groups": [
+     "lake",
+     "wetland",
+     "paddy"
+    ],
+    "desc": "해발 200 m 이하의 연못·습지·논",
+    "elev": [
+     0,
+     200
+    ],
+    "refs": [
+     1
+    ]
+   }
+  ],
+  "refs": [
+   {
+    "text": "Shin-ya Ohba 외 (2005) Food shortage affects flight migration of the giant water bug Lethocerus deyrolli in the prewintering season. Limnology",
+    "url": "https://doi.org/10.1007/s10201-005-0148-7"
+   }
+  ]
+ },
+ "불나방": {
+  "summary": "붉은 뒷날개의 불나방. 습지 주변 초지에 드물게 산다.",
+  "distribution": "강원 등 북부 산지의 습한 초지.",
+  "habitat": "습지 주변 초지.",
+  "life": "7~8월 성충(불빛에 유인).",
+  "diet": "애벌레: 여러 풀.",
+  "threats": "초지·습지 감소.",
+  "conservation": "멸종위기 야생생물 Ⅱ급. 습한 초지 보전.",
+  "vars": [
+   "elev",
+   "slope",
+   "grass",
+   "field",
+   "tree",
+   "rock",
+   "bio1",
+   "bio4",
+   "bio12"
+  ],
+  "layers": [
+   {
+    "key": "main",
+    "name": "서식지",
+    "season": "7~8월",
+    "main": true,
+    "groups": [
+     "grass",
+     "wetland"
+    ],
+    "desc": "습지 1 km 안의 초지(해발 200~1,200 m)",
+    "elev": [
+     200,
+     1200
+    ],
+    "near": [
+     {
+      "groups": [
+       "wetland",
+       "lake",
+       "river"
+      ],
+      "km": 1,
+      "min": 0.01
+     }
+    ],
+    "refs": [
+     1,
+     2
+    ]
+   }
+  ],
+  "refs": [
+   {
+    "text": "Kelvin F. Conrad 외 (2002) Long-term decline in abundance and distribution of the garden tiger moth ( Arctia caja ) in Great Britain. Biological Conservation",
+    "url": "https://doi.org/10.1016/s0006-3207(01)00258-0"
+   },
+   {
+    "text": "(2024) Arctia caja: van Deijk, J., Parsons, M. &amp; van Swaay, C.. IUCN Red List of Threatened Species",
+    "url": "https://doi.org/10.2305/iucn.uk.2026-1.rlts.t260193381a260193396.en"
+   }
+  ]
+ },
+ "소똥구리": {
+  "summary": "소똥을 굴려 경단을 만드는 소똥구리. 국내에서는 1970년대 이후 확인되지 않는다.",
+  "distribution": "과거 전국 방목지. 현재 기록 없음.",
+  "habitat": "소를 놓아 기르는 초지(과거).",
+  "life": "5~9월 성충.",
+  "diet": "소똥.",
+  "threats": "방목 감소, 구충제.",
+  "conservation": "멸종위기 야생생물 Ⅱ급. 최근 기록이 없다.",
+  "vars": [
+   "elev",
+   "slope",
+   "grass",
+   "field",
+   "tree",
+   "rock",
+   "bio1",
+   "bio4",
+   "bio12"
+  ],
+  "layers": [
+   {
+    "key": "main",
+    "name": "잠재 서식지",
+    "season": "5~9월",
+    "main": true,
+    "groups": [
+     "grass"
+    ],
+    "desc": "초지(방목지)",
+    "elev": [
+     0,
+     800
+    ],
+    "cell_min": 0.3,
+    "refs": [
+     1
+    ]
+   }
+  ],
+  "refs": [
+   {
+    "text": "Hwang Kim 외 (2024) Assessing the Viability of Translocated Mongolian Dung Beetles (Gymnopleurus mopsus) for Ecological Restoration in Republic of Korea: An Analysis of Environmental Adaptability. Diversity",
+    "url": "https://doi.org/10.3390/d16110691"
+   }
+  ]
+ },
+ "쌍꼬리부전나비": {
+  "summary": "애벌레가 개미집에서 자라는 부전나비. 소나무 숲 주변에 산다.",
+  "distribution": "중부 이남 소나무 숲 주변.",
+  "habitat": "소나무 숲 가장자리(마쓰무라밑드리개미와 공생).",
+  "life": "6~7월 성충.",
+  "diet": "애벌레: 개미가 주는 먹이.",
+  "threats": "소나무 숲 훼손.",
+  "conservation": "멸종위기 야생생물 Ⅱ급. 소나무 숲 보전.",
+  "vars": [
+   "elev",
+   "slope",
+   "tree",
+   "broad",
+   "conifer",
+   "grass",
+   "bio1",
+   "bio4",
+   "bio12"
+  ],
+  "layers": [
+   {
+    "key": "main",
+    "name": "서식지",
+    "season": "6~7월",
+    "main": true,
+    "groups": [
+     "conifer",
+     "mixed"
+    ],
+    "desc": "초지·밭 500 m 안의 소나무 숲(해발 600 m 이하)",
+    "elev": [
+     0,
+     600
+    ],
+    "near": [
+     {
+      "groups": [
+       "grass",
+       "field"
+      ],
+      "km": 0.5,
+      "min": 0.05
+     }
+    ],
+    "refs": []
+   }
+  ],
+  "refs": []
+ },
+ "애기뿔소똥구리": {
+  "summary": "뿔이 있는 소똥구리. 방목지 소똥에 산다.",
+  "distribution": "제주·강원·전남 등 방목지.",
+  "habitat": "소·말을 놓아 기르는 초지.",
+  "life": "5~9월 성충.",
+  "diet": "소·말 똥.",
+  "threats": "방목 감소, 구충제.",
+  "conservation": "멸종위기 야생생물 Ⅱ급. 방목 초지 유지.",
+  "vars": [
+   "elev",
+   "slope",
+   "grass",
+   "field",
+   "tree",
+   "rock",
+   "bio1",
+   "bio4",
+   "bio12"
+  ],
+  "layers": [
+   {
+    "key": "main",
+    "name": "서식지",
+    "season": "5~9월",
+    "main": true,
+    "groups": [
+     "grass",
+     "field"
+    ],
+    "desc": "칸의 30% 이상이 초지·밭인 곳(해발 1,000 m 이하)",
+    "elev": [
+     0,
+     1000
+    ],
+    "cell_min": 0.3,
+    "refs": [
+     1
+    ]
+   }
+  ],
+  "refs": [
+   {
+    "text": "Hea-Son Bang 외 (2007) Effect of Temperature on the Development of Copris tripartitus Waterhouse (Coleoptera: Scarabaeidae). Korean journal of applied entomology",
+    "url": "https://doi.org/10.5656/ksae.2007.46.3.357"
+   }
+  ]
+ },
+ "여름어리표범나비": {
+  "summary": "산지 습한 초지에 사는 어리표범나비.",
+  "distribution": "강원 산지.",
+  "habitat": "습한 산지 초지.",
+  "life": "6~7월 성충.",
+  "diet": "애벌레: 질경이 등.",
+  "threats": "초지 천이·개발.",
+  "conservation": "멸종위기 야생생물 Ⅱ급. 습한 초지 보전.",
+  "vars": [
+   "elev",
+   "slope",
+   "grass",
+   "field",
+   "tree",
+   "rock",
+   "bio1",
+   "bio4",
+   "bio12"
+  ],
+  "layers": [
+   {
+    "key": "main",
+    "name": "서식지",
+    "season": "6~7월",
+    "main": true,
+    "groups": [
+     "grass",
+     "wetland"
+    ],
+    "desc": "해발 400 m 이상의 습한 초지",
+    "elev": [
+     400,
+     1500
+    ],
+    "refs": []
+   }
+  ],
+  "refs": []
+ },
+ "왕은점표범나비": {
+  "summary": "제비꽃을 먹는 대형 표범나비.",
+  "distribution": "전국 산지·하천 주변 초지(드묾).",
+  "habitat": "제비꽃이 자라는 초지.",
+  "life": "6~8월 성충.",
+  "diet": "애벌레: 제비꽃.",
+  "threats": "초지 감소·천이.",
+  "conservation": "멸종위기 야생생물 Ⅱ급. 초지 보전.",
+  "vars": [
+   "elev",
+   "slope",
+   "grass",
+   "field",
+   "tree",
+   "rock",
+   "bio1",
+   "bio4",
+   "bio12"
+  ],
+  "layers": [
+   {
+    "key": "main",
+    "name": "서식지",
+    "season": "6~8월",
+    "main": true,
+    "groups": [
+     "grass"
+    ],
+    "desc": "초지(해발 800 m 이하)",
+    "elev": [
+     0,
+     800
+    ],
+    "refs": [
+     1
+    ]
+   }
+  ],
+  "refs": [
+   {
+    "text": "Sung-Soo Kim 외 (2011) The Butterfly Community in Is. Guleopdo, Korea and the Dominance of the Endangered Species Argynnis nerippe. Korean journal of applied entomology",
+    "url": "https://doi.org/10.5656/ksae.2011.04.0.16"
+   }
+  ]
+ },
+ "윤조롱박딱정벌레": {
+  "summary": "숲 바닥에 사는 조롱박딱정벌레류로 분포가 좁다.",
+  "distribution": "중부 일부 산지.",
+  "habitat": "습한 활엽수림 바닥의 낙엽층.",
+  "life": "5~9월 성충.",
+  "diet": "달팽이 등 작은 동물.",
+  "threats": "산림 훼손.",
+  "conservation": "멸종위기 야생생물 Ⅱ급. 숲 바닥 보전.",
+  "vars": [
+   "elev",
+   "slope",
+   "tree",
+   "broad",
+   "conifer",
+   "grass",
+   "bio1",
+   "bio4",
+   "bio12"
+  ],
+  "layers": [
+   {
+    "key": "main",
+    "name": "서식지",
+    "season": "연중",
+    "main": true,
+    "groups": [
+     "broad",
+     "mixed"
+    ],
+    "desc": "칸의 절반 이상이 숲인 산지(해발 200~1,500 m)",
+    "elev": [
+     200,
+     1500
+    ],
+    "cell_min": 0.5,
+    "refs": []
+   }
+  ],
+  "refs": [],
+  "range": {
+   "km": 5
+  }
+ },
+ "창언조롱박딱정벌레": {
+  "summary": "숲 바닥에 사는 조롱박딱정벌레류로 분포가 좁다.",
+  "distribution": "경북·충북 일부 산지.",
+  "habitat": "습한 활엽수림 바닥의 낙엽층.",
+  "life": "5~9월 성충.",
+  "diet": "달팽이 등 작은 동물.",
+  "threats": "산림 훼손.",
+  "conservation": "멸종위기 야생생물 Ⅱ급. 숲 바닥 보전.",
+  "vars": [
+   "elev",
+   "slope",
+   "tree",
+   "broad",
+   "conifer",
+   "grass",
+   "bio1",
+   "bio4",
+   "bio12"
+  ],
+  "layers": [
+   {
+    "key": "main",
+    "name": "서식지",
+    "season": "연중",
+    "main": true,
+    "groups": [
+     "broad",
+     "mixed"
+    ],
+    "desc": "칸의 절반 이상이 숲인 산지(해발 200~1,500 m)",
+    "elev": [
+     200,
+     1500
+    ],
+    "cell_min": 0.5,
+    "refs": []
+   }
+  ],
+  "refs": [],
+  "range": {
+   "km": 5
+  }
+ },
+ "은줄팔랑나비": {
+  "summary": "물가 초지에 사는 팔랑나비.",
+  "distribution": "중부 이남 하천·습지 주변.",
+  "habitat": "물가의 억새·갈대 초지.",
+  "life": "5·8월 성충.",
+  "diet": "애벌레: 벼과 식물.",
+  "threats": "하천 둔치·습지 정비.",
+  "conservation": "멸종위기 야생생물 Ⅱ급. 물가 초지 보전.",
+  "vars": [
+   "elev",
+   "slope",
+   "grass",
+   "field",
+   "tree",
+   "rock",
+   "bio1",
+   "bio4",
+   "bio12"
+  ],
+  "layers": [
+   {
+    "key": "main",
+    "name": "서식지",
+    "season": "5~8월",
+    "main": true,
+    "groups": [
+     "grass",
+     "wetland"
+    ],
+    "desc": "하천·습지 300 m 안의 초지(해발 300 m 이하)",
+    "elev": [
+     0,
+     300
+    ],
+    "near": [
+     {
+      "groups": [
+       "river",
+       "wetland",
+       "lake"
+      ],
+      "km": 0.3,
+      "min": 0.02
+     }
+    ],
+    "refs": [
+     1,
+     2,
+     3
+    ]
+   }
+  ],
+  "refs": [
+   {
+    "text": "외 (2016) Life Cycle and Breeding Information of Leptalina unicolor from Korea (Lepidoptera : Hesperiidae). Journal of Environmental Science International",
+    "url": "https://doi.org/10.5322/jesi.2016.25.12.1633"
+   },
+   {
+    "text": "Pradeep Adhikari 외 (2022) Potential distribution of the silver stripped skipper (Leptalina unicolor) and maiden silvergrass (Miscanthus sinensis) under climate change in South Korea. Entomological Research",
+    "url": "https://doi.org/10.1111/1748-5967.12622"
+   },
+   {
+    "text": "Jong-Yun Choi 외 (2019) Influence of plant on distribution of an endangered butterfly, Leptalina unicolor (Bremer &amp; Grey, 1853), in restored riverside areas along the Geum River. Journal of Ecology and Environment",
+    "url": "https://doi.org/10.1186/s41610-019-0129-0"
+   }
+  ]
+ },
+ "참호박뒤영벌": {
+  "summary": "한국 고유 뒤영벌.",
+  "distribution": "강원 등 중부 산지.",
+  "habitat": "꽃이 많은 산지 숲 가장자리와 초지.",
+  "life": "5~9월 활동.",
+  "diet": "꽃꿀·꽃가루.",
+  "threats": "서식지 감소, 농약.",
+  "conservation": "멸종위기 야생생물 Ⅱ급. 산지 초지·숲 가장자리 보전.",
+  "vars": [
+   "elev",
+   "slope",
+   "grass",
+   "field",
+   "tree",
+   "rock",
+   "bio1",
+   "bio4",
+   "bio12"
+  ],
+  "layers": [
+   {
+    "key": "main",
+    "name": "서식지",
+    "season": "5~9월",
+    "main": true,
+    "groups": [
+     "grass",
+     "broad",
+     "mixed"
+    ],
+    "desc": "숲과 초지가 500 m 안에 함께 있는 산지(해발 200~1,200 m)",
+    "elev": [
+     200,
+     1200
+    ],
+    "near": [
+     {
+      "groups": [
+       "grass"
+      ],
+      "km": 0.5,
+      "min": 0.03
+     }
+    ],
+    "refs": []
+   }
+  ],
+  "refs": []
+ },
+ "큰자색호랑꽃무지": {
+  "summary": "고목 구멍에서 애벌레가 자라는 꽃무지.",
+  "distribution": "강원 등 산지(기록 드묾).",
+  "habitat": "큰 고목이 있는 성숙한 활엽수림.",
+  "life": "7~8월 성충.",
+  "diet": "애벌레: 고목 속 썩은 목질.",
+  "threats": "고목 벌채.",
+  "conservation": "멸종위기 야생생물 Ⅱ급. 고목 보존.",
+  "vars": [
+   "elev",
+   "slope",
+   "tree",
+   "broad",
+   "conifer",
+   "grass",
+   "bio1",
+   "bio4",
+   "bio12"
+  ],
+  "layers": [
+   {
+    "key": "main",
+    "name": "서식지",
+    "season": "연중",
+    "main": true,
+    "groups": [
+     "broad",
+     "mixed"
+    ],
+    "desc": "칸의 60% 이상이 숲인 산지(해발 200~1,200 m)",
+    "elev": [
+     200,
+     1200
+    ],
+    "cell_min": 0.6,
+    "refs": []
+   }
+  ],
+  "refs": []
+ },
+ "한국꼬마잠자리": {
+  "summary": "아주 작은 잠자리. 얕은 묵논·습지에 산다.",
+  "distribution": "중부 이남 산자락의 묵논·습지(국지적).",
+  "habitat": "물이 얕게 고인 묵논·산지 습지.",
+  "life": "5~8월 성충.",
+  "diet": "아주 작은 곤충.",
+  "threats": "묵논 경작 재개·매립, 습지 천이.",
+  "conservation": "멸종위기 야생생물 Ⅱ급. 묵논 습지 보전.",
+  "vars": [
+   "elev",
+   "lake",
+   "wetland",
+   "paddy",
+   "river",
+   "dist_lake",
+   "bio1",
+   "bio12"
+  ],
+  "layers": [
+   {
+    "key": "main",
+    "name": "서식지",
+    "season": "5~8월",
+    "main": true,
+    "groups": [
+     "wetland",
+     "paddy"
+    ],
+    "desc": "숲 300 m 안의 습지·논(해발 400 m 이하)",
+    "elev": [
+     0,
+     400
+    ],
+    "near": [
+     {
+      "groups": [
+       "broad",
+       "mixed",
+       "conifer"
+      ],
+      "km": 0.3,
+      "min": 0.3
+     }
+    ],
+    "refs": [
+     1,
+     2,
+     3
+    ]
+   }
+  ],
+  "refs": [
+   {
+    "text": "Cha Young Lee 외 (2022) Ecological Responses of Nannophya koreana (Odonata: Libellulidae) to Temperature: Following Converse Bergmann’s Rule. Biology",
+    "url": "https://doi.org/10.3390/biology11060830"
+   },
+   {
+    "text": "Hong Geun Kim 외 (2022) Developing habitat suitability index for habitat evaluation of Nannophya koreana Bae (Odonata: Libellulidae). Journal of Ecology and Environment",
+    "url": "https://doi.org/10.5141/jee.22.068"
+   },
+   {
+    "text": "Dong Gun Kim (2020) Research history of &lt;i&gt;Nannophya&lt;/i&gt; Rambur (Odonata: Libellulidae): A recently discovered species in addition to &lt;i&gt;Nannophya koreana&lt;/i&gt; Bae in Korea. Environmental Biology Research",
+    "url": "https://doi.org/10.11626/kjeb.2020.38.2.308"
+   }
+  ]
+ },
+ "홍줄나비": {
+  "summary": "산지 숲에 사는 줄나비.",
+  "distribution": "강원 등 중부 이북 산지.",
+  "habitat": "산지 혼효림·침엽수림.",
+  "life": "6~7월 성충.",
+  "diet": "애벌레: 잎갈나무 등.",
+  "threats": "산림 훼손.",
+  "conservation": "멸종위기 야생생물 Ⅱ급. 산지 숲 보전.",
+  "vars": [
+   "elev",
+   "slope",
+   "tree",
+   "broad",
+   "conifer",
+   "grass",
+   "bio1",
+   "bio4",
+   "bio12"
+  ],
+  "layers": [
+   {
+    "key": "main",
+    "name": "서식지",
+    "season": "6~7월",
+    "main": true,
+    "groups": [
+     "mixed",
+     "conifer",
+     "broad"
+    ],
+    "desc": "칸의 절반 이상이 숲인 해발 500 m 이상 산지",
+    "elev": [
+     500,
+     1600
+    ],
+    "cell_min": 0.5,
+    "refs": []
+   }
+  ],
+  "refs": []
+ }
+}

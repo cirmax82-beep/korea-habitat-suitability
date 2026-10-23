@@ -1,0 +1,553 @@
+{
+ "비바리뱀": {
+  "summary": "제주에만 사는 작은 뱀. 중산간 초지와 숲 가장자리에서 드물게 확인된다.",
+  "distribution": "제주 중산간(해발 200~800 m)의 초지·오름·숲 가장자리.",
+  "habitat": "풀이 우거진 초지와 숲 가장자리의 돌무더기·낙엽층.",
+  "life": "5~8월 번식(알을 낳음).",
+  "diet": "도마뱀·작은 곤충.",
+  "threats": "중산간 개발(골프장·도로·택지), 초지 감소, 로드킬.",
+  "conservation": "멸종위기 야생생물 Ⅰ급. 중산간 초지·숲 가장자리 보전.",
+  "vars": [
+   "elev",
+   "slope",
+   "grass",
+   "tree",
+   "broad",
+   "field",
+   "bio1",
+   "bio12"
+  ],
+  "layers": [
+   {
+    "key": "main",
+    "name": "서식지",
+    "season": "연중(동면 11~3월)",
+    "main": true,
+    "groups": [
+     "grass",
+     "broad",
+     "mixed",
+     "field"
+    ],
+    "desc": "초지·숲이 섞인 제주 중산간(해발 150~900 m)",
+    "elev": [
+     150,
+     900
+    ],
+    "near": [
+     {
+      "groups": [
+       "grass"
+      ],
+      "km": 0.5,
+      "min": 0.05
+     }
+    ],
+    "refs": [
+     1,
+     2
+    ]
+   }
+  ],
+  "refs": [
+   {
+    "text": "Maniram Banjade 외 (2020) First report on the reproduction of captive Chinese many-toothed snake (Sibynophis chinensis) in Jeju Island, South Korea. Journal of Ecology and Environment",
+    "url": "https://doi.org/10.1186/s41610-020-0150-3"
+   },
+   {
+    "text": "(2011) Sibynophis chinensis: China Snakes Working Group. IUCN Red List of Threatened Species",
+    "url": "https://doi.org/10.2305/iucn.uk.2014-3.rlts.t193454a2237835.en"
+   }
+  ],
+  "range": {
+   "km": 10
+  }
+ },
+ "수원청개구리": {
+  "summary": "청개구리와 닮았으나 울음소리가 다른 한국 고유 개구리. 경기·충청 서부 평야의 논에만 산다.",
+  "distribution": "경기 수원·화성·평택·파주, 충남 아산·천안 등 서부 평야.",
+  "habitat": "넓고 평평한 논(물을 오래 대는 논). 벼 줄기 위에서 운다.",
+  "life": "5~7월 번식.",
+  "diet": "작은 곤충.",
+  "threats": "논의 택지·공장 전환, 경지 정리·농약, 청개구리와의 경쟁·교잡.",
+  "conservation": "멸종위기 야생생물 Ⅰ급. 서식 논 보전, 대체 논 습지 조성.",
+  "vars": [
+   "elev",
+   "paddy",
+   "field",
+   "wetland",
+   "dist_coast",
+   "bio1",
+   "bio12"
+  ],
+  "layers": [
+   {
+    "key": "main",
+    "name": "서식지",
+    "season": "5~8월",
+    "main": true,
+    "groups": [
+     "paddy",
+     "wetland"
+    ],
+    "desc": "칸의 30% 이상이 논인 해발 50 m 이하 평야",
+    "elev": [
+     0,
+     50
+    ],
+    "cell_min": 0.3,
+    "refs": [
+     1,
+     2,
+     3
+    ]
+   }
+  ],
+  "refs": [
+   {
+    "text": "Il-Kook Park 외 (2021) Defining Conservation Requirements for the Suweon Treefrog (Dryophytes suweonensis) Using Species Distribution Models. Diversity",
+    "url": "https://doi.org/10.3390/d13020069"
+   },
+   {
+    "text": "Amaël Borzée 외 (2019) Policy Recommendation for the Conservation of the Suweon Treefrog (Dryophytes suweonensis) in the Republic of Korea. Frontiers in Environmental Science",
+    "url": "https://doi.org/10.3389/fenvs.2019.00039"
+   },
+   {
+    "text": "Kyo Soung Koo 외 (2022) A Report on the Largest Population of a Critically Endangered Treefrog, &lt;i&gt;Dryophytes suweonensis&lt;/i&gt;, in Republic of Korea. Russian Journal of Herpetology",
+    "url": "https://doi.org/10.30906/1026-2296-2022-29-3-187-190"
+   },
+   {
+    "text": "Nakyung Yoo 외 (2025) Predicting Potential Habitats of the Endangered Suweon Treefrog (Dryophytes suweonensis) under Climate Change Scenarios Using an Ensemble Ecological Niche Model.",
+    "url": "https://doi.org/10.21203/rs.3.rs-8119070/v1"
+   },
+   {
+    "text": "(2022) Dryophytes suweonensis: IUCN SSC Amphibian Specialist Group. IUCN Red List of Threatened Species",
+    "url": "https://doi.org/10.2305/iucn.uk.2023-1.rlts.t55670a136611348.en"
+   }
+  ],
+  "range": {
+   "km": 15
+  }
+ },
+ "고리도롱뇽": {
+  "summary": "부산·울산·양산 일대에만 사는 한국 고유 도롱뇽.",
+  "distribution": "부산 기장·울산·양산 일대 산지 주변.",
+  "habitat": "산자락의 습지·묵논·계곡 웅덩이에서 산란하고, 주변 숲 낙엽층에서 산다.",
+  "life": "2~4월 산란.",
+  "diet": "작은 무척추동물.",
+  "threats": "택지·도로 개발로 산란 습지 매립, 계곡 정비.",
+  "conservation": "멸종위기 야생생물 Ⅱ급. 산란 습지·묵논 보전, 이주.",
+  "vars": [
+   "elev",
+   "slope",
+   "tree",
+   "broad",
+   "paddy",
+   "wetland",
+   "dist_river",
+   "bio1",
+   "bio12"
+  ],
+  "layers": [
+   {
+    "key": "breed",
+    "name": "산란지",
+    "season": "2~4월",
+    "main": true,
+    "groups": [
+     "wetland",
+     "paddy",
+     "river"
+    ],
+    "desc": "숲 300 m 안의 습지·묵논·계곡(해발 500 m 이하)",
+    "elev": [
+     0,
+     500
+    ],
+    "near": [
+     {
+      "groups": [
+       "broad",
+       "mixed",
+       "conifer"
+      ],
+      "km": 0.3,
+      "min": 0.3
+     }
+    ],
+    "refs": [
+     1,
+     2,
+     3
+    ]
+   },
+   {
+    "key": "forest",
+    "name": "숲(비번식기)",
+    "season": "연중",
+    "main": true,
+    "groups": [
+     "broad",
+     "mixed",
+     "conifer"
+    ],
+    "desc": "산란지 500 m 안의 숲",
+    "elev": [
+     0,
+     600
+    ],
+    "near": [
+     {
+      "groups": [
+       "wetland",
+       "paddy",
+       "river"
+      ],
+      "km": 0.5,
+      "min": 0.01
+     }
+    ],
+    "refs": [
+     1,
+     2,
+     3
+    ]
+   }
+  ],
+  "refs": [
+   {
+    "text": "Jung-Hyun Lee 외 (2010) Age structure and growth rates of two Korean salamander species (Hynobius yangiandHynobius quelpaertensis) from field populations. Animal Cells and Systems",
+    "url": "https://doi.org/10.1080/19768354.2010.525810"
+   },
+   {
+    "text": "외 (2014) The Relationship between the Time of Breeding Migration of the Gori Salamander (Hynobius yangi) and Climate Factors.. Korean Journal of Ecology and Environment",
+    "url": "https://doi.org/10.11614/ksl.2014.47.3.194"
+   },
+   {
+    "text": "Jeong-Soo Gim 외 (2026) Water Chemistry and Habitat Size Predict Spawning Success in Endangered Hynobius yangi: Feeding Ecology and Implications for Urban Wetland Design. Animals",
+    "url": "https://doi.org/10.3390/ani16091294"
+   },
+   {
+    "text": "외 (2015) Are Large Gori Salamander (Hynobius yangi) Males Dominant in Mating Competition than Small Males?1. Korean Journal of Environment and Ecology",
+    "url": "https://doi.org/10.13047/kjee.2015.29.6.865"
+   },
+   {
+    "text": "(2017) Hynobius yangi: IUCN SSC Amphibian Specialist Group. IUCN Red List of Threatened Species",
+    "url": "https://doi.org/10.2305/iucn.uk.2019-1.rlts.t136179a110101712.en"
+   }
+  ],
+  "range": {
+   "km": 10,
+   "note": "부산·울산·양산 기록 시군구와 그 주변"
+  }
+ },
+ "구렁이": {
+  "summary": "국내에서 가장 큰 뱀. 마을 주변 숲·돌담·농경지에 산다.",
+  "distribution": "전국 저지대 산림과 농촌.",
+  "habitat": "숲 가장자리와 농경지·돌담·오래된 가옥 주변. 쥐가 많은 곳을 찾는다.",
+  "life": "6~8월 번식(알), 11~3월 동면.",
+  "diet": "쥐·새와 알.",
+  "threats": "로드킬, 서식지 개발, 포획.",
+  "conservation": "멸종위기 야생생물 Ⅱ급. 숲 가장자리·돌담 보전, 도로 유도 울타리.",
+  "vars": [
+   "elev",
+   "slope",
+   "tree",
+   "broad",
+   "field",
+   "paddy",
+   "grass",
+   "bio1",
+   "bio12"
+  ],
+  "layers": [
+   {
+    "key": "main",
+    "name": "서식지",
+    "season": "연중",
+    "main": true,
+    "groups": [
+     "broad",
+     "mixed",
+     "conifer",
+     "grass",
+     "field"
+    ],
+    "desc": "숲과 농경지가 500 m 안에 함께 있는 곳(해발 600 m 이하)",
+    "elev": [
+     0,
+     600
+    ],
+    "near": [
+     {
+      "groups": [
+       "field",
+       "paddy"
+      ],
+      "km": 0.5,
+      "min": 0.05
+     },
+     {
+      "groups": [
+       "broad",
+       "mixed",
+       "conifer"
+      ],
+      "km": 0.5,
+      "min": 0.2
+     }
+    ],
+    "refs": [
+     1,
+     2,
+     3
+    ]
+   }
+  ],
+  "refs": [
+   {
+    "text": "Jung-Hyun LEE 외 (2011) Spatial Ecology of Translocated and Resident Amur Ratsnakes (Elaphe schrenckii) in Two Mountain Valleys of South Korea. Asian Herpetological Research",
+    "url": "https://doi.org/10.3724/sp.j.1245.2011.00223"
+   },
+   {
+    "text": "Jung-Hyun Lee 외 (2012) Large-Scale Habitat Association Modeling of the Endangered Korean Ratsnake (Elaphe schrenckii). Zoological Science",
+    "url": "https://doi.org/10.2108/zsj.29.281"
+   },
+   {
+    "text": "(2016) Elaphe schrenckii: Zhou, Z., Ji, X., Borkin, L., Orlov, N.L., Golynsky, E., Rustamov, A, Nuridjanov, D., Munkhbayar, K. &amp; Borzee, A.. IUCN Red List of Threatened Species",
+    "url": "https://doi.org/10.2305/iucn.uk.2021-2.rlts.t192165a2049795.en"
+   }
+  ]
+ },
+ "남생이": {
+  "summary": "토종 민물 거북. 저수지·하천에 살며 물가 모래땅에 알을 낳는다.",
+  "distribution": "전국 저지대 저수지·하천(기록 드묾).",
+  "habitat": "물풀이 있고 볕을 쬘 바위·나무가 있는 저수지·하천, 산란용 모래·흙 둔덕.",
+  "life": "6~7월 산란, 11~3월 동면.",
+  "diet": "수서곤충·작은 물고기·수초.",
+  "threats": "저수지 정비, 산란지 훼손, 외래 거북(붉은귀거북 등)과 경쟁, 로드킬.",
+  "conservation": "멸종위기 야생생물 Ⅱ급, 천연기념물 제453호. 산란지 보전, 외래 거북 관리.",
+  "vars": [
+   "elev",
+   "lake",
+   "river",
+   "wetland",
+   "paddy",
+   "bare",
+   "dist_lake",
+   "bio1",
+   "bio12"
+  ],
+  "layers": [
+   {
+    "key": "water",
+    "name": "물(서식지)",
+    "season": "4~10월",
+    "main": true,
+    "groups": [
+     "lake",
+     "river",
+     "wetland"
+    ],
+    "desc": "해발 200 m 이하의 저수지·하천·습지",
+    "elev": [
+     0,
+     200
+    ],
+    "cell_min": 0.02,
+    "refs": [
+     1,
+     2,
+     3
+    ]
+   },
+   {
+    "key": "nest",
+    "name": "산란지",
+    "season": "6~7월",
+    "main": true,
+    "groups": [
+     "bare",
+     "grass",
+     "field"
+    ],
+    "desc": "물에서 300 m 안의 모래땅·풀밭",
+    "elev": [
+     0,
+     200
+    ],
+    "near": [
+     {
+      "groups": [
+       "lake",
+       "river"
+      ],
+      "km": 0.3,
+      "min": 0.03
+     }
+    ],
+    "refs": [
+     1,
+     2,
+     3
+    ]
+   }
+  ],
+  "refs": [
+   {
+    "text": "Hae-Jun Baek 외 (2024) Geographical Distribution of Mauremys sinensis, Mauremys reevesii, and Their Hybrids in South Korea. Animals",
+    "url": "https://doi.org/10.3390/ani14182626"
+   },
+   {
+    "text": "Minho Park 외 (2025) Report on the endangered species, reeve’s turtle(Mauremys reevesii), and invasive species, red-eared slider(Trachemys scripta elegans), river cooter(Pseudemys concinna), and Chinese stripe nevked turtle(Mauremys sinensis) in the natural breeding site in Jeonju Duckjin lake in Jeonju, South Korea. Journal of the Preventive Veterinary Medicine",
+    "url": "https://doi.org/10.13041/jpvm.2025.49.1.1"
+   },
+   {
+    "text": "(2011) Mauremys reevesii: van Dijk, P.P.. IUCN Red List of Threatened Species",
+    "url": "https://doi.org/10.2305/iucn.uk.2011-1.rlts.t170502a6783291.en"
+   }
+  ]
+ },
+ "맹꽁이": {
+  "summary": "장마철 웅덩이에서 짧게 번식하는 개구리. 땅속에서 지내다 비가 오면 나온다.",
+  "distribution": "전국 저지대 평야·하천 둔치·도시 외곽.",
+  "habitat": "장마 때 물이 고이는 웅덩이·논·묵밭·하천 둔치, 주변 부드러운 흙(땅속 은신).",
+  "life": "6~7월 번식.",
+  "diet": "곤충(개미 등).",
+  "threats": "웅덩이 매립, 택지 개발, 둔치 정비.",
+  "conservation": "멸종위기 야생생물 Ⅱ급. 번식 웅덩이 보전, 대체 습지 조성 후 이주.",
+  "vars": [
+   "elev",
+   "paddy",
+   "field",
+   "grass",
+   "wetland",
+   "river",
+   "bio1",
+   "bio12"
+  ],
+  "layers": [
+   {
+    "key": "main",
+    "name": "서식지",
+    "season": "연중(번식 6~7월)",
+    "main": true,
+    "groups": [
+     "paddy",
+     "field",
+     "grass",
+     "wetland",
+     "bare"
+    ],
+    "desc": "해발 200 m 이하의 논·밭·초지·습지·둔치",
+    "elev": [
+     0,
+     200
+    ],
+    "cell_min": 0.2,
+    "refs": [
+     1,
+     2,
+     3
+    ]
+   }
+  ],
+  "refs": [
+   {
+    "text": "Md Mizanur Rahman 외 (2022) Confirmation of the Applicability of Skeletochronology and Estimating the Age Structure of Kaloula borealis (Microhylidae: Anura) at Lake Sihwa, South Korea. Biology",
+    "url": "https://doi.org/10.3390/biology11060898"
+   },
+   {
+    "text": "Yun-Jin Shim 외 (2015) Site Selection of Narrow-mouth Frog(Kaloula borealis) Habitat Restoration Using Habitat Suitability Index. Journal of the Korea Society of Environmental Restoration Technology",
+    "url": "https://doi.org/10.13087/kosert.2015.18.2.33"
+   },
+   {
+    "text": "Yun-Jin Shim 외 (2014) Development of Habitat Suitability Index for Habitat Restoration of Narrow-mouth Frog(Kaloula borealis). Journal of the Korea Society of Environmental Restoration Technology",
+    "url": "https://doi.org/10.13087/kosert.2014.17.2.109"
+   },
+   {
+    "text": "(2019) Kaloula borealis: IUCN SSC Amphibian Specialist Group. IUCN Red List of Threatened Species",
+    "url": "https://doi.org/10.2305/iucn.uk.2020-1.rlts.t57849a63887081.en"
+   }
+  ]
+ },
+ "표범장지뱀": {
+  "summary": "모래땅에 사는 장지뱀. 해안 사구와 하천 모래톱에 산다.",
+  "distribution": "서해안 사구(태안 신두리 등), 금강·낙동강 등의 모래 하천.",
+  "habitat": "풀이 듬성한 모래 사구·하천 모래톱.",
+  "life": "5~7월 번식, 10~3월 동면.",
+  "diet": "곤충·거미.",
+  "threats": "사구·모래톱 개발, 해안 정비, 하천 준설.",
+  "conservation": "멸종위기 야생생물 Ⅱ급. 사구·모래톱 보전.",
+  "vars": [
+   "elev",
+   "bare",
+   "grass",
+   "river",
+   "dist_coast",
+   "bio1",
+   "bio12"
+  ],
+  "layers": [
+   {
+    "key": "main",
+    "name": "서식지",
+    "season": "4~10월",
+    "main": true,
+    "groups": [
+     "bare",
+     "grass"
+    ],
+    "desc": "바다·하천 500 m 안의 모래땅·풀밭(해발 100 m 이하)",
+    "elev": [
+     0,
+     100
+    ],
+    "near": [
+     {
+      "groups": [
+       "sea",
+       "river"
+      ],
+      "km": 0.5,
+      "min": 0.03
+     },
+     {
+      "groups": [
+       "bare"
+      ],
+      "km": 0.3,
+      "min": 0.01
+     }
+    ],
+    "refs": [
+     1,
+     2,
+     3
+    ]
+   }
+  ],
+  "refs": [
+   {
+    "text": "Il-Hun KIM 외 (2012) Habitat Use, Home Range, and Hibernaculum of the Mongolian Racerunner, Eremias argus (Lacertidae, Reptilia) in a Coastal Sand Dune in South Korea. Asian Herpetological Research",
+    "url": "https://doi.org/10.3724/sp.j.1245.2012.00133"
+   },
+   {
+    "text": "Min Ho Chang 외 (2021) Effect of coastal dune restoration on the population of endangered Mongolian racerunner (Eremias argus) in the Republic of Korea. Journal of Coastal Conservation",
+    "url": "https://doi.org/10.1007/s11852-021-00820-9"
+   },
+   {
+    "text": "Eunhee Cho 외 (2024) Environmental characteristics, including soil and vegetation composition, in relation to the occurrence patterns of an endangered lizard, Eremias argus, in a fluvial island, South Korea. Nature Conservation",
+    "url": "https://doi.org/10.3897/natureconservation.55.113483"
+   },
+   {
+    "text": "외 (2024) Monitoring of the Population Changes of the Mongolian Racerunner (Eremias argus Peters, 1869) Inhabiting Baramarae Beach, Taeanhaean National Park. Korea National Park Research Institute",
+    "url": "https://doi.org/10.54406/jnpr.2024.15.2.140"
+   },
+   {
+    "text": "(2018) Eremias argus: Orlova, V., Terbish, K., Zhao, W. &amp; Guo, X.. IUCN Red List of Threatened Species",
+    "url": "https://doi.org/10.2305/iucn.uk.2019-3.rlts.t47755847a47755852.en"
+   }
+  ]
+ }
+}
