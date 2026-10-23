@@ -1,12 +1,14 @@
 """환경부 세분류 토지피복지도(2025년 전국 현행화)를 분석 격자(UTM-K 250 m) 칸별 비율로.
 
-    python tools/fetch_landcover.py
+    python tools/fetch_landcover.py            # 받기·합치기
+    python tools/fetch_landcover.py --clean    # 이미 받은 10 m 분류 그림의 잡음만 다시 정리
 
 - 기후에너지환경부 환경공간정보서비스 토지피복지도 맵 서비스(WMS, 인증키 없음) EGIS:lv3_2025y를
   20 km 사방(10 m 해상도, 2000×2000) 그림으로 받아, 범례의 분류별 고유 색으로 분류를 되살림(테두리 흐림 끔)
 - 칸마다 625개 표본(10 m)으로 묶음별 비율을 셈. 흰색(분류 없음)은 분모에서 뺌
 - 받은 조각은 work/lc/<열>_<행>.npz로 남겨 끊겨도 이어 받음. 결과: work/env/lc_egis.npz
-- 10 m 분류 그림도 data/lc10/<열>_<행>.webp로 남김(값 = 묶음 번호 + 1, 0 = 분류 없음) — 사이트에서 확대 지도·사업지 면적을 10 m로
+- 10 m 분류 그림도 data/lc10/<열>_<행>.webp로 남김(값 = 묶음 번호 + 1, 0 = 분류 없음) — 사이트의 확대 지도에서 칸 안 비서식지를 지울 때 씀
+  분류 경계선·글자 때문에 생긴 작은 ‘분류 없음’ 덩어리(1 ha 미만)는 가장 가까운 분류로 채움. 바다·접경지역처럼 넓게 빈 곳만 0으로 남김
 """
 import io
 import json
@@ -18,6 +20,7 @@ from pathlib import Path
 
 import numpy as np
 from PIL import Image
+from scipy import ndimage
 
 ROOT = Path(__file__).resolve().parent.parent
 ENV = ROOT / "work" / "env"
@@ -45,6 +48,7 @@ GROUPS = {
     "lake": ["712"],
     "sea": ["721"],
 }
+NOISE_PX = 100   # 이보다 작은 ‘분류 없음’ 덩어리(10 m 화소 수, 1 ha)는 잡음으로 보고 채움
 UA = {"User-Agent": "habitat.biogrideia.com landcover build (cirmax82-beep)"}
 
 
@@ -75,8 +79,37 @@ def legend():
     return code_of
 
 
+def fill_noise(a):
+    """10 m 분류 그림(0 = 분류 없음)에서 작은 0 덩어리를 가장 가까운 분류 값으로 채움(8방향 연결)"""
+    z = a == 0
+    if not z.any():
+        return a
+    lab, n = ndimage.label(z, structure=np.ones((3, 3)))
+    small = np.bincount(lab.ravel()) < NOISE_PX
+    small[0] = False
+    fill = small[lab]
+    if fill.any():
+        iy, ix = ndimage.distance_transform_edt(z, return_distances=False, return_indices=True)
+        a = a.copy()
+        a[fill] = a[iy[fill], ix[fill]]
+    return a
+
+
+def clean():
+    files = sorted(LC10.glob("*.webp"))
+    for i, f in enumerate(files, 1):
+        a = np.array(Image.open(f).convert("L"))
+        b = fill_noise(a)
+        if (b != a).any():
+            Image.fromarray(b).save(f, lossless=True, quality=100, method=4)
+        if i % 50 == 0 or i == len(files):
+            log(f"  정리 {i}/{len(files)}")
+
+
 def main():
     sys.stdout.reconfigure(encoding="utf-8")
+    if "--clean" in sys.argv:
+        return clean()
     TILES.mkdir(parents=True, exist_ok=True)
     LC10.mkdir(parents=True, exist_ok=True)
     grid = json.loads((ENV / "grid.json").read_text(encoding="utf-8"))
@@ -101,7 +134,7 @@ def main():
         idx = np.full(rgb.shape, -2, dtype=np.int16)   # -2 = 분류 없음(흰색 등)
         for col, g in lut.items():
             idx[rgb == col] = g
-        Image.fromarray(np.clip(idx + 1, 0, 255).astype(np.uint8)).save(LC10 / f"{tx}_{ty}.webp", lossless=True, quality=100, method=4)
+        Image.fromarray(fill_noise(np.clip(idx + 1, 0, 255).astype(np.uint8))).save(LC10 / f"{tx}_{ty}.webp", lossless=True, quality=100, method=4)
         k = N // CELLS
         blocks = idx.reshape(CELLS, k, CELLS, k).transpose(0, 2, 1, 3).reshape(CELLS, CELLS, k * k)
         counts = np.stack([(blocks == g).sum(-1) for g in range(len(names))]).astype(np.uint16)   # 묶음 × 칸 × 칸
