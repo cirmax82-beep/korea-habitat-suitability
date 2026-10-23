@@ -389,9 +389,11 @@ def main():
             pres = pres[in_area[pres]]
             gids = {g: n for g, n in gids.items() if gid_idx.get(g) in rows}
         man = json.loads((OCC_MANUAL / f"{s['id']}.json").read_text(encoding="utf-8")) if (OCC_MANUAL / f"{s['id']}.json").exists() else None
+        mrows = np.array([], dtype=np.int64)
         if man:   # 직접 확인 기록: 토지이용·외딴 기록·지역 밖 거르기를 하지 않음
-            mrows = pos[[r * W + c for r, c in man["cells"]]] if man["cells"] else np.array([], dtype=np.int64)
-            pres = np.union1d(pres, mrows[mrows >= 0])
+            mrows = pos[[r * W + c for r, c in man["cells"]]] if man["cells"] else mrows
+            mrows = mrows[mrows >= 0]
+            pres = np.union1d(pres, mrows)
         kept = np.zeros(idx.size, dtype=bool)
         kept[pres] = True
         filter_geo(s["id"], kept, "해양" in tr["habitat"], man["geo"] if man else ())   # 사이트에 보여 줄 기록도 학습에 쓴 칸만
@@ -483,6 +485,9 @@ def main():
                     main_pred = np.maximum(main_pred, pL)
                     main_area = np.minimum(1, main_area + np.where(m, frac, 0))
             pred, area = main_pred, main_area
+        if mrows.size:   # 직접 확인한 칸은 서식지(물 종은 그 물)가 있으면 도시·도로 낮춤과 관계없이 최소 ‘적합’
+            hab = mrows[area[mrows] > 0.001]
+            pred[hab] = np.maximum(pred[hab], info["threshold"])
         write(s["id"], pred)
         p_hi = pred >= info["threshold"]
         info["suitableKm2"] = round(float(area[p_hi].sum()) * km2, 1)
