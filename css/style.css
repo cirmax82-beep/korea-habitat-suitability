@@ -259,3 +259,9 @@ textarea.input { resize: vertical; font-family: ui-monospace, Consolas, monospac
   .sp-map-wrap { height: 62vh; }
   .sp-detail { padding: 14px 16px 40px; }
 }
+.layer-chips { margin-bottom: 8px; }
+.layer-chips .chip .muted { font-size: 11px; }
+.layer-chips .chip.on .muted { color: rgba(255, 255, 255, .8); }
+.refs { margin: 0; padding-left: 22px; line-height: 1.6; font-size: 13px; }
+.refs a { word-break: break-all; }
+.cite { color: var(--muted); font-size: 12px; }

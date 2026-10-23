@@ -31,7 +31,7 @@ jobs:
         run: |
           mkdir -p _site/data
           cp -r index.html css js robots.txt sitemap.xml _site/
-          cp data/catalog.json data/grid.json data/occ.json _site/data/
+          cp data/catalog.json data/grid.json data/occ.json data/profiles.json _site/data/
           [ -f CNAME ] && cp CNAME _site/ || true
           cp naver*.html google*.html _site/ 2>/dev/null || true
           gh release download data-latest -p site-data.zip -R "$GITHUB_REPOSITORY" -D /tmp

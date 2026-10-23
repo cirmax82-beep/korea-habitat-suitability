@@ -39,7 +39,12 @@
   const fracOf = (get, name) => { const row = envRow(name), k = envK(name); return (r, c) => get(row, r, c) / k; };
   // 칸 안 서식지가 될 수 있는 부분의 비율 — 면적을 셀 때 곱함
   // 물에 사는 종은 그 물(하천·호소 등), 그 밖의 종은 시가지·도로·나대지를 뺀 부분(‘도시’ 서식 종은 칸 전체)
-  const habOf = (get, sp) => {
+  const habOf = (get, sp, groups) => {
+    groups = groups || sp.hab;
+    if (groups) {   // 문헌 프로필 종(또는 서식지 층): 그 토지피복 비율. 칸 자료에는 활엽·침엽 구분이 없어 숲은 산림 전체로
+      const fs = [...new Set(groups.map((g) => (["broad", "mixed", "conifer"].includes(g) ? "tree" : g)))].map((n) => fracOf(get, n));
+      return (r, c) => Math.min(1, fs.reduce((a, f) => a + f(r, c), 0));
+    }
     if (sp.urban) return () => 1;
     const fs = (sp.aqua || ["built", "road", "artbare"]).map((n) => fracOf(get, n));
     const sum = (r, c) => fs.reduce((a, f) => a + f(r, c), 0);
@@ -318,8 +323,8 @@
       const near = [];
       for (let k = 0; k < n; k++) if (dist[k] <= R) near.push(k);
       const rows = [];
-      targets.forEach((sp) => {
-        const t = H.thrOf(sp), row = sp.row, hab = habOf(get, sp), hl = fine ? H.habLut(sp) : null;
+      // 한 행(종 또는 서식지 층)의 사업지 안·주변 적합 서식지 면적
+      const measure = (row, t, hab, hl) => {
         let suitIn = 0, sumV = 0, sumW = 0, ringSuit = 0, atPt = -1;
         near.forEach((k) => {
           const r = r0 + Math.floor(k / win.w), c = c0 + (k % win.w), v = get(row, r, c);
@@ -339,6 +344,11 @@
           if (cw < 1) ringSuit += (1 - cw) * a;
         });
         ptCells.forEach(([r, c]) => { const v = get(row, r, c); if (v <= 100) atPt = Math.max(atPt, v); });
+        return { suitIn, ringSuit, atPt, meanIn: sumW ? sumV / sumW : atPt >= 0 ? atPt : null };
+      };
+      targets.forEach((sp) => {
+        const t = H.thrOf(sp);
+        const { suitIn, ringSuit, atPt, meanIn } = measure(sp.row, t, habOf(get, sp), fine ? H.habLut(sp) : null);
         const [rd, nRec] = recDist(sp.id);
         const recNear = rd !== null && rd <= R;
         const hitIn = suitIn >= 0.5 || atPt >= t;
@@ -347,7 +357,9 @@
         else if (ringSuit > 0 && recNear) grade = "mid";
         else if (ringSuit > 0 || recNear) grade = "low";
         if (grade && sp.model && sp.model.method !== "maxent" && !recNear) grade = "low";
-        if (grade) rows.push({ sp, grade, suitIn, meanIn: sumW ? sumV / sumW : atPt >= 0 ? atPt : null, ringSuit, recDist: rd, nRec, t });
+        // 서식지 층(번식지·채식지 등)별 면적
+        const layers = (sp.layers || []).map((L) => ({ L, ...measure(S.grid.rows.indexOf(`${sp.id}@${L.key}`), t, habOf(get, sp, L.groups), fine ? H.habLut(sp, L) : null) }));
+        if (grade) rows.push({ sp, grade, suitIn, meanIn, ringSuit, recDist: rd, nRec, t, layers });
       });
       rows.sort((a, b) => GRADE_RANK[a.grade] - GRADE_RANK[b.grade] || (a.sp.grade || "en3").localeCompare(b.sp.grade || "en3")
         || b.suitIn - a.suitIn || b.ringSuit - a.ringSuit || a.sp.ko.localeCompare(b.sp.ko, "ko"));
@@ -517,8 +529,9 @@
         <div class="badges" style="margin:6px 0 10px">${H.badges(sp)}</div>
         <dl class="facts">
           ${r.ptOnly ? `<dt>지점 적합도</dt><dd>${x.meanIn === null ? "-" : `${fmt(x.meanIn)}%`} <span class="muted small">‘적합’ 기준 ${x.t}%</span></dd>`
-            : `<dt>사업지 안 적합 서식지</dt><dd>${x.suitIn ? haText(x.suitIn) : "없음"}${sp.aqua ? ` <span class="muted small">${esc(H.aquaText(sp))} 면적</span>` : ""} <span class="muted small">평균 적합도 ${x.meanIn === null ? "-" : `${fmt(x.meanIn)}%`}, ‘적합’ 기준 ${x.t}%</span></dd>`}
+            : `<dt>사업지 안 적합 서식지</dt><dd>${x.suitIn ? haText(x.suitIn) : "없음"}${sp.aqua && !sp.hab ? ` <span class="muted small">${esc(H.aquaText(sp))} 면적</span>` : ""} <span class="muted small">평균 적합도 ${x.meanIn === null ? "-" : `${fmt(x.meanIn)}%`}, ‘적합’ 기준 ${x.t}%</span></dd>`}
           <dt>주변 ${fmt(r.km, 1)} km 적합 서식지</dt><dd>${x.ringSuit ? haText(x.ringSuit) : "없음"}</dd>
+          ${(x.layers || []).map((y) => `<dt>${esc(y.L.name)} <span class="muted small">${esc(y.L.season || "")}</span></dt><dd>사업지 안 ${y.suitIn ? haText(y.suitIn) : "없음"} · 주변 ${y.ringSuit ? haText(y.ringSuit) : "없음"}</dd>`).join("")}
           <dt>가까운 출현 기록</dt><dd>${distText(x.recDist)}${x.nRec ? ` <span class="muted small">주변 ${fmt(r.km, 1)} km 안 ${fmt(x.nRec)}칸</span>` : ""}</dd>
           <dt>서식 환경</dt><dd>${H.tagList(sp.habitat) || "-"}</dd>
           ${se ? `<dt>민감 시기</dt><dd>${esc(se.text)}</dd>` : ""}

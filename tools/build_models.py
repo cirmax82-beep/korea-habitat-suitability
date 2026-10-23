@@ -25,6 +25,8 @@
   가능 0.5, 적합 0.7, 매우 적합 0.85
 - 알려진 분포 범위: 출현 칸에서 R km(조류 25, 포유류 15, 그 밖 5) 안과 기록이 있는 시군구(위치를 흐린 기록 포함, +2 km)는
   그대로, 그 밖은 R km에 걸쳐 0으로 낮춤. 칸·시군구 기록이 모두 없는 종은 ‘가능’까지만
+- 문헌 프로필(tools/profiles.json)이 있는 종: 서식지 층(번식지·채식지 등)마다 그 토지피복·조건을 만족하는 칸만 → data/suit/<id>@<층>.webp,
+  대표 지도는 main 층들의 최댓값
 - 결과: data/suit/<id>.webp(무손실 회색조, 0–100 = 적합성×100을 5 단위로, 255 = 분석 범위 밖), data/models.json
 """
 import json
@@ -57,6 +59,7 @@ OCC_SGG = ROOT / "work" / "occ_sgg"
 N_BG = 10000
 MARINE = {"해양"}
 RNG = np.random.default_rng(20261023)
+PROFILES = {k: v for k, v in json.loads((ROOT / "tools" / "profiles.json").read_text(encoding="utf-8")).items() if not k.startswith("_")}
 SENSITIVE = {"로드킬", "소음", "교란", "단절"}
 URBAN_START, URBAN_ZERO = 0.12, 0.35   # 도시 지수(주변 1 km 개발 비율과 5 km 개발 비율×0.8 중 큰 값): 이 사이에서 적합도를 0까지 낮춤
 OUTLIER = (20, 10)   # 기록 칸이 20개 이상인 종은 10 km 안에 다른 기록이 없는 외딴 기록·기록 1건뿐인 시군구를 뺌(길 잃은 개체·오동정)
@@ -164,17 +167,46 @@ def main():
         p = pos[[r * W + c for r, c in cells]] if cells else np.array([], dtype=np.int64)
         return np.unique(p[p >= 0])
 
+    def write(name, pred):
+        vals = np.zeros(land.shape, dtype="float32")
+        vals.ravel()[idx] = pred
+        to_img(SUIT / f"{name}.webp", vals[land], land)
+
+    # 문헌 프로필의 서식지 층: 토지피복 묶음 비율(활엽·혼효 = 산림 − 침엽), 가까이 있어야 할 것까지 거리, 고도
+    def group_frac(groups):
+        g, f = set(groups), np.zeros(idx.size, dtype="float32")
+        if g & {"broad", "mixed"}:
+            f += np.clip(E["tree"] - E["conifer"], 0, 1)
+        if "conifer" in g:
+            f += E["conifer"]
+        for k in g - {"broad", "mixed", "conifer"}:
+            f += E[k]
+        return np.clip(f, 0, 1)
+
+    def layer_mask(L):
+        frac = group_frac(L["groups"])
+        m = frac > max(0.001, L.get("cell_min", 0))
+        for nr in L.get("near", []):
+            src = full(group_frac(nr["groups"])) >= nr.get("min", 0.01)
+            m &= (ndimage.distance_transform_edt(~src) * grid["res"] / 1000).ravel()[idx] <= nr["km"]
+        if "elev" in L:
+            m &= (E["elev"] >= L["elev"][0]) & (E["elev"] <= L["elev"][1])
+        return m, frac
+
     # 시군구(GADM 코드) 격자 — 기록이 있는 시군구를 분포 범위로 쓰기 위해
     sg = gpd.read_file(ENV / "sgg_gadm.geojson").set_crs(4326, allow_override=True).to_crs(grid["crs"])
     gid_idx = {g: i + 1 for i, g in enumerate(sg["gid"])}
     sgg_r = rasterize(((geom, i + 1) for i, geom in enumerate(sg.geometry)), out_shape=land.shape,
                       transform=from_origin(grid["x0"], grid["y1"], grid["res"], grid["res"]), fill=0, dtype="int16")
 
-    def range_weight(group, pres, gids):
-        """알려진 분포 범위 가중치(0–1): 출현 칸에서 R km 안과 기록 시군구(+2 km)는 1, 그 밖은 R km에 걸쳐 0으로. 기록이 없으면 None"""
+    def range_weight(group, pres, gids, rng=None):
+        """알려진 분포 범위 가중치(0–1): 출현 칸에서 R km 안과 기록 시군구(+2 km)는 1, 그 밖은 R km에 걸쳐 0으로. 기록이 없으면 None
+        rng: 문헌 프로필의 범위 조정 {"km": R, "sgg": 시군구 기록을 쓸지}"""
+        if rng and rng.get("sgg") is False:
+            gids = []
         if not pres.size and not gids:
             return None
-        R = RANGE_KM.get(group, 5)
+        R = (rng or {}).get("km", RANGE_KM.get(group, 5))
         seen = np.zeros(land.size, dtype=bool)
         seen[idx[pres]] = True
         d_cell = ndimage.distance_transform_edt(~seen.reshape(land.shape)) * grid["res"] / 1000
@@ -289,7 +321,7 @@ def main():
             info.update({"method": "rule" if tr["habitat"] else "none", "tLo": RULE_T[0], "threshold": RULE_T[1], "tHi": RULE_T[2],
                          "reason": "해양 종" if marine else f"출현 칸 {pres.size}개(모형에는 {MIN_CELLS}개 이상 필요)"})
         # 알려진 분포 범위 밖은 환경이 비슷해도 낮춤(바다 종은 바다 기록이 시군구로 잡힘). 칸·시군구 기록이 모두 없으면 ‘가능’까지만
-        wgt = range_weight(s["group"], pres, list(gids))
+        wgt = range_weight(s["group"], pres, list(gids), (PROFILES.get(s["ko"]) or {}).get("range"))
         if wgt is None:
             pred = np.minimum(pred, info["threshold"] - 0.05)
             info["noRecord"] = True
@@ -312,11 +344,24 @@ def main():
         pred = pred * (1 - np.clip((urban_idx - URBAN_START) / (URBAN_ZERO - URBAN_START), 0, 1))
         if "해양" in tr["habitat"]:   # 바다 종: 실제 해안에서 1 km 안 칸만
             pred = np.where(E["dist_coast"] <= 1, pred, 0)
-        vals = np.zeros(land.shape, dtype="float32")
-        vals.ravel()[idx] = pred
-        to_img(SUIT / f"{s['id']}.webp", vals[land], land)
+        km2 = (grid["res"] / 1000) ** 2
+        prof = PROFILES.get(s["ko"])
+        if prof:   # 문헌 프로필: 서식지 층마다 그 토지피복이 있고 조건(가까운 물·숲, 고도)을 만족하는 칸만. 대표 지도는 main 층들의 최댓값
+            info["profile"], info["layers"] = True, []
+            main_pred, main_area = np.zeros_like(pred), np.zeros_like(pred)
+            for L in prof["layers"]:
+                m, frac = layer_mask(L)
+                pL = np.where(m, pred, 0)
+                write(f"{s['id']}@{L['key']}", pL)
+                info["layers"].append({k: L[k] for k in ("key", "name", "season", "main", "groups", "desc") if k in L}
+                                      | {"suitableKm2": round(float(frac[pL >= info["threshold"]].sum()) * km2, 1)})
+                if L.get("main"):
+                    main_pred = np.maximum(main_pred, pL)
+                    main_area = np.minimum(1, main_area + np.where(m, frac, 0))
+            pred, area = main_pred, main_area
+        write(s["id"], pred)
         p_hi = pred >= info["threshold"]
-        info["suitableKm2"] = round(float(area[p_hi].sum()) * (grid["res"] / 1000) ** 2, 1)
+        info["suitableKm2"] = round(float(area[p_hi].sum()) * km2, 1)
         models[s["id"]] = info
         log(f"{s['ko']}: {info['method']} 칸 {pres.size} AUC {info.get('auc', '-')} 적합 {info['suitableKm2']:,}㎢ · {time.time() - t0:.0f}s")
         models_path.write_text(json.dumps(models, ensure_ascii=False, separators=(",", ":")), encoding="utf-8")

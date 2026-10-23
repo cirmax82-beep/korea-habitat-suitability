@@ -1,0 +1,673 @@
+{
+ "_설명": "종 프로필(시범 10종) — 공개 문헌을 읽고 요약해 쓴 것. layers는 서식지 층: groups = 서식지가 될 수 있는 토지피복 묶음(환경부 세분류를 묶은 것: broad 활엽수림, mixed 혼효림, conifer 침엽수림, grass 초지, paddy 논, field 밭·과수, wetland 내륙습지, tidal 갯벌·염전, bare 자연 나지(해변·강기슭), rock 암벽, river 하천, lake 호소, sea 바다), near = 이 묶음이 칸 비율 min 이상인 곳에서 km 안, elev = 고도 범위(m), cell_min = 칸 안 groups 비율 하한, main = 종 대표 지도에 넣을지. 수치는 문헌 내용을 바탕으로 정한 값이며 refs는 근거 문헌 번호 range = 분포 범위 조정 {km: 출현 칸에서 인정할 거리, sgg: 시군구 기록 사용 여부}.",
+ "청호반새": {
+  "summary": "물총새과의 여름철새로 5월 초 무렵 들어와 번식하고 9월에 동남아시아로 떠난다. 1990년대까지 흔했으나 국내 번식 조류 가운데 감소 폭이 가장 커서, 1997~2005년과 2013~2019년 사이 출현율이 약 95% 줄었다는 분석이 있다.",
+  "distribution": "전국 저지대·구릉지의 논과 하천, 저수지 주변에서 번식하나 현재는 드물다. 관찰 기록은 먹이를 찾는 논·하천가에 많고, 번식지는 그 가까운 숲 가장자리에 흩어져 있다.",
+  "habitat": "논·하천·저수지와 가까운 저지대 활엽수림에 산다. 숲 가장자리나 하천 둑, 산비탈에 드러난 흙벽(절개면)에 직접 굴을 파 둥지를 짓고, 가까운 논·하천·얕은 물가에서 먹이를 잡는다. 관찰 지점(채식지)과 실제 서식·번식지(활엽수림)가 다르다.",
+  "life": "6월 무렵 산란하며 한배 알은 4~5개. 암수가 함께 새끼를 기르고, 자란 새끼는 굴 입구까지 나와 먹이를 받는다.",
+  "diet": "개구리·작은 물고기·가재·게·수서곤충과 잠자리·딱정벌레 같은 곤충, 때로 작은 파충류.",
+  "threats": "하천 정비(둑 보강·준설·하도 정비)로 굴을 팔 흙벽과 얕은 물가가 사라진 것이 감소 원인으로 꼽힌다. 논 감소·농약으로 먹이가 줄고, 숲 가장자리 개발·벌채도 번식지를 없앤다.",
+  "conservation": "멸종위기 야생생물 Ⅱ급. 국가 수준에서는 위급(CR)에 해당할 만큼 감소했다는 평가가 있다(세계적으로는 관심대상 LC). 번식기(5~8월) 하천·산림 가장자리 공사 조정, 흙벽·절개면 보존, 논·얕은 물가 유지가 필요하다.",
+  "layers": [
+   {
+    "key": "breed",
+    "name": "서식·번식지",
+    "season": "5~8월",
+    "main": true,
+    "groups": [
+     "broad",
+     "mixed"
+    ],
+    "near": [
+     {
+      "groups": [
+       "paddy",
+       "river",
+       "lake",
+       "wetland"
+      ],
+      "km": 0.5,
+      "min": 0.03
+     }
+    ],
+    "elev": [
+     0,
+     400
+    ],
+    "desc": "논·하천·저수지에서 500 m 안의 저지대(해발 400 m 이하) 활엽수림·혼효림. 침엽수림과 농경지·물가 자체는 뺌",
+    "refs": [
+     1,
+     2
+    ]
+   },
+   {
+    "key": "forage",
+    "name": "채식지(참고)",
+    "season": "5~9월",
+    "main": false,
+    "groups": [
+     "paddy",
+     "river",
+     "lake",
+     "wetland"
+    ],
+    "near": [
+     {
+      "groups": [
+       "broad",
+       "mixed"
+      ],
+      "km": 1.0,
+      "min": 0.2
+     }
+    ],
+    "elev": [
+     0,
+     400
+    ],
+    "desc": "활엽수림에서 1 km 안의 논·하천·저수지·습지. 관찰 기록이 주로 나오는 곳",
+    "refs": [
+     1,
+     2
+    ]
+   }
+  ],
+  "refs": [
+   {
+    "text": "Kim H, Mo Y, Choi C-Y, McComb BC, Betts MG (2021) Declines in common and migratory breeding landbird species in South Korea over the past two decades. Frontiers in Ecology and Evolution 9:627765",
+    "url": "https://doi.org/10.3389/fevo.2021.627765"
+   },
+   {
+    "text": "Woodall PF, Kirwan GM (2020) Black-capped Kingfisher (Halcyon pileata), version 1.0. Birds of the World. Cornell Lab of Ornithology",
+    "url": "https://doi.org/10.2173/bow.blckin1.01"
+   },
+   {
+    "text": "BirdLife International (2022) Halcyon pileata. The IUCN Red List of Threatened Species 2022",
+    "url": "https://doi.org/10.2305/IUCN.UK.2022-1.RLTS.T22683249A212490546.en"
+   }
+  ]
+ },
+ "두루미": {
+  "summary": "아무르강 유역에서 번식하고 한반도 비무장지대 일대와 강화 갯벌에서 겨울을 나는 대형 두루미. 전 세계 약 4,600마리로 추정되며, 한국·일본에서 월동하는 동부 집단의 비중이 늘고 있다.",
+  "distribution": "철원 평야(민통선 안팎), 연천 임진강, 파주·김포 한강하구, 강화 남단 갯벌이 주요 월동지다. 위성추적으로 러시아 항카호에서 한반도 비무장지대로 이어지는 약 900 km 이동 경로가 확인됐다.",
+  "habitat": "낮에는 추수가 끝난 논에서 낟알을 먹고(갯벌에서는 게), 밤에는 사람 접근이 어려운 얕은 여울·저수지·갯벌 섬에 모여 잔다. 잠자리와 채식지가 가까워야 하고 사람·차량 방해를 피한다.",
+  "life": "11월에 도래해 이듬해 3월에 떠난다. 가족 단위로 무리를 이루며, 강화 갯벌에서는 물이 높고 기온이 낮은 날 해안 휴식지 이용이 늘었다.",
+  "diet": "내륙에서는 논의 낙곡(벼 낟알)과 수서동물, 강화 갯벌에서는 게가 주된 먹이로 확인됐다.",
+  "threats": "농경지 개발·비닐하우스 확대, 볏짚 수거로 인한 낙곡 감소, 탐조·관광 차량과 사람의 방해, 전선 충돌.",
+  "conservation": "멸종위기 야생생물 Ⅰ급, 천연기념물 제202호. 월동기(11~3월) 잠자리·채식지 주변 공사·출입 제한, 낙곡 남기기와 먹이 주기, 볏짚 존치, 무논 조성이 쓰인다.",
+  "layers": [
+   {
+    "key": "feed",
+    "name": "채식지",
+    "season": "11~3월",
+    "main": true,
+    "groups": [
+     "paddy",
+     "tidal"
+    ],
+    "near": [
+     {
+      "groups": [
+       "river",
+       "lake",
+       "tidal"
+      ],
+      "km": 5,
+      "min": 0.02
+     }
+    ],
+    "elev": [
+     0,
+     300
+    ],
+    "desc": "물가 잠자리에서 5 km 안의 넓은 논(추수 뒤 낟알)과 갯벌",
+    "refs": [
+     1,
+     3,
+     4
+    ]
+   },
+   {
+    "key": "roost",
+    "name": "잠자리",
+    "season": "11~3월",
+    "main": true,
+    "groups": [
+     "river",
+     "lake",
+     "tidal"
+    ],
+    "near": [
+     {
+      "groups": [
+       "paddy",
+       "tidal"
+      ],
+      "km": 3,
+      "min": 0.2
+     }
+    ],
+    "elev": [
+     0,
+     300
+    ],
+    "desc": "채식지에서 3 km 안의 얕은 하천 여울·저수지·갯벌",
+    "refs": [
+     1,
+     2
+    ]
+   }
+  ],
+  "refs": [
+   {
+    "text": "Kim H, Lee E-J, Park C 외 (2016) Modeling the habitat of the red-crowned crane (Grus japonensis) wintering in Cheorwon-gun to support decision making. Sustainability 8(6):576",
+    "url": "https://doi.org/10.3390/su8060576"
+   },
+   {
+    "text": "유승연, 황종경, 양민승 외 (2024) 강화도 갯벌에서 월동하는 두루미의 분포와 휴식지 이용. 한국조류학회지 31(2):200",
+    "url": "https://doi.org/10.30980/kjo.2024.12.31.2.200"
+   },
+   {
+    "text": "유승연, 황종경, 김영근 외 (2025) 강화도 갯벌에서 월동하는 두루미의 먹이원. 한국조류학회지 32(2):119",
+    "url": "https://doi.org/10.30980/kjo.2025.12.32.2.119"
+   },
+   {
+    "text": "Yoo SH, Lee KS, Kim JH 외 (2011) Wintering avifauna and community changes in response to agricultural intensification in Cheorwon, Korea. Journal of Korean Nature 4(4):287",
+    "url": "https://doi.org/10.7229/jkn.2011.4.4.287"
+   },
+   {
+    "text": "Lee H-S (2025) Updated global population estimates of three endemic crane species in Northeast Asia. Diversity 17(10):682",
+    "url": "https://doi.org/10.3390/d17100682"
+   },
+   {
+    "text": "Higuchi H, Shibaev Y, Minton J 외 (1998) Satellite tracking of the migration of the red-crowned crane Grus japonensis. Ecological Research 13:273",
+    "url": "https://doi.org/10.1046/j.1440-1703.1998.00271.x"
+   }
+  ]
+ },
+ "수달": {
+  "summary": "하천·호소·하구·해안을 오가는 수변 최상위 포식자. 1970년대 이후 급감했으나 보호 이후 회복해, 2017년 전국 조사에서 10 × 10 km 격자의 84.5%에서 흔적이 확인됐고 도시 하천으로도 퍼지고 있다.",
+  "distribution": "전국 하천·호소·해안. 배설물 밀도는 남서부 영산강 유역과 남해안에서 가장 높았다.",
+  "habitat": "먹이를 찾는 물(하천·호소·하구·해안)과, 물가 바위틈·나무뿌리 밑·풀숲의 쉼터·굴로 이루어진다. 서식 여부는 수질과 사람의 방해(교통량 등)에 크게 좌우된다.",
+  "life": "연중 번식하며 한배 새끼는 1~4마리. 행동권은 하천을 따라 수 km~수십 km에 이른다.",
+  "diet": "물고기가 대부분이고 양서류·갑각류·곤충도 먹는다. 산간 계류와 큰 강에서 먹이 구성이 다르다.",
+  "threats": "하천 정비·호안 콘크리트화로 쉼터 감소, 수질 오염, 도로 로드킬, 어망 혼획.",
+  "conservation": "멸종위기 야생생물 Ⅰ급, 천연기념물 제330호. 하천 공사 때 물가 식생·바위 보존, 탁수 저감, 수변 완충대, 하천 횡단 도로의 생태통로·유도 울타리가 쓰인다.",
+  "layers": [
+   {
+    "key": "feed",
+    "name": "채식지(물)",
+    "season": "연중",
+    "main": true,
+    "groups": [
+     "river",
+     "lake",
+     "wetland",
+     "tidal"
+    ],
+    "desc": "하천·호소·습지·하구 갯벌 등 먹이를 찾는 물",
+    "refs": [
+     1,
+     2,
+     3
+    ]
+   },
+   {
+    "key": "rest",
+    "name": "쉼터(물가)",
+    "season": "연중",
+    "main": true,
+    "groups": [
+     "broad",
+     "mixed",
+     "conifer",
+     "grass",
+     "bare",
+     "rock"
+    ],
+    "near": [
+     {
+      "groups": [
+       "river",
+       "lake"
+      ],
+      "km": 0.25,
+      "min": 0.02
+     }
+    ],
+    "desc": "하천·호소에서 250 m 안의 숲·풀숲·강기슭·바위(굴·쉼터)",
+    "refs": [
+     1,
+     4
+    ]
+   }
+  ],
+  "refs": [
+   {
+    "text": "Jo Y-S, Won C, Fritts SR 외 (2017) Distribution and habitat models of the Eurasian otter, Lutra lutra, in South Korea. Journal of Mammalogy 98(4):1105",
+    "url": "https://doi.org/10.1093/jmammal/gyx037"
+   },
+   {
+    "text": "Jo Y-S, Lee O-S, Park T-J 외 (2018) Current distribution and status of the Eurasian otter Lutra lutra in South Korea. Oryx",
+    "url": "https://doi.org/10.1017/S0030605318001114"
+   },
+   {
+    "text": "Jo Y-S (2023) The food habits of the Eurasian otter Lutra lutra in South Korea. Mammal Study 48",
+    "url": "https://doi.org/10.3106/ms2022-0036"
+   },
+   {
+    "text": "Hong S, Do Y, Kim JY 외 (2017) Conservation activities for the Eurasian otter (Lutra lutra) in South Korea traced from newspapers during 1962–2010. Biological Conservation 210",
+    "url": "https://doi.org/10.1016/j.biocon.2017.03.010"
+   }
+  ]
+ },
+ "하늘다람쥐": {
+  "summary": "나무 구멍에 둥지를 틀고 밤에 나무 사이를 활공하는 날다람쥐. 국내 아종(Pteromys volans aluco)이 주요 산지에 흩어져 살며, 서식지가 끊기고 고립되면서 줄고 있다.",
+  "distribution": "백두대간을 비롯한 전국 주요 산지. 411개 산림 지점의 배설물 흔적 분석에서 여러 지역 분포가 확인됐다.",
+  "habitat": "나이 든 낙엽활엽수림을 가장 많이 이용한다(흔적의 42%). 해발 200~399 m(43%), 하천에서 200 m 안(53%), 영급 5급의 오래된 숲, 중경목, 수관 밀도가 높은 숲에서 흔적이 많았다. 딱따구리가 판 구멍이나 인공 둥지 상자를 쓴다.",
+  "life": "봄~여름에 1~2회 번식. 행동권은 핀란드 연구에서 수컷 약 60 ha, 암컷 약 8 ha였다. 어린 개체는 숲 띠를 따라 흩어진다.",
+  "diet": "활엽수의 잎·눈·꽃차례(오리나무·자작나무류 등)와 열매.",
+  "threats": "오래된 숲과 구멍 난 나무의 벌채, 산림 단절(도로·개발)로 활공 이동이 끊김.",
+  "conservation": "멸종위기 야생생물 Ⅱ급, 천연기념물 제328호. 구멍 난 나무·고목 보존, 숲 띠(통로) 유지, 인공 둥지 상자 설치가 쓰인다.",
+  "layers": [
+   {
+    "key": "main",
+    "name": "서식지",
+    "season": "연중",
+    "main": true,
+    "groups": [
+     "broad",
+     "mixed",
+     "conifer"
+    ],
+    "cell_min": 0.5,
+    "near": [
+     {
+      "groups": [
+       "river"
+      ],
+      "km": 1.0,
+      "min": 0.005
+     }
+    ],
+    "elev": [
+     100,
+     1300
+    ],
+    "desc": "해발 100~1,300 m, 칸의 절반 이상이 숲인 산림 가운데 하천에서 1 km 안(활엽수림 위주)",
+    "refs": [
+     1,
+     2,
+     3,
+     4
+    ]
+   }
+  ],
+  "refs": [
+   {
+    "text": "Lim SJ, Kim K, Kim EK 외 (2021) Distribution and habitat use of the endangered Siberian flying squirrel Pteromys volans (Rodentia: Sciuridae). Journal of Ecology and Environment 45:27",
+    "url": "https://doi.org/10.1186/s41610-021-00190-1"
+   },
+   {
+    "text": "Kim J-U, Lee W-S, Lee E-J 외 (2018) The use of artificial nest boxes by Siberian flying squirrels (Pteromys volans) in South Korea. Journal of Forestry Research",
+    "url": "https://doi.org/10.1007/s11676-018-0787-2"
+   },
+   {
+    "text": "김종우 (2018) 한국 하늘다람쥐의 형태·생태·유전 연구. 서울대학교 박사학위논문",
+    "url": ""
+   },
+   {
+    "text": "Hanski IK, Stevens PC, Ihalempiä P, Selonen V (2000) Home-range size, movements, and nest-site use in the Siberian flying squirrel, Pteromys volans. Journal of Mammalogy 81(3):798",
+    "url": "https://doi.org/10.1644/1545-1542(2000)081<0798:HRSMAN>2.3.CO;2"
+   },
+   {
+    "text": "Selonen V, Mäkeläinen S (2017) Ecology and protection of a flagship species, the Siberian flying squirrel. Hystrix 28(2)",
+    "url": "https://doi.org/10.4404/hystrix-28.2-12328"
+   }
+  ]
+ },
+ "붉은박쥐": {
+  "summary": "주황색 털과 검은 날개막이 특징인 박쥐(황금박쥐). 동굴·폐광에서 겨울잠을 자며, 개체수가 매우 적다.",
+  "distribution": "전남 함평·무안 등 남부 저지대의 폐광·동굴에서 동면 집단이 알려져 있고 중부 이남에 드물게 분포한다. 동면지 분포 모형에서는 저지대 농경지 주변이 적합하게 나왔다.",
+  "habitat": "겨울에는 온도·습도가 안정된 긴 폐광·동굴(입구가 작고 안쪽이 따뜻하고 습한 곳)에서 동면하고, 활동기에는 숲 가장자리·하천·논 주변에서 곤충을 잡는다. 동면지 주변 곤충이 풍부할수록 동면 개체가 많았다.",
+  "life": "10월~이듬해 4월 동면. 여름에 새끼 1마리를 낳는다.",
+  "diet": "나방·딱정벌레 등 야행성 곤충.",
+  "threats": "폐광 입구 폐쇄·매립, 동굴 관광·출입에 따른 동면 방해, 농약에 의한 먹이 감소, 숲 가장자리 개발.",
+  "conservation": "멸종위기 야생생물 Ⅰ급, 천연기념물 제452호. 동면지 출입 통제(박쥐가 드나드는 철문), 동면기 소음·조명 금지, 주변 숲·하천 보존. 동굴·폐광 위치 자료가 없어 동면지는 지도에 나타내지 못했다.",
+  "layers": [
+   {
+    "key": "forage",
+    "name": "활동·채식지",
+    "season": "4~10월",
+    "main": true,
+    "groups": [
+     "broad",
+     "mixed",
+     "conifer",
+     "paddy",
+     "field",
+     "grass",
+     "river",
+     "lake",
+     "wetland"
+    ],
+    "near": [
+     {
+      "groups": [
+       "broad",
+       "mixed",
+       "conifer"
+      ],
+      "km": 0.5,
+      "min": 0.3
+     }
+    ],
+    "elev": [
+     0,
+     600
+    ],
+    "desc": "해발 600 m 이하, 숲에서 500 m 안의 숲 가장자리·논밭·하천(곤충이 많은 곳). 동면지(동굴·폐광)는 위치 자료가 없어 빠짐",
+    "refs": [
+     1,
+     2,
+     3
+    ]
+   }
+  ],
+  "refs": [
+   {
+    "text": "이택우, 최철현, 성하철 외 (2025) 멸종위기 박쥐 붉은박쥐와 토끼박쥐의 잠재 동면 서식지 분포 모형. GEO DATA",
+    "url": "https://doi.org/10.22761/gd.2025.0055"
+   },
+   {
+    "text": "Kim SS, Yoo J (2004) Hibernacula characteristics of copper-winged bats (Myotis formosus). Korean Journal of Nature Conservation 2(3·4):75",
+    "url": "https://doi.org/10.30960/kjnc.2004.2.3_4.75"
+   },
+   {
+    "text": "Nam S-C, Kang J-H, Lim J-D 외 (2009) Study on hibernating caves and food source of copper-winged bat (Myotis formosus). Journal of Korean Nature",
+    "url": "https://doi.org/10.1016/S1976-8648(14)60049-9"
+   },
+   {
+    "text": "Csorba G, Chou C-H, Ruedi M 외 (2014) The reds and the yellows: a review of Asian Chrysopteron (Chiroptera: Vespertilionidae: Myotis). Journal of Mammalogy 95(4)",
+    "url": "https://doi.org/10.1644/13-MAMM-A-200"
+   }
+  ]
+ },
+ "금개구리": {
+  "summary": "등에 두 줄의 금빛 융기가 있는 개구리로 물 밖으로 멀리 나가지 않는다. 한국 서부 저지대 고유종으로 여겨졌으나 중국 황해 연안에서도 확인됐다.",
+  "distribution": "경기·충남·전북 등 서해안 쪽 저지대 평야의 논·둠벙·습지. 도시화와 경지 정리로 지역적으로 사라진 곳이 많다.",
+  "habitat": "물이 오래 고여 있는 논, 둠벙(작은 연못), 수초가 많은 습지와 저수지 가장자리. 생활 대부분을 물속·물가에서 보내고, 겨울잠도 가까운 논둑·습지 흙 속(깊이 1~23 cm)에서 잔다.",
+  "life": "5~7월 산란. 겨울잠 자리는 기온이 낮을수록 더 깊이 판다.",
+  "diet": "물가의 곤충·거미 등 작은 무척추동물.",
+  "threats": "경지 정리·논의 밭 전환·시설 재배, 둠벙 매립, 도시 개발, 농약, 참개구리와의 경쟁.",
+  "conservation": "멸종위기 야생생물 Ⅱ급. 서식 논·둠벙 보존, 대체 습지 조성 후 이주, 겨울잠 자리(논둑) 보전, 증식·복원 사업이 진행 중이다.",
+  "layers": [
+   {
+    "key": "main",
+    "name": "서식지",
+    "season": "연중(동면 10~4월 흙 속)",
+    "main": true,
+    "groups": [
+     "paddy",
+     "wetland",
+     "lake"
+    ],
+    "elev": [
+     0,
+     100
+    ],
+    "desc": "해발 100 m 이하 저지대의 논·습지·저수지 가장자리",
+    "refs": [
+     1,
+     2,
+     3,
+     4
+    ]
+   }
+  ],
+  "refs": [
+   {
+    "text": "Kwon K, Park C-D, Yoo J 외 (2025) Assessing the hibernation ecology of the endangered amphibian Pelophylax chosenicus using PIT tagging method. Animals 15(24):3638",
+    "url": "https://doi.org/10.3390/ani15243638"
+   },
+   {
+    "text": "Borzée A, Shin Y, Bae Y 외 (2024) From Korean to northeast Asian endemicity: on the occurrence of Pelophylax chosenicus along the eastern coastal Yellow Sea. Frontiers of Biogeography",
+    "url": "https://doi.org/10.21425/F5FBG62301"
+   },
+   {
+    "text": "심윤진, 김선령, 윤광배 외 (2020) 금개구리 서식지적합성지수 모형 개발을 위한 기초 연구. 한국환경복원기술학회지 23(1):49",
+    "url": "https://doi.org/10.13087/kosert.2020.23.1.49"
+   },
+   {
+    "text": "안정윤, 최서윤, 김형근 외 (2021) GIS를 이용한 참개구리와 금개구리의 생태적 지위와 종간 경쟁. 생태와 환경 54(4):363",
+    "url": "https://doi.org/10.11614/KSL.2021.54.4.363"
+   },
+   {
+    "text": "박창득, 권관익, 유나경 외 (2021) 증식 금개구리의 복원 후 모니터링. Proceedings of the National Institute of Ecology",
+    "url": "https://doi.org/10.22920/PNIE.2021.2.2.114"
+   }
+  ]
+ },
+ "흰수마자": {
+  "summary": "모래 바닥에 몸을 묻고 사는 한국 고유 잉어과 어류. 낙동강과 금강 수계의 모래 하천에만 남아 있으며 개체수가 크게 줄었다.",
+  "distribution": "낙동강 수계(내성천·감천·황강 등)와 금강 수계(지천 등)의 중·하류. 영주댐 건설에 따라 내성천에서 이주·증식 방류가 이뤄졌다.",
+  "habitat": "물살이 있고 수심이 얕은 강의 굵지 않은 모래 바닥. 모래를 골라 몸을 묻는 습성이 있어, 모래가 쌓이는 하천(모래톱이 발달한 곳)이어야 한다.",
+  "life": "5~6월 산란. 알과 초기 생활사가 밝혀져 인공 증식에 쓰인다.",
+  "diet": "모래 바닥의 깔따구 유충 등 저서 무척추동물.",
+  "threats": "댐·보 건설로 물 흐름과 모래 공급이 끊김, 준설·골재 채취, 하상 장갑화(모래가 사라지고 자갈·펄로 바뀜), 탁수.",
+  "conservation": "멸종위기 야생생물 Ⅰ급. 모래 하천의 흐름·모래 공급 유지, 공사 시 탁수 저감과 산란기(5~6월) 회피, 증식 방류와 모니터링.",
+  "layers": [
+   {
+    "key": "main",
+    "name": "서식지",
+    "season": "연중(산란 5~6월)",
+    "main": true,
+    "groups": [
+     "river"
+    ],
+    "cell_min": 0.03,
+    "near": [
+     {
+      "groups": [
+       "bare"
+      ],
+      "km": 0.5,
+      "min": 0.005
+     }
+    ],
+    "elev": [
+     0,
+     300
+    ],
+    "desc": "강폭이 있는 하천(칸의 3% 이상이 물) 가운데 모래톱(강기슭 나지)이 500 m 안에 있는 곳",
+    "refs": [
+     1,
+     2,
+     3,
+     4
+    ]
+   }
+  ],
+  "refs": [
+   {
+    "text": "김근식, 허문성, 김진 외 (2023) 모래 서식 멸종위기 담수어 흰수마자의 저질 선택과 잠입 행동. 생태와 환경 56(4):375",
+    "url": "https://doi.org/10.11614/KSL.2023.56.4.375"
+   },
+   {
+    "text": "Kim H, Yang H, Hong Y-K (2014) 낙동강 감천에 서식하는 멸종위기종 흰수마자의 개체군 생태. 한국어류학회지",
+    "url": ""
+   },
+   {
+    "text": "나진영, 최병섭, 황상철 (2015) 내성천 멸종위기 어류 흰수마자의 증식 방류와 모니터링. Ecology and Resilient Infrastructure 2(3):216",
+    "url": "https://doi.org/10.17820/eri.2015.2.3.216"
+   },
+   {
+    "text": "방인철, 고명훈, 문신주 (2012) 금강 지천의 어류군집과 멸종위기종 미호종개·흰수마자 서식 현황. 한국하천호수학회지",
+    "url": ""
+   },
+   {
+    "text": "고명훈, 이일로, 방인철 (2013) 멸종위기종 흰수마자의 알 발생과 초기 생활사. 한국어류학회지",
+    "url": ""
+   }
+  ]
+ },
+ "귀이빨대칭이": {
+  "summary": "패각이 크고 닭 볏 모양 날개가 있는 민물조개(석패과). 동북아시아에 분포하며 국내에서는 서식지가 줄어 멸종위기 Ⅰ급이다.",
+  "distribution": "낙동강·금강·영산강 등 큰 강의 느린 구간, 보 상류, 저수지·호소.",
+  "habitat": "물살이 느리거나 고인 물의 펄·모래 섞인 바닥. 낙동강 합천보 조사에서는 수심 3.5 m 이내에서 확인됐고 펄층과 잔돌·모래층에서 나왔다. 유생이 물고기 아가미에 붙어 자라므로 숙주 어류가 있어야 한다.",
+  "life": "4~6월 번식, 유생(글로키디움)이 숙주 어류에 기생한 뒤 떨어져 바닥에 정착한다.",
+  "diet": "물속 유기물·플랑크톤을 걸러 먹는다.",
+  "threats": "준설·하천 정비로 바닥 서식지 훼손, 수질 악화·녹조, 저수지 물 빼기, 남획.",
+  "conservation": "멸종위기 야생생물 Ⅰ급. 준설·물막이 전 개체 이주, 바닥 교란 최소화, 수위 급변 방지.",
+  "layers": [
+   {
+    "key": "main",
+    "name": "서식지",
+    "season": "연중",
+    "main": true,
+    "groups": [
+     "lake",
+     "river"
+    ],
+    "cell_min": 0.02,
+    "elev": [
+     0,
+     200
+    ],
+    "desc": "해발 200 m 이하 저지대의 저수지·호소와 큰 강(칸의 2% 이상이 물)",
+    "refs": [
+     1,
+     2
+    ]
+   }
+  ],
+  "refs": [
+   {
+    "text": "이준상, 박정호, 변진수 외 (2011) 낙동강 합천보 유역 내 귀이빨대칭이(Cristaria plicata) 서식 실태 연구",
+    "url": ""
+   },
+   {
+    "text": "Patnaik BB, Wang TH, Kang SW 외 (2016) Sequencing, de novo assembly, and annotation of the transcriptome of the endangered freshwater pearl bivalve, Cristaria plicata. PLoS ONE 11(6):e0157569",
+    "url": "https://doi.org/10.1371/journal.pone.0157569"
+   },
+   {
+    "text": "Kim K, Kwon J, Kim K 외 (2026) Assessment of freshwater Unionidae using environmental DNA metabarcoding in lentic ecosystems. Biology 15(4):338",
+    "url": "https://doi.org/10.3390/biology15040338"
+   }
+  ]
+ },
+ "장수하늘소": {
+  "summary": "국내에서 가장 큰 딱정벌레로, 신대륙에 사는 Callipogon속 가운데 유일하게 동북아시아에 남은 종. 국내에서는 광릉숲 등 극히 일부에만 남아 있다.",
+  "distribution": "경기 광릉숲이 대표 서식지이며 강원 북부 일부에서 기록이 있다. 러시아 연해주·중국 동북부와 함께 분포한다.",
+  "habitat": "사람 손이 덜 탄 오래된 활엽수림과 침엽·활엽 혼효림. 서어나무·신갈나무·졸참나무 같은 굵은 활엽수가 기주로, 애벌레가 줄기 속에서 여러 해 자란다. 광릉숲에서는 서어나무 수피 틈에 알을 낳는 것이 관찰됐다.",
+  "life": "성충은 7~8월에 나온다. 애벌레 기간이 길어(수년) 큰 고목이 오래 남아 있어야 한다.",
+  "diet": "애벌레는 기주 나무의 목질부를 먹는다.",
+  "threats": "고목 벌채·숲 가꾸기, 서식 숲 단절, 불법 채집.",
+  "conservation": "멸종위기 야생생물 Ⅰ급, 천연기념물 제218호. 고목·기주목 보존, 출입·채집 통제, 증식 방류(방류 개체와 야생 개체의 짝짓기 확인).",
+  "layers": [
+   {
+    "key": "main",
+    "name": "서식지",
+    "season": "연중(성충 7~8월)",
+    "main": true,
+    "groups": [
+     "broad",
+     "mixed"
+    ],
+    "cell_min": 0.6,
+    "elev": [
+     50,
+     1000
+    ],
+    "desc": "칸의 60% 이상이 활엽수림·혼효림인 큰 숲(해발 50~1,000 m)",
+    "refs": [
+     1,
+     2,
+     3,
+     4
+    ]
+   }
+  ],
+  "refs": [
+   {
+    "text": "변봉규, 권태성, 원갑재 외 (2007) 광릉숲에서 장수하늘소의 서식 확인과 보전 방안. 한국응용곤충학회지 46(1):19",
+    "url": "https://doi.org/10.5656/KSAE.2007.46.1.019"
+   },
+   {
+    "text": "이승규, 김무성, 이봉우 외 (2020) 장수하늘소의 새 기주식물(졸참나무) 확인. 한국응용곤충학회지",
+    "url": ""
+   },
+   {
+    "text": "Kuprin A, Shevchenko N, Baklanova V 외 (2024) Modelling distribution of an endangered longhorn beetle, Callipogon relictus, in Northeast Asia. Forests 15(4):598",
+    "url": "https://doi.org/10.3390/f15040598"
+   },
+   {
+    "text": "Yi D-A, Kuprin A, Bae YJ (2018) Distribution of the longhorned beetle Callipogon relictus in Northeast Asia. Zootaxa 4369(1)",
+    "url": "https://doi.org/10.11646/zootaxa.4369.1.5"
+   },
+   {
+    "text": "Kang JH, Yi D-A, Kuprin A 외 (2021) Phylogeographic investigation of an endangered longhorn beetle, Callipogon relictus, in Northeast Asia. Insects 12(6):555",
+    "url": "https://doi.org/10.3390/insects12060555"
+   }
+  ],
+  "range": {
+   "km": 3,
+   "sgg": false,
+   "note": "광릉숲 등 확인 지점 주변만(시군구 단위 기록은 범위가 너무 넓어 쓰지 않음)"
+  }
+ },
+ "가시연": {
+  "summary": "잎 지름이 1 m 넘게 자라고 잎과 줄기에 가시가 있는 한해살이 수생식물. 국내에서는 오래된 저수지·늪의 수가 줄면서 멸종위기 Ⅱ급이 됐다.",
+  "distribution": "전북(김제·임실·정읍 등 14곳 자생지 조사), 경남 우포늪, 전남·충남 등 남서부 저지대의 오래된 저수지·늪.",
+  "habitat": "물이 고여 있는 얕은 저수지·늪·둠벙. 바닥이 점토 위주의 펄(점토 약 80%)이고, 부영양 상태도 생육에 지장이 없다. 약 70년 이상 된 오래된 못에서 잘 자랐다. 서식 예측에는 기후·지형보다 수문 변수(물이 머무는 정도)가 중요했다.",
+  "life": "봄에 씨앗에서 싹이 터 7~9월에 꽃이 피는 한해살이. 씨앗이 바닥 흙에서 여러 해 휴면한다.",
+  "diet": "",
+  "threats": "저수지 준설·정비와 물 빼기, 매립, 수위 조절 방식 변화, 외래 수생식물과 경쟁.",
+  "conservation": "멸종위기 야생생물 Ⅱ급. 자생지 저수지의 바닥 흙(종자은행) 보존, 준설·물 빼기 시기 조정, 공사 전 종자·개체 확보와 이식.",
+  "layers": [
+   {
+    "key": "main",
+    "name": "서식지",
+    "season": "연중(개화 7~9월)",
+    "main": true,
+    "groups": [
+     "lake",
+     "wetland"
+    ],
+    "elev": [
+     0,
+     150
+    ],
+    "desc": "해발 150 m 이하 저지대의 저수지·늪·습지",
+    "refs": [
+     1,
+     2,
+     3,
+     4
+    ]
+   }
+  ],
+  "refs": [
+   {
+    "text": "Kim JY, Kim G-Y, Do Y 외 (2016) Relative importance of hydrological variables in predicting the habitat suitability of Euryale ferox Salisb. Journal of Plant Ecology 10(6)",
+    "url": "https://doi.org/10.1093/jpe/rtw106"
+   },
+   {
+    "text": "유영한, 김해란 (2010) 멸종위기 수생식물 가시연꽃의 감소 원인과 보전 방안. 한국습지학회지",
+    "url": ""
+   },
+   {
+    "text": "이석우, 노재현, 오현경 (2016) 정원 연못 도입을 위한 가시연꽃 기초 연구 — 식물상과 식생환경. 한국전통조경학회지 34(1):83",
+    "url": "https://doi.org/10.14700/KITLA.2016.34.1.083"
+   },
+   {
+    "text": "이석우, 노재현, 박재철 (2016) 정원 연못 도입을 위한 가시연꽃 기초 연구(II) — 토양과 수환경. 한국전통조경학회지 34(3):28",
+    "url": "https://doi.org/10.14700/KITLA.2016.34.3.028"
+   },
+   {
+    "text": "양인석 (1975) 가시연꽃의 분포. 식물분류학회지 6(1):31",
+    "url": "https://doi.org/10.11110/kjpt.1975.6.1.031"
+   }
+  ]
+ }
+}

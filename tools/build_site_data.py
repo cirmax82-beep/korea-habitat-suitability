@@ -2,7 +2,8 @@
 
     python tools/build_site_data.py
 
-- data/catalog.json: 종 목록 + 생태 특성(traits.tsv) + 모형 요약
+- data/catalog.json: 종 목록 + 생태 특성(traits.tsv) + 모형 요약(서식지 층 포함)
+- data/profiles.json: 문헌 프로필(tools/profiles.json)을 종 id 기준으로
 - data/grid.json: 분석 격자 정보, 묶음 파일의 행 구성
 - data/occ.json: 출현 기록 칸(경위도 약 250 m 칸 번호, 멸종위기종 종합관리 열지도와 같은 칸) — 기록마다의 좌표는 공개하지 않음
 - data/blocks/<bx>-<by>.webp: 64×64칸(16 km) 묶음마다 모든 종의 적합성과 환경 값을 한 장에
@@ -66,9 +67,13 @@ def main():
             "photo": s["photo"], "photoBy": s["photoBy"], "inat": s["inat"], "gbif": s["gbif"],
             "habitat": tr["habitat"], "season": tr["season"], "stress": stress, "note": tr["note"], "remark": s["note"],
             "absent": s["ko"] in ABSENT or None,
-            "aqua": m.get("aqua"), "urban": m.get("urban"), "road": m.get("road"),
+            "aqua": m.get("aqua"), "urban": m.get("urban"), "road": m.get("road"), "profile": m.get("profile"),
+            "layers": m.get("layers"), "hab": sorted({g for L in (m.get("layers") or []) if L.get("main") for g in L["groups"]}) or None,
             "model": {k: m.get(k) for k in ("method", "auc", "tLo", "threshold", "tHi", "importance", "suitableKm2", "cells", "sgg", "noRecord", "reason") if m.get(k) is not None},
         }.items() if v not in (None, "", [])})
+    profiles = {k: v for k, v in json.loads((ROOT / "tools" / "profiles.json").read_text(encoding="utf-8")).items() if not k.startswith("_")}
+    by_ko = {s["ko"]: s["id"] for s in species}
+    (DATA / "profiles.json").write_text(json.dumps({by_ko[k]: v for k, v in profiles.items() if k in by_ko}, ensure_ascii=False, separators=(",", ":")), encoding="utf-8")
     (DATA / "catalog.json").write_text(json.dumps({"generatedAt": time.strftime("%Y-%m-%d"), "species": cat}, ensure_ascii=False, separators=(",", ":")), encoding="utf-8")
     print(f"catalog {len(cat)}종")
 
@@ -86,25 +91,28 @@ def main():
     geo_grid = json.loads((geo_dir / "_grid.json").read_text(encoding="utf-8"))
     (DATA / "occ.json").write_text(json.dumps({"grid": geo_grid, "species": occ}, separators=(",", ":")), encoding="utf-8")
     print(f"출현 칸 {sum(len(v) for v in occ.values()):,}개({len(occ)}종)")
+    if "--catalog" in sys.argv:   # 종 목록·특성·프로필만 다시 쓸 때(묶음 파일은 그대로)
+        return
 
     # 묶음 파일
     z = np.load(ENV / "env.npz")
     land = z["land"]
-    n_rows = len(species) + len(ENV_ROWS) + 2
+    row_ids = [s["id"] for s in species] + [f"{s['id']}@{L['key']}" for s in species for L in (models.get(s["id"], {}).get("layers") or [])]
+    n_rows = len(row_ids) + len(ENV_ROWS) + 2
     stack = np.lib.format.open_memmap(ROOT / "work" / "stack.npy", mode="w+", dtype=np.uint8, shape=(n_rows, H, W))   # 약 2 GB — 메모리 대신 디스크
     missing = []
-    for i, s in enumerate(species):
-        f = DATA / "suit" / f"{s['id']}.webp"
+    for i, rid in enumerate(row_ids):
+        f = DATA / "suit" / f"{rid}.webp"
         if f.exists():
             a = np.array(Image.open(f).convert("L"))
-            assert a.shape == (H, W), s["id"]
+            assert a.shape == (H, W), rid
         else:   # 아직 계산하지 않은 종은 0
             a = np.where(land, 0, 255).astype(np.uint8)
-            missing.append(s["ko"])
+            missing.append(rid)
         stack[i] = a
     if missing:
         print(f"  적합성 격자 없음 {len(missing)}종(0으로 채움):", ", ".join(missing[:10]), "…" if len(missing) > 10 else "")
-    i = len(species)
+    i = len(row_ids)
     for name, k in ENV_ROWS:
         a = np.clip(np.round(np.nan_to_num(z[name]) * k), 0, 254).astype(np.uint8)
         a[~land] = 255
@@ -136,7 +144,7 @@ def main():
     (DATA / "grid.json").write_text(json.dumps({
         "crs": grid["crs"], "proj": "+proj=tmerc +lat_0=38 +lon_0=127.5 +k=0.9996 +x_0=1000000 +y_0=2000000 +ellps=GRS80 +units=m +no_defs",
         "res": grid["res"], "W": W, "H": H, "x0": grid["x0"], "y1": grid["y1"], "block": B, "blocks": blocks,
-        "rows": [s["id"] for s in species], "env": [[n, k] for n, k in ENV_ROWS] + [["sgg_lo", 1], ["sgg_hi", 1]],
+        "rows": row_ids, "env": [[n, k] for n, k in ENV_ROWS] + [["sgg_lo", 1], ["sgg_hi", 1]],
         "sgg": [g["name"] for g in grid["sgg"]], "sources": grid["sources"],
     }, ensure_ascii=False, separators=(",", ":")), encoding="utf-8")
 

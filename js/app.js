@@ -198,13 +198,15 @@
       return d ? d[(py % n) * n + (px % n)] : 0;
     };
   };
-  // 종마다 10 m 화소가 서식지가 될 수 있는지(값 → 0/1). 물에 사는 종은 그 물, ‘도시’ 종은 전부, 그 밖은 시가지·도로·나대지 빼고
-  const habLut = (sp) => {
+  // 종마다 10 m 화소가 서식지가 될 수 있는지(값 → 0/1). 서식지 층을 주면 그 층의 토지피복, 문헌 프로필 종은 대표 층들의 토지피복,
+  // 물에 사는 종은 그 물, 그 밖은 시가지·도로·나대지 빼고
+  const habLut = (sp, layer) => {
     const lut = new Uint8Array(256).fill(1);
     const groups = LC.groups || [];
+    const allow = layer ? layer.groups : sp.hab;
     groups.forEach((g, i) => {
-      if (sp.urban) return;
-      const ok = sp.aqua ? sp.aqua.includes(g) : !["built", "road", "artbare"].includes(g);
+      if (sp.urban && !allow) return;
+      const ok = allow ? allow.includes(g) : sp.aqua ? sp.aqua.includes(g) : !["built", "road", "artbare"].includes(g);
       lut[i + 1] = ok ? 1 : 0;
     });
     lut[0] = 1;   // 분류 없음(접경지역 등)은 칸 값 그대로
@@ -218,9 +220,10 @@
   const SuitLayer = L.GridLayer.extend({
     // zIndex: 지도 바꾸기 단추가 바탕지도에 1·2·3을 매기므로 그보다 위에
     options: { tileSize: 256, opacity: 0.8, updateWhenZooming: false, maxNativeZoom: 19, zIndex: 10 },
-    initialize(get, T, opts, sp) {
+    initialize(get, T, opts, sp, layer) {
       this.get = get;   // (행, 열) → 0–100, 범위 밖 255. T: 등급 기준 { lo, t, hi }
       this.sp = sp;
+      this.layer = layer;
       this.lut = new Uint8ClampedArray(256 * 4);
       for (let v = 0; v <= 100; v++) {
         const c = CLASSES.find((x) => x.k === classOf(v, T));
@@ -270,7 +273,7 @@
       const f = G.res / 10;
       const xs = Array.from(cx), ys = Array.from(cy);
       lcReader(Math.floor(Math.min(...xs) * f), Math.floor(Math.min(...ys) * f), Math.floor(Math.max(...xs) * f), Math.floor(Math.max(...ys) * f))
-        .then((lc) => draw(lc, lc ? habLut(this.sp) : null), () => draw(null));
+        .then((lc) => draw(lc, lc ? habLut(this.sp, this.layer) : null), () => draw(null));
       return tile;
     },
   });
@@ -377,6 +380,7 @@
       </div>
       <div class="sp-grid">
         <div>
+          ${sp.layers ? `<div class="chips layer-chips" id="sp-layers"><button class="chip on" data-layer="">대표 서식지</button>${sp.layers.map((L) => `<button class="chip" data-layer="${esc(L.key)}">${esc(L.name)} <span class="muted">${esc(L.season || "")}</span></button>`).join("")}</div>` : ""}
           <div class="sp-map-wrap"><div class="sp-map" id="sp-map"></div>
             <div class="legend" id="sp-legend">${legendHtml(sp, `<div><i class="rec"></i>출현 기록(약 250 m 칸)</div>`)}</div>
             <label class="map-toggles"><span><input type="checkbox" id="sp-rec" checked> 출현 기록</span></label>
@@ -391,7 +395,7 @@
               ${se ? `<dt>민감 시기</dt><dd>${esc(se.text)}</dd>` : ""}
               ${sp.note ? `<dt>특징</dt><dd>${esc(sp.note)}</dd>` : ""}
               <dt>주요 위협</dt><dd>${tagList((sp.stress || []).map((k) => STRESS[k] || k), "warn")}</dd>
-              ${sp.aqua ? `<dt>서식 칸</dt><dd>${esc(aquaText(sp))}이 있는 칸만(면적은 칸 안의 물 면적)</dd>` : ""}
+              ${sp.aqua && !sp.hab ? `<dt>서식 칸</dt><dd>${esc(aquaText(sp))}이 있는 칸만(면적은 칸 안의 물 면적)</dd>` : ""}
             </dl>
           </div>
           <div class="panel">
@@ -403,11 +407,13 @@
               ${m.noRecord ? `<dt>분포 기록</dt><dd>출현 칸·시군구 기록이 없어 ‘가능’까지만 표시</dd>` : ""}
               ${sp.road ? `<dt>도로 영향</dt><dd>도로 가까이 최대 ${Math.round(sp.road * 100)}% 낮춤</dd>` : ""}
               ${m.suitableKm2 !== undefined ? `<dt>적합 면적</dt><dd>${fmt(m.suitableKm2)} ㎢ <span class="muted small">‘적합’ 이상</span></dd>` : ""}
+              ${(sp.layers || []).map((L) => `<dt>${esc(L.name)}</dt><dd>${fmt(L.suitableKm2)} ㎢ <span class="muted small">${esc(L.season || "")}</span></dd>`).join("")}
             </dl>
             ${imp.length ? `<h3 style="margin-top:14px">영향이 큰 환경 요인</h3><div class="bars">${imp.map(([k, v]) => `<div class="bar-row"><span>${esc(VARS[k] || k)}</span><span class="track"><i style="width:${Math.min(100, v)}%"></i></span><span class="v">${fmt(v)}%</span></div>`).join("")}</div>` : ""}
           </div>
         </div>
       </div>
+      ${sp.profile ? `<div class="panel" id="sp-profile"><p class="muted small">문헌 정보를 불러오는 중…</p></div>` : ""}
       <div class="panel">
         <h3>저감방안</h3>
         ${Measures.html(Measures.list(sp), esc)}
@@ -419,15 +425,57 @@
     const map = L1.map = makeMap($("#sp-map"));
     const recLayer = L.featureGroup().addTo(map);
     $("#sp-rec").onchange = (e) => { if (e.target.checked) recLayer.addTo(map); else recLayer.remove(); };
-    try {
-      const [R, occ] = await Promise.all([suitOf(sp.id), loadOcc()]);
+    if (sp.profile) renderProfile(sp);
+    let suit = null;
+    const showLayer = async (key) => {
+      const L = (sp.layers || []).find((x) => x.key === key) || null;
+      const R = await suitOf(L ? `${sp.id}@${L.key}` : sp.id);
       if (L1.map !== map) return;
-      new SuitLayer(rasterGet(R), thrsOf(sp), {}, sp).addTo(map);
+      if (suit) suit.remove();
+      suit = new SuitLayer(rasterGet(R), thrsOf(sp), {}, sp, L).addTo(map);
+      $("#sp-legend").innerHTML = legendHtml({ ko: L ? `${sp.ko} ${L.name}` : sp.ko }, `<div><i class="rec"></i>출현 기록(약 250 m 칸)</div>`);
+    };
+    if (sp.layers) {
+      $("#sp-layers").addEventListener("click", (e) => {
+        const b = e.target.closest("[data-layer]");
+        if (!b) return;
+        $$("#sp-layers .chip").forEach((x) => x.classList.toggle("on", x === b));
+        showLayer(b.dataset.layer).catch((err) => { console.warn(err); toast("층 자료를 불러오지 못했습니다.", 4000); });
+      });
+    }
+    try {
+      const [, occ] = await Promise.all([showLayer(""), loadOcc()]);
+      if (L1.map !== map) return;
       const canvas = L.canvas({ padding: 0.3 });
       (occ[sp.id] || []).forEach((cell) => L.polygon(occCellLatLngs(cell), { ...REC_STYLE, renderer: canvas }).addTo(recLayer));
     } catch (err) {
       console.warn(err);
       toast("서식지 적합성 자료를 불러오지 못했습니다.", 4000);
+    }
+  };
+
+  // 문헌 기반 종 정보(data/profiles.json): 개요·분포·서식지·생활사·먹이·위협·보전, 서식지 층 설명, 참고문헌
+  let profilesP = null;
+  const renderProfile = async (sp) => {
+    const box = $("#sp-profile");
+    try {
+      const all = await (profilesP || (profilesP = fetch("data/profiles.json").then((r) => r.json())));
+      const P = all[sp.id];
+      if (!P || !box || L1.cur !== sp.id) return;
+      const cite = (ns) => (ns && ns.length ? ` <span class="cite">[${ns.join(", ")}]</span>` : "");
+      const rows = [["개요", P.summary], ["국내 분포", P.distribution], ["서식지", P.habitat], ["생활사·번식", P.life], ["먹이", P.diet], ["위협 요인", P.threats], ["보전·관리", P.conservation]];
+      box.innerHTML = `
+        <h3>문헌 기반 종 정보</h3>
+        <dl class="facts">${rows.filter(([, v]) => v).map(([k, v]) => `<dt>${k}</dt><dd>${esc(v)}</dd>`).join("")}</dl>
+        <h3 style="margin-top:16px">서식지 층(지도)</h3>
+        <ul class="plain">${P.layers.map((L) => `<li><b>${esc(L.name)}</b> <span class="muted small">${esc(L.season || "")}</span> — ${esc(L.desc || "")}${cite(L.refs)}</li>`).join("")}
+        ${P.range && P.range.note ? `<li><b>분포 범위</b> — ${esc(P.range.note)}</li>` : ""}</ul>
+        <h3 style="margin-top:16px">참고문헌</h3>
+        <ol class="refs">${P.refs.map((r) => `<li>${esc(r.text)}${r.url ? ` <a href="${esc(r.url)}" target="_blank" rel="noopener">${esc(r.url.replace(/^https?:\/\/(dx\.)?doi\.org\//, "doi:"))}</a>` : ""}</li>`).join("")}</ol>
+        <p class="small muted" style="margin:8px 0 0">문헌을 읽고 요약한 것입니다. 서식지 층의 수치(거리·고도 등)는 문헌 내용을 바탕으로 정한 값입니다.</p>`;
+    } catch (err) {
+      console.warn(err);
+      if (box) box.innerHTML = `<p class="muted small">문헌 정보를 불러오지 못했습니다.</p>`;
     }
   };
 
