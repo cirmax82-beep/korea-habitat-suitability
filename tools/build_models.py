@@ -14,9 +14,12 @@
 - 도로 영향권: 주변으로 번진 도로 비율(road_eff, 0–1)만큼 적합도를 낮춤. 최대 낮춤은 종 민감도에 따라
   (로드킬·소음·교란·단절에 민감한 포유류·조류·양서파충류 60%, 그 밖의 동물 30%, 육상식물 20%, 어류·물에 사는 무척추·식물 0%)
   (서식 태그에 ‘도시’가 있는 종은 빼지 않음)
-- 기록 거르기: 현재 토지이용과 맞지 않는 기록은 학습·분포 범위·사이트 표시에서 뺌(땅 종은 시가지·도로·나대지 80% 이상인 칸,
+- 기록 거르기: 현재 토지이용과 맞지 않는 기록은 학습·분포 범위·사이트 표시에서 뺌(대도시 한가운데(도시 지수 0.45 이상)와
+  동물원 주변 1.5 km는 모든 종, 땅 종은 시가지·도로·나대지 80% 이상인 칸,
   물 종은 주변 250 m에 그 물이 없는 칸, 바다 종은 실제 해안에서 2 km 넘게 떨어진 칸)
-- 도심 속 녹지: 주변 약 1 km의 시가지·도로 비율(urban_ctx) 20~60%에 걸쳐 적합도를 최대 30~60% 낮춤. 바다 종은 해안 1 km 안 칸만
+- 대도시·도심: 도시 지수 = max(주변 1 km 개발 비율, 주변 5 km 개발 비율×0.8). 0.12~0.35에 걸쳐 적합도를 0까지 낮춤(모든 종).
+- 외딴 기록: 기록 칸이 20개 이상인 종은 10 km 안에 다른 기록이 없는 칸과 기록 1건뿐인 시군구를 학습·분포 범위에서 뺌
+  바다 종은 해안 1 km 안 칸만
 - 물에 사는 종(서식 태그가 모두 하천·계곡·호소·습지·논습지·하구·갯벌·해양): 그 물이 있는 칸에서만 서식 가능,
   적합 면적은 칸 안의 물 면적(환경부 세분류 토지피복 비율)으로 셈
   가능 0.5, 적합 0.7, 매우 적합 0.85
@@ -31,6 +34,7 @@ from pathlib import Path
 
 import elapid
 from pyproj import Transformer
+from scipy.spatial import cKDTree
 import geopandas as gpd
 from rasterio.features import rasterize
 from rasterio.transform import from_origin
@@ -54,6 +58,12 @@ N_BG = 10000
 MARINE = {"해양"}
 RNG = np.random.default_rng(20261023)
 SENSITIVE = {"로드킬", "소음", "교란", "단절"}
+URBAN_START, URBAN_ZERO = 0.12, 0.35   # 도시 지수(주변 1 km 개발 비율과 5 km 개발 비율×0.8 중 큰 값): 이 사이에서 적합도를 0까지 낮춤
+OUTLIER = (20, 10)   # 기록 칸이 20개 이상인 종은 10 km 안에 다른 기록이 없는 외딴 기록·기록 1건뿐인 시군구를 뺌(길 잃은 개체·오동정)
+ZOO_KM = 1.5   # 동물원·사육 시설에서 이 거리 안 기록은 뺌(방사·탈출·사육 개체)
+ZOOS = {"서울대공원": (127.019, 37.427), "서울어린이대공원": (127.081, 37.548), "에버랜드": (127.203, 37.294), "청주동물원": (127.513, 36.651),
+        "대전오월드": (127.399, 36.290), "광주우치동물원": (126.896, 35.222), "전주동물원": (127.137, 35.856), "대구달성공원": (128.580, 35.874),
+        "국립백두대간수목원 호랑이숲": (128.946, 36.950), "서울동물원 과천": (127.012, 37.432)}
 
 
 def road_alpha(group, stress, aq):
@@ -175,6 +185,8 @@ def main():
         d = ndimage.distance_transform_edt(~known) * grid["res"] / 1000
         return np.clip(1 - d / R, 0, 1).ravel()[idx]
 
+    to5179 = Transformer.from_crs(4326, grid["crs"], always_xy=True)
+
     # 현재 토지이용과 맞지 않는 기록 거르기(땅 종: 시가지·도로·나대지 80% 이상인 칸, 물 종: 주변 250 m에 그 물이 없는 칸,
     # 바다 종: 실제 해안에서 2 km 넘게 떨어진 칸)
     def full(a):
@@ -182,18 +194,23 @@ def main():
         out[idx] = a
         return out.reshape(land.shape)
 
+    urban_idx = np.maximum(E["urban_ctx"], 0.8 * E["urban_reg"])
+    zx, zy = to5179.transform([v[0] for v in ZOOS.values()], [v[1] for v in ZOOS.values()])
+    zoo = np.zeros(land.shape, dtype=bool)
+    for x, y in zip(zx, zy):
+        zoo[int((grid["y1"] - y) // grid["res"]), int((x - grid["x0"]) // grid["res"])] = True
+    near_zoo = (ndimage.distance_transform_edt(~zoo) * grid["res"] / 1000 <= ZOO_KM).ravel()[idx]
+
     def record_ok(tags, aq):
+        common = (urban_idx < URBAN_ZERO) & ~near_zoo   # 대도시 한가운데·동물원 주변 기록은 모든 종에서 뺌
         if "해양" in tags:
-            return E["dist_coast"] <= 2
+            return common & (E["dist_coast"] <= 2)
         if aq:
-            return ndimage.maximum_filter(full(sum(E[k] for k in aq)), size=3).ravel()[idx] > 0.001
-        if "도시" in tags:
-            return np.ones(idx.size, dtype=bool)
-        return (1 - E["built"] - E["road"] - E["artbare"]) >= 0.2
+            return common & (ndimage.maximum_filter(full(sum(E[k] for k in aq)), size=3).ravel()[idx] > 0.001)
+        return common & ((1 - E["built"] - E["road"] - E["artbare"]) >= 0.2)
 
     # 사이트에 보여 줄 기록 칸(경위도 약 250 m)도 같은 기준으로 거름
     geo_grid = json.loads((ROOT / "work" / "occ_geo" / "_grid.json").read_text(encoding="utf-8"))
-    to5179 = Transformer.from_crs(4326, grid["crs"], always_xy=True)
     OK_GEO = ROOT / "work" / "occ_geo_ok"
     OK_GEO.mkdir(exist_ok=True)
 
@@ -226,9 +243,21 @@ def main():
         ok = record_ok(tr["habitat"], aq)
         pres_all = occ_rows(s["id"])
         pres = pres_all[ok[pres_all]]
-        filter_geo(s["id"], ok, "해양" in tr["habitat"])
+        gids = json.loads((OCC_SGG / f"{s['id']}.json").read_text(encoding="utf-8")) if (OCC_SGG / f"{s['id']}.json").exists() else {}
+        if pres.size >= OUTLIER[0]:   # 외딴 기록 빼기
+            rr, cc = np.divmod(idx[pres], W)
+            xy = np.column_stack([cc, rr]) * grid["res"] / 1000
+            nb = np.array([len(v) for v in cKDTree(xy).query_ball_point(xy, OUTLIER[1])])
+            info_out = int((nb < 2).sum())
+            pres = pres[nb >= 2]
+            gids = {g: n for g, n in gids.items() if n >= 2}
+        else:
+            info_out = 0
+        kept = np.zeros(idx.size, dtype=bool)
+        kept[pres] = True
+        filter_geo(s["id"], kept, "해양" in tr["habitat"])   # 사이트에 보여 줄 기록도 학습에 쓴 칸만
         marine = bool(tr["habitat"]) and set(tr["habitat"]) <= MARINE | {"섬", "해안"} and "해양" in tr["habitat"]
-        info = {"cells": int(pres.size), "habitat": tr["habitat"], "dropped": int(pres_all.size - pres.size)}
+        info = {"cells": int(pres.size), "habitat": tr["habitat"], "dropped": int(pres_all.size - pres.size), "outliers": info_out}
         if pres.size >= MIN_CELLS and not marine:
             bg_pool = np.setdiff1d(effort, pres)
             if bg_pool.size < N_BG:   # 조사 노력 칸이 모자라면 육지 무작위로 채움
@@ -260,8 +289,7 @@ def main():
             info.update({"method": "rule" if tr["habitat"] else "none", "tLo": RULE_T[0], "threshold": RULE_T[1], "tHi": RULE_T[2],
                          "reason": "해양 종" if marine else f"출현 칸 {pres.size}개(모형에는 {MIN_CELLS}개 이상 필요)"})
         # 알려진 분포 범위 밖은 환경이 비슷해도 낮춤(바다 종은 바다 기록이 시군구로 잡힘). 칸·시군구 기록이 모두 없으면 ‘가능’까지만
-        gids = json.loads((OCC_SGG / f"{s['id']}.json").read_text(encoding="utf-8")) if (OCC_SGG / f"{s['id']}.json").exists() else []
-        wgt = range_weight(s["group"], pres, gids)
+        wgt = range_weight(s["group"], pres, list(gids))
         if wgt is None:
             pred = np.minimum(pred, info["threshold"] - 0.05)
             info["noRecord"] = True
@@ -273,19 +301,15 @@ def main():
             area = np.clip(sum(E[k] for k in aq), 0, 1)
             pred = np.where(area > 0.001, pred, 0)
             info["aqua"] = aq
-        elif "도시" not in tr["habitat"]:   # 시가지(마을 등)·도로·나대지는 서식지가 아님: 적합도와 면적을 그 비율만큼 뺌
+        else:   # 시가지(마을 등)·도로·나대지는 서식지가 아님: 적합도와 면적을 그 비율만큼 뺌
             area = np.clip(1 - E["built"] - E["road"] - E["artbare"], 0, 1)
             pred = pred * area
-        else:
-            info["urban"] = True
-        alpha = 0.0 if info.get("urban") else road_alpha(s["group"], GROUP_STRESS.get(s["group"], []) + tr["extra"], aq)
+        alpha = road_alpha(s["group"], GROUP_STRESS.get(s["group"], []) + tr["extra"], aq)
         if alpha:   # 도로 영향권(소음·불빛·로드킬·단절): 도로 가까이일수록 낮춤
             pred = pred * (1 - alpha * E["road_eff"])
             info["road"] = alpha
-        if not info.get("urban"):   # 도심 속 녹지: 주변 약 1 km의 시가지·도로 비율이 20%를 넘으면 낮추기 시작해 60%에서 최대
-            beta = max(alpha, 0.3)
-            pred = pred * (1 - beta * np.clip((E["urban_ctx"] - 0.2) / 0.4, 0, 1))
-            info["urbanCtx"] = beta
+        # 대도시·도심: 도시 지수가 15%를 넘으면 낮추기 시작해 45% 이상이면 0(모든 종)
+        pred = pred * (1 - np.clip((urban_idx - URBAN_START) / (URBAN_ZERO - URBAN_START), 0, 1))
         if "해양" in tr["habitat"]:   # 바다 종: 실제 해안에서 1 km 안 칸만
             pred = np.where(E["dist_coast"] <= 1, pred, 0)
         vals = np.zeros(land.shape, dtype="float32")

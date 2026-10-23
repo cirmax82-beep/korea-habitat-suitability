@@ -126,8 +126,11 @@ def main():
         (OCC / f"{s['id']}.json").write_text(json.dumps(occ), encoding="utf-8")
         (OCC_GEO / f"{s['id']}.json").write_text(json.dumps(geo), encoding="utf-8")
         units = (gsnap.get(s["id"]) or {}).get("units", {})
-        gids = {g for g, per in units.items() if any(per[i] for i in RECENT)} | {o[1] for o in inat["obs"].get(s["id"], []) if o[1] and o[2] // 10000 >= MIN_YEAR}
-        (OCC_SGG / f"{s['id']}.json").write_text(json.dumps(sorted(gids)), encoding="utf-8")
+        gids = {g: sum(per[i] for i in RECENT) for g, per in units.items()}   # 시군구 → 2000년 이후 기록 수
+        for o in inat["obs"].get(s["id"], []):
+            if o[1] and o[2] // 10000 >= MIN_YEAR:
+                gids[o[1]] = gids.get(o[1], 0) + 1
+        (OCC_SGG / f"{s['id']}.json").write_text(json.dumps({g: n for g, n in sorted(gids.items()) if n}), encoding="utf-8")
         photo = inat["taxa"].get(s["id"], {})
         species.append({"id": s["id"], "ko": s["name"], "sci": s["sci"], "group": s["group"], "grade": s["grade"], "family": s.get("family", ""),
                         "nm": "", "gbif": s.get("gbif"), "note": s.get("note", ""), "cells": len(occ),

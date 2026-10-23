@@ -41,8 +41,8 @@ WC_TILES = [(33, 123), (33, 126), (33, 129), (36, 123), (36, 126), (36, 129)]
 WC_LC = {"tree": [10], "grass": [20, 30], "crop": [40], "built": [50], "bare": [60, 70, 100], "water": [80], "wetland": [90, 95]}
 NAMES = ["elev", "slope", "tree", "conifer", "grass", "paddy", "field", "built", "artbare", "bare", "rock", "wetland", "tidal", "river", "lake",
          "dist_river", "dist_lake", "dist_coast", "bio1", "bio4", "bio12", "bio15"]   # 모형 변수
-EXTRA = ["sea", "road", "road_eff", "urban_ctx"]   # 모형에는 안 씀: 바다 종 서식 칸 판정, 도로 면적, 도로 영향권(0–1, tools/build_roads.py),
-                                                   # 주변 약 1 km의 시가지·도로 비율(도심 속 녹지 판단)
+EXTRA = ["sea", "road", "road_eff", "urban_ctx", "urban_reg"]   # 모형에는 안 씀: 바다 종 서식 칸 판정, 도로 면적, 도로 영향권(0–1, tools/build_roads.py),
+                                                   # 주변 약 1 km·약 5 km의 시가지·도로 비율(도심 속 녹지·대도시 판단)
 
 
 def log(*a):
@@ -216,6 +216,7 @@ def main():
     env["road_eff"] = np.load(OUT / "road_eff.npy").astype("float32")
     dev = np.where(land, env["built"] + env["road"], 0).astype("float32")
     env["urban_ctx"] = ndimage.gaussian_filter(dev, 2).astype("float32")   # 표준편차 500 m — 주변 약 1 km의 개발 비율
+    env["urban_reg"] = ndimage.gaussian_filter(dev, 10).astype("float32")  # 표준편차 2.5 km — 주변 약 5 km(대도시 안인지)
     log(f"토지피복·거리 변수 완료 · 도로 영향 0.5 이상 육지 {(env['road_eff'][land] >= 0.5).mean() * 100:.1f}%")
 
     for n in NAMES + EXTRA:
