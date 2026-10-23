@@ -1,0 +1,56 @@
+# main에 올리면 GitHub Pages로 배포합니다.
+# 종별 적합성 격자(data/suit)와 위치별 묶음(data/blocks)은 용량이 커서 저장소 대신 릴리스(data-latest)의 site-data.zip에 두고 배포 때 받아 넣습니다.
+name: 배포
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/configure-pages@v6
+      - name: 배포할 파일 모으기
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          mkdir -p _site/data
+          cp -r index.html css js robots.txt sitemap.xml _site/
+          cp data/catalog.json data/grid.json data/occ.json _site/data/
+          [ -f CNAME ] && cp CNAME _site/ || true
+          cp naver*.html google*.html _site/ 2>/dev/null || true
+          gh release download data-latest -p site-data.zip -R "$GITHUB_REPOSITORY" -D /tmp
+          unzip -q /tmp/site-data.zip -d _site/data
+          ls _site _site/data; du -sh _site
+      # 영향 예측의 주소 검색(브이월드 검색 API)용. 브라우저에서 쓰는 키라 배포된 사이트에서는 보임
+      - name: 주소 검색용 설정 만들기
+        env:
+          VWORLD_KEY: ${{ secrets.VWORLD_KEY }}
+        run: |
+          KEY=$(printf '%s' "$VWORLD_KEY" | tr -d '[:space:]')
+          if printf '%s' "$KEY" | grep -Eq '^[A-Za-z0-9-]{20,64}$'; then
+            printf 'window.PORTAL_CONFIG = { vworldKey: "%s" };\n' "$KEY" > _site/js/config.js
+          else
+            echo 'window.PORTAL_CONFIG = {};' > _site/js/config.js
+            echo "::warning::VWORLD_KEY 비밀값이 없어 주소 검색은 오픈스트리트맵만 씁니다."
+          fi
+      - uses: actions/upload-pages-artifact@v5
+        with:
+          path: _site
+      - id: deployment
+        uses: actions/deploy-pages@v5
