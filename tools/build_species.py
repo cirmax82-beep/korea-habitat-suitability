@@ -21,6 +21,8 @@ import urllib.parse
 import urllib.request
 from pathlib import Path
 
+from profiles_lib import load_profiles
+
 import numpy as np
 from pyproj import Transformer
 
@@ -34,7 +36,7 @@ MIN_YEAR = 2000  # 이보다 오래된 기록과 연도를 모르는 기록은 �
 RECENT = (1, 2, 3)   # heat-gbif 기간 번호: 0 = 1999년 이전, 1 = 2000~2009, 2 = 2010~2019, 3 = 2020년 이후, 4 = 연도 미상
 PERIOD_FROM = {2000: (1, 2, 3), 2010: (2, 3), 2020: (3,)}
 # 문헌 프로필의 min_year: 최근 급감한 종은 감소 전 분포가 섞이지 않게 더 최근 기록만
-PROFILES = {k: v for k, v in json.loads((ROOT / "tools" / "profiles.json").read_text(encoding="utf-8")).items() if not k.startswith("_")}
+PROFILES = load_profiles()
 NM_API = "https://www.khs.go.kr/cha/SearchKindOpenapiList.do?ccbaKdcd=16&pageUnit=2000&pageIndex=1"
 NM_REGIONAL = {"한강의 황쏘가리": "황쏘가리", "금강의 어름치": "어름치", "제주의 한란": "한란"}   # 지역을 붙인 종 지정
 NM_ALIAS = {"점박이물범": "물범", "느시(들칠면조)": "느시", "붉은박쥐(오렌지윗수염박쥐)": "붉은박쥐", "까막딱따구리": "까막딱다구리"}   # 천연기념물 이름 → 멸종위기종 목록 이름

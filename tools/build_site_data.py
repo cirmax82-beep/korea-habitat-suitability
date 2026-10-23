@@ -3,7 +3,7 @@
     python tools/build_site_data.py
 
 - data/catalog.json: 종 목록 + 생태 특성(traits.tsv) + 모형 요약(서식지 층 포함)
-- data/profiles.json: 문헌 프로필(tools/profiles.json)을 종 id 기준으로
+- data/profiles.json: 문헌 프로필(tools/profiles/*.json)을 종 id 기준으로
 - data/grid.json: 분석 격자 정보, 묶음 파일의 행 구성
 - data/occ.json: 출현 기록 칸(경위도 약 250 m 칸 번호, 멸종위기종 종합관리 열지도와 같은 칸) — 기록마다의 좌표는 공개하지 않음
 - data/blocks/<bx>-<by>.webp: 64×64칸(16 km) 묶음마다 모든 종의 적합성과 환경 값을 한 장에
@@ -14,6 +14,8 @@ import math
 import sys
 import time
 from pathlib import Path
+
+from profiles_lib import load_profiles
 
 import numpy as np
 from PIL import Image
@@ -69,9 +71,9 @@ def main():
             "absent": s["ko"] in ABSENT or None,
             "aqua": m.get("aqua"), "urban": m.get("urban"), "road": m.get("road"), "profile": m.get("profile"),
             "layers": m.get("layers"), "hab": sorted({g for L in (m.get("layers") or []) if L.get("main") for g in L["groups"]}) or None,
-            "model": {k: m.get(k) for k in ("method", "auc", "tLo", "threshold", "tHi", "importance", "suitableKm2", "cells", "sgg", "noRecord", "reason") if m.get(k) is not None},
+            "model": {k: m.get(k) for k in ("method", "auc", "tLo", "threshold", "tHi", "importance", "vars", "suitableKm2", "cells", "sgg", "noRecord", "reason") if m.get(k) is not None},
         }.items() if v not in (None, "", [])})
-    profiles = {k: v for k, v in json.loads((ROOT / "tools" / "profiles.json").read_text(encoding="utf-8")).items() if not k.startswith("_")}
+    profiles = load_profiles()
     by_ko = {s["ko"]: s["id"] for s in species}
     (DATA / "profiles.json").write_text(json.dumps({by_ko[k]: v for k, v in profiles.items() if k in by_ko}, ensure_ascii=False, separators=(",", ":")), encoding="utf-8")
     (DATA / "catalog.json").write_text(json.dumps({"generatedAt": time.strftime("%Y-%m-%d"), "species": cat}, ensure_ascii=False, separators=(",", ":")), encoding="utf-8")

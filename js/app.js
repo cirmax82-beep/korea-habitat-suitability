@@ -10,7 +10,7 @@
 
   const GROUPS = { mammal: "포유류", bird: "조류", herp: "양서·파충류", fish: "어류", insect: "곤충", invert: "무척추동물", plant: "육상식물", algae: "해조류", fungi: "고등균류" };
   const GRADE = { en1: "멸종위기 Ⅰ급", en2: "멸종위기 Ⅱ급" };
-  const VARS = { elev: "고도", slope: "경사", tree: "산림", conifer: "침엽수림", grass: "초지", paddy: "논", field: "밭·과수", built: "시가지", road: "도로·철도", artbare: "나대지", bare: "자연 나지",
+  const VARS = { elev: "고도", slope: "경사", tree: "산림", broad: "활엽수림", conifer: "침엽수림", grass: "초지", paddy: "논", field: "밭·과수", built: "시가지", road: "도로·철도", artbare: "나대지", bare: "자연 나지",
     rock: "암벽", wetland: "내륙습지", tidal: "갯벌", river: "하천", lake: "호소", dist_river: "하천까지 거리", dist_lake: "호소·습지까지 거리",
     dist_coast: "해안까지 거리", bio1: "연평균기온", bio4: "기온 계절성", bio12: "연강수량", bio15: "강수 계절성" };
   const AQUA = { river: "하천", lake: "호소", wetland: "습지", paddy: "논", tidal: "갯벌", sea: "바다" };
@@ -403,6 +403,7 @@
             <dl class="facts">
               <dt>방식</dt><dd>${methodName(m)}</dd>
               <dt>출현 자료</dt><dd>${fmt(m.cells || 0)}칸(250 m)</dd>
+              ${m.vars ? `<dt>환경변수</dt><dd>${tagList(m.vars.map((v) => VARS[v] || v))}</dd>` : ""}
               ${m.auc ? `<dt>예측력(AUC)</dt><dd>${m.auc.toFixed(2)} <span class="muted small">3겹 교차검증</span></dd>` : ""}
               ${m.noRecord ? `<dt>분포 기록</dt><dd>출현 칸·시군구 기록이 없어 ‘가능’까지만 표시</dd>` : ""}
               ${sp.road ? `<dt>도로 영향</dt><dd>도로 가까이 최대 ${Math.round(sp.road * 100)}% 낮춤</dd>` : ""}

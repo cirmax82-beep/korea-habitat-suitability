@@ -25,7 +25,7 @@
   가능 0.5, 적합 0.7, 매우 적합 0.85
 - 알려진 분포 범위: 출현 칸에서 R km(조류 25, 포유류 15, 그 밖 5) 안과 기록이 있는 시군구(위치를 흐린 기록 포함, +2 km)는
   그대로, 그 밖은 R km에 걸쳐 0으로 낮춤. 칸·시군구 기록이 모두 없는 종은 ‘가능’까지만
-- 문헌 프로필(tools/profiles.json)이 있는 종: 서식지 층(번식지·채식지 등)마다 그 토지피복·조건을 만족하는 칸만 → data/suit/<id>@<층>.webp,
+- 문헌 프로필(tools/profiles/*.json)이 있는 종: 서식지 층(번식지·채식지 등)마다 그 토지피복·조건을 만족하는 칸만 → data/suit/<id>@<층>.webp,
   대표 지도는 main 층들의 최댓값
 - 결과: data/suit/<id>.webp(무손실 회색조, 0–100 = 적합성×100을 5 단위로, 255 = 분석 범위 밖), data/models.json
 """
@@ -33,6 +33,8 @@ import json
 import sys
 import time
 from pathlib import Path
+
+from profiles_lib import load_profiles
 
 import elapid
 from pyproj import Transformer
@@ -59,8 +61,11 @@ OCC_SGG = ROOT / "work" / "occ_sgg"
 N_BG = 10000
 MARINE = {"해양"}
 RNG = np.random.default_rng(20261023)
-PROFILES = {k: v for k, v in json.loads((ROOT / "tools" / "profiles.json").read_text(encoding="utf-8")).items() if not k.startswith("_")}
+PROFILES = load_profiles()
 SENSITIVE = {"로드킬", "소음", "교란", "단절"}
+# 종 프로필에 vars가 없을 때 쓰는 환경변수(시가지·나대지는 학습 뒤 규칙으로 빼므로 넣지 않음)
+DEFAULT_VARS = ["elev", "slope", "tree", "conifer", "grass", "paddy", "field", "bare", "rock", "wetland", "tidal", "river", "lake",
+                "dist_river", "dist_lake", "dist_coast", "bio1", "bio4", "bio12", "bio15"]
 URBAN_START, URBAN_ZERO = 0.12, 0.35   # 도시 지수(주변 1 km 개발 비율과 5 km 개발 비율×0.8 중 큰 값): 이 사이에서 적합도를 0까지 낮춤
 OUTLIER = (20, 10)   # 기록 칸이 20개 이상인 종은 10 km 안에 다른 기록이 없는 외딴 기록·기록 1건뿐인 시군구를 뺌(길 잃은 개체·오동정)
 ZOO_KM = 1.5   # 동물원·사육 시설에서 이 거리 안 기록은 뺌(방사·탈출·사육 개체)
@@ -151,10 +156,11 @@ def main():
     grid = json.loads((ENV / "grid.json").read_text(encoding="utf-8"))
     z = np.load(ENV / "env.npz")
     land = z["land"]
-    names = grid["names"]
     idx = np.flatnonzero(land.ravel())
-    X = np.column_stack([z[n].ravel()[idx] for n in names]).astype("float32")   # 육지 칸 × 변수
-    E = {n: z[n].ravel()[idx] for n in names + grid.get("extra", [])}
+    E = {n: z[n].ravel()[idx] for n in grid["names"] + grid.get("extra", [])}
+    E["broad"] = np.clip(E["tree"] - E["conifer"], 0, 1)   # 활엽수림·혼효림(산림 − 침엽수림)
+    names = grid["names"] + ["broad"]   # 모형에 쓸 수 있는 환경변수. 종 프로필의 vars로 종마다 고름
+    X = np.column_stack([E[n] for n in names]).astype("float32")   # 육지 칸 × 변수
     pos = np.full(land.size, -1, dtype=np.int64)
     pos[idx] = np.arange(idx.size)
     traits = load_traits()
@@ -191,6 +197,10 @@ def main():
             m &= (ndimage.distance_transform_edt(~src) * grid["res"] / 1000).ravel()[idx] <= nr["km"]
         if "elev" in L:
             m &= (E["elev"] >= L["elev"][0]) & (E["elev"] <= L["elev"][1])
+        if "slope" in L:   # 경사(°) 범위 — 산양처럼 급경사 암벽이 필요한 종
+            m &= (E["slope"] >= L["slope"][0]) & (E["slope"] <= L["slope"][1])
+        if "coast_km" in L:   # 실제 해안에서 이 거리 안(바다 종·해안 종)
+            m &= E["dist_coast"] <= L["coast_km"]
         return m, frac
 
     # 시군구(GADM 코드) 격자 — 기록이 있는 시군구를 분포 범위로 쓰기 위해
@@ -297,7 +307,10 @@ def main():
             bg = RNG.choice(bg_pool, min(N_BG, bg_pool.size), replace=False)
             xi = np.concatenate([pres, bg])
             y = np.concatenate([np.ones(pres.size), np.zeros(bg.size)])
-            Xt = X[xi]
+            vnames = [v for v in ((PROFILES.get(s["ko"]) or {}).get("vars") or DEFAULT_VARS) if v in names]
+            cols = [names.index(v) for v in vnames]
+            Xs = X[:, cols]
+            Xt = Xs[xi]
             mk = lambda: elapid.MaxentModel(feature_types=["linear", "quadratic", "hinge"], beta_multiplier=1.5, transform="cloglog")  # noqa: E731
             aucs = []
             for a, b in StratifiedKFold(3, shuffle=True, random_state=1).split(Xt, y):
@@ -307,13 +320,13 @@ def main():
             p_tr = m.predict(Xt)
             base = roc_auc_score(y, p_tr)
             imp = {}
-            for j, n in enumerate(names):
+            for j, n in enumerate(vnames):
                 Xp = Xt.copy()
                 Xp[:, j] = RNG.permutation(Xp[:, j])
                 imp[n] = max(0.0, base - roc_auc_score(y, m.predict(Xp)))
             tot = sum(imp.values()) or 1
-            pred = np.concatenate([m.predict(X[k:k + 100000]) for k in range(0, X.shape[0], 100000)])
-            info.update({"method": "maxent", "auc": round(float(np.mean(aucs)), 3), "aucTrain": round(float(base), 3),
+            pred = np.concatenate([m.predict(Xs[k:k + 100000]) for k in range(0, Xs.shape[0], 100000)])
+            info.update({"method": "maxent", "vars": vnames, "auc": round(float(np.mean(aucs)), 3), "aucTrain": round(float(base), 3),
                          "tLo": round(float(np.percentile(p_tr[:pres.size], 10)), 3), "threshold": round(float(np.percentile(p_tr[:pres.size], 20)), 3),
                          "tHi": round(float(np.percentile(p_tr[:pres.size], 50)), 3), "importance": {k: round(v / tot * 100, 1) for k, v in sorted(imp.items(), key=lambda x: -x[1]) if v > 0}})
         else:

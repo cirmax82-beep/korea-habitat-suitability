@@ -90,7 +90,21 @@
   "range": {
    "km": 10,
    "note": "2020년 이후 기록에서 10 km 안과 그 기록이 있는 시군구만(2000년대 중반 이후 95% 줄어 그 전 기록은 현재 분포가 아님)"
-  }
+  },
+  "vars": [
+   "elev",
+   "slope",
+   "broad",
+   "tree",
+   "paddy",
+   "river",
+   "lake",
+   "wetland",
+   "dist_river",
+   "dist_lake",
+   "bio1",
+   "bio12"
+  ]
  },
  "두루미": {
   "summary": "아무르강 유역에서 번식하고 한반도 비무장지대 일대와 강화 갯벌에서 겨울을 나는 대형 두루미. 전 세계 약 4,600마리로 추정되며, 한국·일본에서 월동하는 동부 집단의 비중이 늘고 있다.",
@@ -188,6 +202,20 @@
     "text": "Higuchi H, Shibaev Y, Minton J 외 (1998) Satellite tracking of the migration of the red-crowned crane Grus japonensis. Ecological Research 13:273",
     "url": "https://doi.org/10.1046/j.1440-1703.1998.00271.x"
    }
+  ],
+  "vars": [
+   "elev",
+   "paddy",
+   "field",
+   "river",
+   "lake",
+   "tidal",
+   "wetland",
+   "dist_river",
+   "dist_lake",
+   "dist_coast",
+   "bio1",
+   "bio4"
   ]
  },
  "수달": {
@@ -264,6 +292,20 @@
     "text": "Hong S, Do Y, Kim JY 외 (2017) Conservation activities for the Eurasian otter (Lutra lutra) in South Korea traced from newspapers during 1962–2010. Biological Conservation 210",
     "url": "https://doi.org/10.1016/j.biocon.2017.03.010"
    }
+  ],
+  "vars": [
+   "elev",
+   "slope",
+   "river",
+   "lake",
+   "wetland",
+   "tidal",
+   "dist_river",
+   "dist_lake",
+   "dist_coast",
+   "tree",
+   "bio1",
+   "bio12"
   ]
  },
  "하늘다람쥐": {
@@ -329,6 +371,17 @@
     "text": "Selonen V, Mäkeläinen S (2017) Ecology and protection of a flagship species, the Siberian flying squirrel. Hystrix 28(2)",
     "url": "https://doi.org/10.4404/hystrix-28.2-12328"
    }
+  ],
+  "vars": [
+   "elev",
+   "slope",
+   "tree",
+   "broad",
+   "conifer",
+   "dist_river",
+   "bio1",
+   "bio4",
+   "bio12"
   ]
  },
  "붉은박쥐": {
@@ -396,6 +449,18 @@
     "text": "Csorba G, Chou C-H, Ruedi M 외 (2014) The reds and the yellows: a review of Asian Chrysopteron (Chiroptera: Vespertilionidae: Myotis). Journal of Mammalogy 95(4)",
     "url": "https://doi.org/10.1644/13-MAMM-A-200"
    }
+  ],
+  "vars": [
+   "elev",
+   "slope",
+   "tree",
+   "broad",
+   "paddy",
+   "field",
+   "river",
+   "dist_river",
+   "bio1",
+   "bio12"
   ]
  },
  "금개구리": {
@@ -451,6 +516,18 @@
     "text": "박창득, 권관익, 유나경 외 (2021) 증식 금개구리의 복원 후 모니터링. Proceedings of the National Institute of Ecology",
     "url": "https://doi.org/10.22920/PNIE.2021.2.2.114"
    }
+  ],
+  "vars": [
+   "elev",
+   "paddy",
+   "wetland",
+   "lake",
+   "field",
+   "dist_lake",
+   "dist_river",
+   "dist_coast",
+   "bio1",
+   "bio12"
   ]
  },
  "흰수마자": {
@@ -514,6 +591,16 @@
     "text": "고명훈, 이일로, 방인철 (2013) 멸종위기종 흰수마자의 알 발생과 초기 생활사. 한국어류학회지",
     "url": ""
    }
+  ],
+  "vars": [
+   "elev",
+   "slope",
+   "river",
+   "bare",
+   "dist_river",
+   "bio1",
+   "bio12",
+   "bio15"
   ]
  },
  "귀이빨대칭이": {
@@ -559,6 +646,16 @@
     "text": "Kim K, Kwon J, Kim K 외 (2026) Assessment of freshwater Unionidae using environmental DNA metabarcoding in lentic ecosystems. Biology 15(4):338",
     "url": "https://doi.org/10.3390/biology15040338"
    }
+  ],
+  "vars": [
+   "elev",
+   "slope",
+   "river",
+   "lake",
+   "dist_lake",
+   "dist_river",
+   "bio1",
+   "bio12"
   ]
  },
  "장수하늘소": {
@@ -619,7 +716,17 @@
    "km": 3,
    "sgg": false,
    "note": "광릉숲 등 확인 지점 주변만(시군구 단위 기록은 범위가 너무 넓어 쓰지 않음)"
-  }
+  },
+  "vars": [
+   "elev",
+   "slope",
+   "tree",
+   "broad",
+   "conifer",
+   "bio1",
+   "bio4",
+   "bio12"
+  ]
  },
  "가시연": {
   "summary": "잎 지름이 1 m 넘게 자라고 잎과 줄기에 가시가 있는 한해살이 수생식물. 국내에서는 오래된 저수지·늪의 수가 줄면서 멸종위기 Ⅱ급이 됐다.",
@@ -673,6 +780,16 @@
     "text": "양인석 (1975) 가시연꽃의 분포. 식물분류학회지 6(1):31",
     "url": "https://doi.org/10.11110/kjpt.1975.6.1.031"
    }
+  ],
+  "vars": [
+   "elev",
+   "slope",
+   "lake",
+   "wetland",
+   "paddy",
+   "dist_lake",
+   "bio1",
+   "bio12"
   ]
  }
 }

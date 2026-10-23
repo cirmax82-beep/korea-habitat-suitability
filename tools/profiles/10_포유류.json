@@ -1,0 +1,324 @@
+{
+ "산양": {
+  "summary": "급경사 바위 지대에 사는 소과 동물. 국내에서는 설악산·오대산 등 강원 북부 산지와 울진·삼척 해안 산지에 주로 남아 있고, 월악산 등에서 복원 사업이 진행됐다.",
+  "distribution": "강원 설악산·오대산·화천·양구·인제 일대, 경북 울진·강원 삼척 해안 산지, 복원지인 충북 월악산. 유전적으로 몇 개 집단으로 나뉘며 집단 간 이동이 끊겨 있다.",
+  "habitat": "경사가 급하고 바위가 드러난 능선·절벽과 그 주변 숲. 포식자와 사람을 피해 바위 지대에서 쉬고, 가까운 숲·초지에서 먹이를 먹는다. 겨울 폭설 때는 눈이 덜 쌓이는 남사면·바위 아래로 모인다.",
+  "life": "10~11월 짝짓기, 이듬해 5~6월에 새끼 1마리. GPS 추적에서 행동권은 계절에 따라 수십~수백 ha였다.",
+  "diet": "풀·나뭇잎·어린 가지·이끼, 겨울에는 침엽수 잎과 나무껍질.",
+  "threats": "도로·산림 개발로 서식지 단절, 폭설기 먹이 부족에 따른 집단 폐사, 작은 집단의 근친 교배, 밀렵.",
+  "conservation": "멸종위기 야생생물 Ⅰ급, 천연기념물 제217호. 바위 지대·능선 보전, 집단 사이 생태통로, 폭설기 먹이 공급, 복원 개체 모니터링.",
+  "vars": ["elev", "slope", "rock", "tree", "conifer", "broad", "grass", "dist_coast", "bio1", "bio4", "bio12"],
+  "layers": [
+   {"key": "main", "name": "서식지", "season": "연중", "main": true, "groups": ["rock", "conifer", "mixed", "broad", "grass"], "slope": [15, 90], "elev": [100, 1700],
+    "near": [{"groups": ["rock"], "km": 0.5, "min": 0.003}],
+    "desc": "경사 15° 이상이고 500 m 안에 바위가 드러난 산지(해발 100~1,700 m)의 숲·바위·초지", "refs": [1, 2, 3]}
+  ],
+  "refs": [
+   {"text": "조채운 외 (2014) GPS 목걸이를 이용한 멸종위기 산양의 행동권과 행동 특성. 한국환경생태학회지 28(1):1", "url": "https://doi.org/10.13047/KJEE.2014.28.1.1"},
+   {"text": "조채운, 김규철 외 (2015) 월악산국립공원에 재도입한 산양의 서식지 이용. 한국환경생태학회지 29(2):184", "url": "https://doi.org/10.13047/KJEE.2015.29.2.184"},
+   {"text": "Lee S-H, Kim B-J 외 (2019) Habitat analysis of endangered Korean long-tailed goral (Naemorhedus caudatus raddeanus) with weather forecasting model. Sustainability 11(21):6086", "url": "https://doi.org/10.3390/su11216086"},
+   {"text": "Kim B-J, Lee B-K 외 (2016) Considering threats to population viability of the endangered Korean long-tailed goral using VORTEX. Animal Cells and Systems 20(1)", "url": "https://doi.org/10.1080/19768354.2015.1127856"},
+   {"text": "Choi SK, Chun S 외 (2015) Genetic diversity and population structure of the long-tailed goral, Naemorhedus caudatus, in South Korea. Genes & Genetic Systems 90(1):31", "url": "https://doi.org/10.1266/ggs.90.31"}
+  ]
+ },
+ "담비": {
+  "summary": "국내 생태계 최상위 포식자 가운데 하나인 족제비과 동물. 무리를 지어 넓은 산림을 돌아다니며 사냥한다.",
+  "distribution": "백두대간과 주요 산맥을 따라 전국 산지에 분포하며, 큰 산림이 이어진 곳에서 밀도가 높다.",
+  "habitat": "넓게 이어진 성숙한 산림(활엽수림·혼효림). 행동권이 수십 ㎢로 넓어 산림이 잘게 끊긴 곳에서는 살기 어렵다. 눈 위 발자국 조사에서 계곡과 능선을 따라 이동하는 것이 확인됐다.",
+  "life": "3~5월 번식, 한배 2~4마리. 2~5마리가 무리를 지어 생활한다.",
+  "diet": "다람쥐·청설모·멧토끼, 고라니·멧돼지 새끼, 새, 곤충(말벌류), 다래·머루 같은 열매.",
+  "threats": "산림 단편화(도로·택지·골프장), 로드킬, 넓은 산림의 감소.",
+  "conservation": "멸종위기 야생생물 Ⅱ급. 큰 산림 덩어리 보전, 산림을 가르는 도로의 생태통로, 공사 시 이동 경로 유지.",
+  "vars": ["elev", "slope", "tree", "broad", "conifer", "grass", "dist_river", "bio1", "bio4", "bio12"],
+  "layers": [
+   {"key": "main", "name": "서식지", "season": "연중", "main": true, "groups": ["broad", "mixed", "conifer"], "cell_min": 0.5, "elev": [50, 1900],
+    "desc": "칸의 절반 이상이 숲인 산림(해발 50 m 이상). 숲이 잘게 끊긴 곳은 뺌", "refs": [1, 2, 3]}
+  ],
+  "refs": [
+   {"text": "Lee H-J, Lee O-S 외 (2021) Current distribution and habitat models of the yellow-throated marten, Martes flavigula, in South Korea. Mammal Research 66", "url": "https://doi.org/10.1007/s13364-021-00567-6"},
+   {"text": "우동걸, 최태영 외 (2015) 눈 위 발자국 추적으로 본 담비의 먹이 습성과 서식지 이용. 환경영향평가 24(5):532", "url": "https://doi.org/10.14249/eia.2015.24.5.532"},
+   {"text": "Lee S, Lee S 외 (2017) Habitat potential mapping of marten (Martes flavigula) and leopard cat (Prionailurus bengalensis) in South Korea using artificial neural network. Applied Sciences 7(9):912", "url": "https://doi.org/10.3390/app7090912"},
+   {"text": "Choi MB, Woo D 외 (2015) Composition of the insect diet in feces of yellow-throated marten in Jirisan National Park. Journal of Ecology and Environment 38", "url": "https://doi.org/10.5141/ecoenv.2015.041"}
+  ]
+ },
+ "삵": {
+  "summary": "국내에 남은 유일한 야생 고양잇과 동물. 숲과 농경지·하천이 섞인 곳에 살며, 로드킬이 가장 큰 사망 원인이다.",
+  "distribution": "전국 산림과 농촌 지역에 널리 분포한다. 대도시 안쪽에서는 거의 사라졌다.",
+  "habitat": "숲 가장자리와 논·밭·하천·저수지가 맞닿은 모자이크 경관. 낮에는 숲·덤불에서 쉬고, 밤에 논둑·하천변·농경지에서 쥐와 새를 사냥한다. 농촌 지역 연구에서 숲과 물가 가까운 곳을 고르는 것이 확인됐다.",
+  "life": "3~5월 번식, 한배 2~4마리. 행동권은 수 ㎢.",
+  "diet": "들쥐 등 설치류가 대부분이고 새·양서류·곤충도 먹는다.",
+  "threats": "로드킬, 농경지·산림 가장자리 개발, 쥐약에 의한 2차 중독.",
+  "conservation": "멸종위기 야생생물 Ⅱ급. 도로의 유도 울타리·생태통로, 하천변·논둑 식생 띠 유지, 숲 가장자리 보전.",
+  "vars": ["elev", "slope", "tree", "broad", "paddy", "field", "grass", "wetland", "river", "lake", "dist_river", "bio1", "bio12"],
+  "layers": [
+   {"key": "rest", "name": "은신·휴식지", "season": "연중", "main": true, "groups": ["broad", "mixed", "conifer", "grass"],
+    "near": [{"groups": ["paddy", "field", "river", "lake", "wetland"], "km": 1.0, "min": 0.05}], "elev": [0, 900],
+    "desc": "농경지·물가에서 1 km 안의 숲·덤불(해발 900 m 이하)", "refs": [1, 3]},
+   {"key": "hunt", "name": "사냥터", "season": "연중", "main": true, "groups": ["paddy", "field", "wetland", "river", "lake", "grass"],
+    "near": [{"groups": ["broad", "mixed", "conifer"], "km": 1.0, "min": 0.2}], "elev": [0, 900],
+    "desc": "숲에서 1 km 안의 논·밭·습지·하천변·초지", "refs": [1, 2]}
+  ],
+  "refs": [
+   {"text": "최태영, 권혁수 외 (2012) 농촌 지역 삵의 서식지 선택과 관리 방안. 한국환경생태학회지", "url": ""},
+   {"text": "Lee O, Lee S 외 (2014) Food habits of the leopard cat (Prionailurus bengalensis euptilurus) in Korea. Mammal Study 39(1)", "url": "https://doi.org/10.3106/041.039.0107"},
+   {"text": "Lee M-J, Song W 외 (2015) Habitat mapping of the leopard cat (Prionailurus bengalensis) in South Korea using GIS. Sustainability 7(4):4668", "url": "https://doi.org/10.3390/su7044668"},
+   {"text": "Rho P (2009) Use of GIS to develop a multivariate habitat model for the leopard cat in mountainous region. Journal of Ecology and Environment 32(4):229", "url": "https://doi.org/10.5141/JEFB.2009.32.4.229"}
+  ]
+ },
+ "반달가슴곰": {
+  "summary": "지리산에서 복원한 아시아흑곰 아종. 2004년부터 방사한 개체가 번식해 지리산·덕유산·백두대간으로 퍼지고 있다.",
+  "distribution": "지리산국립공원 일대가 중심이며, 일부 개체가 덕유산·수도산 등 백두대간을 따라 이동했다.",
+  "habitat": "넓게 이어진 활엽수림 위주의 산림(도토리 등 열매가 많은 곳)과 바위굴·큰 나무 구멍의 동면굴. 행동권이 수십 ㎢로 넓고, 동면지는 사람 접근이 적은 경사 급한 산 중턱에 있다.",
+  "life": "12월~이듬해 3월 동면, 동면 중 1~2마리 출산.",
+  "diet": "도토리·다래·머루 등 열매, 새순, 곤충(개미·벌), 가끔 동물 사체.",
+  "threats": "올무·덫, 도로 로드킬, 탐방객과의 마주침·먹이 의존, 서식지 단절과 작은 집단 크기.",
+  "conservation": "멸종위기 야생생물 Ⅰ급, 천연기념물 제329호. 올무 수거, 동면지 주변 출입 통제, 백두대간 연결성 유지. 기록은 위치를 공개하지 않아 시군구 기록으로 범위를 잡았다.",
+  "vars": ["elev", "slope", "tree", "broad", "conifer", "dist_river", "bio1", "bio12"],
+  "range": {"km": 15, "note": "위치 비공개 종이라 기록 시군구(지리산·덕유산 일대)와 그 주변만"},
+  "layers": [
+   {"key": "main", "name": "서식지", "season": "연중(동면 12~3월)", "main": true, "groups": ["broad", "mixed", "conifer"], "cell_min": 0.6, "elev": [300, 1915],
+    "desc": "칸의 60% 이상이 숲인 해발 300 m 이상 큰 산림", "refs": [1, 2]}
+  ],
+  "refs": [
+   {"text": "Andersen D, Yi Y 외 (2021) Use of a spatially explicit individual-based model to predict population trajectories and habitat connectivity for a reintroduced ursid. Oryx 55", "url": "https://doi.org/10.1017/S0030605320000447"},
+   {"text": "정대호 (2016) 출현자료 기반 모형으로 본 반달가슴곰 동면지 분석. 한국지리정보학회지 19(3):102", "url": "https://doi.org/10.11108/kagis.2016.19.3.102"},
+   {"text": "Jeong D-H, Jang K 외 (2021) Treatment of two Asiatic black bears with severe injuries and their subsequent release into the wild. BMC Veterinary Research 17", "url": "https://doi.org/10.1186/s12917-021-02834-9"}
+  ]
+ },
+ "사향노루": {
+  "summary": "수컷에 사향샘이 있는 작은 사슴류로, 밀렵으로 크게 줄어 강원 북부 고산 지대에만 드물게 남아 있다.",
+  "distribution": "1950년대 이후 분포 지역이 크게 줄어 1990년대에는 강원 북부(설악산·화천·양구·인제 등) 고산 지대만 남았다.",
+  "habitat": "바위가 많은 고산의 침엽수림·혼효림. 바위틈을 은신처로 쓰고 다니는 길이 정해져 있다.",
+  "life": "11~12월 짝짓기, 이듬해 5~6월에 새끼 1~2마리.",
+  "diet": "지의류(나무에 붙은 이끼류), 나뭇잎·새순·풀.",
+  "threats": "사향을 노린 밀렵·올무, 고산 산림 훼손.",
+  "conservation": "멸종위기 야생생물 Ⅰ급, 천연기념물 제216호. 올무 제거, 고산 침엽수림·바위 지대 보전. 확인 기록이 매우 적다.",
+  "vars": ["elev", "slope", "rock", "conifer", "tree", "bio1", "bio4"],
+  "layers": [
+   {"key": "main", "name": "서식지", "season": "연중", "main": true, "groups": ["conifer", "mixed", "rock"], "elev": [500, 1700], "slope": [10, 90], "cell_min": 0.3,
+    "desc": "해발 500 m 이상, 경사 10° 이상의 침엽수림·혼효림·바위 지대", "refs": [1]}
+  ],
+  "refs": [
+   {"text": "Lee W-S, Rhim S-J (2002) Changes in distribution area of Korean musk deer (Moschus moschiferus parvipes) from 1950s to 1999 in South Korea. Journal of Forestry Research 13", "url": "https://doi.org/10.1007/BF02857238"},
+   {"text": "Jang KH, Hwang UW (2010) Mitochondrial genome of the Korean musk deer Moschus moschiferus. Mitochondrial DNA 21", "url": "https://doi.org/10.3109/19401736.2010.490834"}
+  ]
+ },
+ "여우": {
+  "summary": "국내 야생에서 사라졌다가 소백산국립공원에서 복원 중인 붉은여우.",
+  "distribution": "2012년부터 방사한 소백산 일대를 중심으로 영주·단양·봉화 등 주변 농촌으로 퍼지고 있다.",
+  "habitat": "숲 가장자리와 농경지·초지가 섞인 구릉지. 굴은 숲 가장자리 비탈에 파고, 농경지·초지에서 쥐를 사냥한다.",
+  "life": "3~5월 번식, 한배 3~6마리.",
+  "diet": "들쥐가 중심이고 산토끼·새·곤충·열매도 먹는다.",
+  "threats": "로드킬, 올무·쥐약, 개 등과의 충돌.",
+  "conservation": "멸종위기 야생생물 Ⅰ급. 복원지 주변 도로 감속·유도 울타리, 올무 제거, 농경지 가장자리 보전.",
+  "vars": ["elev", "slope", "tree", "broad", "field", "paddy", "grass", "bio1", "bio12"],
+  "range": {"km": 20, "note": "소백산 복원 개체군과 확인 기록 주변"},
+  "layers": [
+   {"key": "main", "name": "서식지", "season": "연중", "main": true, "groups": ["broad", "mixed", "conifer", "grass", "field", "paddy"],
+    "near": [{"groups": ["broad", "mixed", "conifer"], "km": 0.5, "min": 0.2}, {"groups": ["field", "paddy", "grass"], "km": 0.5, "min": 0.1}], "elev": [100, 1000],
+    "desc": "숲과 농경지·초지가 500 m 안에 함께 있는 구릉지(해발 100~1,000 m)", "refs": [1, 2]}
+  ],
+  "refs": [
+   {"text": "조동길, 심윤진 외 (2013) 여우 복원을 위한 번식·복원 공간 계획 — 소백산국립공원을 중심으로. 한국환경복원기술학회지 16(4):1", "url": "https://doi.org/10.13087/kosert.2013.16.4.001"},
+   {"text": "Kim D, Koo KA 외 (2025) Estimating the 15th-century potential habitats of endangered mammals on the Korean Peninsula: implications for restoration. Ecology and Evolution", "url": "https://doi.org/10.1002/ece3.71676"}
+  ]
+ },
+ "무산쇠족제비": {
+  "summary": "국내에서 가장 작은 족제비류. 확인 기록이 매우 드물다.",
+  "distribution": "강원 산지(설악산·오대산·대관령 등)를 중심으로 드물게 확인된다.",
+  "habitat": "고지대의 초지·관목지와 숲 가장자리, 돌무더기. 국내 서식지 이용 연구에서 쥐가 많은 초지·숲 가장자리를 이용했다.",
+  "life": "4~7월 번식.",
+  "diet": "들쥐·땃쥐 등 소형 포유류.",
+  "threats": "고지대 초지의 개발(풍력·도로), 쥐약.",
+  "conservation": "멸종위기 야생생물 Ⅰ급. 고지대 초지·돌무더기 보전.",
+  "vars": ["elev", "slope", "grass", "tree", "conifer", "field", "bio1", "bio4", "bio12"],
+  "layers": [
+   {"key": "main", "name": "서식지", "season": "연중", "main": true, "groups": ["grass", "broad", "mixed", "conifer", "field", "rock"], "elev": [300, 1700],
+    "near": [{"groups": ["grass", "field"], "km": 0.5, "min": 0.05}],
+    "desc": "해발 300 m 이상에서 초지·밭이 500 m 안에 있는 숲 가장자리·초지·돌무더기", "refs": [1]}
+  ],
+  "refs": [
+   {"text": "Kim A, Woo D (2023) Habitat use and preferences of the least weasel (Mustela nivalis) in South Korea. Journal of Ecology and Environment 47", "url": "https://doi.org/10.5141/jee.23.065"},
+   {"text": "Lim SJ, Kim HR (2017) Complete mitochondrial genome of the least weasel Mustela nivalis in Korea. Mitochondrial DNA Part B 2(2)", "url": "https://doi.org/10.1080/23802359.2017.1372723"}
+  ]
+ },
+ "작은관코박쥐": {
+  "summary": "콧구멍이 관처럼 튀어나온 작은 박쥐. 숲속 잎사이·나무 구멍에서 쉬며 기록이 드물다.",
+  "distribution": "강원·경기 북부 등 중부 산지를 중심으로 드물게 확인된다.",
+  "habitat": "성숙한 활엽수림. 잎이 말린 곳, 나무껍질 틈, 나무 구멍에서 쉬고 숲 속과 계곡에서 곤충을 잡는다. 국내 박쥐 서식지 GIS 분석에서 산림·계곡과의 관련이 나타났다.",
+  "life": "5~7월 번식, 겨울에는 낙엽 밑·나무 구멍에서 동면하는 것으로 알려졌다.",
+  "diet": "나방 등 작은 야행성 곤충.",
+  "threats": "고목·숲 벌채, 산림 단절.",
+  "conservation": "멸종위기 야생생물 Ⅰ급. 고목·구멍 난 나무 보존, 활엽수림 보전.",
+  "vars": ["elev", "slope", "tree", "broad", "dist_river", "bio1", "bio12"],
+  "layers": [
+   {"key": "main", "name": "서식지", "season": "연중", "main": true, "groups": ["broad", "mixed"], "cell_min": 0.5, "elev": [100, 1300],
+    "near": [{"groups": ["river"], "km": 1.0, "min": 0.005}],
+    "desc": "칸의 절반 이상이 활엽수림·혼효림이고 계곡·하천에서 1 km 안인 산림(해발 100~1,300 m)", "refs": [1, 2]}
+  ],
+  "refs": [
+   {"text": "Yoon KB, Lim SJ 외 (2016) Analysis on habitat characteristics of the Korean bats (Chiroptera) using GIS. Journal of Forest and Environmental Science 32(4):377", "url": "https://doi.org/10.7747/JFES.2016.32.4.377"},
+   {"text": "정철운, 한상훈 (2014) 작은관코박쥐의 외부 형태와 초음파 특성. Journal of Environmental Science International 23(3):521", "url": "https://doi.org/10.5322/JESI.2014.23.3.521"}
+  ]
+ },
+ "토끼박쥐": {
+  "summary": "토끼처럼 긴 귀를 가진 박쥐. 동굴·폐광에서 겨울잠을 자며 기록이 드물다.",
+  "distribution": "강원 등 중부 이북 산지의 석회암 동굴·폐광에서 동면 개체가 확인된다. 동면지 모형에서는 고지대 산지가 적합하게 나왔다.",
+  "habitat": "겨울에는 낮은 온도를 견디는 편이라 동굴 입구 쪽의 서늘한 곳에서도 동면한다. 활동기에는 산림에서 나방 등을 잡는다.",
+  "life": "10월~이듬해 4월 동면.",
+  "diet": "나방 등 곤충(산림에서 함께 사는 박쥐와 먹이를 나눔).",
+  "threats": "동굴 출입·관광, 폐광 입구 폐쇄, 산림 훼손.",
+  "conservation": "멸종위기 야생생물 Ⅱ급. 동면지 출입 통제, 동면기 소음·조명 금지. 동굴 위치 자료가 없어 동면지는 지도에 넣지 못했다.",
+  "vars": ["elev", "slope", "tree", "broad", "conifer", "rock", "bio1", "bio12"],
+  "layers": [
+   {"key": "main", "name": "활동·채식지", "season": "4~10월", "main": true, "groups": ["broad", "mixed", "conifer"], "cell_min": 0.5, "elev": [300, 1700],
+    "desc": "칸의 절반 이상이 숲인 해발 300 m 이상 산지(동면지 동굴·폐광은 위치 자료가 없어 빠짐)", "refs": [1, 2, 3]}
+  ],
+  "refs": [
+   {"text": "김선숙, 최유성 외 (2018) 멸종위기 야생생물 Ⅱ급 토끼박쥐의 온도 선호도와 동면 전략. 생태와 환경 51(4):345", "url": "https://doi.org/10.11614/KSL.2018.51.4.345"},
+   {"text": "김선숙, 최유성 외 (2014) 동굴성 박쥐 7종의 온도 선호와 동면지 선택. 생태와 환경 47(4):258", "url": "https://doi.org/10.11614/KSL.2014.47.4.258"},
+   {"text": "이택우, 최철현 외 (2025) 멸종위기 박쥐 붉은박쥐와 토끼박쥐의 잠재 동면 서식지 분포 모형. GEO DATA", "url": "https://doi.org/10.22761/gd.2025.0055"},
+   {"text": "Joo S, An I 외 (2023) Dietary composition of two coexisting bat species, Myotis ikonnikovi and Plecotus ognevi. Journal of Ecology and Environment 47", "url": "https://doi.org/10.5141/jee.23.049"}
+  ]
+ },
+ "물범": {
+  "summary": "점박이물범. 중국 랴오둥만에서 번식하고 봄~가을에 백령도 일대로 와서 바위섬에 무리 지어 쉰다.",
+  "distribution": "백령도·대청도 일대가 최대 휴식지이고, 가로림만(태안·서산), 한강·임진강 하구, 제주 연안에서도 확인된다.",
+  "habitat": "썰물 때 드러나는 갯바위·바위섬(휴식)과 주변 얕은 바다(먹이). 백령도에서는 물때에 따라 바위 위로 올라오는 개체 수가 크게 달랐다.",
+  "life": "겨울(1~3월)에 랴오둥만 얼음 위에서 번식하고, 3~11월 백령도에 머문다.",
+  "diet": "물고기(조피볼락 등)·오징어·갑각류.",
+  "threats": "그물 혼획, 휴식 바위 주변 어업·관광 선박 방해, 해안 매립.",
+  "conservation": "멸종위기 야생생물 Ⅰ급, 천연기념물 제331호. 휴식 바위 접근 제한, 인공 쉼터 조성, 혼획 저감.",
+  "vars": ["dist_coast", "rock", "tidal", "bio1", "bio12"],
+  "range": {"km": 10, "note": "기록이 있는 해안(백령도·가로림만·한강하구 등)만"},
+  "layers": [
+   {"key": "main", "name": "휴식지(해안 바위·갯벌)", "season": "3~11월", "main": true, "groups": ["rock", "bare", "tidal", "sea"], "coast_km": 0.5, "elev": [0, 30],
+    "desc": "해안에서 500 m 안의 바위·갯바위·갯벌·해변", "refs": [1, 2]}
+  ],
+  "refs": [
+   {"text": "Won C, Yoo B-H (2004) Abundance, seasonal haul-out patterns and conservation of spotted seals Phoca largha along the coast of Bak-ryoung Island, South Korea. Oryx 38(1)", "url": "https://doi.org/10.1017/S0030605304000171"},
+   {"text": "Zhuang H, Shao F 외 (2023) Spatial-temporal shifting patterns and in situ conservation of spotted seal populations in the Yellow Sea. Integrative Zoology", "url": "https://doi.org/10.1111/1749-4877.12731"}
+  ]
+ },
+ "물개": {
+  "summary": "북태평양에서 번식하고 겨울에 동해 연안을 지나가는 물갯과 동물. 국내에서는 드물게 확인된다.",
+  "distribution": "11~4월 동해 연안(강원·경북)과 독도 주변에 드물게 나타난다.",
+  "habitat": "먼바다에서 생활하며 육지에 거의 오르지 않는다. 연안에서는 지쳤거나 다친 개체가 바위 해안에 오른다.",
+  "life": "번식지는 러시아·미국 북태평양 섬. 국내에서는 겨울 회유 시기에만 나타난다.",
+  "diet": "물고기·오징어.",
+  "threats": "그물 혼획, 해양 쓰레기 얽힘.",
+  "conservation": "멸종위기 야생생물 Ⅱ급. 혼획·좌초 개체 구조. 확인 기록이 거의 없어 ‘가능’까지만 표시한다.",
+  "vars": ["dist_coast", "rock", "bio1"],
+  "layers": [
+   {"key": "main", "name": "연안 출현지", "season": "11~4월", "main": true, "groups": ["rock", "bare", "sea"], "coast_km": 0.5, "elev": [0, 30],
+    "desc": "해안에서 500 m 안의 바위 해안·해변", "refs": [1]}
+  ],
+  "refs": [
+   {"text": "Lee S-M, Lee M-Y 외 (2018) Complete mitochondrial genome and phylogenetic analysis of Callorhinus ursinus: an endangered species from South Korea. Mitochondrial DNA Part B 3(1)", "url": "https://doi.org/10.1080/23802359.2018.1457992"},
+   {"text": "Lim S-Y, Jin S-J 외 (2017) The economic benefits of the Dokdo seals restoration project in Korea. Sustainability 9(6):968", "url": "https://doi.org/10.3390/su9060968"}
+  ]
+ },
+ "큰바다사자": {
+  "summary": "북태평양의 대형 물갯과 동물(스텔러바다사자). 겨울에 동해·독도 연안에 아주 드물게 나타난다.",
+  "distribution": "동해 북부 연안과 독도에서 드물게 기록됐다.",
+  "habitat": "먼바다와 바위섬. 국내에서는 겨울에 바위 해안·섬에 오르는 개체가 드물게 보인다.",
+  "life": "번식지는 러시아 쿠릴·사할린 등. 국내에는 12~4월 회유.",
+  "diet": "물고기·오징어.",
+  "threats": "그물 혼획, 해양 오염.",
+  "conservation": "멸종위기 야생생물 Ⅱ급. 좌초·혼획 개체 구조.",
+  "vars": ["dist_coast", "rock", "bio1"],
+  "layers": [
+   {"key": "main", "name": "연안 출현지", "season": "12~4월", "main": true, "groups": ["rock", "bare", "sea"], "coast_km": 0.5, "elev": [0, 30],
+    "desc": "해안에서 500 m 안의 바위 해안·바위섬", "refs": [1]}
+  ],
+  "refs": [
+   {"text": "Burkanov VN, Loughlin TR (2005) Distribution and abundance of Steller sea lions, Eumetopias jubatus, on the Asian coast, 1720's–2005. Marine Fisheries Review 67(2)", "url": ""},
+   {"text": "Lee K, Kim J 외 (2015) First isolation of Streptococcus halichoeri and Streptococcus phocae from a Steller sea lion in South Korea. Journal of Wildlife Diseases 51", "url": "https://doi.org/10.7589/2015-05-112"}
+  ]
+ },
+ "늑대": {
+  "summary": "한반도 남부에서는 1960~1970년대 이후 야생 개체가 확인되지 않아 절멸한 것으로 본다.",
+  "distribution": "과거 전국 산지·초지에 살았다. 현재 남한 야생 기록은 없다.",
+  "habitat": "넓은 산림과 초지가 이어진 경관(과거). 행동권이 수백 ㎢에 이른다.",
+  "life": "4~6월 번식, 무리 생활.",
+  "diet": "사슴·노루·멧돼지 등 유제류.",
+  "threats": "과거 포획·먹이 동물 감소로 절멸.",
+  "conservation": "멸종위기 야생생물 Ⅰ급. 남한 야생 기록이 없어 영향 예측 기본값에서는 뺀다.",
+  "vars": ["elev", "slope", "tree", "grass", "bio1", "bio12"],
+  "layers": [
+   {"key": "main", "name": "잠재 서식지", "season": "연중", "main": true, "groups": ["broad", "mixed", "conifer", "grass"], "cell_min": 0.6, "elev": [100, 1900],
+    "desc": "칸의 60% 이상이 숲·초지인 큰 산림(과거 서식 환경 기준 참고)", "refs": [1]}
+  ],
+  "refs": [
+   {"text": "Kim D, Koo KA 외 (2025) Estimating the 15th-century potential habitats of endangered mammals on the Korean Peninsula: implications for restoration. Ecology and Evolution", "url": "https://doi.org/10.1002/ece3.71676"}
+  ]
+ },
+ "대륙사슴": {
+  "summary": "한반도 토종 꽃사슴 아종. 남한 야생에서는 절멸한 것으로 본다.",
+  "distribution": "과거 전국 산지. 현재 남한 야생 기록은 없다(사육·외래 사슴과 구분 필요).",
+  "habitat": "숲과 초지가 섞인 구릉·산지(과거).",
+  "life": "9~11월 짝짓기, 이듬해 5~6월 출산.",
+  "diet": "풀·나뭇잎·새순.",
+  "threats": "과거 남획으로 절멸.",
+  "conservation": "멸종위기 야생생물 Ⅰ급. 남한 야생 기록이 없어 영향 예측 기본값에서는 뺀다.",
+  "vars": ["elev", "slope", "tree", "grass", "bio1", "bio12"],
+  "layers": [
+   {"key": "main", "name": "잠재 서식지", "season": "연중", "main": true, "groups": ["broad", "mixed", "grass"], "cell_min": 0.5, "elev": [50, 1200],
+    "desc": "숲·초지가 섞인 구릉·산지(과거 서식 환경 기준 참고)", "refs": [1]}
+  ],
+  "refs": [
+   {"text": "Kim D, Koo KA 외 (2025) Estimating the 15th-century potential habitats of endangered mammals on the Korean Peninsula: implications for restoration. Ecology and Evolution", "url": "https://doi.org/10.1002/ece3.71676"}
+  ]
+ },
+ "스라소니": {
+  "summary": "남한에서는 야생 개체가 확인되지 않아 절멸한 것으로 본다.",
+  "distribution": "과거 강원 북부 등 산지. 현재 남한 야생 기록은 없다.",
+  "habitat": "넓게 이어진 침엽수림·혼효림(과거).",
+  "life": "2~4월 번식.",
+  "diet": "멧토끼·노루 등.",
+  "threats": "과거 포획·서식지 감소.",
+  "conservation": "멸종위기 야생생물 Ⅰ급. 남한 야생 기록이 없어 영향 예측 기본값에서는 뺀다.",
+  "vars": ["elev", "slope", "tree", "conifer", "bio1", "bio4"],
+  "layers": [
+   {"key": "main", "name": "잠재 서식지", "season": "연중", "main": true, "groups": ["conifer", "mixed", "broad"], "cell_min": 0.7, "elev": [300, 1900],
+    "desc": "칸의 70% 이상이 숲인 해발 300 m 이상 산림(과거 서식 환경 기준 참고)", "refs": [1]}
+  ],
+  "refs": [
+   {"text": "Kim D, Koo KA 외 (2025) Estimating the 15th-century potential habitats of endangered mammals on the Korean Peninsula: implications for restoration. Ecology and Evolution", "url": "https://doi.org/10.1002/ece3.71676"}
+  ]
+ },
+ "표범": {
+  "summary": "아무르표범. 남한에서는 1970년대 이후 야생 개체가 확인되지 않았다.",
+  "distribution": "과거 전국 산지. 현재 남한 야생 기록은 없다.",
+  "habitat": "바위가 많은 산림(과거).",
+  "life": "연중 번식.",
+  "diet": "노루·멧돼지 등.",
+  "threats": "과거 남획으로 절멸.",
+  "conservation": "멸종위기 야생생물 Ⅰ급. 남한 야생 기록이 없어 영향 예측 기본값에서는 뺀다.",
+  "vars": ["elev", "slope", "tree", "rock", "bio1", "bio12"],
+  "layers": [
+   {"key": "main", "name": "잠재 서식지", "season": "연중", "main": true, "groups": ["broad", "mixed", "conifer", "rock"], "cell_min": 0.7, "elev": [100, 1900],
+    "desc": "칸의 70% 이상이 숲·바위인 산림(과거 서식 환경 기준 참고)", "refs": [1]}
+  ],
+  "refs": [
+   {"text": "Kim D, Koo KA 외 (2025) Estimating the 15th-century potential habitats of endangered mammals on the Korean Peninsula: implications for restoration. Ecology and Evolution", "url": "https://doi.org/10.1002/ece3.71676"}
+  ]
+ },
+ "호랑이": {
+  "summary": "한국호랑이(아무르호랑이). 남한에서는 1920년대 무렵 이후 야생 개체가 사라졌다.",
+  "distribution": "과거 전국 산지. 현재 남한 야생 기록은 없다(봉화 국립백두대간수목원 등 사육 개체만).",
+  "habitat": "넓은 산림(과거). 행동권이 수백~수천 ㎢.",
+  "life": "연중 번식.",
+  "diet": "멧돼지·사슴류 등 대형 유제류.",
+  "threats": "과거 남획으로 절멸.",
+  "conservation": "멸종위기 야생생물 Ⅰ급. 남한 야생 기록이 없어 영향 예측 기본값에서는 뺀다.",
+  "vars": ["elev", "slope", "tree", "bio1", "bio12"],
+  "layers": [
+   {"key": "main", "name": "잠재 서식지", "season": "연중", "main": true, "groups": ["broad", "mixed", "conifer"], "cell_min": 0.8, "elev": [100, 1900],
+    "desc": "칸의 80% 이상이 숲인 큰 산림(과거 서식 환경 기준 참고)", "refs": [1]}
+  ],
+  "refs": [
+   {"text": "Kim D, Koo KA 외 (2025) Estimating the 15th-century potential habitats of endangered mammals on the Korean Peninsula: implications for restoration. Ecology and Evolution", "url": "https://doi.org/10.1002/ece3.71676"}
+  ]
+ }
+}
