@@ -10,6 +10,7 @@
 - 결과: data/species.json(공개), work/occ/<종 id>.json(분석 격자 UTM-K 250 m의 출현 칸),
   work/occ_geo/<종 id>.json(원래 경위도 약 250 m 칸 번호 — 멸종위기종 종합관리 열지도와 같은 칸, 사이트 표시·거리 계산용)
 - 위치 오차가 1 km를 넘는 기록과 iNaturalist가 위치를 흐린 관찰은 뺌(멸종위기종 종합관리와 같은 기준)
+- 2000년 이전 기록과 연도를 모르는 기록도 뺌. 현재 토지이용과 맞지 않는 기록은 build_models.py에서 뺌
 """
 import json
 import re
@@ -29,6 +30,8 @@ OCC = ROOT / "work" / "occ"
 OCC_GEO = ROOT / "work" / "occ_geo"
 OCC_SGG = ROOT / "work" / "occ_sgg"   # 기록이 있는 시군구(GADM 코드) — 위치를 흐린 기록도 포함. 분포 범위 판단용
 MAX_UNC = 1000   # 위치 오차 한도(m)
+MIN_YEAR = 2000  # 이보다 오래된 기록과 연도를 모르는 기록은 뺌(그 뒤로 토지이용이 크게 바뀐 곳이 많아서)
+RECENT = (1, 2, 3)   # heat-gbif 기간 번호: 0 = 1999년 이전, 1 = 2000~2009, 2 = 2010~2019, 3 = 2020년 이후, 4 = 연도 미상
 NM_API = "https://www.khs.go.kr/cha/SearchKindOpenapiList.do?ccbaKdcd=16&pageUnit=2000&pageIndex=1"
 NM_REGIONAL = {"한강의 황쏘가리": "황쏘가리", "금강의 어름치": "어름치", "제주의 한란": "한란"}   # 지역을 붙인 종 지정
 NM_ALIAS = {"점박이물범": "물범", "느시(들칠면조)": "느시", "붉은박쥐(오렌지윗수염박쥐)": "붉은박쥐", "까막딱따구리": "까막딱다구리"}   # 천연기념물 이름 → 멸종위기종 목록 이름
@@ -115,14 +118,15 @@ def main():
     species = []
     for s in cat:
         flat = heat["species"].get(s["id"], [])
-        hc = [flat[k] for k in range(0, len(flat), 3)]
-        ic = [o[-1] for o in inat["obs"].get(s["id"], []) if o[-1] is not None and o[-1] >= 0]
+        hc = [flat[k] for k in range(0, len(flat), 3) if flat[k + 1] in RECENT]
+        ic = [o[-1] for o in inat["obs"].get(s["id"], []) if o[-1] is not None and o[-1] >= 0 and o[2] // 10000 >= MIN_YEAR]
         geo = sorted(set(hc) | set(ic))
         pts = [center(c) for c in geo]
         occ = cells([p[0] for p in pts], [p[1] for p in pts]) if pts else []
         (OCC / f"{s['id']}.json").write_text(json.dumps(occ), encoding="utf-8")
         (OCC_GEO / f"{s['id']}.json").write_text(json.dumps(geo), encoding="utf-8")
-        gids = set((gsnap.get(s["id"]) or {}).get("units", {})) | {o[1] for o in inat["obs"].get(s["id"], []) if o[1]}
+        units = (gsnap.get(s["id"]) or {}).get("units", {})
+        gids = {g for g, per in units.items() if any(per[i] for i in RECENT)} | {o[1] for o in inat["obs"].get(s["id"], []) if o[1] and o[2] // 10000 >= MIN_YEAR}
         (OCC_SGG / f"{s['id']}.json").write_text(json.dumps(sorted(gids)), encoding="utf-8")
         photo = inat["taxa"].get(s["id"], {})
         species.append({"id": s["id"], "ko": s["name"], "sci": s["sci"], "group": s["group"], "grade": s["grade"], "family": s.get("family", ""),
@@ -145,10 +149,10 @@ def main():
     for n, sci in extra:
         m = json.loads(get("https://api.gbif.org/v1/species/match?" + urllib.parse.urlencode({"name": sci, "kingdom": "Animalia" if n["name"] != "한란" else "Plantae"})))
         key = m.get("usageKey")
-        lons, lats, uncs = [], [], []
-        cache = ROOT / "work" / "gbif" / f"{key}-unc.json"   # [경도, 위도, 위치 오차(m, 없으면 -1)]
+        lons, lats, uncs, years = [], [], [], []
+        cache = ROOT / "work" / "gbif" / f"{key}-unc-year.json"   # [경도, 위도, 위치 오차(m, 없으면 -1), 연도(없으면 0)]
         if key and cache.exists():
-            lons, lats, uncs = json.loads(cache.read_text(encoding="utf-8"))
+            lons, lats, uncs, years = json.loads(cache.read_text(encoding="utf-8"))
         elif key:
             for off in range(0, 6000, 300):
                 d = json.loads(get("https://api.gbif.org/v1/occurrence/search?" + urllib.parse.urlencode(
@@ -156,11 +160,12 @@ def main():
                 for r in d["results"]:
                     u = r.get("coordinateUncertaintyInMeters")
                     lons.append(r["decimalLongitude"]); lats.append(r["decimalLatitude"]); uncs.append(-1 if u is None else u)
+                    years.append(r.get("year") or 0)
                 if d.get("endOfRecords"):
                     break
             cache.parent.mkdir(exist_ok=True)
-            cache.write_text(json.dumps([lons, lats, uncs]), encoding="utf-8")
-        keep = [k for k, u in enumerate(uncs) if u <= MAX_UNC]
+            cache.write_text(json.dumps([lons, lats, uncs, years]), encoding="utf-8")
+        keep = [k for k, (u, yr) in enumerate(zip(uncs, years)) if u <= MAX_UNC and yr >= MIN_YEAR]
         lons, lats = [lons[k] for k in keep], [lats[k] for k in keep]
         # iNaturalist 대표 사진(공개 이용 허락이 있는 것만)
         photo, photo_by, inat_id = "", "", None

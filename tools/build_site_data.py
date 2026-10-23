@@ -74,9 +74,12 @@ def main():
 
     # 출현 기록 칸(경위도 약 250 m)
     geo_dir = ROOT / "work" / "occ_geo"
+    ok_dir = ROOT / "work" / "occ_geo_ok"   # build_models.py가 현재 토지이용과 맞지 않는 기록을 거른 것
     occ = {}
     for s in species:
-        p = geo_dir / f"{s['id']}.json"
+        p = ok_dir / f"{s['id']}.json"
+        if not p.exists():
+            p = geo_dir / f"{s['id']}.json"
         cells = json.loads(p.read_text(encoding="utf-8")) if p.exists() else []
         if cells:
             occ[s["id"]] = cells
