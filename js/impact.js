@@ -12,7 +12,7 @@
   const GRADE_RANK = { high: 0, mid: 1, low: 2 };
   // 토지피복(환경부 세분류 2025년 묶음)
   const COVER = [["tree", "산림", "#2f9e44"], ["grass", "초지", "#94d82d"], ["paddy", "논", "#fff3a0"], ["field", "밭·과수", "#fcc419"],
-    ["built", "시가지", "#868e96"], ["artbare", "나대지", "#ced4da"], ["bare", "자연 나지", "#d8c39a"], ["rock", "암벽", "#a1887f"], ["river", "하천", "#1c7ed6"],
+    ["built", "시가지", "#868e96"], ["road", "도로·철도", "#495057"], ["artbare", "나대지", "#ced4da"], ["bare", "자연 나지", "#d8c39a"], ["rock", "암벽", "#a1887f"], ["river", "하천", "#1c7ed6"],
     ["lake", "호소", "#4dabf7"], ["wetland", "습지", "#22b8cf"], ["tidal", "갯벌", "#b197fc"], ["sea", "바다", "#1864ab"]];
   const ALT_COLOR = "#7048e8";
   const I = { inited: false, map: null, res: null, sel: null, running: false, km: 1, showLow: false };
@@ -38,12 +38,12 @@
   // 칸의 토지피복 비율(0–1)을 읽는 함수
   const fracOf = (get, name) => { const row = envRow(name), k = envK(name); return (r, c) => get(row, r, c) / k; };
   // 칸 안 서식지가 될 수 있는 부분의 비율 — 면적을 셀 때 곱함
-  // 물에 사는 종은 그 물(하천·호소 등), 그 밖의 종은 시가지·나대지를 뺀 부분(‘도시’ 서식 종은 칸 전체)
+  // 물에 사는 종은 그 물(하천·호소 등), 그 밖의 종은 시가지·도로·나대지를 뺀 부분(‘도시’ 서식 종은 칸 전체)
   const habOf = (get, sp) => {
     if (sp.urban) return () => 1;
-    const fs = sp.aqua ? sp.aqua.map((n) => fracOf(get, n)) : [fracOf(get, "built"), fracOf(get, "artbare")];
-    return sp.aqua ? (r, c) => Math.min(1, fs.reduce((a, f) => a + f(r, c), 0))
-      : (r, c) => Math.max(0, 1 - fs[0](r, c) - fs[1](r, c));
+    const fs = (sp.aqua || ["built", "road", "artbare"]).map((n) => fracOf(get, n));
+    const sum = (r, c) => fs.reduce((a, f) => a + f(r, c), 0);
+    return sp.aqua ? (r, c) => Math.min(1, sum(r, c)) : (r, c) => Math.max(0, 1 - sum(r, c));
   };
 
   // ---------- 사업지 도형(UTM-K) ----------
@@ -97,8 +97,8 @@
     return Math.sqrt(best);
   };
   // 면이 칸을 덮는 비율 — 표본점 줄마다 면 경계와 만나는 점을 구해 안쪽 구간을 채움(짝홀 규칙이라 구멍이 빠짐, 여러 면은 합침)
-  const coverage = (G, win) => {
-    const { r0, c0, h, w } = win, res = S.grid.res, n = SUB;
+  const coverage = (G, win, n = SUB) => {
+    const { r0, c0, h, w } = win, res = S.grid.res;
     const mask = new Uint8Array(h * n * w * n);
     G.polys.forEach((poly) => {
       let ymin = Infinity, ymax = -Infinity;
@@ -126,8 +126,30 @@
       const r = Math.floor(sr / n);
       for (let sc = 0; sc < w * n; sc++) if (mask[sr * w * n + sc]) cov[r * w + Math.floor(sc / n)] += 1 / (n * n);
     }
-    return cov;
+    return { cov, mask };
   };
+  // 10 m 화소 묶음 세기: 칸마다 사업지 안·주변 범위(칸 가운데 기준) 화소를 토지피복 묶음별로
+  const FINE_MAX = 250 * 250;   // 분석 칸이 이보다 많으면 10 m 계산은 건너뜀(250 m 칸 비율로)
+  const fineCounts = (win, mask, lc, dist, R) => {
+    const K = S.grid.res / H.LC.px, NG = H.LC.groups.length + 1, { h, w, r0, c0 } = win, WK = w * K;
+    const site = new Uint16Array(h * w * NG), ring = new Uint16Array(h * w * NG);
+    for (let r = 0; r < h; r++) {
+      for (let c = 0; c < w; c++) {
+        const k = r * w + c, inRing = dist[k] <= R, o = k * NG;
+        for (let i = 0; i < K; i++) {
+          const py = (r0 + r) * K + i, mrow = (r * K + i) * WK + c * K;
+          for (let j = 0; j < K; j++) {
+            const g = lc((c0 + c) * K + j, py);
+            if (mask && mask[mrow + j]) site[o + g]++;
+            else if (inRing) ring[o + g]++;
+          }
+        }
+      }
+    }
+    return { site, ring, NG, haPx: (H.LC.px * H.LC.px) / 1e4 };
+  };
+  // 토지피복 막대용: 묶음 이름 → COVER 열쇠
+  const coverKey = (g) => (["broad", "conifer", "mixed"].includes(g) ? "tree" : g);
 
   // ---------- 칸 묶음 → 면 ----------
   // 묶음 밖과 맞닿은 칸 변만 모아 이음(바깥 고리 반시계, 구멍 시계). 대각선으로만 닿은 칸은 따로 떼어 냄(왼쪽으로 꺾기 우선)
@@ -225,8 +247,11 @@
       progress(0.75, "사업지와 주변 칸 계산 중…");
       await tick();
 
-      // 칸마다 사업지가 덮는 비율·사업지까지 거리
-      const cov = coverage(G, win), n = win.h * win.w, dist = new Float32Array(n);
+      // 칸마다 사업지가 덮는 비율·사업지까지 거리. 10 m 토지피복이 있으면 사업지도 10 m 화소로 나눔
+      const useFine = win.h * win.w <= FINE_MAX;
+      const lc = useFine ? await H.lcReader(c0 * 25, r0 * 25, (c1 + 1) * 25 - 1, (r1 + 1) * 25 - 1) : null;
+      const K = lc ? S.grid.res / H.LC.px : SUB;
+      const { cov, mask } = coverage(G, win, K), n = win.h * win.w, dist = new Float32Array(n);
       for (let r = 0; r < win.h; r++) {
         const y = Gd.y1 - (r0 + r + 0.5) * res;
         for (let c = 0; c < win.w; c++) {
@@ -239,6 +264,7 @@
       const ELEV = envRow("elev");
       const land = (r, c) => get(ELEV, r, c) !== 255;
       // 사업지·주변 면적과 토지피복
+      const fine = lc ? fineCounts(win, G.polys.length ? mask : null, lc, dist, R) : null;
       let siteHa = 0, ringHa = 0;
       const cover = { site: {}, ring: {} };
       const envF = COVER.map(([k]) => fracOf(get, k));
@@ -247,6 +273,14 @@
         if (!land(r, c)) continue;
         const a = cov[k] * cellHa, ra = dist[k] <= R ? (1 - cov[k]) * cellHa : 0;
         siteHa += a; ringHa += ra;
+        if (fine) {   // 10 m 화소로 센 토지피복
+          for (let g = 1; g < fine.NG; g++) {
+            const key = coverKey(H.LC.groups[g - 1]);
+            cover.site[key] = (cover.site[key] || 0) + fine.site[k * fine.NG + g] * fine.haPx;
+            cover.ring[key] = (cover.ring[key] || 0) + fine.ring[k * fine.NG + g] * fine.haPx;
+          }
+          continue;
+        }
         COVER.forEach(([key], j) => {
           const v = envF[j](r, c);
           cover.site[key] = (cover.site[key] || 0) + v * a;
@@ -285,14 +319,24 @@
       for (let k = 0; k < n; k++) if (dist[k] <= R) near.push(k);
       const rows = [];
       targets.forEach((sp) => {
-        const t = H.thrOf(sp), row = sp.row, hab = habOf(get, sp);
+        const t = H.thrOf(sp), row = sp.row, hab = habOf(get, sp), hl = fine ? H.habLut(sp) : null;
         let suitIn = 0, sumV = 0, sumW = 0, ringSuit = 0, atPt = -1;
         near.forEach((k) => {
           const r = r0 + Math.floor(k / win.w), c = c0 + (k % win.w), v = get(row, r, c);
           if (v > 100) return;
-          const cw = cov[k], a = cellHa * hab(r, c);   // 칸 안 서식지가 될 수 있는 부분만
-          if (cw > 0) { if (v >= t) suitIn += cw * a; sumV += v * cw; sumW += cw; }
-          if (cw < 1 && v >= t) ringSuit += (1 - cw) * a;
+          const cw = cov[k];
+          if (cw > 0) { sumV += v * cw; sumW += cw; }
+          if (v < t) return;
+          if (fine) {   // 10 m 화소 중 그 종의 서식지가 될 수 있는 것만(분류 없는 화소는 칸 비율로)
+            const o = k * fine.NG, h0 = hab(r, c);
+            let sIn = fine.site[o] * h0, sR = fine.ring[o] * h0;
+            for (let g = 1; g < fine.NG; g++) if (hl[g]) { sIn += fine.site[o + g]; sR += fine.ring[o + g]; }
+            suitIn += sIn * fine.haPx; ringSuit += sR * fine.haPx;
+            return;
+          }
+          const a = cellHa * hab(r, c);   // 칸 안 서식지가 될 수 있는 부분만
+          if (cw > 0) suitIn += cw * a;
+          if (cw < 1) ringSuit += (1 - cw) * a;
         });
         ptCells.forEach(([r, c]) => { const v = get(row, r, c); if (v <= 100) atPt = Math.max(atPt, v); });
         const [rd, nRec] = recDist(sp.id);
@@ -308,7 +352,7 @@
       rows.sort((a, b) => GRADE_RANK[a.grade] - GRADE_RANK[b.grade] || (a.sp.grade || "en3").localeCompare(b.sp.grade || "en3")
         || b.suitIn - a.suitIn || b.ringSuit - a.ringSuit || a.sp.ko.localeCompare(b.sp.ko, "ko"));
       I.res = { km, alt, widthM, G, win, get, cov, dist, siteHa, ringHa, cover, ptOnly: !G.polys.length, sgg: S.grid.sgg[sggIdx - 1] || "",
-        rows, nTargets: targets.length, name: Site.name(), lines: G.lines };
+        rows, nTargets: targets.length, name: Site.name(), lines: G.lines, fine: !!fine };
       I.sel = null;
       progress(1, "완료");
       await drawRange();
@@ -349,7 +393,7 @@
   const showSpeciesOnMap = async (row) => {
     const res = I.res, sp = row.sp;
     if (I.suit) I.suit.remove();
-    I.suit = new H.SuitLayer((r, c) => res.get(sp.row, r, c), row.t, { opacity: 0.75 }).addTo(I.map);
+    I.suit = new H.SuitLayer((r, c) => res.get(sp.row, r, c), H.thrsOf(sp), { opacity: 0.75 }, sp).addTo(I.map);
     I.recLayer.clearLayers(); I.altLayer.clearLayers();
     const occ = await H.loadOcc();
     const Gd = S.grid;
@@ -520,9 +564,9 @@
   };
   // 주변 범위 안 ‘적합’·‘매우 적합’ 칸 → 등급별 면
   const suitPolys = (x) => {
-    const r = I.res, { win, get, dist } = r, R = r.km * 1000;
+    const r = I.res, { win, get, dist } = r, R = r.km * 1000, T = H.thrsOf(x.sp);
     return [[3, "매우 적합"], [2, "적합"]].map(([k, name]) => {
-      const geom = trace((q) => dist[q] <= R && H.classOf(get(x.sp.row, win.r0 + Math.floor(q / win.w), win.c0 + (q % win.w)), x.t) === k, win);
+      const geom = trace((q) => dist[q] <= R && H.classOf(get(x.sp.row, win.r0 + Math.floor(q / win.w), win.c0 + (q % win.w)), T) === k, win);
       return geom.length ? { type: "Feature", properties: { 종: x.sp.ko, 등급: name }, geometry: { type: "MultiPolygon", coordinates: geom } } : null;
     }).filter(Boolean);
   };

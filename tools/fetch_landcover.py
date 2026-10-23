@@ -6,6 +6,7 @@
   20 km 사방(10 m 해상도, 2000×2000) 그림으로 받아, 범례의 분류별 고유 색으로 분류를 되살림(테두리 흐림 끔)
 - 칸마다 625개 표본(10 m)으로 묶음별 비율을 셈. 흰색(분류 없음)은 분모에서 뺌
 - 받은 조각은 work/lc/<열>_<행>.npz로 남겨 끊겨도 이어 받음. 결과: work/env/lc_egis.npz
+- 10 m 분류 그림도 data/lc10/<열>_<행>.webp로 남김(값 = 묶음 번호 + 1, 0 = 분류 없음) — 사이트에서 확대 지도·사업지 면적을 10 m로
 """
 import io
 import json
@@ -21,6 +22,7 @@ from PIL import Image
 ROOT = Path(__file__).resolve().parent.parent
 ENV = ROOT / "work" / "env"
 TILES = ROOT / "work" / "lc"
+LC10 = ROOT / "data" / "lc10"
 WMS = "https://api.mcee.go.kr/geoserver/wms"
 LAYER = "lv3_2025y"
 PX = 10                 # 표본 간격(m)
@@ -28,7 +30,8 @@ CELLS = 80              # 조각 한 변의 칸 수(80 × 250 m = 20 km)
 N = CELLS * 250 // PX   # 조각 한 변의 화소 수(2000)
 # 묶음 → 세분류 코드
 GROUPS = {
-    "built": ["111", "112", "121", "131", "132", "141", "151", "152", "153", "154", "155", "161", "162", "163"],
+    "built": ["111", "112", "121", "131", "132", "141", "151", "152", "155", "161", "162", "163"],
+    "road": ["153", "154"],              # 철도·도로
     "paddy": ["211", "212"],
     "field": ["221", "222", "231", "241", "251", "252"],
     "broad": ["311"], "conifer": ["321"], "mixed": ["331"],
@@ -75,6 +78,7 @@ def legend():
 def main():
     sys.stdout.reconfigure(encoding="utf-8")
     TILES.mkdir(parents=True, exist_ok=True)
+    LC10.mkdir(parents=True, exist_ok=True)
     grid = json.loads((ENV / "grid.json").read_text(encoding="utf-8"))
     land = np.load(ENV / "base.npz")["land"]   # build_env.py가 먼저 만듦
     H, W, x0, y1 = grid["H"], grid["W"], grid["x0"], grid["y1"]
@@ -84,7 +88,7 @@ def main():
     lut = {rgb: gi.get(code, -1) for rgb, code in code_of.items()}   # 색 → 묶음 번호(-1 = 묶음 밖)
     jobs = [(tx, ty) for ty in range(-(-H // CELLS)) for tx in range(-(-W // CELLS))
             if land[ty * CELLS:(ty + 1) * CELLS, tx * CELLS:(tx + 1) * CELLS].any()]
-    todo = [j for j in jobs if not (TILES / f"{j[0]}_{j[1]}.npz").exists()]
+    todo = [j for j in jobs if not ((TILES / f"{j[0]}_{j[1]}.npz").exists() and (LC10 / f"{j[0]}_{j[1]}.webp").exists())]
     log(f"조각 {len(jobs)}개 중 받을 것 {len(todo)}개")
 
     def work(j):
@@ -97,6 +101,7 @@ def main():
         idx = np.full(rgb.shape, -2, dtype=np.int16)   # -2 = 분류 없음(흰색 등)
         for col, g in lut.items():
             idx[rgb == col] = g
+        Image.fromarray(np.clip(idx + 1, 0, 255).astype(np.uint8)).save(LC10 / f"{tx}_{ty}.webp", lossless=True, quality=100, method=4)
         k = N // CELLS
         blocks = idx.reshape(CELLS, k, CELLS, k).transpose(0, 2, 1, 3).reshape(CELLS, CELLS, k * k)
         counts = np.stack([(blocks == g).sum(-1) for g in range(len(names))]).astype(np.uint16)   # 묶음 × 칸 × 칸
@@ -121,6 +126,7 @@ def main():
         frac[:, ty * CELLS:ty * CELLS + h, tx * CELLS:tx * CELLS + w] = z["counts"][:, :h, :w] / np.maximum(v, 1)
         valid_all[ty * CELLS:ty * CELLS + h, tx * CELLS:tx * CELLS + w] = v / (N // CELLS) ** 2
     np.savez_compressed(ENV / "lc_egis.npz", names=np.array(names), frac=frac, valid=valid_all)
+    (LC10 / "index.json").write_text(json.dumps({"px": PX, "cells": CELLS, "groups": names, "tiles": [f"{tx}_{ty}" for tx, ty in jobs]}), encoding="utf-8")
     lm = land & (valid_all > 0)
     log(f"저장: lc_egis.npz · 육지 칸 중 분류 자료 있음 {lm.sum() / land.sum() * 100:.1f}%")
     for n, f in zip(names, frac):

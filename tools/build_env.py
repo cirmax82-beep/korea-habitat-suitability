@@ -9,7 +9,8 @@
   · 해안까지 거리(km)
 - 토지피복: 환경부 세분류 토지피복지도 2025년(tools/fetch_landcover.py → work/env/lc_egis.npz)의 칸별 비율
   산림·침엽수림·초지·논·밭(과수·시설재배 포함)·시가지·나대지(채광·운동장·기타나지)·자연 나지(해변·강기슭)·암벽·내륙습지·갯벌·하천·호소(·바다),
-  하천·호소까지 거리
+  하천·호소까지 거리. 도로·철도 비율과 도로 영향권(표준노드링크 도로 등급별 거리, 0–1)은 모형 변수에서 빼고 따로 둠
+  (출현 기록이 길가에 몰려 모형이 도로를 좋은 곳으로 배울 수 있어서)
   분류 자료가 없는 칸(일부 섬·접경지)은 가장 가까운 칸 값으로 채움
 - 원격 자료는 COG라 한국 범위만 읽음(/vsicurl). 결과: work/env/env.npz(변수·육지·시군구 번호), work/env/grid.json
 """
@@ -40,7 +41,7 @@ WC_TILES = [(33, 123), (33, 126), (33, 129), (36, 123), (36, 126), (36, 129)]
 WC_LC = {"tree": [10], "grass": [20, 30], "crop": [40], "built": [50], "bare": [60, 70, 100], "water": [80], "wetland": [90, 95]}
 NAMES = ["elev", "slope", "tree", "conifer", "grass", "paddy", "field", "built", "artbare", "bare", "rock", "wetland", "tidal", "river", "lake",
          "dist_river", "dist_lake", "dist_coast", "bio1", "bio4", "bio12", "bio15"]   # 모형 변수
-EXTRA = ["sea"]   # 모형에는 안 쓰고 바다 종 서식 칸 판정에만
+EXTRA = ["sea", "road", "road_eff"]   # 모형에는 안 씀: 바다 종 서식 칸 판정, 도로 면적, 도로 영향권(0–1, tools/build_roads.py)
 
 
 def log(*a):
@@ -188,19 +189,24 @@ def main():
     p_river = share(lc["river"], lc["lake"], have)
     p_con = share(lc["conifer"], lc["broad"] + lc["mixed"], have)
     p_art = share(lc["artbare"], lc["bare"], have)
+    p_road = share(lc["road"], lc["built"], have)
     fb = {"tree": wc["tree"], "conifer": wc["tree"] * p_con, "grass": wc["grass"], "paddy": wc["crop"] * p_paddy,
-          "field": wc["crop"] * (1 - p_paddy), "built": wc["built"], "artbare": wc["bare"] * p_art, "bare": wc["bare"] * (1 - p_art), "rock": 0 * wc["bare"],
+          "field": wc["crop"] * (1 - p_paddy), "built": wc["built"] * (1 - p_road), "road": wc["built"] * p_road, "artbare": wc["bare"] * p_art, "bare": wc["bare"] * (1 - p_art), "rock": 0 * wc["bare"],
           "wetland": wc["wetland"], "tidal": 0 * wc["bare"], "river": wc["water"] * p_river, "lake": wc["water"] * (1 - p_river),
           "sea": 0 * wc["bare"]}
     lc["tree"] = tree_all
     for k, v in fb.items():
         lc[k] = np.where(miss, v, lc[k]).astype("float32")
     env["tree"] = lc["tree"]
-    for k in ("conifer", "grass", "paddy", "field", "built", "artbare", "bare", "rock", "wetland", "tidal", "river", "lake", "sea"):
+    for k in ("conifer", "grass", "paddy", "field", "built", "road", "artbare", "bare", "rock", "wetland", "tidal", "river", "lake", "sea"):
         env[k] = lc[k]
     env["dist_river"] = (ndimage.distance_transform_edt(~(env["river"] >= 0.005)) * RES / 1000).astype("float32")   # 폭 약 1 m 넘는 물줄기
     env["dist_lake"] = (ndimage.distance_transform_edt(~((env["lake"] + env["wetland"]) >= 0.02)) * RES / 1000).astype("float32")
-    log("토지피복·거리 변수 완료")
+    if not (OUT / "road_eff.npy").exists():   # 국가교통정보센터 표준노드링크 도로 등급별 영향권
+        import build_roads
+        build_roads.main()
+    env["road_eff"] = np.load(OUT / "road_eff.npy").astype("float32")
+    log(f"토지피복·거리 변수 완료 · 도로 영향 0.5 이상 육지 {(env['road_eff'][land] >= 0.5).mean() * 100:.1f}%")
 
     for n in NAMES + EXTRA:
         a = env[n].astype("float32")

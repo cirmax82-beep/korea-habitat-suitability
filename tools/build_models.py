@@ -6,15 +6,19 @@
 - 환경: work/env/env.npz(250 m 격자 15변수), 출현: work/occ/<id>.json(격자 칸), 특성: tools/traits.tsv
 - 출현 칸이 MIN_CELLS 이상인 종: MaxEnt(elapid, 선형·이차·힌지 특징, 정규화 β=1.5, cloglog 출력)
   · 배경: 모든 종의 출현 칸을 합친 ‘조사가 이루어진 곳’에서 뽑아 표본 편향을 줄임(target-group background)
-  · 3겹 교차검증 AUC, ‘적합’ 임계값은 출현 칸의 90%가 들어가는 값(10th percentile training presence),
+  · 3겹 교차검증 AUC. 등급 기준은 학습 출현 칸 예측값의 분위수: 가능 P10(출현 칸 90%), 적합 P20(80%), 매우 적합 P50(절반)
     변수 기여는 순열 중요도(AUC 감소)
   · 서식지 유형으로 모형값을 깎는 보정(AOH)은 수역 자료에 작은 하천이 안 잡혀 실제 출현지까지 지워져 쓰지 않음
 - 출현 칸이 적은 종·해양 종: traits.tsv의 서식 태그로 만든 서식 규칙 지수(통계 모형이 아님 — 사이트에 따로 표시)
-- 시가지(주거·상업·공업·도로·철도 등)와 나대지(채광지·운동장·기타나지)는 서식지가 아님: 적합도와 적합 면적을 칸 안 그 비율만큼 뺌
+- 시가지(주거·상업·공업 등)·도로·철도·나대지(채광지·운동장·기타나지)는 서식지가 아님: 적합도와 적합 면적을 칸 안 그 비율만큼 뺌
+- 도로 영향권: 주변으로 번진 도로 비율(road_eff, 0–1)만큼 적합도를 낮춤. 최대 낮춤은 종 민감도에 따라
+  (로드킬·소음·교란·단절에 민감한 포유류·조류·양서파충류 60%, 그 밖의 동물 30%, 육상식물 20%, 어류·물에 사는 무척추·식물 0%)
   (서식 태그에 ‘도시’가 있는 종은 빼지 않음)
 - 물에 사는 종(서식 태그가 모두 하천·계곡·호소·습지·논습지·하구·갯벌·해양): 그 물이 있는 칸에서만 서식 가능,
   적합 면적은 칸 안의 물 면적(환경부 세분류 토지피복 비율)으로 셈
-  기록이 조금이라도 있으면 기록에서 RANGE_KM 밖은 점수를 낮춰 알려진 분포 범위를 반영
+  가능 0.5, 적합 0.7, 매우 적합 0.85
+- 알려진 분포 범위: 출현 칸에서 R km(조류 25, 포유류 15, 그 밖 5) 안과 기록이 있는 시군구(위치를 흐린 기록 포함, +2 km)는
+  그대로, 그 밖은 R km에 걸쳐 0으로 낮춤. 칸·시군구 기록이 모두 없는 종은 ‘가능’까지만
 - 결과: data/suit/<id>.webp(무손실 회색조, 0–100 = 적합성×100을 5 단위로, 255 = 분석 범위 밖), data/models.json
 """
 import json
@@ -23,21 +27,40 @@ import time
 from pathlib import Path
 
 import elapid
+import geopandas as gpd
+from rasterio.features import rasterize
+from rasterio.transform import from_origin
 import numpy as np
 from PIL import Image
 from sklearn.metrics import roc_auc_score
 from scipy import ndimage
 from sklearn.model_selection import StratifiedKFold
 
+from build_site_data import GROUP_STRESS
+
 ROOT = Path(__file__).resolve().parent.parent
 ENV = ROOT / "work" / "env"
 OCC = ROOT / "work" / "occ"
 SUIT = ROOT / "data" / "suit"
 MIN_CELLS = 15
-RANGE_KM = 40
+RANGE_KM = {"bird": 25, "mammal": 15}   # 알려진 분포(출현 칸·기록 시군구)에서 이 거리 안은 그대로, 그만큼 더 가면서 0으로. 그 밖의 분류군 5 km
+RULE_T = (0.5, 0.7, 0.85)                 # 서식 조건 지수의 가능·적합·매우 적합 기준
+OCC_SGG = ROOT / "work" / "occ_sgg"
 N_BG = 10000
 MARINE = {"해양"}
 RNG = np.random.default_rng(20261023)
+SENSITIVE = {"로드킬", "소음", "교란", "단절"}
+
+
+def road_alpha(group, stress, aq):
+    """도로 영향으로 적합도를 최대 몇 할 낮출지(종 민감도). 물고기·물에 사는 무척추·식물은 0"""
+    if group in ("fish", "algae") or (aq and group in ("invert", "plant", "fungi")):
+        return 0.0
+    if group in ("plant", "fungi"):
+        return 0.2
+    if group in ("mammal", "bird", "herp"):
+        return 0.6 if SENSITIVE & set(stress) else 0.3
+    return 0.3
 
 
 def log(*a):
@@ -127,6 +150,27 @@ def main():
         p = pos[[r * W + c for r, c in cells]] if cells else np.array([], dtype=np.int64)
         return np.unique(p[p >= 0])
 
+    # 시군구(GADM 코드) 격자 — 기록이 있는 시군구를 분포 범위로 쓰기 위해
+    sg = gpd.read_file(ENV / "sgg_gadm.geojson").set_crs(4326, allow_override=True).to_crs(grid["crs"])
+    gid_idx = {g: i + 1 for i, g in enumerate(sg["gid"])}
+    sgg_r = rasterize(((geom, i + 1) for i, geom in enumerate(sg.geometry)), out_shape=land.shape,
+                      transform=from_origin(grid["x0"], grid["y1"], grid["res"], grid["res"]), fill=0, dtype="int16")
+
+    def range_weight(group, pres, gids):
+        """알려진 분포 범위 가중치(0–1): 출현 칸에서 R km 안과 기록 시군구(+2 km)는 1, 그 밖은 R km에 걸쳐 0으로. 기록이 없으면 None"""
+        if not pres.size and not gids:
+            return None
+        R = RANGE_KM.get(group, 5)
+        seen = np.zeros(land.size, dtype=bool)
+        seen[idx[pres]] = True
+        d_cell = ndimage.distance_transform_edt(~seen.reshape(land.shape)) * grid["res"] / 1000
+        known = d_cell <= R
+        if gids:
+            in_sgg = np.isin(sgg_r, [gid_idx[g] for g in gids if g in gid_idx])
+            known |= ndimage.distance_transform_edt(~in_sgg) * grid["res"] / 1000 <= 2
+        d = ndimage.distance_transform_edt(~known) * grid["res"] / 1000
+        return np.clip(1 - d / R, 0, 1).ravel()[idx]
+
     # 조사 노력(모든 종의 출현 칸) 배경
     effort = np.unique(np.concatenate([occ_rows(s["id"]) for s in species] or [np.array([], dtype=np.int64)]))
     log(f"육지 {idx.size:,}칸 · 조사 노력 칸 {effort.size:,}")
@@ -165,27 +209,37 @@ def main():
             tot = sum(imp.values()) or 1
             pred = np.concatenate([m.predict(X[k:k + 100000]) for k in range(0, X.shape[0], 100000)])
             info.update({"method": "maxent", "auc": round(float(np.mean(aucs)), 3), "aucTrain": round(float(base), 3),
-                         "threshold": round(float(np.percentile(p_tr[:pres.size], 10)), 3), "importance": {k: round(v / tot * 100, 1) for k, v in sorted(imp.items(), key=lambda x: -x[1]) if v > 0}})
+                         "tLo": round(float(np.percentile(p_tr[:pres.size], 10)), 3), "threshold": round(float(np.percentile(p_tr[:pres.size], 20)), 3),
+                         "tHi": round(float(np.percentile(p_tr[:pres.size], 50)), 3), "importance": {k: round(v / tot * 100, 1) for k, v in sorted(imp.items(), key=lambda x: -x[1]) if v > 0}})
         else:
             pred = rule_score(tr["habitat"], E) if tr["habitat"] else np.zeros(idx.size, dtype="float32")
-            if pres.size and not marine:   # 알려진 기록에서 멀수록 낮춤
-                seen = np.zeros(land.size, dtype=bool)
-                seen[idx[pres]] = True
-                d = ndimage.distance_transform_edt(~seen.reshape(land.shape)).ravel()[idx] * grid["res"] / 1000
-                pred = pred * (0.3 + 0.7 * np.clip(1 - (d - RANGE_KM) / RANGE_KM, 0, 1))
-            info.update({"method": "rule" if tr["habitat"] else "none", "threshold": 0.5,
+            info.update({"method": "rule" if tr["habitat"] else "none", "tLo": RULE_T[0], "threshold": RULE_T[1], "tHi": RULE_T[2],
                          "reason": "해양 종" if marine else f"출현 칸 {pres.size}개(모형에는 {MIN_CELLS}개 이상 필요)"})
+        # 알려진 분포 범위 밖은 환경이 비슷해도 낮춤(바다 종 제외). 칸·시군구 기록이 모두 없으면 ‘가능’까지만
+        gids = json.loads((OCC_SGG / f"{s['id']}.json").read_text(encoding="utf-8")) if (OCC_SGG / f"{s['id']}.json").exists() else []
+        if not marine:
+            wgt = range_weight(s["group"], pres, gids)
+            if wgt is None:
+                pred = np.minimum(pred, info["threshold"] - 0.05)
+                info["noRecord"] = True
+            else:
+                pred = pred * wgt
+        info["sgg"] = len(gids)
         aq = aqua_classes(tr["habitat"])
         area = np.ones(idx.size, dtype="float32")
         if aq:   # 물에 사는 종: 그 물이 없는 칸은 0, 면적은 칸 안의 물 면적만
             area = np.clip(sum(E[k] for k in aq), 0, 1)
             pred = np.where(area > 0.001, pred, 0)
             info["aqua"] = aq
-        elif "도시" not in tr["habitat"]:   # 시가지(마을·도로 등)·나대지는 서식지가 아님: 적합도와 면적을 그 비율만큼 뺌
-            area = np.clip(1 - E["built"] - E["artbare"], 0, 1)
+        elif "도시" not in tr["habitat"]:   # 시가지(마을 등)·도로·나대지는 서식지가 아님: 적합도와 면적을 그 비율만큼 뺌
+            area = np.clip(1 - E["built"] - E["road"] - E["artbare"], 0, 1)
             pred = pred * area
         else:
             info["urban"] = True
+        alpha = 0.0 if info.get("urban") else road_alpha(s["group"], GROUP_STRESS.get(s["group"], []) + tr["extra"], aq)
+        if alpha:   # 도로 영향권(소음·불빛·로드킬·단절): 도로 가까이일수록 낮춤
+            pred = pred * (1 - alpha * E["road_eff"])
+            info["road"] = alpha
         vals = np.zeros(land.shape, dtype="float32")
         vals.ravel()[idx] = pred
         to_img(SUIT / f"{s['id']}.webp", vals[land], land)

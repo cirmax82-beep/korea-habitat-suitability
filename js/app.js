@@ -10,21 +10,25 @@
 
   const GROUPS = { mammal: "포유류", bird: "조류", herp: "양서·파충류", fish: "어류", insect: "곤충", invert: "무척추동물", plant: "육상식물", algae: "해조류", fungi: "고등균류" };
   const GRADE = { en1: "멸종위기 Ⅰ급", en2: "멸종위기 Ⅱ급" };
-  const VARS = { elev: "고도", slope: "경사", tree: "산림", conifer: "침엽수림", grass: "초지", paddy: "논", field: "밭·과수", built: "시가지", artbare: "나대지", bare: "자연 나지",
+  const VARS = { elev: "고도", slope: "경사", tree: "산림", conifer: "침엽수림", grass: "초지", paddy: "논", field: "밭·과수", built: "시가지", road: "도로·철도", artbare: "나대지", bare: "자연 나지",
     rock: "암벽", wetland: "내륙습지", tidal: "갯벌", river: "하천", lake: "호소", dist_river: "하천까지 거리", dist_lake: "호소·습지까지 거리",
     dist_coast: "해안까지 거리", bio1: "연평균기온", bio4: "기온 계절성", bio12: "연강수량", bio15: "강수 계절성" };
   const AQUA = { river: "하천", lake: "호소", wetland: "습지", paddy: "논", tidal: "갯벌", sea: "바다" };
   const aquaText = (sp) => (sp.aqua ? sp.aqua.map((k) => AQUA[k]).join("·") : "");
   const STRESS = { 훼손: "서식지 훼손", 소음: "소음·진동", 수질: "탁수·수질 오염", 조명: "야간 조명", 로드킬: "로드킬", 단절: "서식지 단절",
     채집: "불법 채집·포획", 교란: "사람 출입·교란", 수위: "수위 변화", 벌채: "벌채" };
-  // 적합성 등급 — 모형 임계값(t, 0–100) 기준. 임계값 이상이 ‘적합’, 그 위 절반이 ‘매우 적합’, 임계값 절반까지 ‘가능’
+  // 적합성 등급 — 종마다 기준(0–100). MaxEnt는 학습 출현 칸 예측값의 분위수(가능 P10·적합 P20·매우 적합 P50), 서식 조건 지수는 50·70·85
   const CLASSES = [
     { k: 3, name: "매우 적합", color: [0, 104, 55] },
     { k: 2, name: "적합", color: [49, 163, 84] },
     { k: 1, name: "가능", color: [173, 221, 142] },
   ];
-  const classOf = (v, t) => (v > 100 ? 0 : v >= t + (100 - t) / 2 ? 3 : v >= t ? 2 : v >= t / 2 ? 1 : 0);
-  const thrOf = (sp) => Math.round(((sp.model && sp.model.threshold) || 0.5) * 100);
+  const thrsOf = (sp) => {
+    const m = sp.model || {}, t = m.threshold ?? 0.7;
+    return { lo: Math.round((m.tLo ?? t * 0.7) * 100), t: Math.round(t * 100), hi: Math.round((m.tHi ?? Math.min(1, t * 1.2)) * 100) };
+  };
+  const thrOf = (sp) => thrsOf(sp).t;
+  const classOf = (v, T) => (v > 100 ? 0 : v >= T.hi ? 3 : v >= T.t ? 2 : v >= T.lo ? 1 : 0);
 
   const S = { cat: [], byId: new Map(), grid: null, occ: null, ready: null };
 
@@ -162,19 +166,69 @@
 
   // ---------- 적합성 지도 층 ----------
   // 분석 격자(UTM-K 250 m) 값을 지도 타일마다 다시 투영해 그림. 타일을 8×8로 나눠 꼭짓점만 정확히 바꾸고 안은 보간
+  // ---------- 10 m 토지피복(환경부 세분류를 묶음으로) ----------
+  // data/lc10/<열>_<행>.webp: 분석 격자 80칸(20 km)마다 2000×2000 화소, 값 = 묶음 번호 + 1(0 = 분류 없음)
+  const LC = { tiles: new Map() };
+  const lcIndex = () => LC.idx || (LC.idx = fetch("data/lc10/index.json").then((r) => r.json()).then((d) => {
+    LC.n = d.cells * S.grid.res / d.px; LC.px = d.px; LC.groups = d.groups; LC.set = new Set(d.tiles);
+    return d;
+  }).catch(() => null));
+  const lcTile = (key) => {
+    if (!LC.set || !LC.set.has(key)) return Promise.resolve(null);
+    if (!LC.tiles.has(key)) {
+      LC.tiles.set(key, decodeGray(`data/lc10/${key}.webp`).then((d) => d.data).catch(() => null));
+      while (LC.tiles.size > 16) LC.tiles.delete(LC.tiles.keys().next().value);
+    }
+    return LC.tiles.get(key);
+  };
+  // 10 m 화소 (열, 행) 범위의 조각을 받아 (px, py) → 값(0–16) 읽는 함수로
+  const lcReader = async (px0, py0, px1, py1) => {
+    if (!(await lcIndex())) return null;
+    const n = LC.n, got = new Map();
+    const jobs = [];
+    for (let ty = Math.floor(py0 / n); ty <= Math.floor(py1 / n); ty++) {
+      for (let tx = Math.floor(px0 / n); tx <= Math.floor(px1 / n); tx++) {
+        const key = `${tx}_${ty}`;
+        jobs.push(lcTile(key).then((d) => { if (d) got.set(ty * 1000 + tx, d); }));
+      }
+    }
+    await Promise.all(jobs);
+    return (px, py) => {
+      const d = got.get(Math.floor(py / n) * 1000 + Math.floor(px / n));
+      return d ? d[(py % n) * n + (px % n)] : 0;
+    };
+  };
+  // 종마다 10 m 화소가 서식지가 될 수 있는지(값 → 0/1). 물에 사는 종은 그 물, ‘도시’ 종은 전부, 그 밖은 시가지·도로·나대지 빼고
+  const habLut = (sp) => {
+    const lut = new Uint8Array(256).fill(1);
+    const groups = LC.groups || [];
+    groups.forEach((g, i) => {
+      if (sp.urban) return;
+      const ok = sp.aqua ? sp.aqua.includes(g) : !["built", "road", "artbare"].includes(g);
+      lut[i + 1] = ok ? 1 : 0;
+    });
+    lut[0] = 1;   // 분류 없음(접경지역 등)은 칸 값 그대로
+    return lut;
+  };
+
+  // ---------- 적합성 지도 층 ----------
+  // 분석 격자(UTM-K 250 m) 값을 지도 타일마다 다시 투영해 그림. 타일을 8×8로 나눠 꼭짓점만 정확히 바꾸고 안은 보간
+  // sp를 주면 확대(FINE_Z 이상)했을 때 10 m 토지피복으로 칸 안에서 서식지가 될 수 없는 곳(건물·도로, 물고기는 물 밖)을 지움
+  const FINE_Z = 12;
   const SuitLayer = L.GridLayer.extend({
     // zIndex: 지도 바꾸기 단추가 바탕지도에 1·2·3을 매기므로 그보다 위에
     options: { tileSize: 256, opacity: 0.8, updateWhenZooming: false, maxNativeZoom: 19, zIndex: 10 },
-    initialize(get, t, opts) {
-      this.get = get;   // (행, 열) → 0–100, 범위 밖 255
+    initialize(get, T, opts, sp) {
+      this.get = get;   // (행, 열) → 0–100, 범위 밖 255. T: 등급 기준 { lo, t, hi }
+      this.sp = sp;
       this.lut = new Uint8ClampedArray(256 * 4);
       for (let v = 0; v <= 100; v++) {
-        const c = CLASSES.find((x) => x.k === classOf(v, t));
+        const c = CLASSES.find((x) => x.k === classOf(v, T));
         if (c) this.lut.set([...c.color, c.k === 1 ? 150 : 215], v * 4);
       }
       L.setOptions(this, opts);
     },
-    createTile(coords) {
+    createTile(coords, done) {
       const size = this.getTileSize();
       const tile = L.DomUtil.create("canvas", "leaflet-tile");
       tile.width = size.x; tile.height = size.y;
@@ -189,26 +243,34 @@
           cy[j * M + i] = (G.y1 - p[1]) / G.res;
         }
       }
-      const ctx = tile.getContext("2d");
-      const img = ctx.createImageData(size.x, size.y);
-      const px = img.data, lut = this.lut, get = this.get;
-      let any = false;
-      for (let y = 0; y < size.y; y++) {
-        const fy = (y + 0.5) / step, j = Math.min(N - 1, fy | 0), v = fy - j;
-        for (let x = 0; x < size.x; x++) {
-          const fx = (x + 0.5) / step, i = Math.min(N - 1, fx | 0), u = fx - i;
-          const k = j * M + i;
-          const c = (1 - v) * ((1 - u) * cx[k] + u * cx[k + 1]) + v * ((1 - u) * cx[k + M] + u * cx[k + M + 1]);
-          const r = (1 - v) * ((1 - u) * cy[k] + u * cy[k + 1]) + v * ((1 - u) * cy[k + M] + u * cy[k + M + 1]);
-          const o = get(Math.floor(r), Math.floor(c)) * 4;
-          if (lut[o + 3]) {
+      const draw = (lc, hab) => {
+        const ctx = tile.getContext("2d");
+        const img = ctx.createImageData(size.x, size.y);
+        const px = img.data, lut = this.lut, get = this.get, f = lc ? G.res / LC.px : 0;
+        let any = false;
+        for (let y = 0; y < size.y; y++) {
+          const fy = (y + 0.5) / step, j = Math.min(N - 1, fy | 0), v = fy - j;
+          for (let x = 0; x < size.x; x++) {
+            const fx = (x + 0.5) / step, i = Math.min(N - 1, fx | 0), u = fx - i;
+            const k = j * M + i;
+            const c = (1 - v) * ((1 - u) * cx[k] + u * cx[k + 1]) + v * ((1 - u) * cx[k + M] + u * cx[k + M + 1]);
+            const r = (1 - v) * ((1 - u) * cy[k] + u * cy[k + 1]) + v * ((1 - u) * cy[k + M] + u * cy[k + M + 1]);
+            const o = get(Math.floor(r), Math.floor(c)) * 4;
+            if (!lut[o + 3]) continue;
+            if (lc && !hab[lc(Math.floor(c * f), Math.floor(r * f))]) continue;
             const q = (y * size.x + x) * 4;
             px[q] = lut[o]; px[q + 1] = lut[o + 1]; px[q + 2] = lut[o + 2]; px[q + 3] = lut[o + 3];
             any = true;
           }
         }
-      }
-      if (any) ctx.putImageData(img, 0, 0);
+        if (any) ctx.putImageData(img, 0, 0);
+        done(null, tile);
+      };
+      if (!this.sp || coords.z < FINE_Z) { setTimeout(() => draw(null), 0); return tile; }
+      const f = G.res / 10;
+      const xs = Array.from(cx), ys = Array.from(cy);
+      lcReader(Math.floor(Math.min(...xs) * f), Math.floor(Math.min(...ys) * f), Math.floor(Math.max(...xs) * f), Math.floor(Math.max(...ys) * f))
+        .then((lc) => draw(lc, lc ? habLut(this.sp) : null), () => draw(null));
       return tile;
     },
   });
@@ -338,6 +400,8 @@
               <dt>방식</dt><dd>${methodName(m)}</dd>
               <dt>출현 자료</dt><dd>${fmt(m.cells || 0)}칸(250 m)</dd>
               ${m.auc ? `<dt>예측력(AUC)</dt><dd>${m.auc.toFixed(2)} <span class="muted small">3겹 교차검증</span></dd>` : ""}
+              ${m.noRecord ? `<dt>분포 기록</dt><dd>출현 칸·시군구 기록이 없어 ‘가능’까지만 표시</dd>` : ""}
+              ${sp.road ? `<dt>도로 영향</dt><dd>도로 가까이 최대 ${Math.round(sp.road * 100)}% 낮춤</dd>` : ""}
               ${m.suitableKm2 !== undefined ? `<dt>적합 면적</dt><dd>${fmt(m.suitableKm2)} ㎢ <span class="muted small">‘적합’ 이상</span></dd>` : ""}
             </dl>
             ${imp.length ? `<h3 style="margin-top:14px">영향이 큰 환경 요인</h3><div class="bars">${imp.map(([k, v]) => `<div class="bar-row"><span>${esc(VARS[k] || k)}</span><span class="track"><i style="width:${Math.min(100, v)}%"></i></span><span class="v">${fmt(v)}%</span></div>`).join("")}</div>` : ""}
@@ -358,7 +422,7 @@
     try {
       const [R, occ] = await Promise.all([suitOf(sp.id), loadOcc()]);
       if (L1.map !== map) return;
-      new SuitLayer(rasterGet(R), thrOf(sp)).addTo(map);
+      new SuitLayer(rasterGet(R), thrsOf(sp), {}, sp).addTo(map);
       const canvas = L.canvas({ padding: 0.3 });
       (occ[sp.id] || []).forEach((cell) => L.polygon(occCellLatLngs(cell), { ...REC_STYLE, renderer: canvas }).addTo(recLayer));
     } catch (err) {
@@ -385,10 +449,13 @@
       <p>멸종위기 야생생물 ${fmt(en)}종과 천연기념물(종 단위 지정) ${fmt(nm)}종, 모두 ${fmt(n)}종의 서식지 적합성을 남한 전역 250 m 격자로 계산했습니다. 자료 기준일 ${esc(S.at || "")}.</p>
       <h2>서식지 적합성</h2>
       <ul class="plain">
-        <li><b>MaxEnt 종분포모형</b>(${fmt(mx)}종): 출현 기록이 15칸 이상인 종. 모든 대상 종의 출현 칸에서 배경을 뽑아(target-group background) 조사가 많이 된 곳에 치우치는 편향을 줄였습니다. 예측력은 3겹 교차검증 AUC, ‘적합’ 기준은 출현 칸의 90%가 들어가는 값입니다(놓치는 종이 적도록 넉넉하게 잡음).</li>
-        <li><b>서식 조건 지수</b>(${fmt(n - mx)}종): 기록이 적거나 바다에 사는 종. 서식지 유형별 토지피복·지형·물과의 거리로 계산하고, 기록이 있으면 기록에서 멀수록 낮췄습니다. 통계 모형이 아닌 참고값입니다.</li>
+        <li><b>MaxEnt 종분포모형</b>(${fmt(mx)}종): 출현 기록이 15칸 이상인 종. 모든 대상 종의 출현 칸에서 배경을 뽑아(target-group background) 조사가 많이 된 곳에 치우치는 편향을 줄였습니다. 예측력은 3겹 교차검증 AUC입니다. 등급은 보수적으로 잡아, 출현 칸의 절반이 그 값 이상인 곳을 ‘매우 적합’, 80%가 그 값 이상인 곳을 ‘적합’, 90%인 곳을 ‘가능’으로 봅니다.</li>
+        <li><b>서식 조건 지수</b>(${fmt(n - mx)}종): 기록이 적거나 바다에 사는 종. 서식지 유형별 토지피복·지형·물과의 거리로 계산한 참고값이며(통계 모형 아님), 0.85 이상 ‘매우 적합’, 0.7 이상 ‘적합’, 0.5 이상 ‘가능’입니다.</li>
+        <li><b>알려진 분포 범위</b>: 출현 칸에서 조류 25 km·포유류 15 km·그 밖 5 km 안과 기록이 있는 시군구(위치를 흐린 기록 포함)는 그대로 두고, 그 밖은 같은 거리에 걸쳐 0까지 낮춥니다. 환경이 비슷해도 기록과 먼 곳은 적합으로 보지 않습니다. 칸·시군구 기록이 모두 없는 종은 ‘가능’까지만 표시합니다.</li>
         <li>환경 변수: 토지피복 비율 12종과 하천·호소까지 거리(환경부 세분류 토지피복지도 2025년, 1 m급 41개 분류를 묶음), 고도·경사(Copernicus DEM GLO-90), 해안까지 거리, 기후 4종(CHELSA V2.1 1981–2010).</li>
-        <li><b>시가지·나대지 제외</b>: 시가지(주거·상업·공업·도로·철도 등)와 나대지(채광지·운동장·기타나지)는 서식지로 보지 않아, 칸의 적합도와 면적에서 그 비율만큼 뺍니다(‘도시’에도 사는 양비둘기·황조롱이는 빼지 않음).</li>
+        <li><b>시가지·도로·나대지 제외</b>: 시가지(주거·상업·공업 등)·도로·철도·나대지(채광지·운동장·기타나지)는 서식지로 보지 않아, 칸의 적합도와 면적에서 그 비율만큼 뺍니다(‘도시’에도 사는 양비둘기·황조롱이는 빼지 않음).</li>
+        <li><b>도로 영향권</b>: 도로는 주변까지 소음·불빛·로드킬·단절로 서식지 질을 떨어뜨려, 국가교통정보센터 표준노드링크의 도로 등급별로 고속도로 500 m, 일반국도·광역시도 300 m, 지방도 200 m, 시군도 100~150 m 안은 도로에 가까울수록 적합도를 낮춥니다(농로·마을길은 제외). 최대 낮춤은 로드킬·소음·교란·단절에 민감한 포유류·조류·양서파충류 60%, 그 밖의 동물 30%, 육상식물 20%, 어류·물에 사는 무척추동물·수생식물 0%입니다.</li>
+        <li><b>10 m 표현</b>: 적합도는 250 m 칸으로 계산하지만, 지도를 확대하거나 사업지 면적을 셀 때는 10 m 토지피복(환경부 세분류)으로 칸 안에서 서식지가 될 수 없는 곳(건물·도로·나대지, 물에 사는 종은 물 밖)을 뺍니다.</li>
         <li><b>물에 사는 종</b>(서식 유형이 하천·계곡·호소·습지·논습지·하구·갯벌·바다뿐인 어류·저서성 무척추동물·수서곤충·습지식물 등): 그 물이 있는 칸에서만 서식 가능으로 보고, 면적은 칸 안의 물 면적만 셉니다.</li>
         <li>출현 자료: GBIF 공개 기록과 iNaturalist 관찰(멸종위기종 종합관리 사이트와 같은 자료). 위치 오차가 1 km를 넘거나 위치를 흐린 기록은 빼고, 기록마다의 좌표 대신 약 250 m 칸으로만 보여 줍니다.</li>
       </ul>
@@ -435,7 +502,7 @@
     $("#inapp-close").onclick = () => { $("#inapp-bar").hidden = true; };
   }
 
-  window.H = { S, $, $$, esc, fmt, debounce, toast, saveBlob, loadScript, loadJSZip, decodeGray, makeMap, SuitLayer, legendHtml, classOf, thrOf, CLASSES,
+  window.H = { S, $, $$, esc, fmt, debounce, toast, saveBlob, loadScript, loadJSZip, decodeGray, makeMap, SuitLayer, legendHtml, classOf, thrOf, thrsOf, CLASSES, lcIndex, lcReader, habLut, LC,
     occCellLatLngs, occCenter, loadOcc, aquaText, REC_STYLE, GROUPS, GRADE, STRESS, VARS, badges, shortBadge, methodName, tagList, photoUrl };
   setTimeout(show, 0);
 })();

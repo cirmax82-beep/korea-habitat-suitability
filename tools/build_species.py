@@ -27,6 +27,7 @@ ROOT = Path(__file__).resolve().parent.parent
 END = ROOT.parent / "멸종위기종 종합관리"
 OCC = ROOT / "work" / "occ"
 OCC_GEO = ROOT / "work" / "occ_geo"
+OCC_SGG = ROOT / "work" / "occ_sgg"   # 기록이 있는 시군구(GADM 코드) — 위치를 흐린 기록도 포함. 분포 범위 판단용
 MAX_UNC = 1000   # 위치 오차 한도(m)
 NM_API = "https://www.khs.go.kr/cha/SearchKindOpenapiList.do?ccbaKdcd=16&pageUnit=2000&pageIndex=1"
 NM_REGIONAL = {"한강의 황쏘가리": "황쏘가리", "금강의 어름치": "어름치", "제주의 한란": "한란"}   # 지역을 붙인 종 지정
@@ -77,6 +78,7 @@ def main():
     sys.stdout.reconfigure(encoding="utf-8")
     OCC.mkdir(parents=True, exist_ok=True)
     OCC_GEO.mkdir(parents=True, exist_ok=True)
+    OCC_SGG.mkdir(parents=True, exist_ok=True)
     grid = json.loads((ROOT / "work" / "env" / "grid.json").read_text(encoding="utf-8"))
     to5179 = Transformer.from_crs(4326, 5179, always_xy=True)
 
@@ -92,6 +94,11 @@ def main():
                          str(END / "js" / "data-species.js")], capture_output=True, text=True, encoding="utf-8", check=True).stdout
     cat = json.loads(js)
     heat = json.loads((END / "data" / "heat-gbif.json").read_text(encoding="utf-8"))
+    gsnap = json.loads((END / "data" / "gbif-snapshot.json").read_text(encoding="utf-8"))["species"]
+    # 시군구 경계(GADM 코드) — 분포 범위 판단용
+    sgg = subprocess.run(["node", "-e", "global.window={};require(process.argv[1]);process.stdout.write(JSON.stringify(window.KR_SGG))",
+                          str(END / "js" / "data-sgg.js")], capture_output=True, text=True, encoding="utf-8", check=True).stdout
+    (ROOT / "work" / "env" / "sgg_gadm.geojson").write_text(sgg, encoding="utf-8")
     inat = json.loads((END / "data" / "inat-snapshot.json").read_text(encoding="utf-8"))
     g = heat["grid"]
 
@@ -115,6 +122,8 @@ def main():
         occ = cells([p[0] for p in pts], [p[1] for p in pts]) if pts else []
         (OCC / f"{s['id']}.json").write_text(json.dumps(occ), encoding="utf-8")
         (OCC_GEO / f"{s['id']}.json").write_text(json.dumps(geo), encoding="utf-8")
+        gids = set((gsnap.get(s["id"]) or {}).get("units", {})) | {o[1] for o in inat["obs"].get(s["id"], []) if o[1]}
+        (OCC_SGG / f"{s['id']}.json").write_text(json.dumps(sorted(gids)), encoding="utf-8")
         photo = inat["taxa"].get(s["id"], {})
         species.append({"id": s["id"], "ko": s["name"], "sci": s["sci"], "group": s["group"], "grade": s["grade"], "family": s.get("family", ""),
                         "nm": "", "gbif": s.get("gbif"), "note": s.get("note", ""), "cells": len(occ),

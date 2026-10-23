@@ -23,9 +23,12 @@ bash tools/publish_data.sh        # data/suit·data/blocks를 릴리스(data-lat
 ```
 
 - 환경 변수: 환경부 세분류 토지피복지도 2025년(환경공간정보서비스 WMS, `tools/fetch_landcover.py` — 칸별 토지피복 비율 12종, 하천·호소까지 거리), Copernicus DEM GLO-90(고도·경사), 해안까지 거리, CHELSA V2.1 1981–2010(bio1·bio4·bio12·bio15)
-- 시가지·나대지(채광지·운동장·기타나지)는 서식지가 아님: 적합도·면적에서 칸 안 그 비율만큼 뺌(‘도시’ 서식 종 제외)
+- 시가지·도로·철도·나대지(채광지·운동장·기타나지)는 서식지가 아님: 적합도·면적에서 칸 안 그 비율만큼 뺌(‘도시’ 서식 종 제외)
+- 도로 영향권: 국가교통정보센터 표준노드링크 도로 등급별 거리(고속도로 500 m·국도 300 m·지방도 200 m·시군도 100~150 m, `tools/build_roads.py`)로 적합도를 낮춤(민감한 포유류·조류·양서파충류 최대 60%, 그 밖의 동물 30%, 육상식물 20%, 어류·수생 0%)
+- 10 m 표현: 확대 지도와 사업지 면적은 10 m 토지피복 분류 그림(data/lc10, `tools/fetch_landcover.py`)으로 칸 안 비서식지를 뺌
 - 물에 사는 종(서식 태그가 모두 물 유형): 그 물이 있는 칸에서만 서식 가능, 면적은 칸 안의 물 면적
-- 적합성: 출현 칸 15개 이상은 MaxEnt(elapid, target-group background, 3겹 교차검증 AUC, 출현 칸의 90%가 들어가는 임계값(P10)), 나머지는 `tools/traits.tsv`의 서식 태그로 만든 서식 조건 지수
+- 적합성: 출현 칸 15개 이상은 MaxEnt(elapid, target-group background, 3겹 교차검증 AUC, 등급 기준은 학습 출현 칸 예측값의 분위수: 가능 P10·적합 P20·매우 적합 P50), 나머지는 `tools/traits.tsv`의 서식 태그로 만든 서식 조건 지수(가능 0.5·적합 0.7·매우 적합 0.85)
+- 알려진 분포 범위: 출현 칸에서 조류 25 km·포유류 15 km·그 밖 5 km 안과 기록 시군구(+2 km)는 그대로, 그 밖은 같은 거리에 걸쳐 0으로. 칸·시군구 기록이 모두 없는 종은 ‘가능’까지만
 - 생태적 특징: `tools/traits.tsv`(공개 자료 요약). 저감방안 규칙은 `js/measures.js`
 - 큰 파일(data/suit, data/blocks)은 저장소에 넣지 않고 배포 때 릴리스에서 받아 넣습니다(`.github/workflows/pages.yml`).
 - 브이월드 인증키는 저장소 비밀값 `VWORLD_KEY`로 배포 때 `js/config.js`를 만들어 넣습니다(로컬 `js/config.js`는 올라가지 않음).
